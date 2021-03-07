@@ -21,6 +21,10 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { BookingComponent } from './pages/booking/booking.component';
 
 
+// material
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +47,8 @@ import { BookingComponent } from './pages/booking/booking.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

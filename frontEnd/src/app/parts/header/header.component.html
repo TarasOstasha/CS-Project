@@ -1,1 +1,32 @@
-<p>header works!</p>
+<div class="main-header-wrapper">
+    <div class="row">
+        <div class="container">
+            <header>
+                <div class="top-header">
+                    <ul class="top-header-list">
+                        <div class="logo">
+                            <li><a [routerLink]="['/main']">Logo</a></li>
+                        </div>
+                        <ul class="social-media">
+                            <li><a href=""><i class="fa fa-phone"></i>&nbsp;Telephone</a></li>
+                            <li><a href=""><i class="fab fa-facebook-f"></i>&nbsp;Facebook</a></li>
+                            <li><a href=""><i class="fab fa-instagram-square"></i>&nbsp;Instagram</a></li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="bottom-header">
+                    <ul class="bottom-header-list">
+                        <li><a [routerLink]="['/main']" routerLinkActive="router-link-active">Home</a></li>
+                        <li><a [routerLink]="['/services']" routerLinkActive="router-link-active">Services</a></li>
+                        <li><a [routerLink]="['/pricing']" routerLinkActive="router-link-active">Pricing</a></li>
+                        <li><a [routerLink]="['/contact-us']" routerLinkActive="router-link-active">Contact Us</a></li>
+                        <li><a [routerLink]="['/faq']" routerLinkActive="router-link-active">FAQ</a></li>
+                        <li><a [routerLink]="['/booking']" routerLinkActive="router-link-active">Book Now</a></li>
+                    </ul>
+
+                </div>
+            </header>
+        </div>
+    </div>
+
+</div>

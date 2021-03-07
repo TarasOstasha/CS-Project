@@ -1,0 +1,71 @@
+@import '../../styles/colors'; // imported colors
+@import '../../styles/fonts'; // imported colors
+
+
+// HEADER
+.main-header-wrapper {
+    background: @blackColor; //@blueColor;
+    .row {
+        margin: 0;
+    }
+    header {
+        position: relative;
+
+        .top-header {
+            
+            .top-header-list {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 0 40px 0;
+                li {
+                    padding: @padding;
+                    list-style: none;
+
+                    a {
+                        text-decoration: none;
+                        color: @whiteColor;
+                        .fftitle();
+                    }
+                }
+            }
+
+            .social-media {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+
+        .bottom-header {
+            background: @blueColor; // @whiteBg;
+            padding: 30px;
+            position: absolute;
+            width: 100%;
+            top: 90px;
+            .bottom-header-list {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0;
+                li {
+                    list-style: none;
+                    a {
+                        color: @blackColor; //@blueColor;
+                        .ffnavmenu();
+                        transition: .5s;
+                        //padding: 30px;
+                        //background: @whiteColor;
+                    }
+                    a:hover {
+                        text-decoration: none;
+                        color: @whiteColor;
+                        //border-bottom: 1px solid;
+                    }
+                }
+            }
+        }
+    }
+
+}
