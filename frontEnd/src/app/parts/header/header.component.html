@@ -2,33 +2,76 @@
     <div class="row">
         <div class="container">
             <header>
-                <div class="top-header">
+                <nav class="top-header">
                     <ul class="top-header-list">
-                        <div class="logo">
-                            <li>
-                                <a [routerLink]="['/main']">
-                                    <i class="fa fa-gem" style="font-size:20px;"></i>
-                                    <!-- <img src="../../../assets/images/logo_1.png" alt="logo"> -->
-                                </a>
-                            </li>
-                        </div>
+                        <li class="logo">
+                            <a [routerLink]="['/main']">
+                                <i class="fa fa-gem" style="font-size:20px;"></i>
+                                <!-- <img src="../../../assets/images/logo_1.png" alt="logo"> -->
+                            </a>
+                        </li>
                         <ul class="social-media">
                             <li><a href="tel:+122170961709"><i class="fa fa-phone"></i>&nbsp;+122170961709</a></li>
                             <li><a href=""><i class="fab fa-facebook-f"></i>&nbsp;Facebook</a></li>
                             <li><a href=""><i class="fab fa-instagram-square"></i>&nbsp;Instagram</a></li>
                         </ul>
                     </ul>
-                </div>
+                </nav>
                 <div class="bottom-header">
-                    <ul class="bottom-header-list">
-                        <li><a [routerLink]="['/main']" routerLinkActive="router-link-active">Home</a></li>
-                        <li><a [routerLink]="['/services']" routerLinkActive="router-link-active">Services</a></li>
-                        <li><a [routerLink]="['/pricing']" routerLinkActive="router-link-active">Pricing</a></li>
+                    <!-- <ul class="bottom-header-list">
+                        <li col><a [routerLink]="['/main']" routerLinkActive="router-link-active">Home</a></li>
+                        <li col><a [routerLink]="['/services']" routerLinkActive="router-link-active">Services</a></li>
+                        <li col><a [routerLink]="['/pricing']" routerLinkActive="router-link-active">Pricing</a></li>
                         <li><a [routerLink]="['/contact-us']" routerLinkActive="router-link-active">Contact Us</a></li>
                         <li><a [routerLink]="['/faq']" routerLinkActive="router-link-active">FAQ</a></li>
                         <li><a [routerLink]="['/booking']" routerLinkActive="router-link-active">Book Now</a></li>
-                    </ul>
-
+                    </ul> -->
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light bottom-header">
+                        <a class="navbar-brand d-block d-sm-none d-none d-sm-block d-md-none" href="#">Menu</a>
+                        <button class="navbar-toggler " type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav bottom-header-list d-flex justify-content-center">
+                                <li class="nav-item active">
+                                    <a class="nav-link" [routerLink]="['/main']"
+                                        routerLinkActive="router-link-active">Home <span
+                                            class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" [routerLink]="['/services']"
+                                        routerLinkActive="router-link-active" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Services
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/pricing']"
+                                        routerLinkActive="router-link-active">Pricing</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/contact-us']"
+                                        routerLinkActive="router-link-active">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/faq']"
+                                        routerLinkActive="router-link-active">FAQ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" [routerLink]="['/booking']"
+                                        routerLinkActive="router-link-active">Book Now</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
             </header>
         </div>

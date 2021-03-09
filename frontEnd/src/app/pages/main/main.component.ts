@@ -8,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit {
-  // navMenuTop = [
-  //   { nav: 'LOGO', cols: 3 },
-  //   { nav: 'Telephone', cols: 1 },
-  //   { nav: 'Facebook', cols: 1  },
-  //   { nav: 'Instagram', cols: 1 }
-  // ]
+  serviceCards = [
+    { name: 'Deep Cleaning Service' },
+    { name: ' Move in/ Move out Cleaning ' },
+    { name: 'Home Cleaning Services NYC' },
+    { name: 'Post Renovation Cleaning Service NYC' },
+    { name: 'Post Construction Cleaning' },
+    { name: 'Office Cleaning Services' }
+  ];
   // navMenuBottom = [
   //   { nav: 'LOGO', cols: 3 },
   //   { nav: 'Telephone', cols: 1 },

@@ -1,13 +1,46 @@
 <div class="main-wrapper">
     <app-header></app-header>
     <main>
-        <section>
+        <section id="booking">
             <div class="booking-wrapper">
                 <div class="booking-img">
                     <img src="../../../assets/images/108530803-960x290.jpg" alt="booking">
+                </div>
+            </div>
+            <div class="booking-links">
+                <ul>
+                    <li><a [routerLink]="['/booking']" class="d-flex"><i
+                                class="fas fa-house-user"></i>&nbsp;Residential</a></li>
+                    <li><a [routerLink]="['/booking']" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
+                    </li>
+                    <li><a [routerLink]="['/booking']" class="d-flex"><i
+                                class="fas fa-warehouse"></i>&nbsp;Commercial</a></li>
+                </ul>
+            </div>
+        </section>
+        <section id="services">
+            <div class="container">
+                <div class="title">
+                    <h1>Crystal Cleaning Services</h1>
+                    <p>Cleaning Services Types that we provide in New York Area</p>
+                </div>
+                <div class="cleaning-types">
+                    <div class="d-flex justify-content-around row">
+                        <div class="card col-4" style="width: 18rem;" *ngFor="let card of serviceCards">
+                            <img class="card-img-top" src="..." alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ card.name }}</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk
+                                    of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
     <app-footer></app-footer>
 </div>
+

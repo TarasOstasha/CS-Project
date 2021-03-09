@@ -39,32 +39,45 @@
 
 
         .bottom-header {
-            background: @blueColor; // @whiteBg;
-            padding: 30px;
+            background: @blueColor!important; // @whiteBg;
+            padding: 0px;
             position: absolute;
             width: 100%;
-            top: 90px;
+            top: 40px; //90px;
+            z-index: 2;
             .bottom-header-list {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+                width: 100%;
                 margin: 0;
+                padding: 0;
                 li {
                     list-style: none;
+                    //padding: 30px;
+                    cursor: pointer;
                     a {
                         color: @whiteColor; //@blackColor; //@blueColor;
                         .ffnavmenu();
                         transition: .5s;
-                        
-                        //padding: 30px;
+                        padding: 30px;
+                        display: block;
+                        border-bottom: 2px solid transparent;
                         //background: @whiteColor;
                     }
                     a:hover {
                         text-decoration: none;
                         color: @blackColor; //@whiteColor;
+                        border-bottom: 2px solid @blackColor;
+                        display: block;
+                        //margin-bottom: 1px;
+                        //z-index: 3;
                         //border-bottom: 1px solid;
                     }
                 }
+                li:last-child {
+                    background: lighten(@blueColor, 20%);
+                }
+                // li:hover {
+                //     background: lighten(@blueColor, 20%)
+                // }
             }
         }
     }
