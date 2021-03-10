@@ -23,7 +23,7 @@ import { BookingComponent } from './pages/booking/booking.component';
 
 // material
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

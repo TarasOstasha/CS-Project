@@ -9,25 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
   serviceCards = [
-    { name: 'Deep Cleaning Service' },
-    { name: ' Move in/ Move out Cleaning ' },
-    { name: 'Home Cleaning Services NYC' },
-    { name: 'Post Renovation Cleaning Service NYC' },
-    { name: 'Post Construction Cleaning' },
-    { name: 'Office Cleaning Services' }
+    { name: 'Deep Cleaning Service', routerLink: ['/deep-cleaning']},
+    { name: 'Meve Cleaning ', routerLink: ['/meve-cleaning'] },
+    { name: 'Office Cleaning Services', routerLink: ['/office-cleaning'] },
+    { name: 'Regular Cleaning Service', routerLink: ['/regular-cleaning'] },
+    { name: 'Post Construction Cleaning', routerLink: ['/post-construction'] },
+    { name: 'Post Cleaning Services', routerLink: ['/post-renovation'] }
   ];
-  // navMenuBottom = [
-  //   { nav: 'LOGO', cols: 3 },
-  //   { nav: 'Telephone', cols: 1 },
-  //   { nav: 'Facebook', cols: 1  },
-  //   { nav: 'Instagram', cols: 1 },
-  //   { nav: 'Home', cols: 1 },
-  //   { nav: 'Services', cols: 1 },
-  //   { nav: 'Pricing', cols: 1 },
-  //   { nav: 'Contact Us', cols: 1 },
-  //   { nav: 'FAQ', cols: 1 },
-  //   { nav: 'Book Now', cols: 1 }
-  // ]
+
 
   constructor() { }
 

@@ -63,4 +63,68 @@
             .ffbasic();
         }
     }
+    .card {
+        padding: 25px;
+        align-items: center;
+        .icon-service {
+            i {
+                font-size:100px;
+                //color: @blueColor;
+            }
+        }
+        .card-body {
+            .card-title {
+                .fftitle();
+                text-transform: uppercase;
+            }
+            .card-btn {
+                margin-top:20px;
+                background-color: @blueColor;
+                border-color: @blueColor;
+                .ffbasic();
+            }
+        }
+    }
+}
+
+// How Does It Work
+#how_does_it_work {
+    .title {
+        text-align: center;
+        padding: @h1_padding;
+        h2 {
+            .h1();
+            color: @blackColor;
+        }
+    }
+    .main-info {
+        ul {
+            padding: 0;
+            li {
+                list-style: none;
+                img {
+                    width: 100%;
+                    padding: 25px;
+                }
+                h3 {
+                    .h1();
+                    color: @blackColor;
+                    text-align: center;
+                }
+            }
+        }
+        .book-btn {
+            text-align: center;
+            a {
+                .ffbasic();
+                text-decoration: none;
+                color: @blueColor;
+                background: #f6f6f6;
+            }
+            a:hover {
+                color: @blackColor;
+            }
+            
+        }
+    }
 }
