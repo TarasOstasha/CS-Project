@@ -7,17 +7,51 @@
                     <img src="../../../assets/images/108530803-960x290.jpg" alt="booking">
                 </div>
             </div>
-            <div class="booking-links">
-                <ul>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i
-                                class="fas fa-house-user"></i>&nbsp;Residential</a></li>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
-                    </li>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i
-                                class="fas fa-warehouse"></i>&nbsp;Commercial</a></li>
-                </ul>
+
+
+            <div class="stepper">
+
+                <mat-horizontal-stepper linear #stepper>
+                    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Fill out your address</ng-template>
+                            <mat-form-field>
+                                <mat-label>Address</mat-label>
+                                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <p>You are now done.</p>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
             </div>
+
+
         </section>
+
+
         <section id="services">
             <div class="container">
                 <div class="title">
@@ -30,6 +64,7 @@
                 </div> -->
             </div>
         </section>
+
     </main>
     <app-footer></app-footer>
 </div>
