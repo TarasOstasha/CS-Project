@@ -96,12 +96,17 @@
 
                 <!-- 3 -->
                 <mat-horizontal-stepper>
+
+
                     <mat-step label="Step 1" state="phone">
+                        <h1 class="step-title">SERVICES DETAILS</h1>
                         <p>Put down your phones.</p>
                         <div>
                             <button mat-button matStepperNext>Next</button>
                         </div>
                     </mat-step>
+
+
                     <mat-step label="Step 2" state="chat">
                         <p>Socialize with each other.</p>
                         <div>
@@ -109,9 +114,12 @@
                             <button mat-button matStepperNext>Next</button>
                         </div>
                     </mat-step>
+
+
                     <mat-step label="Step 3">
                         <p>You're welcome.</p>
                     </mat-step>
+
 
                     <!-- Icon overrides. -->
                     <ng-template matStepperIcon="phone">
@@ -121,6 +129,7 @@
                     <ng-template matStepperIcon="chat">
                         <mat-icon>forum</mat-icon>
                     </ng-template>
+
                 </mat-horizontal-stepper>
 
             </div>
