@@ -7,27 +7,36 @@
 
 // BOOKING
 #booking {
-    position: relative;
+  position: relative;
 }
+
 .booking-wrapper {
-    //position: relative;
-    .booking-img {
-        img {
-            width: 100%;
-        }
+
+  //position: relative;
+  .booking-img {
+    img {
+      width: 100%;
     }
+  }
 }
 
 .stepper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid @blueColor;
-    z-index: 99;
-    .step-title{
-        text-align: center;
-    }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid @blueColor;
+  z-index: 99;
+
+  .mat-stepper-horizontal {
+    /* can reverse */
+    // display: flex;
+    // flex-direction: column-reverse;
+  }
+
+  .step-title {
+    text-align: center;
+  }
 }
 
 
@@ -36,15 +45,17 @@
 @h1_padding: 50px;
 
 #services {
-    .title {
-        text-align: center;
-        padding: @h1_padding;
-        h1 {
-            .h1();
-            color: @blackColor;
-        }
-        p {
-            .ffbasic();
-        }
+  .title {
+    text-align: center;
+    padding: @h1_padding;
+
+    h1 {
+      .h1();
+      color: @blackColor;
     }
+
+    p {
+      .ffbasic();
+    }
+  }
 }
