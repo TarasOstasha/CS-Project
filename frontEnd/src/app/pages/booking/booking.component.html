@@ -12,14 +12,21 @@
             <div class="stepper">
 
                 <!-- 1 -->
-                <mat-horizontal-stepper linear #stepper>
+                <!-- <mat-horizontal-stepper linear #stepper>
                     <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
                         <form [formGroup]="firstFormGroup">
                             <ng-template matStepLabel>Fill out your name</ng-template>
+
                             <mat-form-field>
                                 <mat-label>Name</mat-label>
                                 <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
                             </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                            </mat-form-field>
+
                             <div>
                                 <button mat-button matStepperNext>Next</button>
                             </div>
@@ -46,11 +53,11 @@
                             <button mat-button (click)="stepper.reset()">Reset</button>
                         </div>
                     </mat-step>
-                </mat-horizontal-stepper>
+                </mat-horizontal-stepper> -->
 
 
                 <!-- 2 -->
-                <mat-horizontal-stepper #stepper>
+                <!-- <mat-horizontal-stepper #stepper>
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup">
                             <ng-template matStepLabel>Fill out your name</ng-template>
@@ -84,7 +91,7 @@
                             <button mat-button (click)="stepper.reset()">Reset</button>
                         </div>
                     </mat-step>
-                </mat-horizontal-stepper>
+                </mat-horizontal-stepper> -->
 
 
                 <!-- 3 -->
@@ -110,6 +117,7 @@
                     <ng-template matStepperIcon="phone">
                         <mat-icon>call_end</mat-icon>
                     </ng-template>
+
                     <ng-template matStepperIcon="chat">
                         <mat-icon>forum</mat-icon>
                     </ng-template>
