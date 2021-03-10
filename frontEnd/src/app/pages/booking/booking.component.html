@@ -11,6 +11,7 @@
 
             <div class="stepper">
 
+                <!-- 1 -->
                 <mat-horizontal-stepper linear #stepper>
                     <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
                         <form [formGroup]="firstFormGroup">
@@ -49,7 +50,6 @@
 
 
                 <!-- 2 -->
-
                 <mat-horizontal-stepper #stepper>
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup">
@@ -86,6 +86,8 @@
                     </mat-step>
                 </mat-horizontal-stepper>
 
+
+                <!-- 3 -->
                 <mat-horizontal-stepper>
                     <mat-step label="Step 1" state="phone">
                         <p>Put down your phones.</p>
