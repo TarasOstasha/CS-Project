@@ -7,17 +7,137 @@
                     <img src="../../../assets/images/108530803-960x290.jpg" alt="booking">
                 </div>
             </div>
-            <div class="booking-links">
-                <ul>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i
-                                class="fas fa-house-user"></i>&nbsp;Residential</a></li>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
-                    </li>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i
-                                class="fas fa-warehouse"></i>&nbsp;Commercial</a></li>
-                </ul>
+
+
+            <div class="stepper">
+
+                <!-- 1 -->
+                <!-- <mat-horizontal-stepper linear #stepper>
+                    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                            </mat-form-field>
+
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Fill out your address</ng-template>
+                            <mat-form-field>
+                                <mat-label>Address</mat-label>
+                                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <p>You are now done.</p>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper> -->
+
+
+                <!-- 2 -->
+                <!-- <mat-horizontal-stepper #stepper>
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Fill out your address</ng-template>
+                            <mat-form-field>
+                                <mat-label>Address</mat-label>
+                                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+                            </mat-form-field>
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        <p>You are now done.</p>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper> -->
+
+
+                <!-- 3 -->
+                <mat-horizontal-stepper>
+
+
+                    <mat-step label="Step 1" state="phone">
+                        <h1 class="step-title">SERVICES DETAILS</h1>
+                        <p>Put down your phones.</p>
+                        <div>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </mat-step>
+
+
+                    <mat-step label="Step 2" state="chat">
+                        <p>Socialize with each other.</p>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </mat-step>
+
+
+                    <mat-step label="Step 3">
+                        <p>You're welcome.</p>
+                    </mat-step>
+
+
+                    <!-- Icon overrides. -->
+                    <ng-template matStepperIcon="phone">
+                        <mat-icon>call_end</mat-icon>
+                    </ng-template>
+
+                    <ng-template matStepperIcon="chat">
+                        <mat-icon>forum</mat-icon>
+                    </ng-template>
+
+                </mat-horizontal-stepper>
+
             </div>
+
+
         </section>
+
+
         <section id="services">
             <div class="container">
                 <div class="title">
@@ -30,6 +150,7 @@
                 </div> -->
             </div>
         </section>
+
     </main>
     <app-footer></app-footer>
 </div>

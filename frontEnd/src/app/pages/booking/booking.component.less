@@ -2,65 +2,60 @@
 @import '../../styles/fonts'; // imported colors
 
 
+
 // MAIN SECTION ***
 
 // BOOKING
 #booking {
-    position: relative;
-}
-.booking-wrapper {
-    //position: relative;
-    .booking-img {
-        img {
-            width: 100%;
-        }
-    }
+  position: relative;
 }
 
-.booking-links {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    ul {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        padding: 0;
-        li {
-            list-style: none;
-            padding: 20px;
-            border: 1px solid @blueColor;
-            background:@whiteColor;
-            a {
-                .ffbasic();
-                font-size: 16px;
-                color: @blueColor;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-        }
-        li:nth-child(2) {
-            border-left: none;
-            border-right: none;
-        }
+.booking-wrapper {
+
+  //position: relative;
+  .booking-img {
+    img {
+      width: 100%;
     }
+  }
 }
+
+.stepper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid @blueColor;
+  z-index: 99;
+
+  .mat-stepper-horizontal {
+    /* can reverse */
+    // display: flex;
+    // flex-direction: column-reverse;
+  }
+
+  .step-title {
+    text-align: center;
+  }
+}
+
 
 // Services
 
 @h1_padding: 50px;
 
 #services {
-    .title {
-        text-align: center;
-        padding: @h1_padding;
-        h1 {
-            .h1();
-            color: @blackColor;
-        }
-        p {
-            .ffbasic();
-        }
+  .title {
+    text-align: center;
+    padding: @h1_padding;
+
+    h1 {
+      .h1();
+      color: @blackColor;
     }
+
+    p {
+      .ffbasic();
+    }
+  }
 }
