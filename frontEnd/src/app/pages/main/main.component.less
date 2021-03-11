@@ -1,14 +1,18 @@
 @import '../../styles/colors'; // imported colors
 @import '../../styles/fonts'; // imported colors
 
+@bottom_section_space: 50px;
 
 // MAIN SECTION ***
 
 // BOOKING
 #booking {
     position: relative;
+    margin-bottom: @bottom_section_space;
 }
+
 .booking-wrapper {
+
     //position: relative;
     .booking-img {
         img {
@@ -22,16 +26,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     ul {
         display: flex;
         align-items: center;
         cursor: pointer;
         padding: 0;
+
         li {
             list-style: none;
             padding: 20px;
             border: 1px solid @blueColor;
-            background:@whiteColor;
+            background: @whiteColor;
+
             a {
                 .ffbasic();
                 font-size: 16px;
@@ -40,6 +47,7 @@
                 text-transform: uppercase;
             }
         }
+
         li:nth-child(2) {
             border-left: none;
             border-right: none;
@@ -52,60 +60,103 @@
 @h1_padding: 50px;
 
 #services {
+    margin-bottom: @bottom_section_space;
+
     .title {
         text-align: center;
         padding: @h1_padding;
+
         h1 {
             .h1();
             color: @blackColor;
         }
+
         p {
             .ffbasic();
         }
     }
+
     .card {
-        padding: 25px;
+        padding: 15px;
+        border: none;
         align-items: center;
+        .card-link {
+            display: block;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: all ease .3s;
+            overflow: hidden;
+            margin-bottom: 40px;
+            .card-body {
+                .card-title {
+                    .fftitle();
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    color: @blackColor;
+                }
+    
+                .card-btn {
+                    margin-top: 20px;
+                    background-color: @blackColor;
+                    border-color: @blackColor;
+                    .ffbasic();
+                    //
+                    border-radius: 18px;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+        .card-link:hover {
+            transform: translateY(-15px);
+            .card-body {
+                .card-btn {
+                    background-color: @blueColor;
+                    border-color: @blueColor;
+                }
+            }
+
+        }
         .icon-service {
             i {
-                font-size:100px;
+                font-size: 100px;
                 //color: @blueColor;
             }
         }
-        .card-body {
-            .card-title {
-                .fftitle();
-                text-transform: uppercase;
-            }
-            .card-btn {
-                margin-top:20px;
-                background-color: @blueColor;
-                border-color: @blueColor;
-                .ffbasic();
-            }
-        }
+
+
     }
 }
 
 // How Does It Work
 #how_does_it_work {
+    margin-bottom: @bottom_section_space;
+
     .title {
         text-align: center;
         padding: @h1_padding;
+
         h2 {
             .h1();
             color: @blackColor;
         }
     }
+
     .main-info {
         ul {
             padding: 0;
+
             li {
                 list-style: none;
+
                 img {
                     width: 100%;
                     padding: 25px;
                 }
+
                 h3 {
                     .h1();
                     color: @blackColor;
@@ -113,18 +164,43 @@
                 }
             }
         }
+
         .book-btn {
             text-align: center;
+
             a {
                 .ffbasic();
                 text-decoration: none;
                 color: @blueColor;
                 background: #f6f6f6;
             }
+
             a:hover {
                 color: @blackColor;
             }
-            
+
+        }
+    }
+}
+
+// Our Guarantee
+#guarantee {
+    background-color: @blueColor;
+    //background-image: url('../../../assets/images/patern-yellow.jpg'), rgba(15, 184, 226, 0.5);
+
+    //background-color: @blueColor;
+    //background-color: rgba(15,184,226, 0.5);
+    .title {
+        text-align: center;
+        padding: @h1_padding;
+
+        h2 {
+            .h1();
+            color: @blackColor;
+        }
+
+        p {
+            .ffbasic();
         }
     }
 }

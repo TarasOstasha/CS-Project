@@ -27,16 +27,18 @@
                 <div class="cleaning-types">
                     <div class="d-flex justify-content-around row">
                         <div class="card col-4" *ngFor="let card of serviceCards">
-                            <div class="icon-service"><i class="fas fa-broom"></i></div>
-                            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ card.name }}</h5>
-                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p> -->
-                                <a [routerLink]=" '/services' + card.routerLink" class="btn btn-primary card-btn">Read
-                                    More</a>
-                            </div>
+                            <a class="card-link" [routerLink]=" '/services' + card.routerLink">
+                                <!-- <div class="icon-service"><i class="fas fa-broom"></i></div> -->
+                                <img class="card-img-top"
+                                    src="../../../assets/images/services/ashtray-condo-condominium-298842-1024x683.jpg"
+                                    alt="Card image cap">
+                                <div class="card-body d-flex flex-row justify-content-between">
+                                    <h5 class="card-title">{{ card.name }}</h5>
+                                    <a [routerLink]=" '/services' + card.routerLink" class="btn btn-primary card-btn"><i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </a>
+
                         </div>
                     </div>
                 </div>
@@ -67,6 +69,38 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <section id="guarantee">
+            <!-- <img src="../../../assets/images/patern-yellow.jpg" alt=""> -->
+            <div class="container">
+                <div class="title">
+                    <h2>Our Guarantee</h2>
+                    <p>Finding Reliable Cleaning Service Professional For You</p>
+                </div>
+                <div class="guarantee-icons">
+                    <ul class="icon-list">
+                        <li>
+                            <img src="" alt="experienced">
+                            <p>Experienced</p>
+                        </li>
+                        <li>
+                            <img src="" alt="bonded&insured">
+                            <p>Bonded & Insured</p>
+                        </li>
+                        <li>
+                            <img src="" alt="complete-supplies">
+                            <p>Complete Supplies</p>
+                        </li>
+                        <li>
+                            <img src="" alt="flexible">
+                            <p>Flexible</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="reviews">
+
         </section>
     </main>
     <app-footer></app-footer>
