@@ -60,7 +60,7 @@
 @h1_padding: 50px;
 
 #services {
-    margin-bottom: @bottom_section_space;
+    //margin-bottom: @bottom_section_space;
 
     .title {
         text-align: center;
@@ -80,6 +80,7 @@
         padding: 15px;
         border: none;
         align-items: center;
+
         .card-link {
             display: block;
             border: 1px solid #eee;
@@ -87,6 +88,7 @@
             transition: all ease .3s;
             overflow: hidden;
             margin-bottom: 40px;
+
             .card-body {
                 .card-title {
                     .fftitle();
@@ -94,7 +96,7 @@
                     text-decoration: none;
                     color: @blackColor;
                 }
-    
+
                 .card-btn {
                     margin-top: 20px;
                     background-color: @blackColor;
@@ -110,8 +112,10 @@
                 }
             }
         }
+
         .card-link:hover {
             transform: translateY(-15px);
+
             .card-body {
                 .card-btn {
                     background-color: @blueColor;
@@ -120,6 +124,7 @@
             }
 
         }
+
         .icon-service {
             i {
                 font-size: 100px;
@@ -186,6 +191,7 @@
 // Our Guarantee
 #guarantee {
     background-color: @blueColor;
+    padding-bottom: @bottom_section_space;
     //background-image: url('../../../assets/images/patern-yellow.jpg'), rgba(15, 184, 226, 0.5);
 
     //background-color: @blueColor;
@@ -196,11 +202,71 @@
 
         h2 {
             .h1();
-            color: @blackColor;
+            //color: @blackColor;
+            color: @whiteColor;
         }
 
         p {
             .ffbasic();
+            color: @whiteColor;
+        }
+    }
+
+    .icon-list {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+
+        li {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            p {
+                .fftitle();
+                padding: 15px 0;
+                color: @whiteColor;
+            }
+        }
+        li:hover {
+            // shake effect
+            /* Start the shake animation and make the animation last for 0.5 seconds */
+            animation: shake 0.5s;
+            /* When the animation is finished, start again */
+            //animation-iteration-count: infinite;
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// keyframes
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
