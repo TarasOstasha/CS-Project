@@ -1,45 +1,77 @@
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="col footer-navigation footer-list">
-                <h6>Navigation</h6>
-                <ul class="navbar-nav bottom-header-list d-flex justify-content-center">
-                    <li class="nav-item active">
-                        <a class="nav-link" [routerLink]="['/main']" routerLinkActive="router-link-active">Home <span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/services']"
-                            routerLinkActive="router-link-active">
-                            Services
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/pricing']"
-                            routerLinkActive="router-link-active">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/contact-us']" routerLinkActive="router-link-active">Contact
-                            Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/faq']" routerLinkActive="router-link-active">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/booking']" routerLinkActive="router-link-active">Book
-                            Now</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col footer-services footer-list">
-                <h6>Services</h6>
-            </div>
-            <div class="col footer-working-hours footer-list">
-                <h6>Working Hours</h6>
-            </div>
-            <div class="col footer-social-media footer-list">
-                <h6>Social Media</h6>
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col footer-navigation footer-list">
+                    <h6>Navigation</h6>
+                    <ul class="navbar-nav bottom-header-list d-flex justify-content-center">
+                        <li class="nav-item active">
+                            <a class="nav-link" [routerLink]="['/main']" routerLinkActive="router-link-active">Home
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/services']" routerLinkActive="router-link-active">
+                                Services
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/pricing']"
+                                routerLinkActive="router-link-active">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/contact-us']"
+                                routerLinkActive="router-link-active">Contact
+                                Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/faq']" routerLinkActive="router-link-active">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/booking']" routerLinkActive="router-link-active">Book
+                                Now</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col footer-services footer-list">
+                    <h6>Services</h6>
+                    <ul class="navbar-nav bottom-header-list d-flex justify-content-center">
+                        <li class="nav-item" *ngFor="let card of serviceCards">
+                            <a class="nav-link" [routerLink]=" '/services' + card.routerLink">
+                                {{ card.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col footer-working-hours footer-list">
+                    <h6>Working Hours</h6>
+                    <ul class="navbar-nav bottom-header-list d-flex justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link">8:00 AM - 6:00 PM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Mon - Fri</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col footer-social-media footer-list">
+                    <h6>Social Media</h6>
+                    <ul class="navbar-nav bottom-header-list d-flex justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fa fa-phone"></i>&nbsp;&nbsp;+122170961709</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-facebook-f"></i>&nbsp;&nbsp;Facebook</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><i class="fab fa-instagram-square"></i>&nbsp;&nbsp;Instagram</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div>Developed by <a target="_blank" href="https://www.tarasostasha.com">www.tarasostasha.com</a></div>
     </div>
 </footer>
