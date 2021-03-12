@@ -41,16 +41,21 @@
                                             class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" [routerLink]="['/services']"
+                                    <!-- <a class="nav-link dropdown-toggle" [routerLink]="['/services']" -->
+                                    <a class="nav-link dropdown-toggle" 
                                         routerLinkActive="router-link-active" id="navbarDropdown" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Services
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    <div class="dropdown-menu dropdown-menu-list" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" [routerLink]="['/services/regular-cleaning']">Regular Cleaning</a>
+                                        <a class="dropdown-item" [routerLink]="['/services/deep-cleaning']">Deep Cleaning</a>
+                                        <a class="dropdown-item" [routerLink]="['/services/move-cleaning']">Move Cleaning</a>
+                                        <a class="dropdown-item" [routerLink]="['/services/post-construction']">Post Construction Cleaning</a>
+                                        <a class="dropdown-item" [routerLink]="['/services/post-renovation']">Post Renovation Cleaning</a>
+                                        <a class="dropdown-item" [routerLink]="['/services/office-cleaning']">Office Cleaning</a>
+                                        <!-- <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a> -->
                                     </div>
                                 </li>
                                 <li class="nav-item">

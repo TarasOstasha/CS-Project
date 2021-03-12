@@ -87,6 +87,20 @@
                 // li:hover {
                 //     background: lighten(@blueColor, 20%)
                 // }
+                li:nth-child(2):hover {
+                    .dropdown-menu {
+                        display: block;
+                    }
+                }
+            }
+            .dropdown-menu-list {
+                background: @blueColor;
+                a {
+                    .fftitle()!important;
+                    padding: 6px!important;
+                    border-bottom: none!important;
+
+                }
             }
         }
     }

@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'services', component: ServicesComponent, children: [
-    { path: 'meve-cleaning', component: MeveComponent }, 
+    { path: 'move-cleaning', component: MeveComponent }, 
     { path: 'office-cleaning', component: OfficeComponent }, 
     { path: 'regular-cleaning', component: RegularComponent },
     { path: 'deep-cleaning', component: DeepComponent },
