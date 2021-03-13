@@ -109,7 +109,15 @@
                         <div class="boxes">
                             <div class="big-box big-box-left">
                                 <div class="inner-box inner-box-left">
-                                    <div class="input"><input type="text"></div>
+                                    <div class="input">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Select me</mat-label>
+                                            <mat-select>
+                                                <mat-option value="option">Option</mat-option>
+                                            </mat-select>
+                                            <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+                                        </mat-form-field>
+                                    </div>
                                     <div class="input"><input type="text"></div>
                                 </div>
                                 <div class="inner-box inner-box-right">
