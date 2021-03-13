@@ -1,3 +1,21 @@
+@import './app/styles/colors.less'; // imported colors
+
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; box-sizing: border-box; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// for restyling of material components
+// it works only in this file!
+
+// stepper
+.mat-step-header .mat-step-icon {
+  background-color: @blueColor;
+}
