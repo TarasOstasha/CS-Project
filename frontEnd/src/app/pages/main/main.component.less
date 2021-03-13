@@ -32,7 +32,7 @@
         align-items: center;
         cursor: pointer;
         padding: 0;
-
+        box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
         li {
             list-style: none;
             padding: 20px;
@@ -242,7 +242,34 @@
     }
 }
 
-
+// Reviews
+#reviews {
+    padding: @h1_padding 0;
+    mat-carousel {
+        background: transparent;
+    }
+    .title {
+        text-align: center;
+        //padding-top: @h1_padding;
+    }
+    .reviews-wrapper {
+        display: flex;
+        strong {
+            padding: 15px;
+            .fftitle();
+        }
+        p {
+            padding: 15px;
+            background: @blueColor;
+            border-radius: 10px;
+            .ffbasic();
+            color: @whiteColor;
+        }
+        .name {
+            .ffnavmenu();
+        }
+    }
+}
 
 
 
