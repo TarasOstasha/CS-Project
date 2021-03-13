@@ -98,7 +98,12 @@
                 <mat-horizontal-stepper>
 
 
-                    <mat-step label="Step 1" state="phone">
+                    <mat-step state="phone">
+                        <ng-template matStepLabel>
+                            <h2>Appointment Details</h2>
+                            <h3>3333</h3>
+                        </ng-template>
+
                         <h1 class="step-title">SERVICES DETAILS</h1>
                         <p>Put down your phones.</p>
                         <div>
@@ -107,7 +112,12 @@
                     </mat-step>
 
 
-                    <mat-step label="Step 2" state="chat">
+                    <mat-step state="chat">
+                        <ng-template matStepLabel>
+                            <h2>Plan & Pricing</h2>
+                            <h3>3333</h3>
+                        </ng-template>
+
                         <h1 class="step-title">ECONOMY CLEANING</h1>
                         <p>Socialize with each other.</p>
                         <div>
@@ -117,7 +127,21 @@
                     </mat-step>
 
 
-                    <mat-step label="Step 3">
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h2>Address</h2>
+                            <h3>3333</h3>
+                        </ng-template>
+                        <h1 class="step-title">PAYMENT</h1>
+                        <p>You're welcome.</p>
+                    </mat-step>
+
+
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h2>Payment</h2>
+                            <h3>3333</h3>
+                        </ng-template>
                         <h1 class="step-title">PAYMENT</h1>
                         <p>You're welcome.</p>
                     </mat-step>
