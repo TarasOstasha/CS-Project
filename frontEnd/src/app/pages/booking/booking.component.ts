@@ -16,6 +16,16 @@ export class BookingComponent implements OnInit {
   secondFormGroup!: FormGroup;
   isEditable = false;
 
+  stepper: any = {
+    property_type: {
+      items: [
+        {title: 'Apartment'},
+        {title: 'House'},
+        {title: 'AirBNB'},
+      ]
+    }
+  };
+
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {

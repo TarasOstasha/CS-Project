@@ -98,6 +98,7 @@
                 <mat-horizontal-stepper>
 
 
+
                     <mat-step state="phone">
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Appointment Details</h2>
@@ -113,7 +114,7 @@
                                         <mat-form-field appearance="fill">
                                             <mat-label>Select me</mat-label>
                                             <mat-select>
-                                                <mat-option value="option">Option</mat-option>
+                                                <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
                                             </mat-select>
                                             <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
                                         </mat-form-field>
