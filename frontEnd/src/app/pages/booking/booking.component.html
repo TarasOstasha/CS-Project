@@ -112,14 +112,22 @@
                                 <div class="inner-box inner-box-left">
                                     <div class="input">
                                         <mat-form-field appearance="fill">
-                                            <mat-label>Select me</mat-label>
+                                            <mat-label>Property type</mat-label>
                                             <mat-select>
                                                 <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
                                             </mat-select>
-                                            <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                         </mat-form-field>
                                     </div>
-                                    <div class="input"><input type="text"></div>
+                                    <div class="input">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Frequency</mat-label>
+                                            <mat-select>
+                                                <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                            </mat-select>
+                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                        </mat-form-field>
+                                    </div>
                                 </div>
                                 <div class="inner-box inner-box-right">
                                     <div class="input"><input type="text"></div>

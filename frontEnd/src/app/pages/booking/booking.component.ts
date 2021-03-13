@@ -23,6 +23,14 @@ export class BookingComponent implements OnInit {
         {title: 'House'},
         {title: 'AirBNB'},
       ]
+    },
+    frequency: {
+      items: [
+        {title: 'Weekly'},
+        {title: 'Biweekly'},
+        {title: 'Monthly'},
+        {title: 'One Time'},
+      ]
     }
   };
 
