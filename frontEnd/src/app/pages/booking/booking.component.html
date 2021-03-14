@@ -95,8 +95,7 @@
 
 
                 <!-- 3 -->
-                <mat-horizontal-stepper>
-
+                <mat-horizontal-stepper #stepperDOM>
 
                     <!-- ********************************************** STEP ********************************************** -->
                     <mat-step state="phone">
@@ -218,7 +217,11 @@
                             </div>
 
                             <div>
-                                <button mat-button matStepperNext>Next</button>
+                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                                <button mat-button (click)="goForward(stepperDOM)" type="button">Next</button>
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                                 <button mat-button>Fill</button>
                             </div>
 

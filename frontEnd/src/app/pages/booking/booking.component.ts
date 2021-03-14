@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.less'],
   providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
 export class BookingComponent implements OnInit {
@@ -18,27 +19,35 @@ export class BookingComponent implements OnInit {
   stepper: any = {
     property_type: {
       items: [
-        {title: 'Apartment'},
-        {title: 'House'},
-        {title: 'AirBNB'},
+        { title: 'Apartment' },
+        { title: 'House' },
+        { title: 'AirBNB' },
       ]
     },
     frequency: {
       items: [
-        {title: 'Weekly'},
-        {title: 'Biweekly'},
-        {title: 'Monthly'},
-        {title: 'One Time'},
+        { title: 'Weekly' },
+        { title: 'Biweekly' },
+        { title: 'Monthly' },
+        { title: 'One Time' },
       ]
     }
   };
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.step_1 = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
+  }
+
+  goBack(stepperDOM: MatStepper) {
+    stepperDOM.previous();
+  }
+
+  goForward(stepperDOM: MatStepper) {
+    stepperDOM.next();
   }
 
 }
