@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
+const log = console.log;
 
 @Component({
   selector: 'app-booking',
@@ -46,8 +47,20 @@ export class BookingComponent implements OnInit {
     stepperDOM.previous();
   }
 
-  goForward(stepperDOM: MatStepper) {
-    stepperDOM.next();
+  // goForward(stepperDOM: MatStepper) {
+  //   stepperDOM.next();
+  // }
+
+  next1(stepperDOM: MatStepper){
+    if (this.step_1.status== "VALID") stepperDOM.next()
+    else log('Must fill!');
+  }
+
+  fill(stepperDOM: MatStepper) {
+    // log(stepperDOM);
+    log(this.step_1);
+
+    
   }
 
 }
