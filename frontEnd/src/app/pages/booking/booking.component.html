@@ -109,55 +109,55 @@
                         <h1 class="step-title">SERVICES DETAILS</h1>
 
 
+                        <form [formGroup]="step_1">
+                            <div class="boxes">
+                                <div class="big-box big-box-left">
+                                    <div class="inner-box inner-box-left">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Property type</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
 
+                                        <div class="input">
 
-                        <form [formGroup]="firstFormGroup">
-                            <ng-template matStepLabel>Fill out your name</ng-template>
-
-                            <mat-form-field>
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-                            </mat-form-field>
-
-                            <div>
-                                <button mat-button matStepperNext>Next</button>
-                            </div>
-                        </form>
-
-
-
-
-                        <div class="boxes">
-                            <div class="big-box big-box-left">
-                                <div class="inner-box inner-box-left">
-                                    <div class="input">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Property type</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
-                                            </mat-select>
-                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                        </mat-form-field>
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
                                     </div>
-                                    <div class="input">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Frequency</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
-                                            </mat-select>
-                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="inner-box inner-box-right">
-                                    <div class="input">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Frequency</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
-                                            </mat-select>
-                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                        </mat-form-field>
+                                    <div class="inner-box inner-box-right">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+
+                                            <mat-form-field>
+                                                <mat-label>Name</mat-label>
+                                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                                            </mat-form-field>
+
+                                            <!-- <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Enter some input</mat-label>
+                                                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                                                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                            </mat-form-field> -->
+
+                                        </div>
                                     </div>
                                     <div class="input">
                                         <mat-form-field hintLabel="Max 10 characters" appearance="fill">
@@ -167,68 +167,67 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <div class="input">
-                                    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                        <mat-label>Enter some input</mat-label>
-                                        <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                                        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-                                    </mat-form-field>
+                                <div class="big-box big-box-right">
+                                    <div class="inner-box inner-box-left">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Property type</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+                                            <mat-form-field color="accent" appearance="fill">
+                                                <mat-label>Custom calendar color</mat-label>
+                                                <input matInput [matDatepicker]="picker2">
+                                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="inner-box inner-box-right">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="input">
+                                        <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                            <mat-label>Enter some input</mat-label>
+                                            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                                            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                        </mat-form-field>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="big-box big-box-right">
-                                <div class="inner-box inner-box-left">
-                                    <div class="input">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Property type</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
-                                            </mat-select>
-                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="input">
-                                        <mat-form-field color="accent" appearance="fill">
-                                            <mat-label>Custom calendar color</mat-label>
-                                            <input matInput [matDatepicker]="picker2">
-                                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker2 color="primary"></mat-datepicker>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="inner-box inner-box-right">
-                                    <div class="input">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Frequency</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
-                                            </mat-select>
-                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="input">
-                                        <mat-form-field appearance="fill">
-                                            <mat-label>Frequency</mat-label>
-                                            <mat-select>
-                                                <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
-                                            </mat-select>
-                                            <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="input">
-                                    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                        <mat-label>Enter some input</mat-label>
-                                        <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                                        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div>
-                            <button mat-button matStepperNext>Next</button>
-                            <button mat-button>Fill</button>
-                        </div>
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                                <button mat-button>Fill</button>
+                            </div>
+
+                        </form>
+
+
+
+
+
                     </mat-step>
 
                     <!-- ********************************************** STEP ********************************************** -->

@@ -12,8 +12,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 })
 export class BookingComponent implements OnInit {
 
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
+  step_1!: FormGroup;
   isEditable = false;
 
   stepper: any = {
@@ -37,11 +36,8 @@ export class BookingComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.step_1 = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
     });
   }
 
