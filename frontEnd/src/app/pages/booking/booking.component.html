@@ -137,7 +137,7 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Frequency</mat-label>
-                                                <mat-select>
+                                                <mat-select formControlName="xxx">
                                                     <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->

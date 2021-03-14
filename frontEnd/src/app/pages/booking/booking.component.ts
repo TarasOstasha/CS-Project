@@ -39,7 +39,9 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.step_1 = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
+      xxx: ['', Validators.required]
+
     });
   }
 
