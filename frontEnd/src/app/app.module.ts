@@ -29,13 +29,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StarRatingComponent } from './parts/star-rating/star-rating.component';
 
+
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+// other material modules
+//import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 
 @NgModule({
@@ -73,9 +80,15 @@ import { StarRatingComponent } from './parts/star-rating/star-rating.component';
     MatIconModule,
     MatCardModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    //MatCarouselModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule, 
+    MatNativeDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

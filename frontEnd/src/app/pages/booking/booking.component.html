@@ -95,19 +95,152 @@
 
 
                 <!-- 3 -->
-                <mat-horizontal-stepper>
+                <mat-horizontal-stepper #stepperDOM>
 
+                    <!-- ********************************************** STEP ********************************************** -->
+                    <mat-step state="phone">
 
-                    <mat-step label="Step 1" state="phone">
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Appointment Details</h2>
+                            <h3 class="step-title-small">Please Fill Information</h3>
+                        </ng-template>
+
                         <h1 class="step-title">SERVICES DETAILS</h1>
-                        <p>Put down your phones.</p>
-                        <div>
-                            <button mat-button matStepperNext>Next</button>
-                        </div>
+
+
+                        <form [formGroup]="step_1">
+                            <div class="boxes">
+                                <div class="big-box big-box-left">
+                                    <div class="inner-box inner-box-left">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Property type</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="inner-box inner-box-right">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select formControlName="xxx">
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+
+                                            <mat-form-field>
+                                                <mat-label>Name</mat-label>
+                                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                                            </mat-form-field>
+
+                                            <!-- <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Enter some input</mat-label>
+                                                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                                                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                            </mat-form-field> -->
+
+                                        </div>
+                                    </div>
+                                    <div class="input">
+                                        <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                            <mat-label>Enter some input</mat-label>
+                                            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                                            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="big-box big-box-right">
+                                    <div class="inner-box inner-box-left">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Property type</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+                                            <mat-form-field color="accent" appearance="fill">
+                                                <mat-label>Custom calendar color</mat-label>
+                                                <input matInput [matDatepicker]="picker2">
+                                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="inner-box inner-box-right">
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Frequency</mat-label>
+                                                <mat-select>
+                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="input">
+                                        <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                            <mat-label>Enter some input</mat-label>
+                                            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                                            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                                <button mat-button (click)="next1(stepperDOM)" type="button">Next</button>
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
+                                <button mat-button (click)="fill(stepperDOM)">Fill</button>
+                            </div>
+
+                        </form>
+
+
+
+
+
                     </mat-step>
 
+                    <!-- ********************************************** STEP ********************************************** -->
+                    <mat-step state="chat">
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Plan & Pricing</h2>
+                            <h3 class="step-title-small">Choose Services Plan</h3>
+                        </ng-template>
 
-                    <mat-step label="Step 2" state="chat">
+                        <h1 class="step-title">ECONOMY CLEANING</h1>
                         <p>Socialize with each other.</p>
                         <div>
                             <button mat-button matStepperPrevious>Back</button>
@@ -115,13 +248,29 @@
                         </div>
                     </mat-step>
 
+                    <!-- ********************************************** STEP ********************************************** -->
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Address</h2>
+                            <h3 class="step-title-small">Please Enter Address Detail</h3>
+                        </ng-template>
+                        <h1 class="step-title">PAYMENT</h1>
+                        <p>You're welcome.</p>
+                    </mat-step>
 
-                    <mat-step label="Step 3">
+                    <!-- ********************************************** STEP ********************************************** -->
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Payment</h2>
+                            <h3 class="step-title-small">Please Enter Payment Detail</h3>
+                        </ng-template>
+                        <h1 class="step-title">PAYMENT</h1>
                         <p>You're welcome.</p>
                     </mat-step>
 
 
-                    <!-- Icon overrides. -->
+                    <!-- ********************************************** Icon overrides. ********************************************** -->
+
                     <ng-template matStepperIcon="phone">
                         <mat-icon>call_end</mat-icon>
                     </ng-template>
