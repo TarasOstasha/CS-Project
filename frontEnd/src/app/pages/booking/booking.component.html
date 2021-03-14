@@ -98,14 +98,34 @@
                 <mat-horizontal-stepper>
 
 
-
+                    <!-- ********************************************** STEP ********************************************** -->
                     <mat-step state="phone">
+
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Appointment Details</h2>
                             <h3 class="step-title-small">Please Fill Information</h3>
                         </ng-template>
 
                         <h1 class="step-title">SERVICES DETAILS</h1>
+
+
+
+
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+
+                            <mat-form-field>
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                            </mat-form-field>
+
+                            <div>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </form>
+
+
+
 
                         <div class="boxes">
                             <div class="big-box big-box-left">
@@ -205,14 +225,13 @@
                             </div>
                         </div>
 
-                        <p>Put down your phones.</p>
                         <div>
                             <button mat-button matStepperNext>Next</button>
                             <button mat-button>Fill</button>
                         </div>
                     </mat-step>
 
-
+                    <!-- ********************************************** STEP ********************************************** -->
                     <mat-step state="chat">
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Plan & Pricing</h2>
@@ -227,7 +246,7 @@
                         </div>
                     </mat-step>
 
-
+                    <!-- ********************************************** STEP ********************************************** -->
                     <mat-step>
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Address</h2>
@@ -237,7 +256,7 @@
                         <p>You're welcome.</p>
                     </mat-step>
 
-
+                    <!-- ********************************************** STEP ********************************************** -->
                     <mat-step>
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Payment</h2>
@@ -248,7 +267,8 @@
                     </mat-step>
 
 
-                    <!-- Icon overrides. -->
+                    <!-- ********************************************** Icon overrides. ********************************************** -->
+
                     <ng-template matStepperIcon="phone">
                         <mat-icon>call_end</mat-icon>
                     </ng-template>
