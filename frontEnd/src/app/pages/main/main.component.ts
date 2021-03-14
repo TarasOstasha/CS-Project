@@ -1,5 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
+
+declare var $: any;
+declare var jQuery: any;
 
 
 @Component({
@@ -9,6 +13,10 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 })
 export class MainComponent implements OnInit {
   //@Input() slides: any;
+  experienceForm!: FormGroup;
+  @Input() starRating: any;
+  @Input() starWidth!: number;
+  rating!: number;
 
 
   serviceCards = [
@@ -25,14 +33,59 @@ export class MainComponent implements OnInit {
   public reviews = [
     { title: ' "Lorem ipsum dolor1..." ', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptas odit consectetur necessitatibus suscipit libero nam porro hic, cumque quos, aspernatur voluptatem laboriosam modi voluptatum nesciunt deleniti repellat error doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing elit.', name: 'Jack', rating: 4 },
     { title: ' "Lorem ipsum dolor2..." ', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptas odit consectetur necessitatibus suscipit libero nam porro hic, cumque quos, aspernatur voluptatem laboriosam modi voluptatum nesciunt deleniti repellat error doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing elit.', name: 'Jack', rating: 3 },
-    // { title: ' "Lorem ipsum dolor3..." ', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptas odit consectetur necessitatibus suscipit libero nam porro hic, cumque quos, aspernatur voluptatem laboriosam modi voluptatum nesciunt deleniti repellat error doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing elit.', name: 'Jack', rating: 4 },
-    // { title: ' "Lorem ipsum dolor4..." ', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptas odit consectetur necessitatibus suscipit libero nam porro hic, cumque quos, aspernatur voluptatem laboriosam modi voluptatum nesciunt deleniti repellat error doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing elit.', name: 'Jack', rating: 3 }
-  ]
+    { title: ' "Lorem ipsum dolor3..." ', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptas odit consectetur necessitatibus suscipit libero nam porro hic, cumque quos, aspernatur voluptatem laboriosam modi voluptatum nesciunt deleniti repellat error doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing elit.', name: 'Jack', rating: 4 },
+    { title: ' "Lorem ipsum dolor4..." ', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis voluptas odit consectetur necessitatibus suscipit libero nam porro hic, cumque quos, aspernatur voluptatem laboriosam modi voluptatum nesciunt deleniti repellat error doloribus! Lorem ipsum dolor sit amet, consectetur adipisicing elit.', name: 'Jack', rating: 3 }
+  ];
 
+  experiences = [
+    { value: 'Excellent' },
+    { value: 'Good' },
+    { value: 'Acceptable' },
+    { value: 'Bad' }
+  ];
 
-  constructor() { }
+  //$(".slider").slick({})
+
+  constructor(private _formBuilder: FormBuilder,) { 
+
+  }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.initReviewsCarousel();
+    })
+    this.experienceForm = this._formBuilder.group({
+      experience: ['', Validators.required],
+      name: ['', [Validators.required, Validators.min(2)] ],
+      myTextArea: ['', [Validators.required, Validators.min(20)] ]
+    });
   }
+
+  initReviewsCarousel() {
+    $('.slider').slick({
+      infinite: true,
+      //autoplay: true,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+      autoplaySpeed: 5000,
+      mobileFirst: true
+    });
+  }
+
+  selectedExperience() {
+
+  }
+
+  onRatingClicked(message: any): void {
+    this.starRating = message
+    console.log(this.starRating)
+  }
+
+  checkedStar(icon: any) {
+    this.starWidth = icon * 118 / 5;
+    console.log(icon)
+    console.log(this.starWidth, 'px')
+  }
+  
 
 }

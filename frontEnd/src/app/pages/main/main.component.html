@@ -22,8 +22,9 @@
         <section id="services">
             <div class="container">
                 <div class="title">
-                    <h1>Crystal Cleaning Services</h1>
-                    <p>Cleaning Services Types that we provide in New York Area</p>
+                    <h1>Crystal System Cleaning</h1>
+                    <!-- <h2>Crystal Cleaning Services</h2> -->
+                    <p>We Are Professional Cleaning Company Offering All Types of Cleaning Services. Get Your Place Cleaned. It's Simple, Affordable and Convenient.</p>
                 </div>
                 <div class="cleaning-types">
                     <div class="d-flex justify-content-around row">
@@ -420,23 +421,70 @@
         <section id="reviews">
             <div class="container">
                 <div class="title">
-                    <h2>Crystal Reviews</h2>
-                    <div class="reviews-wrapper">
-                        <div class="col-6" *ngFor="let review of reviews">
-                            <div class="content justify-content-center d-flex flex-column">
-                                <strong>{{ review.title }}</strong>
-                                <p>{{ review.description }}</p>
+                    <h2>Our Reviews</h2>
+                </div>
+                <div class="slider">
+                    <div class="slide" *ngFor="let review of reviews">
+                        <div>
+                            <strong>{{ review.title }}</strong>
+                            <p>{{ review.description }}</p>
+                        </div>
+                        <div class="user-mark">
+                            <div class="name">
+                                {{ review.name }}
                             </div>
-                            <div class="user-mark d-flex justify-content-center">
-                                <div class="name">
-                                    {{ review.name }}
-                                </div>
-                                <div class="rating">
-                                    {{ review.rating }}<i class="far fa-star"></i>
-                                </div>
+                            <div class="rating">
+                                {{ review.rating }}<i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="write-review">
+                    <form [formGroup]="experienceForm">
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Leave Review
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Tell Us About Your Experience</mat-label>
+                                    <mat-select formControlName="experience" (selectionChange)="selectedExperience()">
+                                        <mat-option *ngFor="let experience of experiences" [value]="experience.value">
+                                            <span>{{ experience.value }}</span>
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Your Name</mat-label>
+                                    <input matInput type="text" formControlName="name" required>
+                                    <!-- <mat-error>Not Valid Name</mat-error> -->
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Review</mat-label>
+                                    <textarea matInput formControlName="myTextArea"></textarea>
+                                </mat-form-field>
+                            </p>
+                            <p class="star-review">
+                                <span class="black-stars" class="crop" [style.width.px]="starWidth" [title]="rating">
+                                    <span style="width:118px;display:flex;">
+                                        <span style="color:#000;" *ngFor="let star of [1,2,3,4,5]" (click)="checkedStar(star);" class="fa fa-star my-icon-star"></span>
+                                    </span>
+                                </span>
+                                <span class="yellow-stars">
+                                    <app-star-rating [starWidth]="starWidth" (ratingClicked)='onRatingClicked($event)'></app-star-rating>
+                                </span>
+                            </p>
+                        </mat-expansion-panel>
+                        <!-- <div style="margin-top:30px;" class="crop" [style.width.px]="starWidth" [title]="rating">
+
+                            <div style="width:92px;display:flex;">
+                                <span style="color:#0bb8e3" *ngFor="let star of [1,2,3,4,5]" (click)="checkedStar(star);"
+                                    class="fa fa-star"></span>
+                            </div>
+                        </div> -->
+                    </form>
                 </div>
             </div>
         </section>

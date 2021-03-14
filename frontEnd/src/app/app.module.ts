@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,8 +32,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { StarRatingComponent } from './parts/star-rating/star-rating.component';
+
+
 
 @NgModule({
+  //schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -49,7 +56,8 @@ import { MatCardModule } from '@angular/material/card';
     PricingComponent,
     ContactUsComponent,
     FaqComponent,
-    BookingComponent
+    BookingComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +71,9 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

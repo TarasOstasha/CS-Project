@@ -1,0 +1,12 @@
+<div class="crop"
+     [style.width.px]="starWidth"
+     [title]="rating">
+     
+  <div style="width:118px;display:flex;">
+    <span style="color:yellow" *ngFor="let star of [1,2,3,4,5]" (click)="checkedStar(star);" class="fa fa-star my-icon-star"></span>
+    <!-- <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span> -->
+  </div>
+</div>
