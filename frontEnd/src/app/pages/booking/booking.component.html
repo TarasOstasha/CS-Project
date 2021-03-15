@@ -136,7 +136,7 @@
                                     <div class="inner-box inner-box-right">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Frequency</mat-label>
+                                                <mat-label>Approx SF</mat-label>
                                                 <mat-select formControlName="xxx">
                                                     <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
@@ -146,7 +146,7 @@
                                         <div class="input">
 
                                             <mat-form-field>
-                                                <mat-label>Name</mat-label>
+                                                <mat-label>ZIP code</mat-label>
                                                 <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
                                             </mat-form-field>
 
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="input">
                                         <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                            <mat-label>Enter some input</mat-label>
+                                            <mat-label>Email address</mat-label>
                                             <input matInput #input maxlength="10" placeholder="Ex. Nougat">
                                             <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
                                         </mat-form-field>
@@ -170,7 +170,7 @@
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Property type</mat-label>
+                                                <mat-label>Bedrooms</mat-label>
                                                 <mat-select>
                                                     <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="input">
                                             <mat-form-field color="accent" appearance="fill">
-                                                <mat-label>Custom calendar color</mat-label>
+                                                <mat-label>Select date (M/D/Y)</mat-label>
                                                 <input matInput [matDatepicker]="picker2" formControlName="date">
                                                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                                 <mat-datepicker #picker2 color="primary"></mat-datepicker>
@@ -189,7 +189,7 @@
                                     <div class="inner-box inner-box-right">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Frequency</mat-label>
+                                                <mat-label>Bathrooms</mat-label>
                                                 <mat-select>
                                                     <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
@@ -198,7 +198,7 @@
                                         </div>
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Frequency</mat-label>
+                                                <mat-label>Select times</mat-label>
                                                 <mat-select>
                                                     <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
@@ -208,7 +208,7 @@
                                     </div>
                                     <div class="input">
                                         <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                            <mat-label>Enter some input</mat-label>
+                                            <mat-label>Phone number</mat-label>
                                             <input matInput #input maxlength="10" placeholder="Ex. Nougat">
                                             <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
                                         </mat-form-field>
