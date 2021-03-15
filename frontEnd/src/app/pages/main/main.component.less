@@ -183,7 +183,8 @@
                 text-decoration: none;
                 color: @blueColor;
                 background: #f6f6f6;
-                margin: 25px 0;
+                margin: 30px 0;
+                font-size: 18px;
             }
 
             a:hover {
@@ -291,6 +292,7 @@
                 align-items: center;
                 justify-content: flex-end;
 
+                .date,
                 .name,
                 .rating {
                     .ffbasic();
@@ -299,6 +301,7 @@
                 .rating {
                     i {
                         color: @blueColor;
+                        margin-left: 5px;
                     }
                 }
             }
@@ -326,6 +329,9 @@
                 position: absolute;
                 top: 0;
               }
+        }
+        .review-btn {
+            text-align: right;
         }
     }
 }

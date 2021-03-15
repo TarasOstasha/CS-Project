@@ -430,8 +430,11 @@
                             <p>{{ review.description }}</p>
                         </div>
                         <div class="user-mark">
+                            <div class="date">
+                                12.12.21
+                            </div>
                             <div class="name">
-                                {{ review.name }}
+                                ,&nbsp;{{ review.name }}
                             </div>
                             <div class="rating">
                                 {{ review.rating }}<i class="fas fa-star"></i>
@@ -476,14 +479,10 @@
                                     <app-star-rating [starWidth]="starWidth" (ratingClicked)='onRatingClicked($event)'></app-star-rating>
                                 </span>
                             </p>
-                        </mat-expansion-panel>
-                        <!-- <div style="margin-top:30px;" class="crop" [style.width.px]="starWidth" [title]="rating">
-
-                            <div style="width:92px;display:flex;">
-                                <span style="color:#0bb8e3" *ngFor="let star of [1,2,3,4,5]" (click)="checkedStar(star);"
-                                    class="fa fa-star"></span>
+                            <div class="review-btn">
+                                <button mat-raised-button>Send</button>
                             </div>
-                        </div> -->
+                        </mat-expansion-panel>
                     </form>
                 </div>
             </div>
