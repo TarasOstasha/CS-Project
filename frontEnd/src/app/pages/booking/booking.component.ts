@@ -17,6 +17,7 @@ export class BookingComponent implements OnInit {
   step_1!: FormGroup;
   isEditable = false;
 
+
   stepper: any = {
     // step - 1
     property_type: {
@@ -78,8 +79,12 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.step_1 = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-      xxx: ['', Validators.required],
+      property_type: [ '', Validators.required],
+      frequency: ['', Validators.required],
+      approx_SF: ['', Validators.required],
+      zip_code: ['', Validators.required],
+      email: ['', Validators.required],
+      
       date: ['', Validators.required],
     });
   }
@@ -100,6 +105,8 @@ export class BookingComponent implements OnInit {
   fill(stepperDOM: MatStepper) {
     // log(stepperDOM);
     log(this.step_1);
+    log(this.step_1.value);
   }
+
 
 }

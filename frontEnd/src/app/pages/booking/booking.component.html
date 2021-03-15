@@ -115,18 +115,16 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Property type</mat-label>
-                                                <mat-select>
+                                                <mat-select formControlName="property_type">
                                                     <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
-
                                         <div class="input">
-
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Frequency</mat-label>
-                                                <mat-select>
+                                                <mat-select formControlName="frequency">
                                                     <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
@@ -137,35 +135,31 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Approx SF</mat-label>
-                                                <mat-select formControlName="xxx">
+                                                <mat-select formControlName="approx_SF">
                                                     <mat-option *ngFor="let item of stepper.approx_SF.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
                                         <div class="input">
-
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
-                                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+                                                <input matInput formControlName="zip_code" placeholder="000000" required>
                                             </mat-form-field>
-
-                                            <!-- <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                                <mat-label>Enter some input</mat-label>
-                                                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-                                                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-                                            </mat-form-field> -->
-
                                         </div>
                                     </div>
                                     <div class="input">
                                         <mat-form-field hintLabel="Max 10 characters" appearance="fill">
                                             <mat-label>Email address</mat-label>
-                                            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+
+                                            <input matInput #input formControlName="email" placeholder="some@gmail.com">
+
+                                            <!-- <input matInput #input maxlength="10" placeholder="Ex. Nougat"> -->
                                             <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
                                         </mat-form-field>
                                     </div>
                                 </div>
+
                                 <div class="big-box big-box-right">
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
