@@ -138,7 +138,7 @@
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Approx SF</mat-label>
                                                 <mat-select formControlName="xxx">
-                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                    <mat-option *ngFor="let item of stepper.approx_SF.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
@@ -172,7 +172,7 @@
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Bedrooms</mat-label>
                                                 <mat-select>
-                                                    <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
+                                                    <mat-option *ngFor="let item of stepper.bedrooms.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
@@ -191,7 +191,7 @@
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Bathrooms</mat-label>
                                                 <mat-select>
-                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                    <mat-option *ngFor="let item of stepper.bathrooms.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
@@ -200,7 +200,7 @@
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Select times</mat-label>
                                                 <mat-select>
-                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                                    <mat-option *ngFor="let item of stepper.select_time.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>

@@ -18,6 +18,7 @@ export class BookingComponent implements OnInit {
   isEditable = false;
 
   stepper: any = {
+    // step - 1
     property_type: {
       items: [
         { title: 'Apartment' },
@@ -32,7 +33,45 @@ export class BookingComponent implements OnInit {
         { title: 'Monthly' },
         { title: 'One Time' },
       ]
-    }
+    },
+    approx_SF: {
+      items: [
+        { title: 'Under 1000' },
+        { title: '1000 - 1200' },
+        { title: '1200 - 1500' },
+        { title: '1500 - 2000' },
+        { title: '2000 - 2500' },
+        { title: '2500 - 3000' },
+        { title: '3000 - 3500' },
+      ]
+    },
+    zip_code: '',
+    email: '',
+    bedrooms: {
+      items: [
+        { title: '1' },
+        { title: '... shoud be all ...' },
+        { title: '19' },
+      ]
+    },
+    bathrooms: {
+      items: [
+        { title: '1' },
+        { title: '... shoud be all ...' },
+        { title: '19' },
+      ]
+    },
+    select_time: {
+      items: [
+        { title: 'Morning' },
+        { title: 'Afternoon' },
+        { title: 'Anytime' },
+      ]
+    },
+    phone: '',
+    // step - 2
+    // step - 3
+    // step - 4
   };
 
   constructor(private _formBuilder: FormBuilder) { }
