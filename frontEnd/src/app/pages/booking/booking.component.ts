@@ -40,8 +40,8 @@ export class BookingComponent implements OnInit {
   ngOnInit() {
     this.step_1 = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
-      xxx: ['', Validators.required]
-
+      xxx: ['', Validators.required],
+      date: ['', Validators.required],
     });
   }
 
@@ -61,8 +61,6 @@ export class BookingComponent implements OnInit {
   fill(stepperDOM: MatStepper) {
     // log(stepperDOM);
     log(this.step_1);
-
-    
   }
 
 }
