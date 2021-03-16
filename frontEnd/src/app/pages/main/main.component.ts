@@ -66,6 +66,7 @@ export class MainComponent implements OnInit {
 
   saveReview() {
     console.log(this.experienceForm.value)
+    this._api.sendReview(this.experienceForm.value.experience, this.experienceForm.value.name, this.experienceForm.value.myTextArea, this.starRating)
   }
 
   initReviewsCarousel() {

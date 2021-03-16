@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
+
 const reviewSchema = mongoose.Schema({
-    created: { type: String },
-    emailReview: 'string',
-    nameReview: 'string',
-    messageReview: 'string',
-    stars: 'string'
+    grade: { type: String, require: true },
+    name: { type: String, require: true },
+    message: { type: String, require: true },
+    stars: { type: Number, require: true },
+    created: { type: Date, default: Date.now },
 });
 
 
