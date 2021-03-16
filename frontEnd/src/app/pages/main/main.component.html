@@ -443,7 +443,7 @@
                     </div>
                 </div>
                 <div class="write-review">
-                    <form [formGroup]="experienceForm">
+                    <form [formGroup]="experienceForm" (ngSubmit)="saveReview()">
                         <mat-expansion-panel>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
@@ -480,7 +480,7 @@
                                 </span>
                             </p>
                             <div class="review-btn">
-                                <button mat-raised-button>Send</button>
+                                <button type="submit" mat-raised-button>Send</button>
                             </div>
                         </mat-expansion-panel>
                     </form>

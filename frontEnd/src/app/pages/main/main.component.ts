@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
+import { ApiService } from '../../services/api.service';
+
 
 declare var $: any;
 declare var jQuery: any;
@@ -44,11 +46,12 @@ export class MainComponent implements OnInit {
     { value: 'Bad' }
   ];
 
-  //$(".slider").slick({})
+ 
 
-  constructor(private _formBuilder: FormBuilder,) { 
-
-  }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _api: ApiService
+    ) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -59,6 +62,10 @@ export class MainComponent implements OnInit {
       name: ['', [Validators.required, Validators.min(2)] ],
       myTextArea: ['', [Validators.required, Validators.min(20)] ]
     });
+  }
+
+  saveReview() {
+    console.log(this.experienceForm.value)
   }
 
   initReviewsCarousel() {
