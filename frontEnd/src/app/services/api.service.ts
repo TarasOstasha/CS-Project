@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Review } from '../interfaces/review-data.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private url = 'http://localhost:3000/';
+  //private authStatusListener = new Subject();
 
   constructor(private _http: HttpClient) { }
+  
 
 
 
@@ -23,4 +26,21 @@ export class ApiService {
         console.log(response);
       })
   }
+
+  // getReviews() {
+  //   this._http.get( this.url + 'review' ).subscribe(response => {
+  //     console.log(response);
+  //     return response;
+  //   });
+  // }
+
+  getReviews() {
+    return this._http.get( this.url + 'review' );
+  }
+
+
+
+
+
+
 }

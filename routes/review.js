@@ -34,4 +34,24 @@ router.post('/review', (req, res) => {
         });
 });
 
+router.get('/review', (req, res) => {
+    Review.find({})
+        .then(reviews => {
+            if(!reviews) {
+                return res.status(401).json({
+                    message: 'Not Found'
+                });
+            }
+            res.status(200).json({
+                message: 'You successfully fetched reviews',
+                reviews: reviews
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'Error'
+            });
+        });
+});
+
 module.exports = router;

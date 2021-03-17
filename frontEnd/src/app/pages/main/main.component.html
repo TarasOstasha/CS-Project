@@ -424,20 +424,26 @@
                     <h2>Our Reviews</h2>
                 </div>
                 <div class="slider">
-                    <div class="slide" *ngFor="let review of reviews">
+                    <div class="slide" *ngFor="let review of myReviewsArr">
                         <div>
-                            <strong>{{ review.title }}</strong>
-                            <p>{{ review.description }}</p>
+                            <!-- {{ myReviewsArr | json }} -->
+                            <strong>{{ review.grade }}</strong>
+                            <p>{{ review.message }}</p>
                         </div>
                         <div class="user-mark">
                             <div class="date">
-                                12.12.21
+                                {{ review.created | date: 'MM/dd/yyyy' }}
                             </div>
                             <div class="name">
-                                ,&nbsp;{{ review.name }}
+                                &nbsp;{{ review.name | uppercase }}
                             </div>
-                            <div class="rating">
-                                {{ review.rating }}<i class="fas fa-star"></i>
+                            <div class="rating" [style.width.px]=" review.stars * 18.4 ">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <!-- {{ review.stars }} -->
                             </div>
                         </div>
                     </div>
@@ -466,7 +472,8 @@
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Review</mat-label>
-                                    <textarea matInput formControlName="myTextArea"></textarea>
+                                    <textarea matInput formControlName="myTextArea" required></textarea>
+                                    <!-- <mat-error *ngIf="experienceForm.get('myTextArea').dirty">Minimum 20 symbols</mat-error> -->
                                 </mat-form-field>
                             </p>
                             <p class="star-review">
@@ -480,7 +487,7 @@
                                 </span>
                             </p>
                             <div class="review-btn">
-                                <button type="submit" mat-raised-button>Send</button>
+                                <button type="submit" mat-raised-button [disabled]="!experienceForm.valid || !clickedBtn">Send</button>
                             </div>
                         </mat-expansion-panel>
                     </form>

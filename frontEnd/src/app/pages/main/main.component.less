@@ -269,8 +269,10 @@
     }
 
     .slider {
+
         .slide {
-            padding: 0 15px;
+            box-sizing: border-box; 
+            padding: 0 10px;
 
             div {
                 strong {
@@ -291,12 +293,15 @@
             .user-mark {
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
+                padding-left: 10px;
+                //justify-content: flex-end;
 
                 .date,
                 .name,
                 .rating {
                     .ffbasic();
+                    display: flex;
+                    align-items: center;
                 }
 
                 .rating {
