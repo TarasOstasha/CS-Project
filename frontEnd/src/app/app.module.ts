@@ -35,6 +35,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StarRatingComponent } from './parts/star-rating/star-rating.component';
@@ -83,6 +84,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatDividerModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule
