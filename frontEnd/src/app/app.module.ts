@@ -75,7 +75,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatStepperModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
