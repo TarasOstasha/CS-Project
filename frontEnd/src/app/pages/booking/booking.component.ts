@@ -55,6 +55,7 @@ export class BookingComponent implements OnInit {
         { title: '19' },
       ]
     },
+    date: '',
     bathrooms: {
       items: [
         { title: '1' },
@@ -62,7 +63,7 @@ export class BookingComponent implements OnInit {
         { title: '19' },
       ]
     },
-    select_time: {
+    select_times: {
       items: [
         { title: 'Morning' },
         { title: 'Afternoon' },
@@ -84,8 +85,11 @@ export class BookingComponent implements OnInit {
       approx_SF: ['', Validators.required],
       zip_code: ['', Validators.required],
       email: ['', Validators.required],
-      
+      bedrooms: ['', Validators.required],
       date: ['', Validators.required],
+      bathrooms: ['', Validators.required],
+      select_times: ['', Validators.required],
+      phone: ['', Validators.required],
     });
   }
 

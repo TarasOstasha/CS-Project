@@ -165,7 +165,7 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Bedrooms</mat-label>
-                                                <mat-select>
+                                                <mat-select formControlName="bedrooms">
                                                     <mat-option *ngFor="let item of stepper.bedrooms.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
@@ -184,7 +184,7 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Bathrooms</mat-label>
-                                                <mat-select>
+                                                <mat-select formControlName="bathrooms">
                                                     <mat-option *ngFor="let item of stepper.bathrooms.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
@@ -193,8 +193,8 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Select times</mat-label>
-                                                <mat-select>
-                                                    <mat-option *ngFor="let item of stepper.select_time.items" [value]="item.title">{{item.title}}</mat-option>
+                                                <mat-select formControlName="select_times">
+                                                    <mat-option *ngFor="let item of stepper.select_times.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
@@ -203,7 +203,7 @@
                                     <div class="input">
                                         <mat-form-field hintLabel="Max 10 characters" appearance="fill">
                                             <mat-label>Phone number</mat-label>
-                                            <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                                            <input matInput #input formControlName="phone" placeholder="+100000000">
                                             <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
                                         </mat-form-field>
                                     </div>
