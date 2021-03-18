@@ -17,7 +17,6 @@ export class BookingComponent implements OnInit {
   steps!: FormGroup;
   isEditable = false;
 
-
   stepper: any = {
     // step - 1
     property_type: {
@@ -80,7 +79,7 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
     this.steps = this._formBuilder.group({
-      property_type: [ '', Validators.required],
+      property_type: ['', Validators.required],
       frequency: ['', Validators.required],
       approx_SF: ['', Validators.required],
       zip_code: ['', Validators.required],
@@ -91,6 +90,12 @@ export class BookingComponent implements OnInit {
       select_times: ['', Validators.required],
       phone: ['', Validators.required],
     });
+
+    // crutch for material components: refresh the view of fields
+    setInterval(() => {
+      const v = this.steps.controls['frequency'].value;
+      const x: any = this.steps.controls['frequency'].setValue(v);
+    }, 1000);
   }
 
   goBack(stepperDOM: MatStepper) {
@@ -101,8 +106,8 @@ export class BookingComponent implements OnInit {
   //   stepperDOM.next();
   // }
 
-  next1(stepperDOM: MatStepper){
-    if (this.steps.status== "VALID") stepperDOM.next()
+  next1(stepperDOM: MatStepper) {
+    if (this.steps.status == "VALID") stepperDOM.next()
     else log('Must fill!');
   }
 

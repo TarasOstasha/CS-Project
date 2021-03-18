@@ -227,9 +227,19 @@
 
                             <h1 class="step-title">ECONOMY CLEANING</h1>
 
-                            <mat-radio-group>
-                                <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-                                <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+
+                            <div class="input">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Frequency</mat-label>
+                                    <mat-select formControlName="frequency">
+                                        <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
+                                    </mat-select>
+                                    <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                </mat-form-field>
+                            </div>
+
+                            <mat-radio-group formControlName="frequency">
+                                <mat-radio-button *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-radio-button>
                             </mat-radio-group>
 
 
