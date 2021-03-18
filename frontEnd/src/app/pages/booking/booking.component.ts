@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges, ChangeDetectorRef  } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
@@ -12,7 +12,7 @@ const log = console.log;
     provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
-export class BookingComponent implements OnInit, OnChanges  {
+export class BookingComponent implements OnInit, OnChanges {
   @ViewChild('stepperDOM') stepperDOM!: MatStepper;
 
   steps!: FormGroup;
@@ -79,8 +79,7 @@ export class BookingComponent implements OnInit, OnChanges  {
   constructor(
     private _formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef
-  )
-     { }
+  ) { }
 
   /* 
     ngOnInit() is called after ngOnChanges(). 
@@ -91,7 +90,7 @@ export class BookingComponent implements OnInit, OnChanges  {
     ngAfterViewInit() is called after a component's view, and its children's views, are created. Its a lifecycle hook that is called after a component's view has been fully initialized.
   */
 
-  ngOnChanges(){
+  ngOnChanges() {
     log('ngOnChanges');
   }
 
