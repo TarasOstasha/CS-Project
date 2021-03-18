@@ -248,7 +248,7 @@
                             <mat-radio-group formControlName="frequency" [ngModel]="frequency">
                                 <div class="frequency-blocks">
                                     <div class="frequency-block" (click)="event_hook.click()" *ngFor="let item of stepper.frequency.items" for="male">
-                                        <div class="ripple-container" style="background: {{item.color}}" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(77 201 238 / 43%)'">
+                                        <div class="ripple-container" style="background: {{item.color}}" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(0 0 0 / 10%)'">
                                             <mat-radio-button class="mat-radio-button" [value]="item.title">
                                                 <div #event_hook class="fr-head">{{item.title}}</div>
                                             </mat-radio-button>
