@@ -243,9 +243,11 @@
 
                             <mat-radio-group formControlName="frequency" [ngModel]="frequency">
 
-                                <div class="frequency-blocks" *ngFor="let item of stepper.frequency.items">
-                                    <div style="background: green;" class="example-ripple-container mat-elevation-z4" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(77 201 238 / 43%)'">
-                                        <mat-radio-button [value]="item.title">{{item.title}}</mat-radio-button>
+                                <div class="frequency-blocks">
+                                    <div class="frequency-block" *ngFor="let item of stepper.frequency.items">
+                                        <div style="background: {{item.color}};" class="example-ripple-container mat-elevation-z4" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(77 201 238 / 43%)'">
+                                            <mat-radio-button [value]="item.title">{{item.title}}</mat-radio-button>
+                                        </div>
                                     </div>
                                 </div>
 
