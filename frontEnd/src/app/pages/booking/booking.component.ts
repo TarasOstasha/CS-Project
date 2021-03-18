@@ -29,10 +29,10 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     frequency: {
       items: [
-        { title: 'Weekly', color: 'blue' },
-        { title: 'Biweekly', color: 'red' },
-        { title: 'Monthly', color: 'orange' },
-        { title: 'One Time', color: 'green' },
+        { title: 'Weekly', color: 'blue', price: 123},
+        { title: 'Biweekly', color: 'red', price: 139},
+        { title: 'Monthly', color: 'orange', price: 156},
+        { title: 'One Time', color: 'green', price: 160},
       ]
     },
     approx_SF: {
