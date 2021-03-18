@@ -26,6 +26,6 @@ export class StarRatingComponent implements OnChanges {
     this.rating = icon;
     this.ratingClicked.emit(this.rating);
     this.starWidth = this.rating * 118 / 5;
-    console.log(this.starWidth,'px')
+    //console.log(this.starWidth,'px')
   }
 }

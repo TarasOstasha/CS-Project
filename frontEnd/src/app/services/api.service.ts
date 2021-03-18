@@ -1,22 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Review } from '../interfaces/review-data.model';
-import { Subject } from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private url = 'http://localhost:3000/';
-  //private authStatusListener = new Subject();
+
 
   constructor(private _http: HttpClient) { }
   
-
-
-
-
 
   sendReview(grade: string, name: string, message: string, star: number) {
     const reviewData: Review = { grade: grade, name: name, message, star: star };

@@ -24,7 +24,8 @@
                 <div class="title">
                     <h1>Crystal System Cleaning</h1>
                     <!-- <h2>Crystal Cleaning Services</h2> -->
-                    <p>We Are Professional Cleaning Company Offering All Types of Cleaning Services. Get Your Place Cleaned. It's Simple, Affordable and Convenient.</p>
+                    <p>We Are Professional Cleaning Company Offering All Types of Cleaning Services. Get Your Place
+                        Cleaned. It's Simple, Affordable and Convenient.</p>
                 </div>
                 <div class="cleaning-types">
                     <div class="d-flex justify-content-around row">
@@ -450,7 +451,7 @@
                 </div>
                 <div class="write-review">
                     <form [formGroup]="experienceForm" (ngSubmit)="saveReview()">
-                        <mat-expansion-panel>
+                        <mat-expansion-panel [expanded]="panelOpenState" (click)="openPanel()">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     Leave Review
@@ -459,38 +460,49 @@
                             <p>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Tell Us About Your Experience</mat-label>
-                                    <mat-select formControlName="experience" (selectionChange)="selectedExperience()">
+                                    <mat-select formControlName="experience" (selectionChange)="selectedExperience()" required>
                                         <mat-option *ngFor="let experience of experiences" [value]="experience.value">
                                             <span>{{ experience.value }}</span>
                                         </mat-option>
                                     </mat-select>
+                                    <mat-error *ngIf="experienceForm.errors?.required || experienceForm.get('experience')?.invalid">This Is Required</mat-error>
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Your Name</mat-label>
                                     <input matInput type="text" formControlName="name" required>
-                                    <!-- <mat-error>Not Valid Name</mat-error> -->
+                                    <mat-error *ngIf="experienceForm.errors?.required || experienceForm.get('name')?.invalid">Minimum Two Symbols </mat-error>
                                 </mat-form-field>
                                 <mat-form-field appearance="fill">
                                     <mat-label>Review</mat-label>
                                     <textarea matInput formControlName="myTextArea" required></textarea>
-                                    <!-- <mat-error *ngIf="experienceForm.get('myTextArea').dirty">Minimum 20 symbols</mat-error> -->
+                                    <mat-error *ngIf="experienceForm.errors?.required || experienceForm.get('myTextArea')?.invalid">Minimum Twenty Symbols </mat-error>
                                 </mat-form-field>
                             </p>
                             <p class="star-review">
                                 <span class="black-stars" class="crop" [style.width.px]="starWidth" [title]="rating">
                                     <span style="width:118px;display:flex;">
-                                        <span style="color:#000;" *ngFor="let star of [1,2,3,4,5]" (click)="checkedStar(star);" class="fa fa-star my-icon-star"></span>
+                                        <span style="color:#000;" *ngFor="let star of [1,2,3,4,5]"
+                                            (click)="checkedStar(star);" class="fa fa-star my-icon-star"></span>
                                     </span>
                                 </span>
                                 <span class="yellow-stars">
-                                    <app-star-rating [starWidth]="starWidth" (ratingClicked)='onRatingClicked($event)'></app-star-rating>
+                                    <app-star-rating [starWidth]="starWidth" (ratingClicked)='onRatingClicked($event)'>
+                                    </app-star-rating>
                                 </span>
                             </p>
                             <div class="review-btn">
-                                <button type="submit" mat-raised-button [disabled]="!experienceForm.valid || !clickedBtn">Send</button>
+                                <button type="submit" mat-raised-button
+                                    [disabled]="!experienceForm.valid || !clickedBtn">Send</button>
                             </div>
+                            {{ experienceForm.valid }}{{ clickedBtn }}
                         </mat-expansion-panel>
                     </form>
+
+                    <!-- <br>Dirty: {{ experienceForm.dirty }}
+                    <br>Touched: {{ experienceForm.touched }}
+                    <br>Valid: {{ experienceForm.valid }}
+                    <br>Value: {{ experienceForm.value | json }} -->
+                   
                 </div>
             </div>
         </section>

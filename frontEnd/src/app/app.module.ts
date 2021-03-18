@@ -34,9 +34,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StarRatingComponent } from './parts/star-rating/star-rating.component';
+
 
 
 
@@ -83,7 +84,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatExpansionModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
     //MatCarouselModule.forRoot(),
   ],
   providers: [

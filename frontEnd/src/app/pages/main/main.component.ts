@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
 
 import { ApiService } from '../../services/api.service';
 import { pipe, Subject, Subscription } from 'rxjs';
@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 declare var $: any;
 declare var jQuery: any;
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-main',
@@ -16,12 +18,13 @@ declare var jQuery: any;
   styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit {
-  
+
   experienceForm!: FormGroup;
   @Input() starRating: any;
   @Input() starWidth!: number;
   rating!: number;
-  clickedBtn = false;
+  clickedBtn: boolean = false;
+  panelOpenState: boolean = false;
 
   public myReviewsArr: any = [];
 
@@ -52,51 +55,71 @@ export class MainComponent implements OnInit {
     { value: 'Bad' }
   ];
 
- 
+
 
   constructor(
     private _formBuilder: FormBuilder,
     private _api: ApiService,
-    private changeDetection: ChangeDetectorRef,
-    ) { }
+    private _snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.initReviewsCarousel();
-    },500)
+    }, 500)
     this.experienceForm = this._formBuilder.group({
       experience: ['', Validators.required],
-      name: ['', [Validators.required, Validators.min(2)] ],
-      myTextArea: ['', [Validators.required, Validators.min(20)] ]
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      myTextArea: ['', [Validators.required, Validators.minLength(20)]]
     });
-   
     this.getMyReview();
-    
   }
-  
+
 
   saveReview() {
-    //console.log(this.experienceForm.value)
+
+    console.log(this.experienceForm.value)
+    if (this.experienceForm.invalid && this.experienceForm.value.experience == null || this.experienceForm.value.name == null || this.experienceForm.value.myTextArea == null) {
+       this.clickedBtn = false; // after sent review make btn send disabled
+    } else if(this.experienceForm.valid) {
+      this.clickedBtn = true; // if form valid make a enabled btn send to send new form
+    }
     this._api.sendReview(this.experienceForm.value.experience, this.experienceForm.value.name, this.experienceForm.value.myTextArea, this.starRating);
+    //this.getMyReview(); // call immediately new reviews but not working because of slick jquery carousel initialize bad
+    this.panelOpenState = false; // close review window after submit
+    this.experienceForm.reset(); // reset form
+    Object.keys(this.experienceForm.controls).forEach(key =>{
+      this.experienceForm.controls[key].setErrors(null); // set all value null after submit
+    });  
+    this.openSnackBar('Review was sent', 'Thank you!'); // show popup message after submit
+    this.clickedBtn = false; // move send btn to disabled after submit
   }
+
+  // popup menu after submitted form
+  openSnackBar(message: string, action: any) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
 
   getMyReview() {
     this._api.getReviews()
-     .pipe(
-       map( (review:any) => { 
-          return review.reviews; 
+      .pipe(
+        map((review: any) => {
+          return review.reviews;
         })
-     )
-      .subscribe( (response) => { 
+      )
+      .subscribe((response) => {
         this.myReviewsArr = response;
-        console.log(this.myReviewsArr)
+        //console.log(this.myReviewsArr)
       })
   }
 
   initReviewsCarousel() {
     $('.slider').slick({
       infinite: true,
-      //autoplay: true,
+      autoplay: true,
       slidesToShow: 2,
       slidesToScroll: 2,
       autoplaySpeed: 5000,
@@ -117,9 +140,15 @@ export class MainComponent implements OnInit {
 
   checkedStar(icon: any) {
     this.starWidth = icon * 118 / 5;
-    console.log(icon)
-    console.log(this.starWidth, 'px')
+    //console.log(icon)
+    //console.log(this.starWidth, 'px')
   }
+
+  openPanel() {
+    this.panelOpenState = true;
+  }
+
+
 
 
 
