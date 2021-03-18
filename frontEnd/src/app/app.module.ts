@@ -22,6 +22,7 @@ import { PricingComponent } from './pages/pricing/pricing.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { BookingComponent } from './pages/booking/booking.component';
+import { StarRatingComponent } from './parts/star-rating/star-rating.component';
 
 
 // material
@@ -33,24 +34,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
-<<<<<<< HEAD
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-=======
 import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
-
->>>>>>> 57ff02ddc6233766615eac4bd419d767c53ea48b
 import { MatExpansionModule } from '@angular/material/expansion';
-import { StarRatingComponent } from './parts/star-rating/star-rating.component';
 
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 57ff02ddc6233766615eac4bd419d767c53ea48b
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 // other material modules
