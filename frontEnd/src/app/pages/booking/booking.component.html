@@ -96,18 +96,18 @@
 
                 <!-- 3 -->
                 <mat-horizontal-stepper #stepperDOM>
+                    <form [formGroup]="steps">
 
-                    <!-- ********************************************** STEP ********************************************** -->
-                    <mat-step state="phone">
+                        <!-- ********************************************** STEP ********************************************** -->
+                        <mat-step state="phone">
 
-                        <ng-template matStepLabel>
-                            <h2 class="step-title-big">Appointment Details</h2>
-                            <h3 class="step-title-small">Please Fill Information</h3>
-                        </ng-template>
+                            <ng-template matStepLabel>
+                                <h2 class="step-title-big">Appointment Details</h2>
+                                <h3 class="step-title-small">Please Fill Information</h3>
+                            </ng-template>
 
-                        <h1 class="step-title">SERVICES DETAILS</h1>
+                            <h1 class="step-title">SERVICES DETAILS</h1>
 
-                        <form [formGroup]="steps">
                             <div class="boxes">
                                 <div class="big-box big-box-left">
                                     <div class="inner-box inner-box-left">
@@ -215,62 +215,62 @@
                                 <button mat-button (click)="fill(stepperDOM)">Fill</button>
                             </div>
 
-                        </form>
 
-                    </mat-step>
+                        </mat-step>
 
-                    <!-- ********************************************** STEP ********************************************** -->
-                    <mat-step state="chat">
-                        <ng-template matStepLabel>
-                            <h2 class="step-title-big">Plan & Pricing</h2>
-                            <h3 class="step-title-small">Choose Services Plan</h3>
+                        <!-- ********************************************** STEP ********************************************** -->
+                        <mat-step state="chat">
+                            <ng-template matStepLabel>
+                                <h2 class="step-title-big">Plan & Pricing</h2>
+                                <h3 class="step-title-small">Choose Services Plan</h3>
+                            </ng-template>
+
+                            <h1 class="step-title">ECONOMY CLEANING</h1>
+
+                            <mat-radio-group>
+                                <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
+                                <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+                            </mat-radio-group>
+
+
+                            <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+                        </mat-step>
+
+                        <!-- ********************************************** STEP ********************************************** -->
+                        <mat-step>
+                            <ng-template matStepLabel>
+                                <h2 class="step-title-big">Address</h2>
+                                <h3 class="step-title-small">Please Enter Address Detail</h3>
+                            </ng-template>
+                            <h1 class="step-title">PAYMENT</h1>
+                            <p>You're welcome.</p>
+                        </mat-step>
+
+                        <!-- ********************************************** STEP ********************************************** -->
+                        <mat-step>
+                            <ng-template matStepLabel>
+                                <h2 class="step-title-big">Payment</h2>
+                                <h3 class="step-title-small">Please Enter Payment Detail</h3>
+                            </ng-template>
+                            <h1 class="step-title">PAYMENT</h1>
+                            <p>You're welcome.</p>
+                        </mat-step>
+
+
+                        <!-- ********************************************** Icon overrides. ********************************************** -->
+
+                        <ng-template matStepperIcon="phone">
+                            <mat-icon>call_end</mat-icon>
                         </ng-template>
 
-                        <h1 class="step-title">ECONOMY CLEANING</h1>
-
-                        <mat-radio-group>
-                            <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-                            <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
-                        </mat-radio-group>
-
-
-                        <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button matStepperNext>Next</button>
-                        </div>
-                    </mat-step>
-
-                    <!-- ********************************************** STEP ********************************************** -->
-                    <mat-step>
-                        <ng-template matStepLabel>
-                            <h2 class="step-title-big">Address</h2>
-                            <h3 class="step-title-small">Please Enter Address Detail</h3>
+                        <ng-template matStepperIcon="chat">
+                            <mat-icon>forum</mat-icon>
                         </ng-template>
-                        <h1 class="step-title">PAYMENT</h1>
-                        <p>You're welcome.</p>
-                    </mat-step>
 
-                    <!-- ********************************************** STEP ********************************************** -->
-                    <mat-step>
-                        <ng-template matStepLabel>
-                            <h2 class="step-title-big">Payment</h2>
-                            <h3 class="step-title-small">Please Enter Payment Detail</h3>
-                        </ng-template>
-                        <h1 class="step-title">PAYMENT</h1>
-                        <p>You're welcome.</p>
-                    </mat-step>
-
-
-                    <!-- ********************************************** Icon overrides. ********************************************** -->
-
-                    <ng-template matStepperIcon="phone">
-                        <mat-icon>call_end</mat-icon>
-                    </ng-template>
-
-                    <ng-template matStepperIcon="chat">
-                        <mat-icon>forum</mat-icon>
-                    </ng-template>
-
+                    </form>
                 </mat-horizontal-stepper>
 
             </div>
