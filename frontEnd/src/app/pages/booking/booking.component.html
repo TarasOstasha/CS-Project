@@ -107,7 +107,6 @@
 
                         <h1 class="step-title">SERVICES DETAILS</h1>
 
-
                         <form [formGroup]="step_1">
                             <div class="boxes">
                                 <div class="big-box big-box-left">
@@ -141,7 +140,7 @@
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
-                                        <div class="input">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
                                                 <input matInput formControlName="zip_code" placeholder="000000" required>
@@ -151,11 +150,8 @@
                                     <div class="input">
                                         <mat-form-field hintLabel="Max 10 characters" appearance="fill">
                                             <mat-label>Email address</mat-label>
-
                                             <input matInput #input formControlName="email" placeholder="some@gmail.com">
-
-                                            <!-- <input matInput #input maxlength="10" placeholder="Ex. Nougat"> -->
-                                            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                            <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -220,10 +216,6 @@
                             </div>
 
                         </form>
-
-
-
-
 
                     </mat-step>
 
