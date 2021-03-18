@@ -14,7 +14,7 @@ const log = console.log;
 })
 export class BookingComponent implements OnInit {
 
-  step_1!: FormGroup;
+  steps!: FormGroup;
   isEditable = false;
 
 
@@ -79,7 +79,7 @@ export class BookingComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.step_1 = this._formBuilder.group({
+    this.steps = this._formBuilder.group({
       property_type: [ '', Validators.required],
       frequency: ['', Validators.required],
       approx_SF: ['', Validators.required],
@@ -102,14 +102,14 @@ export class BookingComponent implements OnInit {
   // }
 
   next1(stepperDOM: MatStepper){
-    if (this.step_1.status== "VALID") stepperDOM.next()
+    if (this.steps.status== "VALID") stepperDOM.next()
     else log('Must fill!');
   }
 
   fill(stepperDOM: MatStepper) {
     // log(stepperDOM);
-    log(this.step_1);
-    log(this.step_1.value);
+    log(this.steps);
+    log(this.steps.value);
   }
 
 
