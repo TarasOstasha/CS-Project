@@ -77,8 +77,7 @@ export class MainComponent implements OnInit {
 
 
   saveReview() {
-
-    console.log(this.experienceForm.value)
+    //console.log(this.experienceForm.value)
     if (this.experienceForm.invalid && this.experienceForm.value.experience == null || this.experienceForm.value.name == null || this.experienceForm.value.myTextArea == null) {
        this.clickedBtn = false; // after sent review make btn send disabled
     } else if(this.experienceForm.valid) {
