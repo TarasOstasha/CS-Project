@@ -80,7 +80,7 @@ export class BookingComponent implements OnInit {
   ngOnInit() {
     this.steps = this._formBuilder.group({
       property_type: ['', Validators.required],
-      frequency: ['', Validators.required],
+      frequency: ['', Validators.required,],
       approx_SF: ['', Validators.required],
       zip_code: ['', Validators.required],
       email: ['', Validators.required],
@@ -90,12 +90,11 @@ export class BookingComponent implements OnInit {
       select_times: ['', Validators.required],
       phone: ['', Validators.required],
     });
+  }
 
-    // crutch for material components: refresh the view of fields
-    setInterval(() => {
-      const v = this.steps.controls['frequency'].value;
-      const x: any = this.steps.controls['frequency'].setValue(v);
-    }, 1000);
+  // crutches for material components: refresh the view of fields
+  get frequency() {
+    return this.steps.controls['frequency'].value;
   }
 
   goBack(stepperDOM: MatStepper) {
