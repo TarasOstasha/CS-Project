@@ -206,7 +206,7 @@
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="buttons-panel">
                                 <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
                                 <button mat-button (click)="next1(stepperDOM)">Next</button>
                                 <!-- <button mat-button matStepperNext>Next</button> -->
@@ -242,11 +242,11 @@
                                 <mat-radio-button *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-radio-button>
                             </mat-radio-group>
 
-
-                            <div>
+                            <div class="buttons-panel">
                                 <button mat-button matStepperPrevious>Back</button>
                                 <button mat-button matStepperNext>Next</button>
                             </div>
+
                         </mat-step>
 
                         <!-- ********************************************** STEP ********************************************** -->
@@ -256,7 +256,12 @@
                                 <h3 class="step-title-small">Please Enter Address Detail</h3>
                             </ng-template>
                             <h1 class="step-title">PAYMENT</h1>
-                            <p>You're welcome.</p>
+
+                            <div class="buttons-panel">
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+
                         </mat-step>
 
                         <!-- ********************************************** STEP ********************************************** -->
@@ -266,7 +271,12 @@
                                 <h3 class="step-title-small">Please Enter Payment Detail</h3>
                             </ng-template>
                             <h1 class="step-title">PAYMENT</h1>
-                            <p>You're welcome.</p>
+
+                            <div class="buttons-panel">
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button matStepperNext>Next</button>
+                            </div>
+
                         </mat-step>
 
 
