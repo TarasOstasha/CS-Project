@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
@@ -12,11 +12,11 @@ const log = console.log;
     provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent implements OnInit, OnChanges {
+  @ViewChild('stepperDOM') stepperDOM!: MatStepper;
 
-  step_1!: FormGroup;
+  steps!: FormGroup;
   isEditable = false;
-
 
   stepper: any = {
     // step - 1
@@ -29,10 +29,10 @@ export class BookingComponent implements OnInit {
     },
     frequency: {
       items: [
-        { title: 'Weekly' },
-        { title: 'Biweekly' },
-        { title: 'Monthly' },
-        { title: 'One Time' },
+        { title: 'Weekly', color: '#1976d2', price: 123}, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
+        { title: 'Biweekly', color: '#c62828', price: 139},
+        { title: 'Monthly', color: '#c43e00', price: 156},
+        { title: 'One Time', color: '#2e7d32', price: 160},
       ]
     },
     approx_SF: {
@@ -55,6 +55,7 @@ export class BookingComponent implements OnInit {
         { title: '19' },
       ]
     },
+    date: '',
     bathrooms: {
       items: [
         { title: '1' },
@@ -62,7 +63,7 @@ export class BookingComponent implements OnInit {
         { title: '19' },
       ]
     },
-    select_time: {
+    select_times: {
       items: [
         { title: 'Morning' },
         { title: 'Afternoon' },
@@ -75,18 +76,49 @@ export class BookingComponent implements OnInit {
     // step - 4
   };
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private cdr: ChangeDetectorRef
+  ) { }
+
+  /* 
+    ngOnInit() is called after ngOnChanges(). 
+    ngOnChanges() is called every time inputs are updated by change detection.
+    ngAfterViewInit() is called after the view is initially rendered. This is why @ViewChild() depends on it. You can't access view members before they are rendered.
+
+    ngOnInit() is called right after the directive's data-bound properties have been checked for the first time, and before any of its children have been checked. It is invoked only once when the directive is instantiated.
+    ngAfterViewInit() is called after a component's view, and its children's views, are created. Its a lifecycle hook that is called after a component's view has been fully initialized.
+  */
+
+  ngOnChanges() {
+    log('ngOnChanges');
+  }
 
   ngOnInit() {
-    this.step_1 = this._formBuilder.group({
-      property_type: [ '', Validators.required],
-      frequency: ['', Validators.required],
+    log('ngOnInit');
+    this.steps = this._formBuilder.group({
+      property_type: ['', Validators.required],
+      frequency: ['', Validators.required,],
       approx_SF: ['', Validators.required],
       zip_code: ['', Validators.required],
       email: ['', Validators.required],
-      
+      bedrooms: ['', Validators.required],
       date: ['', Validators.required],
+      bathrooms: ['', Validators.required],
+      select_times: ['', Validators.required],
+      phone: ['', Validators.required],
     });
+  }
+
+  ngAfterViewInit() {
+    log('ngAfterViewInit');
+    this.stepperDOM.selectedIndex = 1;
+    this.cdr.detectChanges();
+  }
+
+  // crutches for material components: refresh the view of fields
+  get frequency() {
+    return this.steps.controls['frequency'].value;
   }
 
   goBack(stepperDOM: MatStepper) {
@@ -97,15 +129,15 @@ export class BookingComponent implements OnInit {
   //   stepperDOM.next();
   // }
 
-  next1(stepperDOM: MatStepper){
-    if (this.step_1.status== "VALID") stepperDOM.next()
+  next1(stepperDOM: MatStepper) {
+    if (this.steps.status == "VALID") stepperDOM.next()
     else log('Must fill!');
   }
 
   fill(stepperDOM: MatStepper) {
     // log(stepperDOM);
-    log(this.step_1);
-    log(this.step_1.value);
+    log(this.steps);
+    log(this.steps.value);
   }
 
 

@@ -36,6 +36,11 @@
 
   .step-title {
     text-align: center;
+    margin-top: 1rem;
+  }
+
+  .step-subtitle {
+    margin: 0;
   }
 
   .step-title-big {
@@ -48,6 +53,54 @@
     padding: 0;
     margin: 0;
     text-align: center;
+  }
+
+  .buttons-panel {
+    margin-top: 1rem;
+  }
+
+  /* step-2 */
+  .frequency-blocks {
+    display: flex;
+    flex-direction: row;
+
+    .frequency-block {
+      margin: 1rem;
+      color: white;
+      text-shadow: 1px 1px 2px black, 0 0 1em white;
+      width: 100%;
+      margin: .5rem 0 0 .5rem;
+
+      &:nth-child(1) {
+        margin: .5rem 0 0 0;
+      }
+
+      .ripple-container {
+
+        .mat-radio-button {
+          margin: 1rem 1rem .3rem 1rem;
+        }
+
+        .mat-ripple {
+          padding: 1rem;
+        }
+
+        .fr-head {}
+
+        .fr-price {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgba(0, 0, 0, 0.2);
+          width: 100%;
+          height: 1rem;
+          padding: 1.5rem 1rem;
+          cursor: pointer;
+
+        }
+      }
+
+    }
   }
 
 }
@@ -67,10 +120,12 @@
       // flex-direction: column;
       display: inline-block;
       width: 50%;
+      vertical-align: top;
     }
 
     .input {
       padding: 0 .5rem;
+
       .mat-form-field {
         width: 100%;
         // border: solid gray 1px;

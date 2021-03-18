@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
+// pages, parts
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './parts/header/header.component';
@@ -34,13 +33,24 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+<<<<<<< HEAD
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+=======
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
+
+>>>>>>> 57ff02ddc6233766615eac4bd419d767c53ea48b
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StarRatingComponent } from './parts/star-rating/star-rating.component';
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 57ff02ddc6233766615eac4bd419d767c53ea48b
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 // other material modules
@@ -82,6 +92,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule,
     MatCardModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDividerModule,
+    MatRippleModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -89,7 +103,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     //MatCarouselModule.forRoot(),
   ],
   providers: [
-    MatDatepickerModule, 
+    MatDatepickerModule,
     MatNativeDateModule
   ],
   bootstrap: [AppComponent]
