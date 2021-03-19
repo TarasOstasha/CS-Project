@@ -1,0 +1,83 @@
+@import '../../styles/colors'; // imported colors
+@import '../../styles/fonts'; // imported colors
+
+
+#services {
+    padding: @padding_section 0;
+
+    .title {
+        text-align: center;
+        padding: @h1_padding;
+
+        h1 {
+            .h1();
+            color: @blackColor;
+        }
+
+        p {
+            .ffbasic();
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    }
+
+    .card {
+        padding: 15px;
+        border: none;
+        align-items: center;
+
+        .card-link {
+            display: block;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: all ease .3s;
+            overflow: hidden;
+            margin-bottom: 40px;
+
+            .card-body {
+                .card-title {
+                    .fftitle();
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    color: @blackColor;
+                }
+
+                .card-btn {
+                    margin-top: 20px;
+                    background-color: @blackColor;
+                    border-color: @blackColor;
+                    .ffbasic();
+                    //
+                    border-radius: 18px;
+                    width: 30px;
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+
+        .card-link:hover {
+            transform: translateY(-15px);
+
+            .card-body {
+                .card-btn {
+                    background-color: @blueColor;
+                    border-color: @blueColor;
+                }
+            }
+
+        }
+
+        .icon-service {
+            i {
+                font-size: 100px;
+                //color: @blueColor;
+            }
+        }
+
+
+    }
+}

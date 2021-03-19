@@ -1,1 +1,31 @@
-<p>services works!</p>
+<app-header></app-header>
+
+<section id="services">
+    <div class="container">
+        <div class="title">
+            <h1>Crystal System Cleaning</h1>
+            <!-- <h2>Crystal Cleaning Services</h2> -->
+            <p>We Are Professional Cleaning Company Offering All Types of Cleaning Services. Get Your Place
+                Cleaned. It's Simple, Affordable and Convenient.</p>
+        </div>
+        <div class="cleaning-types">
+            <div class="d-flex justify-content-around row">
+                <div class="card col-4" *ngFor="let card of serviceCards">
+                    <a class="card-link" [routerLink]=" '/services' + card.routerLink">
+                        <!-- <div class="icon-service"><i class="fas fa-broom"></i></div> -->
+                        <!-- <img class="card-img-top" src="../../../assets/images/services/ashtray-condo-condominium-298842-1024x683.jpg" alt="Card image cap"> -->
+                        <img class="card-img-top" [src]="card.img" alt="Card image cap">
+                        <div class="card-body d-flex flex-row justify-content-between">
+                            <h5 class="card-title">{{ card.name }}</h5>
+                            <a [routerLink]=" '/services' + card.routerLink" class="btn btn-primary card-btn"><i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>
