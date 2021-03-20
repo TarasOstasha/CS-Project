@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { FormService } from '../../services/form.service';
+import { quickBookForm } from '../../interfaces/quickForm-data.model';
+
 @Component({
   selector: 'app-quick-book',
   templateUrl: './quick-book.component.html',
@@ -12,7 +15,7 @@ export class QuickBookComponent implements OnInit {
   public emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(private _fb: FormBuilder, private _form: FormService) { }
 
   ngOnInit(): void {
     this.quickBookForm = this._fb.group({
@@ -20,7 +23,7 @@ export class QuickBookComponent implements OnInit {
       bedrooms: ['', Validators.required],
       bathrooms: ['', Validators.required],
       frequency: ['', Validators.required],
-      zipCode: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^[0-9]*$')]],
+      zipCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5) ,Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')] ]
     });
@@ -66,7 +69,10 @@ export class QuickBookComponent implements OnInit {
   };
 
   sendQuickForm() {
-    console.log(this.quickBookForm.value);
+    this._form.sendDataForm(this.quickBookForm.value);
+    //console.log(this.quickBookForm.value);
   }
 
 }
+
+
