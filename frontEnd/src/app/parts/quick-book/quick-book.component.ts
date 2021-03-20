@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { FormService } from '../../services/form.service';
 import { quickBookForm } from '../../interfaces/quickForm-data.model';
@@ -15,7 +16,11 @@ export class QuickBookComponent implements OnInit {
   public emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   
 
-  constructor(private _fb: FormBuilder, private _form: FormService) { }
+  constructor(
+    private _fb: FormBuilder, 
+    private _form: FormService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.quickBookForm = this._fb.group({
@@ -70,6 +75,7 @@ export class QuickBookComponent implements OnInit {
 
   sendQuickForm() {
     this._form.sendDataForm(this.quickBookForm.value);
+    this.router.navigate(['/booking']);
     //console.log(this.quickBookForm.value);
   }
 
