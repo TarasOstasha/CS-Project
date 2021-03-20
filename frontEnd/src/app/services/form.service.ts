@@ -6,12 +6,12 @@ import { quickBookForm } from '../interfaces/quickForm-data.model';
 })
 export class FormService {
 
+  formData: any = {};
   constructor() { }
-
-
 
   // quick review form data
   sendDataForm(value: quickBookForm) {
     console.log(value)
+    this.formData = value;
   }
 }
