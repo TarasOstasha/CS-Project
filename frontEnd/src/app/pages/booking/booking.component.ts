@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, OnChanges, ChangeDetectorRef } from '@ang
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
+import { FormService } from '../../services/form.service';
+
 const log = console.log;
 
 @Component({
@@ -78,7 +80,8 @@ export class BookingComponent implements OnInit, OnChanges {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private _form: FormService,
   ) { }
 
   /* 
@@ -96,6 +99,8 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     log('ngOnInit');
+    log('Can I GET FORM DATA& : ', this._form.formData);
+
     this.steps = this._formBuilder.group({
       property_type: ['', Validators.required],
       frequency: ['', Validators.required,],
