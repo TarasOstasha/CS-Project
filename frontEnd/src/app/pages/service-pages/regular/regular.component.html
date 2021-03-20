@@ -12,19 +12,66 @@
     <div class="container">
         <div class="child-service-info">
             <p>
-                    <span>A proper regular cleaning can simplify your life and create a much healthier environment for you and your family.</span>
-                    <span>Our dedicated cleaners are true professionals and make sure your home is transformed into a spotless place. </span>
-                    <span>They systematically review the space, develop a strategy and perform the job to perfection.</span>
+                <span>A proper regular cleaning can simplify your life and create a much healthier environment for you
+                    and your family.</span>
+                <span>Our dedicated cleaners are true professionals and make sure your home is transformed into a
+                    spotless place. </span>
+                <span>They systematically review the space, develop a strategy and perform the job to perfection.</span>
             </p>
         </div>
         <div class="quick-book">
             <app-quick-book></app-quick-book>
         </div>
         <div class="service-checklist">
-            <div class="row">
-                <div class="col">
-                    
-                </div>
+            <div class="title">
+                <h2>Crystal System Cleaning Checklist</h2>
+                <p>
+                    From top to bottom, room to room. We clean it all. See what our standard cleaning services include,
+                    or you can add on any extras!
+                </p>
+            </div>
+            <div class="row d-flex checkbox-card">
+                <mat-card class="col-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Shiba Inu</mat-card-title>
+                        <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bathroom.items">{{ item.title }}<i class="fas fa-check check-icon"></i></span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-3">
+                    <mat-card-header>
+                        <mat-card-title>Shiba Inu</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span *ngFor="let item of servicesCheckbox.kitchen.items">{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-3">
+                    <mat-card-header>
+                        <mat-card-title>Shiba Inu</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span *ngFor="let item of servicesCheckbox.bedrooms.items">{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-3">
+                    <mat-card-header>
+                        <mat-card-title>Shiba Inu</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span *ngFor="let item of servicesCheckbox.living.items">{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
             </div>
         </div>
     </div>

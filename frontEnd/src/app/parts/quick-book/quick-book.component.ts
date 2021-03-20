@@ -13,7 +13,7 @@ import { quickBookForm } from '../../interfaces/quickForm-data.model';
 export class QuickBookComponent implements OnInit {
   quickBookForm!: FormGroup;
 
-  public emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  //public emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   
 
   constructor(
@@ -24,7 +24,7 @@ export class QuickBookComponent implements OnInit {
 
   ngOnInit(): void {
     this.quickBookForm = this._fb.group({
-      approxSF: ['', Validators.required],
+      approx_SF: ['', Validators.required],
       bedrooms: ['', Validators.required],
       bathrooms: ['', Validators.required],
       frequency: ['', Validators.required],

@@ -2,7 +2,7 @@
     <form [formGroup]="quickBookForm" (ngSubmit)="sendQuickForm()">
         <mat-form-field appearance="fill">
             <mat-label>Approx SF</mat-label>
-            <mat-select formControlName="approxSF">
+            <mat-select formControlName="approx_SF">
                 <mat-option *ngFor="let item of quickBook.approx_SF.items" [value]="item.title">{{ item.title }}
                 </mat-option>
             </mat-select>
@@ -44,6 +44,6 @@
             <input matInput formControlName="phone" placeholder="000 000 0000">
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('phone')?.invalid">Not Valid</mat-error>
         </mat-form-field>
-        <button type="submit" mat-button class="quick-book">Book Now</button>
+        <button type="submit" mat-button class="quick-book" [disabled]="quickBookForm.invalid">Book Now</button>
     </form>
 </div>
