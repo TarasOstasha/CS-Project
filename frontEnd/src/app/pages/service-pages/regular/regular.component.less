@@ -19,8 +19,7 @@
             padding: 40px;
             background: rgba(0,0,0, .5);
             h1 {
-                .h1();
-                color: @whiteColor;
+                .child-services-h1();
             }
             p {
                 .fftitle();
@@ -28,5 +27,23 @@
                 text-transform: uppercase;
             }
         }
+    }
+    .child-service-info {
+        margin-top: @bottom_section_space;
+        padding: 40px 0;
+        text-align: center;
+        //max-width: 500px;
+        //margin: 0 auto;
+        p {
+            .ffbasic();
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+        }
+    }
+    .quick-book {
+        padding: @bottom_section_space 0;
     }
 }

@@ -43,6 +43,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { QuickBookComponent } from './parts/quick-book/quick-book.component';
 // other material modules
 //import { MatCarouselModule } from '@ngmodule/material-carousel';
 
@@ -65,7 +66,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ContactUsComponent,
     FaqComponent,
     BookingComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    QuickBookComponent
   ],
   imports: [
     BrowserModule,
