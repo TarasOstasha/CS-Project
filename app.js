@@ -6,6 +6,7 @@ var logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const chalk = require('chalk');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -16,10 +17,10 @@ var app = express();
 // ** connection to data base ** \\
 mongoose.connect('mongodb+srv://user:1111@cluster0.olmgj.mongodb.net/crystal?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log('Connected to database');
+        console.log(chalk.blue('Connected to database'));
     })
     .catch(() => {
-        console.log('Connection failed');
+        console.log(chalk.blue('Connection failed'));
     });
 // ** connection to data base ** \\
 
