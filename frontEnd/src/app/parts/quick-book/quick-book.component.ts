@@ -10,7 +10,7 @@ export class QuickBookComponent implements OnInit {
   quickBookForm!: FormGroup;
 
   public emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-  public phoneNumber = "^\+[1-9]{1}[0-9]{3,14}$";
+  
 
   constructor(private _fb: FormBuilder) { }
 
@@ -20,8 +20,8 @@ export class QuickBookComponent implements OnInit {
       bedrooms: ['', Validators.required],
       bathrooms: ['', Validators.required],
       frequency: ['', Validators.required],
-      zipCode: ['', [Validators.required, Validators.minLength(5)]],
-      email: ['', [Validators.required, Validators.pattern(this.emailRegEx)]],
+      zipCode: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^[0-9]*$')]],
+      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')] ]
     });
   }
@@ -64,5 +64,9 @@ export class QuickBookComponent implements OnInit {
     email: '',
     phone: '',
   };
+
+  sendQuickForm() {
+    console.log(this.quickBookForm.value);
+  }
 
 }

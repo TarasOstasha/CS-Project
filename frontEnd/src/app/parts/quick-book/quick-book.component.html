@@ -1,5 +1,5 @@
 <div class="quick-book">
-    <form [formGroup]="quickBookForm">
+    <form [formGroup]="quickBookForm" (ngSubmit)="sendQuickForm()">
         <mat-form-field appearance="fill">
             <mat-label>Approx SF</mat-label>
             <mat-select formControlName="approxSF">
@@ -32,17 +32,17 @@
         <mat-form-field appearance="fill">
             <mat-label>Zip Code</mat-label>
             <input matInput formControlName="zipCode" placeholder="00000">
-            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('zipCode')?.invalid">Please Enter ZipCode </mat-error>
+            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('zipCode')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
             <input matInput formControlName="email" placeholder="example@gmail.com">
-            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('email')?.invalid">Please Enter Email </mat-error>
+            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('email')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Phone Number</mat-label>
             <input matInput formControlName="phone" placeholder="000 000 0000">
-            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('phone')?.invalid">Please Enter Phone </mat-error>
+            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('phone')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <button type="submit" mat-button class="quick-book">Book Now</button>
     </form>
