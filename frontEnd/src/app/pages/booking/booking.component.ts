@@ -149,9 +149,27 @@ export class BookingComponent implements OnInit, OnChanges {
 
   fill(stepperDOM: MatStepper) {
     // log(stepperDOM);
-    log(this.form);
-    log(this.form.value);
+    // log(this.form);
+    // log(this.form.value);
+    const example = {
+      property_type: 'House',
+      frequency: 'Monthly',
+      approx_SF: '1500 - 2000',
+      zip_code: '29000',
+      email: 'hello@world.com',
+      bedrooms: '12',
+      date: new Date(),
+      bathrooms: '5',
+      select_times: 'Afternoon',
+      phone: '+3807465486',
+    };
+    Object
+      .entries(example)
+      .forEach(keyValue =>
+        this.form.controls[keyValue[0]].setValue(keyValue[1])
+      );
   }
 
-
 }
+
+
