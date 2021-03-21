@@ -181,9 +181,8 @@ export class BookingComponent implements OnInit, OnChanges {
       );
   }
 
-  s(elm: any){
+  showMe(elm: any){
     log(elm);
-    elm._onTouched()
   }
 }
 
