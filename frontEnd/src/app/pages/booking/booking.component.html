@@ -273,6 +273,7 @@
                                     <div class="ripple-container" (click)="checkbox.checked = (checkbox.checked) ? false : true;" style="background: {{item.color}}" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(0 0 0 / 10%)'">
                                         <img style="height: 5rem" [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'" alt="">
                                     </div>
+                                    <p class="description">{{item.text}}</p>
                                 </div>
                             </section>
 

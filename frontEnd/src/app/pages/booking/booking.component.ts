@@ -76,9 +76,9 @@ export class BookingComponent implements OnInit, OnChanges {
     // step - 2
     extras: {
       items: [
-        { value: 'oven', color: '#d2deea' },
-        { value: 'washer', color: '#d2deea' },
-        { value: 'refrigerator', color: '#d2deea' },
+        { value: 'oven', color: '#dfe9f3', text: 'Laundry wash & dry' },
+        { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
+        { value: 'refrigerator', color: '#dfe9f3', text: 'Refrigerator' },
       ]
     }
     // step - 3
