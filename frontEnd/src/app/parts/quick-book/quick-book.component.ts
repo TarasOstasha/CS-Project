@@ -28,7 +28,7 @@ export class QuickBookComponent implements OnInit {
       bedrooms: ['', Validators.required],
       bathrooms: ['', Validators.required],
       frequency: ['', Validators.required],
-      zipCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5) ,Validators.pattern('^[0-9]*$')]],
+      zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5) ,Validators.pattern('^[0-9]*$')]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')] ]
     });

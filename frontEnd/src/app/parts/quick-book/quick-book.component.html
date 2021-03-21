@@ -6,7 +6,7 @@
                 <mat-option *ngFor="let item of quickBook.approx_SF.items" [value]="item.title">{{ item.title }}
                 </mat-option>
             </mat-select>
-            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('approxSF')?.invalid">Please Choose Value </mat-error>
+            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('approx_SF')?.invalid">Please Choose Value </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Bedrooms</mat-label>
@@ -31,8 +31,8 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Zip Code</mat-label>
-            <input matInput formControlName="zipCode" placeholder="00000">
-            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('zipCode')?.invalid">Not Valid</mat-error>
+            <input matInput formControlName="zip_code" placeholder="00000">
+            <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('zip_code')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
