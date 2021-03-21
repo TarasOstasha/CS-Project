@@ -118,7 +118,8 @@ export class BookingComponent implements OnInit, OnChanges {
     const keys = Object.keys(this._form.formData);
     keys.forEach((key: any) => {
       log('key - ', key);
-      this.form.controls[key].setValue(this._form.formData[key]);
+      const serviceValue = this._form.formData[key];
+      if (serviceValue.length > 0) this.form.controls[key].setValue(serviceValue);
     });
   }
 
