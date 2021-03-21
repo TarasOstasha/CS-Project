@@ -269,7 +269,7 @@
 
                             <section class="extras-blocks">
                                 <div class="extras-block" *ngFor="let item of stepper.extras.items">
-                                    <mat-checkbox #checkbox class="example-margin" formControlName="{{'extras_' + item.value}}">Checked</mat-checkbox>
+                                    <mat-checkbox #checkbox class="extras-checkbox" formControlName="{{'extras_' + item.value}}"></mat-checkbox>
                                     <div class="ripple-container" (click)="checkbox.checked = (checkbox.checked) ? false : true;" style="background: {{item.color}}" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(0 0 0 / 10%)'">
                                         <img style="height: 5rem" [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'" alt="">
                                     </div>
