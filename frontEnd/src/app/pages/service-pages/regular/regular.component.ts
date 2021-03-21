@@ -72,6 +72,28 @@ export class RegularComponent implements OnInit {
     }
   }
 
+  extraServices: any = [
+    { title: 'Fridge inside/outside', price: '$30' },
+    { title: 'Oven inside/outside', price: '$30' },
+    { title: 'Cabinets inside/outside', price: '$30' },
+    { title: 'Garbage can inside/outside', price: '$20' },
+    { title: 'Windows inside', price: '$30/5' },
+    { title: 'Baseboards', price: '$30' },
+    { title: 'Vacuum Sofa', price: '$30' },
+    { title: 'Laundry', price: '$30' },
+    { title: 'Move in/out Package', price: '$140' },
+    { title: 'Organic Cleaning', price: '$30' }
+  ]
+
+  serviceCards = [
+    { name: 'regular cleaning', routerLink: ['/regular-cleaning'], img: '../../../assets/images/services/regular-cleaning.jpg' },
+    { name: 'Deep Cleaning', routerLink: ['/deep-cleaning'], img: '../../../assets/images/services/deep-cleaning.jpg' },
+    { name: 'move Cleaning ', routerLink: ['/move-cleaning'], img: '../../../assets/images/services/move-cleaning.jpg' },
+    { name: 'Post Construction Cleaning', routerLink: ['/post-construction'], img: '../../../assets/images/services/post-construction1.jpg' },
+    { name: 'post renovation cleaning ', routerLink: ['/post-renovation'], img: '../../../assets/images/services/post-renovation.jpg' },
+    { name: 'Office Cleaning ', routerLink: ['/office-cleaning'], img: '../../../assets/images/services/office-cleaning.jpg' }
+  ];
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -40,7 +40,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { QuickBookComponent } from './parts/quick-book/quick-book.component';
@@ -91,7 +91,8 @@ import { QuickBookComponent } from './parts/quick-book/quick-book.component';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
     //MatCarouselModule.forRoot(),
   ],
   providers: [

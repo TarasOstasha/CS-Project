@@ -31,52 +31,109 @@
                 </p>
             </div>
             <div class="row d-flex checkbox-card">
-                <mat-card class="col-3">
+                <mat-card class="col-12 col-md-6 col-lg-3">
                     <mat-card-header>
                         <mat-card-title class="checkbox-group-name">Bathroom</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bathroom.items">{{ item.title }}<i class="fas fa-check check-icon"></i></span>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.bathroom.items">{{ item.title }}<i
+                                    class="fas fa-check check-icon"></i></span>
                         </p>
                     </mat-card-content>
                 </mat-card>
-                <mat-card class="col-3">
+                <mat-card class="col-12 col-md-6 col-lg-3">
                     <mat-card-header>
-                        <mat-card-title>Kitchen</mat-card-title>
+                        <mat-card-title class="checkbox-group-name">Kitchen</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.kitchen.items">{{ item.title }}<i class="fas fa-check check-icon"></i></span>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.kitchen.items">{{ item.title }}<i
+                                    class="fas fa-check check-icon"></i></span>
                         </p>
                     </mat-card-content>
                 </mat-card>
-                <mat-card class="col-3">
+                <mat-card class="col-12 col-md-6 col-lg-3">
                     <mat-card-header>
-                        <mat-card-title>Bedrooms</mat-card-title>
+                        <mat-card-title class="checkbox-group-name">Bedrooms</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bedrooms.items">{{ item.title }}<i class="fas fa-check check-icon"></i></span>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.bedrooms.items">{{ item.title }}<i
+                                    class="fas fa-check check-icon"></i></span>
                         </p>
                     </mat-card-content>
                 </mat-card>
-                <mat-card class="col-3">
+                <mat-card class="col-12 col-md-6 col-lg-3">
                     <mat-card-header>
-                        <mat-card-title>
-                                Living Room / <br>
-                                Dining Room <br>
-                                Hallways / Foyers / Stairwell 
+                        <mat-card-title class="checkbox-group-name">
+                            Living Room / <br>
+                            Dining Room <br>
+                            Hallways / Foyers / Stairwell
                         </mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.living.items">{{ item.title }}<i class="fas fa-check check-icon"></i></span>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.living.items">{{ item.title }}<i
+                                    class="fas fa-check check-icon"></i></span>
                         </p>
                     </mat-card-content>
                 </mat-card>
             </div>
+            <div class="extra-checklist row">
+                <div class="col-12 col-md-6">
+                    <!-- <div class="extra-checklist-photo">
+                        <img src="../../../../assets/images/clean.jpg" alt="">
+                    </div> -->
+                </div>
+                <mat-card class="col-12 col-md-6 extra-checklist-text">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
+                        <p>
+                            <span class="checkbox-list" 
+                                  *ngFor="let item of extraServices">
+                                  <i class="checkbox-name">{{ item.title }}</i>
+                                  <i class="fas fa-check check-icon"></i></span>
+                        </p>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="extra-checklist-photo">
+                            <img src="../../../../assets/images/clean.jpg" alt="">
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
+
+    </div>
+    <div class="all-services ">
+        <div class="container">
+            <div class="row">
+                    <div class="col">
+                        <div class="all-services-photo">
+                            <img src="../../../../assets/images/clean.jpg" alt="">
+                        </div>
+                    </div>
+                    <mat-card class="col all-services-list">
+                        <mat-card-header>
+                            <mat-card-title class="service-title">Us Services</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                <mat-list>
+                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink">{{ card.name }}</mat-list-item>
+                                </mat-list>
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+            </div>
+            
+        </div>
+        
     </div>
 
 </div>
