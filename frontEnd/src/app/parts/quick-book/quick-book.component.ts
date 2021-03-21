@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { quickBookForm } from '../../interfaces/quickForm-data.model';
 })
 export class QuickBookComponent implements OnInit {
   quickBookForm!: FormGroup;
+  
 
   //public emailRegEx = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   
@@ -77,6 +78,27 @@ export class QuickBookComponent implements OnInit {
     this._form.sendDataForm(this.quickBookForm.value);
     this.router.navigate(['/booking']);
     //console.log(this.quickBookForm.value);
+  }
+
+
+
+  
+  // just for development
+  fill() {
+    const example = {
+      approx_SF: '1500 - 2000',
+      bedrooms: '1',
+      bathrooms: '1',
+      frequency: 'Monthly',
+      zip_code: '29000',
+      email: 'hello@world.com',
+      phone: '5511111212',      
+    };
+    Object
+      .entries(example)
+      .forEach(keyValue =>
+        this.quickBookForm.controls[keyValue[0]].setValue(keyValue[1])
+      );
   }
 
 }
