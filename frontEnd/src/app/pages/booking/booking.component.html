@@ -8,91 +8,7 @@
                 </div>
             </div>
 
-
             <div class="stepper">
-
-                <!-- 1 -->
-                <!-- <mat-horizontal-stepper linear #stepper>
-                    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-                        <form [formGroup]="firstFormGroup">
-                            <ng-template matStepLabel>Fill out your name</ng-template>
-
-                            <mat-form-field>
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-                            </mat-form-field>
-
-                            <mat-form-field>
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-                            </mat-form-field>
-
-                            <div>
-                                <button mat-button matStepperNext>Next</button>
-                            </div>
-                        </form>
-                    </mat-step>
-                    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-                        <form [formGroup]="secondFormGroup">
-                            <ng-template matStepLabel>Fill out your address</ng-template>
-                            <mat-form-field>
-                                <mat-label>Address</mat-label>
-                                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-                            </mat-form-field>
-                            <div>
-                                <button mat-button matStepperPrevious>Back</button>
-                                <button mat-button matStepperNext>Next</button>
-                            </div>
-                        </form>
-                    </mat-step>
-                    <mat-step>
-                        <ng-template matStepLabel>Done</ng-template>
-                        <p>You are now done.</p>
-                        <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button (click)="stepper.reset()">Reset</button>
-                        </div>
-                    </mat-step>
-                </mat-horizontal-stepper> -->
-
-
-                <!-- 2 -->
-                <!-- <mat-horizontal-stepper #stepper>
-                    <mat-step [stepControl]="firstFormGroup">
-                        <form [formGroup]="firstFormGroup">
-                            <ng-template matStepLabel>Fill out your name</ng-template>
-                            <mat-form-field>
-                                <mat-label>Name</mat-label>
-                                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                            </mat-form-field>
-                            <div>
-                                <button mat-button matStepperNext>Next</button>
-                            </div>
-                        </form>
-                    </mat-step>
-                    <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
-                            <ng-template matStepLabel>Fill out your address</ng-template>
-                            <mat-form-field>
-                                <mat-label>Address</mat-label>
-                                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-                            </mat-form-field>
-                            <div>
-                                <button mat-button matStepperPrevious>Back</button>
-                                <button mat-button matStepperNext>Next</button>
-                            </div>
-                        </form>
-                    </mat-step>
-                    <mat-step>
-                        <ng-template matStepLabel>Done</ng-template>
-                        <p>You are now done.</p>
-                        <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button (click)="stepper.reset()">Reset</button>
-                        </div>
-                    </mat-step>
-                </mat-horizontal-stepper> -->
-
 
                 <!-- 3 -->
                 <mat-horizontal-stepper #stepperDOM>
@@ -231,21 +147,6 @@
                             <h2 class="step-subtitle">Frequency</h2>
                             <mat-divider></mat-divider>
 
-
-                            <!-- 
-                            <mat-form-field class="example-full-width">
-                                <mat-label>Email</mat-label>
-                                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                                       placeholder="Ex. pat@example.com">
-                                <mat-hint>Errors appear instantly!</mat-hint>
-                                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                                  Please enter a valid email address
-                                </mat-error>
-                                <mat-error *ngIf="emailFormControl.hasError('required')">
-                                  Email is <strong>required</strong>
-                                </mat-error>
-                              </mat-form-field> -->
-
                             <mat-radio-group formControlName="frequency" [ngModel]="frequency">
                                 <div class="frequency-blocks">
                                     <div class="frequency-block" (click)="event_hook.click()" *ngFor="let item of stepper.frequency.items">
@@ -253,16 +154,13 @@
                                             <mat-radio-button class="mat-radio-button" [value]="item.title">
                                                 <div #event_hook class="fr-head">{{item.title}}</div>
                                             </mat-radio-button>
-
                                             <div class="fr-price">
                                                 <span>Price {{item.price | currency}}</span>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </mat-radio-group>
-
 
                             <br>
                             <h2 class="step-subtitle">Extras</h2>
@@ -279,19 +177,6 @@
                             </section>
 
                             <p class="step-note">You will be able to review your order before booking is complete</p>
-
-
-
-                            <!-- <mat-radio-group formControlName="frequency" [ngModel]="frequency">
-                                <div class="frequency-blocks">
-                                    <div class="frequency-block" *ngFor="let item of stepper.frequency.items" for="male">
-                                        <div style="background: {{item.color}}" class="example-ripple-container mat-elevation-z4" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(77 201 238 / 43%)'">
-                                            <mat-radio-button id="male" [value]="item.title">{{item.title}}</mat-radio-button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </mat-radio-group> -->
-
 
                             <div class="buttons-panel">
                                 <button mat-button matStepperPrevious>Back</button>
