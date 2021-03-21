@@ -74,6 +74,13 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     phone: '',
     // step - 2
+    extras: {
+      items: [
+        { value: 'oven', color: 'gray' },
+        { value: 'washer', color: 'gray' },
+        { value: 'refrigerator', color: 'gray' },
+      ]
+    }
     // step - 3
     // step - 4
   };
@@ -111,6 +118,10 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: ['', Validators.required],
       select_times: ['', Validators.required],
       phone: ['', Validators.required],
+      extras_oven: [''],
+      extras_washer: [''],
+      extras_refrigerator: [''],
+
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -170,6 +181,10 @@ export class BookingComponent implements OnInit, OnChanges {
       );
   }
 
+  s(elm: any){
+    log(elm);
+    elm._onTouched()
+  }
 }
 
 

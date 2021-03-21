@@ -247,7 +247,7 @@
 
                             <mat-radio-group formControlName="frequency" [ngModel]="frequency">
                                 <div class="frequency-blocks">
-                                    <div class="frequency-block" (click)="event_hook.click()" *ngFor="let item of stepper.frequency.items" for="male">
+                                    <div class="frequency-block" (click)="event_hook.click()" *ngFor="let item of stepper.frequency.items">
                                         <div class="ripple-container" style="background: {{item.color}}" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(0 0 0 / 10%)'">
                                             <mat-radio-button class="mat-radio-button" [value]="item.title">
                                                 <div #event_hook class="fr-head">{{item.title}}</div>
@@ -262,9 +262,19 @@
                                 </div>
                             </mat-radio-group>
 
-                            <img style="width: 10rem" src="../../../../assets/images/stepper/oven.svg" alt="">
-                            <img style="width: 10rem" src="../../../../assets/images/stepper/washer.svg" alt="">
-                            <img style="width: 10rem" src="../../../../assets/images/stepper/refrigerator.svg" alt="">
+
+                            <br>
+                            <h2 class="step-subtitle">Extras</h2>
+                            <mat-divider></mat-divider>
+
+                            <section class="extras-blocks">
+                                <div class="extras-block" *ngFor="let item of stepper.extras.items">
+                                    <mat-checkbox #checkbox class="example-margin" formControlName="{{'extras_'+item.value}}">Checked</mat-checkbox>
+                                    <div class="ripple-container" (click)="s(checkbox); checkbox.checked = (checkbox.checked) ? false : true;" style="background: {{item.color}}" matRipple [matRippleDisabled]="false" [matRippleColor]="'rgb(0 0 0 / 10%)'">
+                                        <img style="width: 10rem" src="../../../../assets/images/stepper/oven.svg" alt="">
+                                    </div>
+                                </div>
+                            </section>
 
 
 
