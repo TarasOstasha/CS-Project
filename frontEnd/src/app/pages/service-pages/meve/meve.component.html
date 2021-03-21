@@ -2,18 +2,136 @@
 <div class="child-service-wrapper">
     <div class="big-top-img-section">
         <div class="img">
-            <img src="../../../../assets/images/services/service-page/move-cleaning.jpg" alt="">
+            <img src="../../../../assets/images/services/service-page/move-cleaning_.jpg" alt="">
         </div>
         <div class="title">
-            <h1>Regular Cleaning Services</h1>
-            <p>The easy, reliable way to take care of your home</p>
+            <h1>Move Cleaning Services</h1>
+            <p>We are here to help you with cleaning before or after moving</p>
         </div>
     </div>
     <div class="container">
-
-        <div class="quick-book">
-
+        <div class="child-service-info">
+            <p>
+                <span>The last thing you want to worry about is having to clean your place after or before moving.</span>
+                <span>We provide thorough cleaning services that will allow you to focus on your responsibilities.</span>
+                <span>Our trained cleaning professionals will leave no corner of your home or apartment untouched.</span>
+            </p>
         </div>
+        <div class="quick-book">
+            <app-quick-book></app-quick-book>
+        </div>
+        <div class="service-checklist">
+            <div class="title">
+                <h2>Crystal System Cleaning Checklist</h2>
+                <p>
+                    From top to bottom, room to room. We clean it all. See what our standard cleaning services include,
+                    or you can add on any extras!
+                </p>
+            </div>
+            <div class="row d-flex checkbox-card">
+                <mat-card class="col-12 col-md-6 col-lg-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Bathroom</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.bathroom.items"><i
+                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Kitchen</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.kitchen.items"><i
+                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Bedrooms</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.bedrooms.items"><i
+                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">
+                            Living Room / <br>
+                            Dining Room <br>
+                            Hallways / Foyers / Stairwell
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.living.items"><i
+                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="extra-checklist row">
+                <div class="col-12 col-md-6">
+                    <!-- <div class="extra-checklist-photo">
+                        <img src="../../../../assets/images/clean.jpg" alt="">
+                    </div> -->
+                </div>
+                <mat-card class="col-12 col-md-6 extra-checklist-text">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
+                        <p>
+                            <span class="checkbox-list" 
+                                  *ngFor="let item of extraServices">
+                                  <i class="checkbox-name">{{ item.title }} - <strong>{{ item.price }}</strong></i>
+                                  <i class="fas fa-check check-icon"></i></span>
+                        </p>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="extra-checklist-photo">
+                            <img src="../../../../assets/images/clean.jpg" alt="">
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+    <div class="all-services ">
+        <div class="container">
+            <div class="row">
+                    <div class="col">
+                        <div class="all-services-photo">
+                            <img src="../../../../assets/images/clean.jpg" alt="">
+                        </div>
+                    </div>
+                    <mat-card class="col all-services-list">
+                        <mat-card-header>
+                            <mat-card-title class="service-title">Us Services</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                <mat-list>
+                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink">{{ card.name }}</mat-list-item>
+                                </mat-list>
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+            </div>
+            
+        </div>
+        
     </div>
 
 </div>
