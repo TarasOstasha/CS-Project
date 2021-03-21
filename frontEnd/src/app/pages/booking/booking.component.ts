@@ -17,7 +17,7 @@ const log = console.log;
 export class BookingComponent implements OnInit, OnChanges {
   @ViewChild('stepperDOM') stepperDOM!: MatStepper;
 
-  steps!: FormGroup;
+  form!: FormGroup;
   isEditable = false;
 
   stepper: any = {
@@ -31,10 +31,10 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     frequency: {
       items: [
-        { title: 'Weekly', color: '#1976d2', price: 123}, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
-        { title: 'Biweekly', color: '#c62828', price: 139},
-        { title: 'Monthly', color: '#c43e00', price: 156},
-        { title: 'One Time', color: '#2e7d32', price: 160},
+        { title: 'Weekly', color: '#1976d2', price: 123 }, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
+        { title: 'Biweekly', color: '#c62828', price: 139 },
+        { title: 'Monthly', color: '#c43e00', price: 156 },
+        { title: 'One Time', color: '#2e7d32', price: 160 },
       ]
     },
     approx_SF: {
@@ -99,9 +99,8 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     log('ngOnInit');
-    log('Can I GET FORM DATA& : ', this._form.formData);
 
-    this.steps = this._formBuilder.group({
+    this.form = this._formBuilder.group({
       property_type: ['', Validators.required],
       frequency: ['', Validators.required,],
       approx_SF: ['', Validators.required],
@@ -113,6 +112,14 @@ export class BookingComponent implements OnInit, OnChanges {
       select_times: ['', Validators.required],
       phone: ['', Validators.required],
     });
+
+    log('Can I GET FORM DATA& : ', this._form.formData);
+    // set values
+    const keys = Object.keys(this._form.formData);
+    keys.forEach((key: any) => {
+      log('key - ', key);
+      this.form.controls[key].setValue(this._form.formData[key]);
+    });
   }
 
   ngAfterViewInit() {
@@ -123,7 +130,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   // crutches for material components: refresh the view of fields
   get frequency() {
-    return this.steps.controls['frequency'].value;
+    return this.form.controls['frequency'].value;
   }
 
   goBack(stepperDOM: MatStepper) {
@@ -135,14 +142,14 @@ export class BookingComponent implements OnInit, OnChanges {
   // }
 
   next1(stepperDOM: MatStepper) {
-    if (this.steps.status == "VALID") stepperDOM.next()
+    if (this.form.status == "VALID") stepperDOM.next()
     else log('Must fill!');
   }
 
   fill(stepperDOM: MatStepper) {
     // log(stepperDOM);
-    log(this.steps);
-    log(this.steps.value);
+    log(this.form);
+    log(this.form.value);
   }
 
 
