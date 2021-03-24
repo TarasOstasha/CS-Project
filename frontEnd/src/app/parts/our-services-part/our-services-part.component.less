@@ -1,0 +1,98 @@
+@import '../../styles/colors.less'; // imported colors
+@import '../../styles/fonts.less'; // imported colors
+
+@bottom_section_space: 50px;
+
+
+
+
+.all-services {
+    padding: 100px 0 50px 0;
+    //margin: @bottom_section_space 0;
+    //background-color: #0bb8e3;
+    //background-image: url('../../../../assets/images/patern-0bb8e3.jpg');
+    background-image: url('../../../assets/images/animacion1.png');
+    background-size: contain;//auto;
+    background-repeat: no-repeat;
+
+    .all-services-photo {
+        img {
+            width: 100%;
+            box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+        }
+    }
+
+    .all-services-list {
+        background: rgba(255, 255, 255, .5);
+        box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+        padding: 16px 0;
+        max-width: 300px;
+        .mat-card-header-text {
+            margin: 0 auto;
+            border-bottom: 3px solid @blueColor;
+        }
+        .service-title {
+            .fftitle();
+            font-size: 20px; //18px;
+            color: @blackColor; //@whiteColor;
+        }
+
+        .service-links {
+            .mat-list-item-content {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .ffbasic();
+            font-size: 18px;
+            color: @blackColor; //@whiteColor;
+            cursor: pointer;
+            text-transform: capitalize;
+            font-weight: 300;
+            border-bottom: 1px solid rgba(0, 0, 0, .3);
+           
+
+            i {
+                font-size: 25px;
+            }
+
+        }
+
+        .service-links:hover {
+            background: rgba(0, 0, 0, .8);
+            color: @whiteColor; //@blueColor;
+            i {
+                color: @blueColor;
+            }
+        }
+    }
+    .book-btn {
+        text-align: center;
+
+        a {
+            .ffbasic();
+            text-decoration: none;
+            color: @blueColor;
+            background: #f6f6f6;
+            margin: 50px 0;
+            font-size: 20px;//18px;
+            border: 1px solid;
+            padding: 15px;
+        }
+
+        a:hover {
+            color: @blackColor;
+        }
+
+    }
+
+}
+
+
+// custom change mat list display
+// :host /deep/ .mat-list-item-content {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//   }

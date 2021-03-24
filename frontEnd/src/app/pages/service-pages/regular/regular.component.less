@@ -139,7 +139,7 @@
                         width: 100%; //100%;
                         position: absolute;
                         top: 50%;
-                        left: 0%;
+                        left: -5%; //0%;
                         transform: translate(-75%, -50%);
                         box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
                     }
@@ -148,40 +148,6 @@
         }
 
     }
-
-    .all-services {
-        padding: 100px 0 50px 0;
-        //margin: @bottom_section_space 0;
-        background-color: #0bb8e3;
-        background-image: url('../../../../assets/images/patern-0bb8e3.jpg');
-        .all-services-photo {
-            img {
-                width: 100%;
-                box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
-            }
-        }
-
-        .all-services-list {
-            background: rgba(255,255,255, .2);
-            .service-title {
-                .fftitle();
-                font-size: 18px;
-                color: @whiteColor;
-            }
-
-            .service-links {
-                .ffbasic();
-                color: @whiteColor;
-                cursor: pointer;
-                text-transform: capitalize;
-            }
-            .service-links:hover {
-                background: rgba(0, 0, 0, .5);
-            }
-        }
-
-    }
-
     .book-btn {
         text-align: center;
 
@@ -191,7 +157,9 @@
             color: @blueColor;
             background: #f6f6f6;
             margin: 50px 0;
-            font-size: 18px;
+            font-size: 20px;//18px;
+            border: 1px solid;
+            padding: 15px;
         }
 
         a:hover {
@@ -199,4 +167,6 @@
         }
 
     }
+
+    
 }

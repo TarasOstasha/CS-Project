@@ -1,0 +1,30 @@
+<div class="all-services ">
+        <div class="container">
+            <div class="row">
+                    <div class="col">
+                        <div class="all-services-photo">
+                            <!-- <img src="../../../../assets/images/clean.jpg" alt=""> -->
+                        </div>
+                    </div>
+                    <mat-card class="col all-services-list">
+                        <mat-card-header>
+                            <mat-card-title class="service-title">Our Services</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>
+                                <mat-list>
+                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink">
+                                        {{ card.name }}
+                                        <i class="fas fa-angle-right"></i>
+                                    </mat-list-item>
+                                    
+                                </mat-list>
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+            </div>
+        </div>
+        <div class="book-btn">
+            <a mat-button [routerLink]="['/booking']">Book Appointment</a>
+        </div>
+    </div>
