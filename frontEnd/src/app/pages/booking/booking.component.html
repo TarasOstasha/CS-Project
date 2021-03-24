@@ -121,8 +121,9 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <p class="step-note">You will be able to review your order before booking is complete</p>
                             </div>
+
+                            <p class="step-note">You will be able to review your order before booking is complete</p>
 
                             <div class="buttons-panel">
                                 <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
@@ -132,7 +133,6 @@
                                 <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                                 <button mat-button (click)="fill(stepperDOM)">Fill</button>
                             </div>
-
 
                         </mat-step>
 
@@ -215,31 +215,42 @@
                                                 <input matInput formControlName="zip_code" placeholder="000000" required>
                                             </mat-form-field>
                                         </div>
-                                    </div>
-                                    <div class="inner-box inner-box-right">
+
                                         <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Approx SF</mat-label>
-                                                <mat-select formControlName="approx_SF">
-                                                    <mat-option *ngFor="let item of stepper.approx_SF.items" [value]="item.title">{{item.title}}</mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Email address</mat-label>
+                                                <input matInput #input formControlName="email" placeholder="some@gmail.com">
+                                                <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
                                             </mat-form-field>
                                         </div>
+
+                                    </div>
+                                    <div class="inner-box inner-box-right">
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Last Name</mat-label>
+                                                <input matInput formControlName="last_name" placeholder="000000" required>
+                                            </mat-form-field>
+                                        </div>
+
                                         <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
                                                 <input matInput formControlName="zip_code" placeholder="000000" required>
                                             </mat-form-field>
                                         </div>
+
+                                        <div class="input">
+                                            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Email address</mat-label>
+                                                <input matInput #input formControlName="email" placeholder="some@gmail.com">
+                                                <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
                                     </div>
-                                    <div class="input">
-                                        <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                            <mat-label>Email address</mat-label>
-                                            <input matInput #input formControlName="email" placeholder="some@gmail.com">
-                                            <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
+
                                 </div>
 
                                 <div class="big-box big-box-right">
@@ -290,8 +301,9 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <p class="step-note">You will be able to review your order before booking is complete</p>
                             </div>
+
+                            <p class="step-note">You will be able to review your order before booking is complete</p>
 
                             <div class="buttons-panel">
                                 <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->

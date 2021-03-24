@@ -83,6 +83,7 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     // step - 3
     first_name: '',
+    last_name: '',
     // step - 4
   };
 
@@ -123,6 +124,7 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_washer: [''],
       extras_refrigerator: [''],
       first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
