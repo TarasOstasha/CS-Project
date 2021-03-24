@@ -201,22 +201,18 @@
                             <div class="boxes">
                                 <div class="big-box big-box-left">
                                     <div class="inner-box inner-box-left">
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Property type</mat-label>
-                                                <mat-select formControlName="property_type">
-                                                    <mat-option *ngFor="let item of stepper.property_type.items" [value]="item.title">{{item.title}}</mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>First Name</mat-label>
+                                                <input matInput formControlName="first_name" placeholder="000000" required>
                                             </mat-form-field>
                                         </div>
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Frequency</mat-label>
-                                                <mat-select formControlName="frequency" [ngModel]="frequency">
-                                                    <mat-option *ngFor="let item of stepper.frequency.items" [value]="item.title">{{item.title}}</mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>ZIP code</mat-label>
+                                                <input matInput formControlName="zip_code" placeholder="000000" required>
                                             </mat-form-field>
                                         </div>
                                     </div>

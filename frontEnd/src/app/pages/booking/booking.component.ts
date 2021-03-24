@@ -80,8 +80,9 @@ export class BookingComponent implements OnInit, OnChanges {
         { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
         { value: 'refrigerator', color: '#dfe9f3', text: 'Refrigerator' },
       ]
-    }
+    },
     // step - 3
+    first_name: '',
     // step - 4
   };
 
@@ -121,7 +122,7 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_oven: [''],
       extras_washer: [''],
       extras_refrigerator: [''],
-
+      first_name: ['', Validators.required],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -136,7 +137,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 1;
+    this.stepperDOM.selectedIndex = 2;
     this.cdr.detectChanges();
   }
 
