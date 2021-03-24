@@ -130,11 +130,32 @@ export class OfficeComponent implements OnInit {
     $('.slider').slick({
       infinite: true,
       autoplay: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
+      slidesToShow: 2,
+      slidesToScroll: 2,
       autoplaySpeed: 5000,
       mobileFirst: true,
-      adaptiveHeight: true
+      adaptiveHeight: true,
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          infinite: true
+        }
+   
+      }, {
+   
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          dots: true
+        }
+   
+      }, {
+   
+        breakpoint: 300,
+        settings: "unslick" // destroys slick
+   
+      }]
     });
   }
 
