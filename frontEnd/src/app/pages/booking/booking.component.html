@@ -224,6 +224,16 @@
                                             </mat-form-field>
                                         </div>
 
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Bedrooms</mat-label>
+                                                <mat-select formControlName="bedrooms">
+                                                    <mat-option *ngFor="let item of stepper.bedrooms.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
                                     </div>
                                     <div class="inner-box inner-box-right">
 
@@ -246,6 +256,16 @@
                                                 <mat-label>Email address</mat-label>
                                                 <input matInput #input formControlName="email" placeholder="some@gmail.com">
                                                 <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Bedrooms</mat-label>
+                                                <mat-select formControlName="bedrooms">
+                                                    <mat-option *ngFor="let item of stepper.bedrooms.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
 
