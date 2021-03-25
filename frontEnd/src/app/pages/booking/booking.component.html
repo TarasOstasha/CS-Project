@@ -2,13 +2,14 @@
     <app-header></app-header>
     <main>
         <section id="booking">
+
             <div class="booking-wrapper">
                 <div class="booking-img">
                     <img src="../../../assets/images/108530803-960x290.jpg" alt="booking">
                 </div>
             </div>
 
-            <div class="stepper">
+            <div *ngIf="true" class="stepper">
 
                 <!-- 3 -->
                 <mat-horizontal-stepper #stepperDOM>
@@ -21,6 +22,17 @@
                                 <h2 class="step-title-big">Appointment Details</h2>
                                 <h3 class="step-title-small">Please Fill Information</h3>
                             </ng-template>
+
+                            <div class="booking-links">
+                                <ul>
+                                    <li><a [routerLink]="['/booking']" class="d-flex"><i
+                                                class="fas fa-house-user"></i>&nbsp;Residential</a></li>
+                                    <li><a [routerLink]="['/booking']" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
+                                    </li>
+                                    <li><a [routerLink]="['/booking']" class="d-flex"><i
+                                                class="fas fa-warehouse"></i>&nbsp;Commercial</a></li>
+                                </ul>
+                            </div>
 
                             <h1 class="step-title">SERVICES DETAILS</h1>
                             <br>

@@ -20,6 +20,42 @@
   }
 }
 
+.booking-links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  ul {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+
+    li {
+      list-style: none;
+      padding: 20px;
+      border: 1px solid @blueColor;
+      background: @whiteColor;
+
+      a {
+        .ffbasic();
+        font-size: 20px;
+        color: @blueColor;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+    }
+
+    li:nth-child(2) {
+      border-left: none;
+      border-right: none;
+    }
+  }
+}
+
 .stepper {
   position: absolute;
   top: 50%;
