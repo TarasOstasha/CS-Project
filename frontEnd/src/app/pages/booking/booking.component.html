@@ -280,23 +280,31 @@
                                 <!-- ********************************************* 3 group -->
                                 <div class="big-box big-box-right">
                                     <div class="inner-box inner-box-left">
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Address</mat-label>
+                                                <input matInput formControlName="address" placeholder="000000" required>
+                                            </mat-form-field>
+                                        </div>
+
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Bedrooms</mat-label>
-                                                <mat-select formControlName="bedrooms">
-                                                    <mat-option *ngFor="let item of stepper.bedrooms.items" [value]="item.title">{{item.title}}</mat-option>
+                                                <mat-label>State</mat-label>
+                                                <mat-select formControlName="state">
+                                                    <mat-option *ngFor="let item of stepper.state.items" [value]="item.title">{{item.title}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
-                                        <div class="input">
-                                            <mat-form-field color="accent" appearance="fill">
-                                                <mat-label>Select date (M/D/Y)</mat-label>
-                                                <input matInput [matDatepicker]="picker3" formControlName="date">
-                                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                                                <mat-datepicker #picker3 color="primary"></mat-datepicker>
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Last Name</mat-label>
+                                                <input matInput formControlName="last_name" placeholder="000000" required>
                                             </mat-form-field>
                                         </div>
+
                                     </div>
 
                                     <!-- ********************************************* 4 group -->
@@ -310,6 +318,15 @@
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
+
+                                        <div class="input">
+                                            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Phone number</mat-label>
+                                                <input matInput #input formControlName="phone" placeholder="+100000000">
+                                                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                            </mat-form-field>
+                                        </div>
+
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Select times</mat-label>
@@ -320,13 +337,7 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-                                    <div class="input">
-                                        <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                                            <mat-label>Phone number</mat-label>
-                                            <input matInput #input formControlName="phone" placeholder="+100000000">
-                                            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-                                        </mat-form-field>
-                                    </div>
+
                                 </div>
                             </div>
 

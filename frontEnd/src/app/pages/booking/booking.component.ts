@@ -97,6 +97,13 @@ export class BookingComponent implements OnInit, OnChanges {
         { title: '...' },
       ]
     },
+    address: '',
+    state: {
+      items: [
+        { title: 'State some' },
+        { title: '...' },
+      ]
+    },
     // step - 4
   };
 
@@ -141,6 +148,8 @@ export class BookingComponent implements OnInit, OnChanges {
       city: [''],
       doorAccess: ['', Validators.required],
       selectTime: [''],
+      address: ['', Validators.required],
+      state: [''],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -195,8 +204,10 @@ export class BookingComponent implements OnInit, OnChanges {
       first_name: 'example',
       last_name: 'example',
       city: 'City',
-      doorAccess:'Client will let us in',
+      doorAccess: 'Client will let us in',
       selectTime: 'Morning',
+      address: 'Some address',
+      state: 'State some',
     };
     Object
       .entries(example)
