@@ -104,6 +104,7 @@ export class BookingComponent implements OnInit, OnChanges {
         { title: '...' },
       ]
     },
+    specialInstructions: '',
     // step - 4
   };
 
@@ -150,6 +151,7 @@ export class BookingComponent implements OnInit, OnChanges {
       selectTime: [''],
       address: ['', Validators.required],
       state: [''],
+      specialInstructions: [''],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -208,6 +210,7 @@ export class BookingComponent implements OnInit, OnChanges {
       selectTime: 'Morning',
       address: 'Some address',
       state: 'State some',
+      specialInstructions: 'Some instructions'
     };
     Object
       .entries(example)
