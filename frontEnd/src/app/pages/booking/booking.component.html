@@ -195,7 +195,7 @@
                             </ng-template>
 
                             <h1 class="step-title">WHERE SHOULD WE COME CLEAN?</h1>
-                            <p class="step-subtitle">You will be able to review your order before booking is complete</p>
+                            <p class="step-subtitle">Tell us your address and other important details</p>
                             <br>
 
                             <div class="boxes">
@@ -301,7 +301,7 @@
                                         <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>Last Name</mat-label>
-                                                <input matInput formControlName="last_name" placeholder="000000" required>
+                                                <input matInput formControlName="last_name" placeholder="000000">
                                             </mat-form-field>
                                         </div>
 
@@ -309,13 +309,10 @@
 
                                     <!-- ********************************************* 4 group -->
                                     <div class="inner-box inner-box-right">
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Bathrooms</mat-label>
-                                                <mat-select formControlName="bathrooms">
-                                                    <mat-option *ngFor="let item of stepper.bathrooms.items" [value]="item.title">{{item.title}}</mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Last Name</mat-label>
+                                                <input matInput formControlName="last_name" placeholder="000000">
                                             </mat-form-field>
                                         </div>
 
@@ -327,13 +324,10 @@
                                             </mat-form-field>
                                         </div>
 
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Select times</mat-label>
-                                                <mat-select formControlName="select_times">
-                                                    <mat-option *ngFor="let item of stepper.select_times.items" [value]="item.title">{{item.title}}</mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Last Name</mat-label>
+                                                <input matInput formControlName="last_name" placeholder="000000">
                                             </mat-form-field>
                                         </div>
                                     </div>
