@@ -176,6 +176,8 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: '5',
       select_times: 'Afternoon',
       phone: '+3807465486',
+      first_name: 'example',
+      last_name: 'example',
     };
     Object
       .entries(example)
@@ -184,7 +186,7 @@ export class BookingComponent implements OnInit, OnChanges {
       );
   }
 
-  showMe(elm: any){
+  showMe(elm: any) {
     log(elm);
   }
 }

@@ -200,6 +200,7 @@
 
                             <div class="boxes">
                                 <div class="big-box big-box-left">
+                                    <!-- ********************************************* 1 group -->
                                     <div class="inner-box inner-box-left">
 
                                         <div class="input" style="margin-top: .77rem;">
@@ -225,16 +226,16 @@
                                         </div>
 
                                         <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Bedrooms</mat-label>
-                                                <mat-select formControlName="bedrooms">
-                                                    <mat-option *ngFor="let item of stepper.bedrooms.items" [value]="item.title">{{item.title}}</mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            <mat-form-field color="accent" appearance="fill">
+                                                <mat-label>Select date (M/D/Y)</mat-label>
+                                                <input matInput [matDatepicker]="picker4" formControlName="date">
+                                                <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker4 color="primary"></mat-datepicker>
                                             </mat-form-field>
                                         </div>
 
                                     </div>
+                                    <!-- ********************************************* 2 group -->
                                     <div class="inner-box inner-box-right">
 
                                         <div class="input" style="margin-top: .77rem;">
@@ -273,6 +274,7 @@
 
                                 </div>
 
+                                <!-- ********************************************* 3 group -->
                                 <div class="big-box big-box-right">
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
@@ -293,6 +295,8 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+
+                                    <!-- ********************************************* 4 group -->
                                     <div class="inner-box inner-box-right">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
