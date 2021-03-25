@@ -257,5 +257,33 @@
         }
 
     }
+
+    .business-book {
+        padding: 50px 0;
+        .title {
+            text-align: center;
+            padding-bottom: @h1_padding;
+            h2 {
+                .h1();
+            }
+        }
+        .business-form {
+            text-align: right;
+            mat-form-field {
+                width: 50%;
+            }
+        }
+        .business-book-btn {
+            text-align: center;
+            .ffnavmenu();
+            button {
+                border: 1px solid @blueColor;
+                background: @blueColor;
+            }
+            // a:hover {
+            //     text-decoration: none;
+            // }
+        }
+    }
     
 }

@@ -12,58 +12,108 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                    <section id="reviews">
-                            <div class="container">
-                                <div class="title">
-                                    <h2>Our Reviews</h2>
+                <section id="reviews">
+                    <div class="container">
+                        <div class="title">
+                            <h2>Our Reviews</h2>
+                        </div>
+                        <div class="slider">
+                            <div class="slide" *ngFor="let review of myReviewsArr">
+                                <div>
+                                    <!-- {{ myReviewsArr | json }} -->
+                                    <strong>{{ review.grade }}</strong>
+                                    <p>{{ review.message }}</p>
                                 </div>
-                                <div class="slider">
-                                    <div class="slide" *ngFor="let review of myReviewsArr">
-                                        <div>
-                                            <!-- {{ myReviewsArr | json }} -->
-                                            <strong>{{ review.grade }}</strong>
-                                            <p>{{ review.message }}</p>
-                                        </div>
-                                        <div class="user-mark">
-                                            <div class="date">
-                                                {{ review.created | date: 'MM/dd/yyyy' }}
-                                            </div>
-                                            <div class="name">
-                                                &nbsp;{{ review.name | uppercase }}
-                                            </div>
-                                            <div class="rating" [style.width.px]=" review.stars * 18.4 ">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <!-- {{ review.stars }} -->
-                                            </div>
-                                        </div>
+                                <div class="user-mark">
+                                    <div class="date">
+                                        {{ review.created | date: 'MM/dd/yyyy' }}
+                                    </div>
+                                    <div class="name">
+                                        &nbsp;{{ review.name | uppercase }}
+                                    </div>
+                                    <div class="rating" [style.width.px]=" review.stars * 18.4 ">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <!-- {{ review.stars }} -->
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="col-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, nam.
-                <form>
+                <div class="business-book">
+                    <div class="title">
+                        <h2>Book Now</h2>
+                    </div>
+                    <div class="business-form">
+                        <form [formGroup]="businessBookForm" (ngSubmit)="sendBusinessForm()">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Company Name</mat-label>
+                                <input matInput formControlName="company_name" placeholder="Company Name">
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('company_name')?.invalid">Not Valid</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Contact Person</mat-label>
+                                <input matInput formControlName="name" placeholder="Contact Person">
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('name')?.invalid">Not Valid</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email" placeholder="example@gmail.com">
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('email')?.invalid">Not Valid</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Phone Number</mat-label>
+                                <input matInput formControlName="phone" placeholder="000 000 0000">
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('phone')?.invalid">Not Valid</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Zip Code</mat-label>
+                                <input matInput formControlName="zip_code" placeholder="00000">
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('zip_code')?.invalid">Not Valid</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Approx SF</mat-label>
+                                <mat-select formControlName="approx_SF">
+                                    <mat-option *ngFor="let item of quickBook.approx_SF.items" [value]="item.title">
+                                        {{ item.title }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('approx_SF')?.invalid"> Please Choose Value </mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" style="width:100%;">
+                                <mat-label>Frequency</mat-label>
+                                <mat-select formControlName="frequency">
+                                    <mat-option *ngFor="let item of quickBook.frequency.items" [value]="item.title">
+                                        {{ item.title }}</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('frequency')?.invalid"> Please Choose Value </mat-error>
+                            </mat-form-field>
+                            <div class="business-book-btn">
+                                <button type="submit" [disabled]="businessBookForm.invalid" mat-button>Book Appointment</button>
+                            </div>
+                        </form>
+                    </div>
 
-                </form>
+                </div>
+
             </div>
         </div>
         <div class="child-service-info">
-            <p> 
+            <p>
                 <span>Having an impeccably perfect office could provide a motivating environment to work in. </span>
-                <span>Office space requires a great deal of cleanness, utilizing the Crystal System  </span>
+                <span>Office space requires a great deal of cleanness, utilizing the Crystal System </span>
                 <span>Cleaning office services is your most appropriate alternative.</span>
-                <span>We adapt to the working schedule of our clients in  </span>
+                <span>We adapt to the working schedule of our clients in </span>
                 <span>order not to disrupt the working day.</span>
             </p>
         </div>
-        <div class="quick-book">
-            <app-quick-book></app-quick-book>
-        </div>
+       
         <div class="service-checklist">
             <div class="title">
                 <h2>Crystal System Cleaning Checklist</h2>
@@ -79,9 +129,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.bathroom.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bathroom.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -91,9 +140,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.kitchen.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.kitchen.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -103,9 +151,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.bedrooms.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bedrooms.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -119,9 +166,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.living.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.living.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -136,10 +182,10 @@
                     <mat-card-header>
                         <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
                         <p>
-                            <span class="checkbox-list" 
-                                  *ngFor="let item of extraServices">
-                                  <i class="checkbox-name">{{ item.title }} - <strong>{{ item.price | currency: 'USD' }}</strong></i>
-                                  <i class="fas fa-check check-icon"></i></span>
+                            <span class="checkbox-list" *ngFor="let item of extraServices">
+                                <i class="checkbox-name">{{ item.title }} -
+                                    <strong>{{ item.price | currency: 'USD' }}</strong></i>
+                                <i class="fas fa-check check-icon"></i></span>
                         </p>
                     </mat-card-header>
                     <mat-card-content>
