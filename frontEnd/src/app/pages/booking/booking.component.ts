@@ -170,7 +170,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 2;
+    this.stepperDOM.selectedIndex = 0;
     this.cdr.detectChanges();
   }
 
