@@ -22,6 +22,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   stepper: any = {
     // step - 1
+    checkedGroup: '',
     property_type: {
       items: [
         { title: 'Apartment' },
@@ -133,6 +134,7 @@ export class BookingComponent implements OnInit, OnChanges {
     log('ngOnInit');
 
     this.form = this._formBuilder.group({
+      checkedGroup: ['residential'],
       property_type: ['', Validators.required],
       frequency: ['', Validators.required,],
       approx_SF: ['', Validators.required],
@@ -179,6 +181,11 @@ export class BookingComponent implements OnInit, OnChanges {
     return this.form.controls['frequency'].value;
   }
 
+  get checkedGroup(){
+    return this.form.controls['checkedGroup'].value;
+
+  }
+
   goBack(stepperDOM: MatStepper) {
     stepperDOM.previous();
   }
@@ -196,6 +203,7 @@ export class BookingComponent implements OnInit, OnChanges {
     // log(stepperDOM);
     // log(this.form);
     // log(this.form.value);
+    // this.form.value.checkedGroup
     const example = {
       property_type: 'House',
       frequency: 'Monthly',
@@ -223,6 +231,10 @@ export class BookingComponent implements OnInit, OnChanges {
       .forEach(keyValue =>
         this.form.controls[keyValue[0]].setValue(keyValue[1])
       );
+  }
+
+  cheakFormGroup(groupName: any){
+    this.form.controls['checkedGroup'].setValue(groupName);
   }
 
   showMe(elm: any) {

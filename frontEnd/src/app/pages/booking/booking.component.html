@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <div *ngIf="true" class="stepper">
+            <div class="stepper">
 
                 <!-- 3 -->
                 <mat-horizontal-stepper #stepperDOM>
@@ -22,15 +22,22 @@
                                 <h2 class="step-title-big">Appointment Details</h2>
                                 <h3 class="step-title-small">Please Fill Information</h3>
                             </ng-template>
+                            <br>
 
                             <div class="booking-links">
                                 <ul>
-                                    <li><a [routerLink]="['/booking']" class="d-flex"><i
-                                                class="fas fa-house-user"></i>&nbsp;Residential</a></li>
-                                    <li><a [routerLink]="['/booking']" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
+                                    <li [class]="(checkedGroup == 'residential') ? 'active' : '' " (click)="cheakFormGroup('residential')">
+                                        <a [routerLink]="['/booking']" class="d-flex">
+                                            <i class="fas fa-house-user"></i>&nbsp;Residential</a>
                                     </li>
-                                    <li><a [routerLink]="['/booking']" class="d-flex"><i
-                                                class="fas fa-warehouse"></i>&nbsp;Commercial</a></li>
+                                    <li [class]="(checkedGroup == 'office') ? 'active' : '' " (click)="cheakFormGroup('office')">
+                                        <a [routerLink]="['/booking']" class="d-flex">
+                                            <i class="far fa-building"></i>&nbsp;Office</a>
+                                    </li>
+                                    <li [class]="(checkedGroup == 'commercial') ? 'active' : '' " (click)="cheakFormGroup('commercial')">
+                                        <a [routerLink]="['/booking']" class="d-flex">
+                                            <i class="fas fa-warehouse"></i>&nbsp;Commercial</a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -38,7 +45,7 @@
                             <br>
 
                             <!-- residential -->
-                            <div *ngIf="false" class="boxes">
+                            <div *ngIf="checkedGroup == 'residential'" class="boxes">
                                 <div class="big-box big-box-left">
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
@@ -137,7 +144,7 @@
                             </div>
 
                             <!-- office -->
-                            <div *ngIf="true" class="boxes">
+                            <div *ngIf="checkedGroup == 'office'" class="boxes">
                                 <div class="big-box big-box-left">
 
                                     <div class="input">
@@ -212,6 +219,9 @@
 
                                 </div>
                             </div>
+
+                            <!-- commercial -->
+                            <!-- !!! -->
 
                             <p class="step-note">You will be able to review your order before booking is complete</p>
 

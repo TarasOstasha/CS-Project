@@ -21,10 +21,10 @@
 }
 
 .booking-links {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
   z-index: 10;
 
   ul {
@@ -32,7 +32,9 @@
     align-items: center;
     cursor: pointer;
     padding: 0;
-    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    // box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+    width: fit-content;
+    margin: auto;
 
     li {
       list-style: none;
@@ -46,6 +48,14 @@
         color: @blueColor;
         text-decoration: none;
         text-transform: uppercase;
+      }
+    }
+
+    li.active {
+      background: @blueColor;
+
+      a {
+        color: @whiteColor;
       }
     }
 
