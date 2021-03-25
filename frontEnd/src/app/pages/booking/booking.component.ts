@@ -84,6 +84,7 @@ export class BookingComponent implements OnInit, OnChanges {
     // step - 3
     first_name: '',
     last_name: '',
+    city: '',
     // step - 4
   };
 
@@ -125,6 +126,7 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_refrigerator: [''],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
+      city: [''],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -171,13 +173,14 @@ export class BookingComponent implements OnInit, OnChanges {
       approx_SF: '1500 - 2000',
       zip_code: '29000',
       email: 'hello@world.com',
-      bedrooms: '12',
+      bedrooms: '1',
       date: new Date(),
-      bathrooms: '5',
+      bathrooms: '1',
       select_times: 'Afternoon',
       phone: '+3807465486',
       first_name: 'example',
       last_name: 'example',
+      city: 'City'
     };
     Object
       .entries(example)
