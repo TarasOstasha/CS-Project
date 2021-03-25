@@ -105,6 +105,8 @@ export class BookingComponent implements OnInit, OnChanges {
       ]
     },
     specialInstructions: '',
+    aptSuite: '',
+    howDidYouHear: '',
     // step - 4
   };
 
@@ -152,6 +154,8 @@ export class BookingComponent implements OnInit, OnChanges {
       address: ['', Validators.required],
       state: [''],
       specialInstructions: [''],
+      aptSuite: [''],
+      howDidYouHear: [''],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -210,7 +214,9 @@ export class BookingComponent implements OnInit, OnChanges {
       selectTime: 'Morning',
       address: 'Some address',
       state: 'State some',
-      specialInstructions: 'Some instructions'
+      specialInstructions: 'Some instructions',
+      aptSuite: 'Apt/Suite',
+      howDidYouHear: 'Some history'
     };
     Object
       .entries(example)
