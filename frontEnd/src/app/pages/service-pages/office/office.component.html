@@ -55,27 +55,37 @@
                             <mat-form-field appearance="fill">
                                 <mat-label>Company Name</mat-label>
                                 <input matInput formControlName="company_name" placeholder="Company Name">
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('company_name')?.invalid">Not Valid</mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('company_name')?.invalid">
+                                    Not Valid</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill">
                                 <mat-label>Contact Person</mat-label>
                                 <input matInput formControlName="name" placeholder="Contact Person">
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('name')?.invalid">Not Valid</mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('name')?.invalid">
+                                    Not Valid</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill">
                                 <mat-label>Email</mat-label>
                                 <input matInput formControlName="email" placeholder="example@gmail.com">
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('email')?.invalid">Not Valid</mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('email')?.invalid">
+                                    Not Valid</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill">
                                 <mat-label>Phone Number</mat-label>
                                 <input matInput formControlName="phone" placeholder="000 000 0000">
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('phone')?.invalid">Not Valid</mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('phone')?.invalid">
+                                    Not Valid</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill">
                                 <mat-label>Zip Code</mat-label>
                                 <input matInput formControlName="zip_code" placeholder="00000">
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('zip_code')?.invalid">Not Valid</mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('zip_code')?.invalid">
+                                    Not Valid</mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill">
                                 <mat-label>Approx SF</mat-label>
@@ -84,7 +94,9 @@
                                         {{ item.title }}
                                     </mat-option>
                                 </mat-select>
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('approx_SF')?.invalid"> Please Choose Value </mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('approx_SF')?.invalid">
+                                    Please Choose Value </mat-error>
                             </mat-form-field>
                             <mat-form-field appearance="fill" style="width:100%;">
                                 <mat-label>Frequency</mat-label>
@@ -92,16 +104,29 @@
                                     <mat-option *ngFor="let item of quickBook.frequency.items" [value]="item.title">
                                         {{ item.title }}</mat-option>
                                 </mat-select>
-                                <mat-error *ngIf="businessBookForm.errors?.required || businessBookForm.get('frequency')?.invalid"> Please Choose Value </mat-error>
+                                <mat-error
+                                    *ngIf="businessBookForm.errors?.required || businessBookForm.get('frequency')?.invalid">
+                                    Please Choose Value </mat-error>
                             </mat-form-field>
                             <div class="business-book-btn">
-                                <button type="submit" [disabled]="businessBookForm.invalid" mat-button>Book Appointment</button>
+                                <button type="submit" [disabled]="businessBookForm.invalid" mat-button>Book
+                                    Appointment</button>
                             </div>
                         </form>
                     </div>
 
                 </div>
 
+            </div>
+        </div>
+        <div class="build-it">
+            <div class="title">
+                <h2>
+                    YOU BUILD IT AND WE CLEAN IT
+                </h2>
+            </div>
+            <div class="build-it-img">
+                <img src="../.././../../assets/images/services/build-it-1.jpg" alt="">
             </div>
         </div>
         <div class="child-service-info">
@@ -113,7 +138,7 @@
                 <span>order not to disrupt the working day.</span>
             </p>
         </div>
-       
+
         <div class="service-checklist">
             <div class="title">
                 <h2>Crystal System Cleaning Checklist</h2>
@@ -145,53 +170,43 @@
                         </p>
                     </mat-card-content>
                 </mat-card>
-                <mat-card class="col-12 col-md-6 col-lg-3">
+                <mat-card class="col-12 col-md-6 col-lg-2">
                     <mat-card-header>
-                        <mat-card-title class="checkbox-group-name">Bedrooms</mat-card-title>
+                        <mat-card-title class="checkbox-group-name">General Office Area</mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bedrooms.items"><i
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.generalOffice_area.items"><i
                                     class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
-                <mat-card class="col-12 col-md-6 col-lg-3">
+                <mat-card class="col-12 col-md-6 col-lg-2">
                     <mat-card-header>
                         <mat-card-title class="checkbox-group-name">
-                            Living Room / <br>
-                            Dining Room <br>
-                            Hallways / Foyers / Stairwell
+                            Entrance Reception Area & Conference Room
                         </mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.living.items"><i
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.entranceReception_area.items"><i
                                     class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
-            </div>
-            <div class="extra-checklist row">
-                <div class="col-12 col-md-6">
-                    <!-- <div class="extra-checklist-photo">
-                        <img src="../../../../assets/images/clean.jpg" alt="">
-                    </div> -->
-                </div>
-                <mat-card class="col-12 col-md-6 extra-checklist-text">
+                <mat-card class="col-12 col-md-6 col-lg-2">
                     <mat-card-header>
-                        <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
-                        <p>
-                            <span class="checkbox-list" *ngFor="let item of extraServices">
-                                <i class="checkbox-name">{{ item.title }} -
-                                    <strong>{{ item.price | currency: 'USD' }}</strong></i>
-                                <i class="fas fa-check check-icon"></i></span>
-                        </p>
+                        <mat-card-title class="checkbox-group-name">
+                            Medical Exam Rooms For Doctor’s Offices Only
+                        </mat-card-title>
                     </mat-card-header>
                     <mat-card-content>
-                        <div class="extra-checklist-photo">
-                            <img src="../../../../assets/images/clean.jpg" alt="">
-                        </div>
+                        <p>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.doctorsOffice.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
                     </mat-card-content>
                 </mat-card>
             </div>

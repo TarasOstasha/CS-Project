@@ -25,63 +25,79 @@ export class OfficeComponent implements OnInit {
   servicesCheckbox: any = {
     bathroom: {
       items: [
-        { title: 'Toilet cleaned, inside/outside', icon: 'f00c' },
-        { title: 'Sink cleaned' },
-        { title: 'Bathroom accessories wiped' },
-        { title: 'Tile area cleaned' },
-        { title: 'Tub cleaned' },
-        { title: 'Shower door/shower curtain tidy' },
+        { title: 'Toilet cleaned, inside/outside' },
+        { title: 'Sink disinfected and cleaned' },
+        { title: 'Sink chrome polished' },
         { title: 'Mirror cleaned and polished' },
-        { title: 'Chrome polished' },
-        { title: 'Countertops cleaned' },
-        { title: 'Cabinets outside cleaned' },
+        { title: 'Countertops disinfected and cleaned' },
         { title: 'Window sills dusted' },
-        { title: 'Cobwebs removed' },
-        { title: 'Floor swept/mopped' },
-        { title: 'Wastebasket emptied/relined' }
+        { title: 'Door handles wiped' },
+        { title: 'Light switches wiped' },
+        { title: 'Baseboards dusted' },
+        { title: 'Floor Swept & Mopped' },
+        { title: 'Wastebasket emptied/relined' },
+        { title: 'Refill hand soap and paper towels' },
+        { title: 'Restock toilet paper' },
+        { title: 'Help reorder/buy supplies' },
       ]
+ 
     },
     kitchen: {
       items: [
         { title: 'Sink cleaned' },
         { title: 'Chrome polished' },
         { title: 'Countertops cleaned' },
-        { title: 'Stove top cleaned' },
         { title: 'Microwave inside/outside cleaned' },
-        { title: 'Appliances outside cleaned' },
-        { title: 'Range hood outside cleaned' },
-        { title: 'Cobwebs removed' },
-        { title: 'Floor swept/mopped' },
+        { title: 'Fridge outside / inside cleaned' },
+        { title: 'Coffee maker / toaster wiped' },
+        { title: 'Dishwasher outside cleaned' },
+        { title: 'Table and chairs wiped' },
+        { title: 'Floor swept / mopped' },
+        { title: 'Wastebasket emptied/relined' },
+        { title: 'Replace paper towels' },
+      ]
+
+    },
+    generalOffice_area: {
+      items: [
+        { title: 'Computer monitors wiped' },
+        { title: 'Furniture dusted / polished' },
+        { title: 'Doors cleaned' },
+        { title: 'Cobwebs remove' },
+        { title: 'Window sills dusted' },
+        { title: 'Light fixtures dusted' },
+        { title: 'Blinds dusted' },
+        { title: 'Baseboards dusted' },
+        { title: 'Floors vacuumed / mopped' },
+        { title: 'Stairs vacuumed / mopped' },
+        { title: 'Wastebasket emptied/relined' },
+      ]
+
+    },
+    entranceReception_area: {
+      items: [
+        { title: 'Computer monitors wiped' },
+        { title: 'Furniture dusted / polished' },
+        { title: 'Doors cleaned' },
+        { title: 'Cobwebs remove' },
+        { title: 'Window sills dusted' },
+        { title: 'Light fixtures dusted' },
+        { title: 'Blinds dusted' },
+        { title: 'Baseboards dusted' },
+        { title: 'Floors vacuumed / mopped' },
+        { title: 'Stairs vacuumed / mopped' },
         { title: 'Wastebasket emptied/relined' }
       ]
 
     },
-    bedrooms: {
+    doctorsOffice: {
       items: [
-        { title: 'Beds made, linens changed' },
-        { title: 'Lamps shades dusted' },
-        { title: 'Furniture dusted' },
-        { title: 'Pictures dusted' },
-        { title: 'Window sills dusted' },
-        { title: 'Mirrors cleaned' },
-        { title: 'Under the bed swept' },
-        { title: 'Cobwebs removed' },
-        { title: 'Floor swept/mopped/vacuumed' },
-        { title: 'Wastebasket emptied/relined' }
-      ]
-
-    },
-    living: {
-      items: [
-        { title: 'Window sills dusted' },
-        { title: 'Furniture dusted' },
-        { title: 'Lamps shades dusted' },
-        { title: 'Mirrors cleaned' },
-        { title: 'Cobwebs removed' },
-        { title: 'Banister wiped' },
-        { title: 'Stairs swept/mopped/vacuumed' },
-        { title: 'Floor swept/mopped/vacuumed' },
-        { title: 'Wastebasket emptied/relined' }
+        { title: 'Sinks cleaned' },
+        { title: 'Chrome polished' },
+        { title: 'Countertops cleaned' },
+        { title: 'Exam tables cleaned' },
+        { title: 'Floors sweep / mop / disinfect' },
+        { title: 'Supplies replenished' }
       ]
 
     }
