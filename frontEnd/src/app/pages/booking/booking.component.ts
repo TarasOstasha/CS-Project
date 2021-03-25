@@ -85,6 +85,18 @@ export class BookingComponent implements OnInit, OnChanges {
     first_name: '',
     last_name: '',
     city: '',
+    doorAccess: {
+      items: [
+        { title: 'Client will let us in' },
+        { title: '...' },
+      ]
+    },
+    selectTime: {
+      items: [
+        { title: 'Morning' },
+        { title: '...' },
+      ]
+    },
     // step - 4
   };
 
@@ -127,6 +139,8 @@ export class BookingComponent implements OnInit, OnChanges {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       city: [''],
+      doorAccess: ['', Validators.required],
+      selectTime: [''],
     });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -180,7 +194,9 @@ export class BookingComponent implements OnInit, OnChanges {
       phone: '+3807465486',
       first_name: 'example',
       last_name: 'example',
-      city: 'City'
+      city: 'City',
+      doorAccess:'Client will let us in',
+      selectTime: 'Morning',
     };
     Object
       .entries(example)
