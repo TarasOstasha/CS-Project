@@ -20,7 +20,7 @@ declare var jQuery: any;
 })
 export class OfficeComponent implements OnInit {
   public myReviewsArr: any = [];
-  businessBookForm!: FormGroup;
+ 
 
   servicesCheckbox: any = {
     bathroom: {
@@ -166,15 +166,6 @@ export class OfficeComponent implements OnInit {
     setTimeout(() => {
       this.initReviewsCarousel();
     }, 500)
-    this.businessBookForm = this._formBuilder.group({
-      company_name: ['', [Validators.required, Validators.minLength(2)]],
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')]],
-      zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5) ,Validators.pattern('^[0-9]*$')]],
-      approx_SF: ['', [Validators.required]],
-      frequency: ['', [Validators.required]]
-    });
     this.getMyReview();
   }
 
@@ -224,11 +215,6 @@ export class OfficeComponent implements OnInit {
    
       }]
     });
-  }
-
-  sendBusinessForm() {
-    this._form.sendBusinessDataForm(this.businessBookForm.value);
-    this.router.navigate(['/booking']);
   }
 
 }

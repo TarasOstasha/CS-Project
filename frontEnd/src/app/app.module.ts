@@ -45,6 +45,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { QuickBookComponent } from './parts/quick-book/quick-book.component';
 import { OurServicesPartComponent } from './parts/our-services-part/our-services-part.component';
+import { BusinessFormComponent } from './parts/business-form/business-form.component';
 // other material modules
 //import { MatCarouselModule } from '@ngmodule/material-carousel';
 
@@ -69,7 +70,8 @@ import { OurServicesPartComponent } from './parts/our-services-part/our-services
     BookingComponent,
     StarRatingComponent,
     QuickBookComponent,
-    OurServicesPartComponent
+    OurServicesPartComponent,
+    BusinessFormComponent
   ],
   imports: [
     BrowserModule,

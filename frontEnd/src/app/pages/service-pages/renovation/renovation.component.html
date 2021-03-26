@@ -1,3 +1,152 @@
 <app-header></app-header>
+<div class="child-service-wrapper">
+    <div class="big-top-img-section">
+        <div class="img">
+            <img src="../../../../assets/images/services/service-page/office-service__.png" alt="office_service">
+        </div>
+        <div class="title">
+            <h1>Office Cleaning services </h1>
+            <p>Your customers and employees deserve a safe, clean and healthy environment </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <section id="reviews">
+                    <div class="container">
+                        <div class="title">
+                            <h2>Our Reviews</h2>
+                        </div>
+                        <div class="slider">
+                            <div class="slide" *ngFor="let review of myReviewsArr">
+                                <div>
+                                    <!-- {{ myReviewsArr | json }} -->
+                                    <strong>{{ review.grade }}</strong>
+                                    <p>{{ review.message }}</p>
+                                </div>
+                                <div class="user-mark">
+                                    <div class="date">
+                                        {{ review.created | date: 'MM/dd/yyyy' }}
+                                    </div>
+                                    <div class="name">
+                                        &nbsp;{{ review.name | uppercase }}
+                                    </div>
+                                    <div class="rating" [style.width.px]=" review.stars * 18.4 ">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <!-- {{ review.stars }} -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-6">
+                <app-business-form></app-business-form>
+            </div>
+        </div>
+        <div class="build-it">
+            <div class="title">
+                <h2>
+                    YOU BUILD IT <br>
+                    AND <br>
+                    WE CLEAN IT
+                </h2>
+            </div>
+            <div class="build-it-img">
+                <img src="../.././../../assets/images/services/build-it-1.jpg" alt="">
+            </div>
+        </div>
+        <div class="child-service-info">
+            <p>
+                <span>Having an impeccably perfect office could provide a motivating environment to work in. </span>
+                <span>Office space requires a great deal of cleanness, utilizing the Crystal System </span>
+                <span>Cleaning office services is your most appropriate alternative.</span>
+                <span>We adapt to the working schedule of our clients in </span>
+                <span>order not to disrupt the working day.</span>
+            </p>
+        </div>
 
+        <div class="service-checklist">
+            <div class="title">
+                <h2>Crystal System Cleaning Checklist</h2>
+                <p>
+                    From top to bottom, room to room. We clean it all. See what our standard cleaning services include,
+                    or you can add on any extras!
+                </p>
+            </div>
+            <div class="row d-flex checkbox-card">
+                <mat-card class="col-12 col-md-6 col-lg-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Bathroom</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bathroom.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-3">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">Kitchen</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.kitchen.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-2">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">General Office Area</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.generalOffice_area.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-2">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">
+                            Entrance Reception Area & Conference Room
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list"
+                                *ngFor="let item of servicesCheckbox.entranceReception_area.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="col-12 col-md-6 col-lg-2">
+                    <mat-card-header>
+                        <mat-card-title class="checkbox-group-name">
+                            Medical Exam Rooms For Doctor’s Offices Only
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.doctorsOffice.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <div class="book-btn">
+            <a mat-button [routerLink]="['/booking']">Book Appointment</a>
+        </div>
+    </div>
+    <app-our-services-part></app-our-services-part>
+</div>
 <app-footer></app-footer>

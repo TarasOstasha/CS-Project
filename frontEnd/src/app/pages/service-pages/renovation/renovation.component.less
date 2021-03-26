@@ -1,0 +1,276 @@
+@import '../../../styles/colors'; // imported colors
+@import '../../../styles/fonts'; // imported colors
+
+@bottom_section_space: 50px;
+
+.child-service-wrapper {
+    // Reviews
+#reviews {
+    padding: @h1_padding 0;
+
+    mat-carousel {
+        background: transparent;
+    }
+
+    .title {
+        text-align: center;
+        padding-bottom: @h1_padding;
+        h2 {
+            .h1();
+        }
+    }
+
+    .slider {
+
+        .slide {
+            box-sizing: border-box; 
+            padding: 0 10px;
+
+            div {
+                strong {
+                    padding: 15px;
+                    .fftitle();
+                }
+
+                p {
+                    padding: 15px;
+                    margin: 15px 0;
+                    background: @blueColor;
+                    border-radius: 10px;
+                    .ffbasic();
+                    color: @whiteColor;
+                }
+            }
+
+            .user-mark {
+                display: flex;
+                align-items: center;
+                padding-left: 10px;
+                //justify-content: flex-end;
+
+                .date,
+                .name,
+                .rating {
+                    .ffbasic();
+                    display: flex;
+                    align-items: center;
+                }
+
+                .rating {
+                    i {
+                        color: @blueColor;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .write-review {
+        margin: 25px 0;
+
+        mat-form-field {
+            width: 100%;
+        }
+        .star-review {
+            position: relative;
+            .my-icon-star {
+                font-size: 21px;
+            }
+            .black-stars {
+                position: absolute;
+                ///width:75px;
+                display:flex;
+              }
+              .yellow-stars {
+                position: absolute;
+                top: 0;
+              }
+        }
+        .review-btn {
+            text-align: right;
+        }
+    }
+}
+    .big-top-img-section {
+        position: relative;
+
+        .img {
+            img {
+                width: 100%;
+            }
+        }
+
+        .title {
+            .title();
+        }
+    }
+
+    .child-service-info {
+        margin-top: @bottom_section_space;
+        padding: 40px 0;
+        text-align: center;
+
+        //max-width: 500px;
+        //margin: 0 auto;
+        p {
+            .ffbasic();
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+        }
+    }
+
+    .quick-book {
+        padding: @bottom_section_space 0;
+    }
+
+    .service-checklist {
+        .title {
+            text-align: center;
+            margin-top: 50px;
+
+            h2 {
+                .fftitle();
+                font-size: 30px;
+                text-transform: uppercase;
+            }
+
+            p {
+                .ffbasic();
+            }
+        }
+
+        .checkbox-card {
+            margin: @bottom_section_space 0;
+
+            .checkbox-group-name {
+                .fftitle();
+                font-size: 18px;
+            }
+
+            .checkbox-list {
+                .ffbasic();
+                display: flex;
+                align-items: center;
+                justify-content: end; //space-between;
+                padding: 5px 0;
+
+                .check-icon {
+                    color: @blueColor;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .extra-checklist {
+            margin: @bottom_section_space 0;
+            //padding-bottom: @bottom_section_space;
+            .extra-checklist-text {
+                position: relative;
+                padding: 60px;
+                display: flex;
+                align-items: flex-end;
+                flex-direction: column;
+
+                mat-card-header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .checkbox-group-name {
+                        //.fftitle();
+                        font-size: 18px;
+                    }
+
+                    .checkbox-list {
+                        .ffbasic();
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .check-icon {
+                            color: @blueColor;
+                        }
+
+                        .checkbox-name {
+                            margin-right: 60px;
+                            font-style: normal;
+                            padding: 5px 0;
+                        }
+                    }
+                }
+
+
+                .extra-checklist-photo {
+
+                    padding: 30px;
+
+                    img {
+                        width: 100%; //100%;
+                        position: absolute;
+                        top: 50%;
+                        left: -5%; //0%;
+                        transform: translate(-75%, -50%);
+                        box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                    }
+                }
+            }
+            
+        }
+
+    }
+    .book-btn {
+        text-align: center;
+
+        a {
+            .ffbasic();
+            text-decoration: none;
+            color: @blueColor;
+            background: #f6f6f6;
+            margin: 50px 0;
+            font-size: 20px;//18px;
+            border: 1px solid;
+            padding: 15px;
+        }
+
+        a:hover {
+            color: @blackColor;
+        }
+
+    }
+
+    .build-it {
+        position: relative;
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+           
+            z-index: 2;
+            .ffnavmenu();
+            h2 {
+                font-size: 70px;
+                color: @whiteColor;
+                line-height: 1;
+                //background: rgba(0, 0, 0, 0.5);
+                margin: 0;
+                padding: 10px;
+            }
+        }
+        .build-it-img {
+            position: relative;
+            img {
+                width: 100%;
+                
+                z-index: 999;
+            }
+        }
+    }
+    
+}
