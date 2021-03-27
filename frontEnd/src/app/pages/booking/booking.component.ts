@@ -82,8 +82,8 @@ export class BookingComponent implements OnInit, OnChanges {
         { value: 'cleaning', color: '#eaf3fb', text: 'Deep Cleaning' },
         { value: 'move', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
         { value: 'wash', color: '#eaf3fb', text: 'Hand Wash Dishes' },
-        { value: 'oven', color: '#eaf3fb', text: 'Baseboards' },
-        { value: 'oven', color: '#eaf3fb', text: 'Inside the Fridge' },
+        { value: 'board', color: '#eaf3fb', text: 'Baseboards' },
+        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge' },
         { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven' },
         { value: 'oven', color: '#dfe9f3', text: 'Inside the Cabinets' },
         { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry' },
@@ -165,7 +165,8 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_cleaning: [''],
       extras_move: [''],
       extras_wash: [''],
-      
+      extras_board: [''],
+      extras_fridge: [''],
 
       extras_oven: [''],
       extras_washer: [''],
