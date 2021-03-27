@@ -34,10 +34,11 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Zip Code</mat-label>
-                    <input matInput formControlName="zip_code" placeholder="00000">
+                    <input matInput formControlName="zip_code" placeholder="00000" (keyup)="checkZipCode($event)">
+                    <span *ngIf="businessBookForm.get('zip_code')?.valid">{{ zipObj }}</span>
                     <mat-error
                         *ngIf="businessBookForm.errors?.required || businessBookForm.get('zip_code')?.invalid">
-                        Not Valid</mat-error>
+                        Not Valid (Please Call Us)</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Approx SF</mat-label>
