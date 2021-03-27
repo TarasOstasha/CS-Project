@@ -85,7 +85,7 @@ export class BookingComponent implements OnInit, OnChanges {
         { value: 'board', color: '#eaf3fb', text: 'Baseboards' },
         { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge' },
         { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven' },
-        { value: 'oven', color: '#dfe9f3', text: 'Inside the Cabinets' },
+        { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets' },
         { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry' },
         { value: 'oven', color: '#dfe9f3', text: 'Interior Windows' },
         { value: 'oven', color: '#dfe9f3', text: 'Interior Walls' },
@@ -169,6 +169,9 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_fridge: [''],
 
       extras_oven: [''],
+      extras_cabinet: [''],
+      
+
       extras_washer: [''],
       extras_refrigerator: [''],
       first_name: ['', Validators.required],
