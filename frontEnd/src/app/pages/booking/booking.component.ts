@@ -77,16 +77,16 @@ export class BookingComponent implements OnInit, OnChanges {
     // step - 2
     extras: {
       items: [
-        { value: 'oven', color: '#dfe9f3', text: 'Same Day Service' },
-        { value: 'oven', color: '#dfe9f3', text: 'UV Disinfection (Recommended)' },
-        { value: 'oven', color: '#dfe9f3', text: 'Deep Cleaning' },
-        { value: 'oven', color: '#dfe9f3', text: 'Move In/Out Cleaning' },
-        { value: 'oven', color: '#dfe9f3', text: 'Hand Wash Dishes' },
-        { value: 'oven', color: '#dfe9f3', text: 'Baseboards' },
-        { value: 'oven', color: '#dfe9f3', text: 'Inside the Fridge' },
-        { value: 'oven', color: '#dfe9f3', text: 'Inside the Oven' },
+        { value: 'same-day', color: '#eaf3fb', text: 'Same Day Service' },
+        { value: 'disinfection', color: '#eaf3fb', text: 'UV Disinfection (Recommended)' },
+        { value: 'cleaning', color: '#eaf3fb', text: 'Deep Cleaning' },
+        { value: 'oven', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
+        { value: 'oven', color: '#eaf3fb', text: 'Hand Wash Dishes' },
+        { value: 'oven', color: '#eaf3fb', text: 'Baseboards' },
+        { value: 'oven', color: '#eaf3fb', text: 'Inside the Fridge' },
+        { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven' },
         { value: 'oven', color: '#dfe9f3', text: 'Inside the Cabinets' },
-        { value: 'oven', color: '#dfe9f3', text: 'Load(s) of Laundry' },
+        { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry' },
         { value: 'oven', color: '#dfe9f3', text: 'Interior Windows' },
         { value: 'oven', color: '#dfe9f3', text: 'Interior Walls' },
         { value: 'oven', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
@@ -160,6 +160,11 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: ['', Validators.required],
       select_times: ['', Validators.required],
       phone: ['', Validators.required],
+      extras_same_day: [''],
+      extras_disinfection: [''],
+      extras_cleaning: [''],
+      
+
       extras_oven: [''],
       extras_washer: [''],
       extras_refrigerator: [''],
@@ -187,7 +192,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 0;
+    this.stepperDOM.selectedIndex = 1;
     this.cdr.detectChanges();
   }
 
