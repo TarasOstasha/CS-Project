@@ -77,11 +77,11 @@ export class BookingComponent implements OnInit, OnChanges {
     // step - 2
     extras: {
       items: [
-        { value: 'same-day', color: '#eaf3fb', text: 'Same Day Service' },
+        { value: 'same_day', color: '#eaf3fb', text: 'Same Day Service' },
         { value: 'disinfection', color: '#eaf3fb', text: 'UV Disinfection (Recommended)' },
         { value: 'cleaning', color: '#eaf3fb', text: 'Deep Cleaning' },
-        { value: 'oven', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
-        { value: 'oven', color: '#eaf3fb', text: 'Hand Wash Dishes' },
+        { value: 'move', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
+        { value: 'wash', color: '#eaf3fb', text: 'Hand Wash Dishes' },
         { value: 'oven', color: '#eaf3fb', text: 'Baseboards' },
         { value: 'oven', color: '#eaf3fb', text: 'Inside the Fridge' },
         { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven' },
@@ -163,6 +163,8 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_same_day: [''],
       extras_disinfection: [''],
       extras_cleaning: [''],
+      extras_move: [''],
+      extras_wash: [''],
       
 
       extras_oven: [''],
