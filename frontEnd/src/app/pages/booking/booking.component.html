@@ -275,6 +275,9 @@
                                         <img style="height: 4rem" [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'" alt="">
                                     </div>
                                     <p class="description">{{item.text}}</p>
+                                    <p *ngIf="item.recommended" class="recommended">
+                                        <span class="text">Recommended</span>
+                                    </p>
                                 </div>
                             </section>
 

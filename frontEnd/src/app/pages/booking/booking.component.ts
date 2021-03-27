@@ -78,7 +78,7 @@ export class BookingComponent implements OnInit, OnChanges {
     extras: {
       items: [
         { value: 'same_day', color: '#eaf3fb', text: 'Same Day Service' },
-        { value: 'disinfection', color: '#eaf3fb', text: 'UV Disinfection (Recommended)' },
+        { value: 'disinfection', color: '#eaf3fb', text: 'UV Disinfection', recommended: true },
         { value: 'cleaning', color: '#eaf3fb', text: 'Deep Cleaning' },
         { value: 'move', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
         { value: 'wash', color: '#eaf3fb', text: 'Hand Wash Dishes' },
@@ -87,10 +87,10 @@ export class BookingComponent implements OnInit, OnChanges {
         { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven' },
         { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets' },
         { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry' },
-        { value: 'oven', color: '#dfe9f3', text: 'Interior Windows' },
-        { value: 'oven', color: '#dfe9f3', text: 'Interior Walls' },
-        { value: 'oven', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
-        { value: 'oven', color: '#dfe9f3', text: 'Hour(s) of Organizing' },
+        { value: 'window', color: '#dfe9f3', text: 'Interior Windows' },
+        { value: 'wall', color: '#dfe9f3', text: 'Interior Walls' },
+        { value: 'pet', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
+        // { value: 'oven', color: '#dfe9f3', text: 'Hour(s) of Organizing' },
 
         // { value: 'oven', color: '#dfe9f3', text: 'Laundry wash & dry' },
         // { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
@@ -167,13 +167,15 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_wash: [''],
       extras_board: [''],
       extras_fridge: [''],
-
+      extras_refrigerator: [''],
       extras_oven: [''],
       extras_cabinet: [''],
-      
 
       extras_washer: [''],
-      extras_refrigerator: [''],
+      extras_window: [''],
+      extras_wall: [''],
+      extras_pet: [''],
+
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       city: [''],
