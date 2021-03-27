@@ -77,9 +77,24 @@ export class BookingComponent implements OnInit, OnChanges {
     // step - 2
     extras: {
       items: [
-        { value: 'oven', color: '#dfe9f3', text: 'Laundry wash & dry' },
-        { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
-        { value: 'refrigerator', color: '#dfe9f3', text: 'Refrigerator' },
+        { value: 'oven', color: '#dfe9f3', text: 'Same Day Service' },
+        { value: 'oven', color: '#dfe9f3', text: 'UV Disinfection (Recommended)' },
+        { value: 'oven', color: '#dfe9f3', text: 'Deep Cleaning' },
+        { value: 'oven', color: '#dfe9f3', text: 'Move In/Out Cleaning' },
+        { value: 'oven', color: '#dfe9f3', text: 'Hand Wash Dishes' },
+        { value: 'oven', color: '#dfe9f3', text: 'Baseboards' },
+        { value: 'oven', color: '#dfe9f3', text: 'Inside the Fridge' },
+        { value: 'oven', color: '#dfe9f3', text: 'Inside the Oven' },
+        { value: 'oven', color: '#dfe9f3', text: 'Inside the Cabinets' },
+        { value: 'oven', color: '#dfe9f3', text: 'Load(s) of Laundry' },
+        { value: 'oven', color: '#dfe9f3', text: 'Interior Windows' },
+        { value: 'oven', color: '#dfe9f3', text: 'Interior Walls' },
+        { value: 'oven', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
+        { value: 'oven', color: '#dfe9f3', text: 'Hour(s) of Organizing' },
+
+        // { value: 'oven', color: '#dfe9f3', text: 'Laundry wash & dry' },
+        // { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
+        // { value: 'refrigerator', color: '#dfe9f3', text: 'Refrigerator' },
       ]
     },
     // step - 3
