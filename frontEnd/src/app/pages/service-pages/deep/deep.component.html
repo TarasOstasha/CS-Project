@@ -94,8 +94,11 @@
                         <p>
                             <span class="checkbox-list" 
                                   *ngFor="let item of extraServices">
-                                  <i class="checkbox-name">{{ item.title }} - <strong>{{ item.price }}</strong></i>
-                                  <i class="fas fa-check check-icon"></i></span>
+                                  <i class="checkbox-name">
+                                      <span class="item-name">{{ item.title }}</span> 
+                                      <span class="item-price">{{ item.price }}</span>
+                                </i>
+                            </span>
                         </p>
                     </mat-card-header>
                     <mat-card-content>
@@ -110,33 +113,7 @@
             <a mat-button [routerLink]="['/booking']">Book Appointment</a>
         </div>
     </div>
-    <div class="all-services ">
-        <div class="container">
-            <div class="row">
-                    <div class="col">
-                        <div class="all-services-photo">
-                            <img src="../../../../assets/images/clean.jpg" alt="">
-                        </div>
-                    </div>
-                    <mat-card class="col all-services-list">
-                        <mat-card-header>
-                            <mat-card-title class="service-title">Us Services</mat-card-title>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>
-                                <mat-list>
-                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink">{{ card.name }}</mat-list-item>
-                                </mat-list>
-                            </p>
-                        </mat-card-content>
-                    </mat-card>
-            </div>
-            
-        </div>
-        <div class="book-btn">
-            <a mat-button [routerLink]="['/booking']">Book Appointment</a>
-        </div>
-    </div>
+    <app-our-services-part></app-our-services-part>
 
 </div>
 <app-footer></app-footer>

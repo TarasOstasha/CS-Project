@@ -66,7 +66,7 @@ export class BusinessFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.businessBookForm = this._formBuilder.group({
-      company_name: ['', [Validators.required, Validators.minLength(2)]],
+      company_name: [''],
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')]],
@@ -86,7 +86,6 @@ export class BusinessFormComponent implements OnInit {
   // check if zip code valid
   public zipObj: any;
   async checkZipCode(value: any) {
-
     try {
       const zipCode = value.target.value.substr(1); // remove first symbol
       const where = encodeURIComponent(JSON.stringify({
@@ -102,7 +101,7 @@ export class BusinessFormComponent implements OnInit {
           }
         }
       );
-
+      
       const data = await response.json(); // Here you have the data that you need
       //console.log(JSON.stringify(data, null, 2));
       this.zipObj = data.results[0].County; //JSON.parse(data);

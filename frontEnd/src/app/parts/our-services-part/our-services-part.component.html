@@ -13,7 +13,7 @@
                         <mat-card-content>
                             <p>
                                 <mat-list>
-                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink">
+                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink" routerLinkActive="router-link-active">
                                         {{ card.name }}
                                         <i class="fas fa-angle-right"></i>
                                     </mat-list-item>

@@ -116,11 +116,15 @@
         //margin: 0 auto;
         p {
             .ffbasic();
-            display: flex;
+            //display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
+            //flex-direction: column;
             margin: 0;
+            span {
+                font-weight: bold;
+                font-style: italic;
+            }
         }
     }
 
@@ -128,101 +132,7 @@
         padding: @bottom_section_space 0;
     }
 
-    .service-checklist {
-        .title {
-            text-align: center;
-            margin-top: 50px;
 
-            h2 {
-                .fftitle();
-                font-size: 30px;
-                text-transform: uppercase;
-            }
-
-            p {
-                .ffbasic();
-            }
-        }
-
-        .checkbox-card {
-            margin: @bottom_section_space 0;
-
-            .checkbox-group-name {
-                .fftitle();
-                font-size: 18px;
-            }
-
-            .checkbox-list {
-                .ffbasic();
-                display: flex;
-                align-items: center;
-                justify-content: end; //space-between;
-                padding: 5px 0;
-
-                .check-icon {
-                    color: @blueColor;
-                    margin-right: 5px;
-                }
-            }
-        }
-
-        .extra-checklist {
-            margin: @bottom_section_space 0;
-            //padding-bottom: @bottom_section_space;
-            .extra-checklist-text {
-                position: relative;
-                padding: 60px;
-                display: flex;
-                align-items: flex-end;
-                flex-direction: column;
-
-                mat-card-header {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-
-                    .checkbox-group-name {
-                        //.fftitle();
-                        font-size: 18px;
-                    }
-
-                    .checkbox-list {
-                        .ffbasic();
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-
-                        .check-icon {
-                            color: @blueColor;
-                        }
-
-                        .checkbox-name {
-                            margin-right: 60px;
-                            font-style: normal;
-                            padding: 5px 0;
-                        }
-                    }
-                }
-
-
-                .extra-checklist-photo {
-
-                    padding: 30px;
-
-                    img {
-                        width: 100%; //100%;
-                        position: absolute;
-                        top: 50%;
-                        left: -5%; //0%;
-                        transform: translate(-75%, -50%);
-                        box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
-                    }
-                }
-            }
-            
-        }
-
-    }
     .book-btn {
         text-align: center;
 
@@ -247,11 +157,10 @@
         position: relative;
         .title {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 35%; //50%;
+            left: 26%; //50%;
             transform: translate(-50%, -50%);
-
-           
+            text-align: center;
             z-index: 2;
             .ffnavmenu();
             h2 {

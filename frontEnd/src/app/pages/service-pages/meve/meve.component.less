@@ -78,14 +78,25 @@
         }
 
         .extra-checklist {
-            margin: @bottom_section_space 0;
+            padding: @bottom_section_space 0;
+            position: relative;
+            div {
+                z-index: 2;
+            }
             //padding-bottom: @bottom_section_space;
+            .extra-checklist-photo {
+                img {
+                    width: 100%; //100%;
+                    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                }
+            }
             .extra-checklist-text {
-                position: relative;
-                padding: 60px;
-                display: flex;
-                align-items: flex-end;
-                flex-direction: column;
+                background: @extraServicesColor;
+                padding: 150px 15px; //60px;
+                position: absolute;
+                right: 10%;
+                top: 3%;
+                z-index: 1;
 
                 mat-card-header {
                     display: flex;
@@ -95,6 +106,7 @@
                     .checkbox-group-name {
                         //.fftitle();
                         font-size: 18px;
+                        border-bottom: 3px solid @blueColor;
                     }
 
                     .checkbox-list {
@@ -103,69 +115,91 @@
                         align-items: center;
                         justify-content: space-between;
 
-                        .check-icon {
-                            color: @blueColor;
-                        }
 
                         .checkbox-name {
                             margin-right: 60px;
                             font-style: normal;
                             padding: 5px 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            width: 100%;
+                            .item-price {
+                                padding-left: 5px;
+                            }
                         }
                     }
                 }
+            }
+        }
 
+        .free-extra-checklist {
+            padding: @bottom_section_space 0;
+            position: relative;
+            margin: 0;
+            .free-checkbox-group-name {
+                border-bottom: 3px solid @blueColor;
+            }
+            .free-extra-checklist-text {
+                background: @extraServicesColor;
+                padding: 80px 15px; //60px;
+                //position: absolute;
+                //right: 10%;
+                //top: 4%;
+                z-index: 1;
+                mat-card-header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
 
-                .extra-checklist-photo {
+                    .checkbox-group-name {
+                        //.fftitle();
+                        font-size: 18px;
+                        border-bottom: 3px solid @blueColor;
+                    }
 
-                    padding: 30px;
-
-                    img {
-                        width: 100%; //100%;
-                        position: absolute;
-                        top: 50%;
-                        left: 0%;
-                        transform: translate(-75%, -50%);
-                        box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                    .checkbox-list {
+                        .ffbasic();
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .checkbox-name {
+                            margin-right: 60px;
+                            font-style: normal;
+                            padding: 5px 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            width: 100%;
+                            .item-price {
+                                padding-left: 5px;
+                            }
+                            .item-icon {
+                                padding-left: 5px;
+                                .check-icon {
+                                    color: @blueColor;
+                                }
+                            }
+                        }
                     }
                 }
             }
+            .free-extra-checklist-photo {
+                img {
+                    z-index: 2;
+                    position: absolute;
+                    left: -17%;
+                    top: 9%;
+                    width: 100%;
+                    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                }
+            }
         }
+        
 
     }
 
-    .all-services {
-        padding: 100px 0 50px 0;
-        //margin: @bottom_section_space 0;
-        background-color: #0bb8e3;
-        background-image: url('../../../../assets/images/patern-0bb8e3.jpg');
-        .all-services-photo {
-            img {
-                width: 100%;
-                box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
-            }
-        }
-
-        .all-services-list {
-            background: rgba(255,255,255, .2);
-            .service-title {
-                .fftitle();
-                font-size: 18px;
-                color: @whiteColor;
-            }
-
-            .service-links {
-                .ffbasic();
-                color: @whiteColor;
-                cursor: pointer;
-                text-transform: capitalize;
-            }
-            .service-links:hover {
-                background: rgba(0, 0, 0, .5);
-            }
-        }
-
-    }
+  
 
     .book-btn {
         text-align: center;

@@ -13,8 +13,17 @@
             max-width: 140px;
         }
         .quick-book {
+            width: 40%;
             background: @blueColor;
             margin-left: 5px;
+            color: @whiteColor;
+        }
+        .quick-book:disabled{
+            color: @blackColor;
+            opacity: .5;
+        }
+        mat-label {
+            font-size: 16px;
         }
     }
 }

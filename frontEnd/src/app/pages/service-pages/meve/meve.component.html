@@ -12,9 +12,12 @@
     <div class="container">
         <div class="child-service-info">
             <p>
-                <span>The last thing you want to worry about is having to clean your place after or before moving.</span>
-                <span>We provide thorough cleaning services that will allow you to focus on your responsibilities.</span>
-                <span>Our trained cleaning professionals will leave no corner of your home or apartment untouched.</span>
+                <span>The last thing you want to worry about is having to clean your place after or before
+                    moving.</span>
+                <span>We provide thorough cleaning services that will allow you to focus on your
+                    responsibilities.</span>
+                <span>Our trained cleaning professionals will leave no corner of your home or apartment
+                    untouched.</span>
             </p>
         </div>
         <div class="quick-book">
@@ -35,9 +38,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.bathroom.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bathroom.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -47,9 +49,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.kitchen.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.kitchen.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -59,9 +60,8 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.bedrooms.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.bedrooms.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
@@ -75,68 +75,67 @@
                     </mat-card-header>
                     <mat-card-content>
                         <p>
-                            <span class="checkbox-list"
-                                *ngFor="let item of servicesCheckbox.living.items"><i
-                                class="fas fa-check check-icon"></i>{{ item.title }}</span>
+                            <span class="checkbox-list" *ngFor="let item of servicesCheckbox.living.items"><i
+                                    class="fas fa-check check-icon"></i>{{ item.title }}</span>
                         </p>
                     </mat-card-content>
                 </mat-card>
             </div>
             <div class="extra-checklist row">
                 <div class="col-12 col-md-6">
-                    <!-- <div class="extra-checklist-photo">
-                        <img src="../../../../assets/images/clean.jpg" alt="">
-                    </div> -->
+                    <div class="extra-checklist-photo">
+                        <img src="../../../../assets/images/services/service-page/move-cleaning__.jpg" alt="">
+                    </div>
                 </div>
                 <mat-card class="col-12 col-md-6 extra-checklist-text">
                     <mat-card-header>
                         <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
                         <p>
-                            <span class="checkbox-list" 
-                                  *ngFor="let item of extraServices">
-                                  <i class="checkbox-name">{{ item.title }} - <strong>{{ item.price }}</strong></i>
-                                  <i class="fas fa-check check-icon"></i></span>
+                            <span class="checkbox-list" *ngFor="let item of extraServices">
+                                <i class="checkbox-name">
+                                    <span class="item-name">{{ item.title }}</span>
+                                    <span class="item-price">{{ item.price }}</span>
+                                </i>
+
+                            </span>
                         </p>
                     </mat-card-header>
                     <mat-card-content>
-                        <div class="extra-checklist-photo">
-                            <img src="../../../../assets/images/clean.jpg" alt="">
-                        </div>
                     </mat-card-content>
                 </mat-card>
             </div>
-        </div>
-        <div class="book-btn">
-            <a mat-button [routerLink]="['/booking']">Book Appointment</a>
-        </div>
-    </div>
-    <div class="all-services ">
-        <div class="container">
-            <div class="row">
-                    <div class="col">
-                        <div class="all-services-photo">
-                            <img src="../../../../assets/images/clean.jpg" alt="">
-                        </div>
+            <div class="free-extra-checklist row">
+                <mat-card class="col-12 col-md-6 col-lg-6 free-extra-checklist-text">
+                    <mat-card-header>
+                        <mat-card-title class="free-checkbox-group-name">Extra Services </mat-card-title>
+                        <p>
+                            <span class="checkbox-list" *ngFor="let item of freeExtraServices">
+                                <i class="checkbox-name">
+                                    <span class="item-name">{{ item.title }}</span>
+                                    <span class="item-icon">
+                                        <i class="fas fa-check check-icon"></i>
+                                    </span>
+                                </i>
+
+                            </span>
+                        </p>
+                    </mat-card-header>
+                    <mat-card-content>
+                    </mat-card-content>
+                </mat-card>
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="free-extra-checklist-photo">
+                        <img src="../../../../assets/images/services/service-page/move-cleaning__1.jpg" alt="">
                     </div>
-                    <mat-card class="col all-services-list">
-                        <mat-card-header>
-                            <mat-card-title class="service-title">Us Services</mat-card-title>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>
-                                <mat-list>
-                                    <mat-list-item class="service-links" *ngFor="let card of serviceCards" [routerLink]=" '/services' + card.routerLink">{{ card.name }}</mat-list-item>
-                                </mat-list>
-                            </p>
-                        </mat-card-content>
-                    </mat-card>
+                </div>
             </div>
-            
+
         </div>
         <div class="book-btn">
             <a mat-button [routerLink]="['/booking']">Book Appointment</a>
         </div>
     </div>
+    <app-our-services-part></app-our-services-part>
 
 </div>
 <app-footer></app-footer>

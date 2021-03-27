@@ -2,7 +2,7 @@
     <form [formGroup]="quickBookForm" (ngSubmit)="sendQuickForm()">
         <mat-form-field appearance="fill">
             <mat-label>Approx SF</mat-label>
-            <mat-select formControlName="approx_SF">
+            <mat-select formControlName="approx_SF" required>
                 <mat-option *ngFor="let item of quickBook.approx_SF.items" [value]="item.title">{{ item.title }}
                 </mat-option>
             </mat-select>
@@ -10,38 +10,39 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Bedrooms</mat-label>
-            <mat-select formControlName="bedrooms">
-                <mat-option *ngFor="let item of quickBook.bedrooms.items" [value]="item.title">{{ item.title }}</mat-option>
+            <mat-select formControlName="bedrooms" required>
+                <mat-option *ngFor="let item of quickBook.bedrooms.items" [value]="item.title" required>{{ item.title }}</mat-option>
             </mat-select>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('bedrooms')?.invalid">Please Choose Value </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Bathrooms</mat-label>
-            <mat-select formControlName="bathrooms">
-                <mat-option *ngFor="let item of quickBook.bathrooms.items" [value]="item.title">{{ item.title }}</mat-option>
+            <mat-select formControlName="bathrooms" required>
+                <mat-option *ngFor="let item of quickBook.bathrooms.items" [value]="item.title" required>{{ item.title }}</mat-option>
             </mat-select>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('bathrooms')?.invalid">Please Choose Value </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Frequency</mat-label>
-            <mat-select formControlName="frequency">
-                <mat-option *ngFor="let item of quickBook.frequency.items" [value]="item.title">{{ item.title }}</mat-option>
+            <mat-select formControlName="frequency" required>
+                <mat-option *ngFor="let item of quickBook.frequency.items" [value]="item.title" required>{{ item.title }}</mat-option>
             </mat-select>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('frequency')?.invalid">Please Choose Value </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Zip Code</mat-label>
-            <input matInput formControlName="zip_code" placeholder="00000">
+            <input matInput formControlName="zip_code" placeholder="00000" (keyup)="checkZipCode($event)" required>
+            <span *ngIf="quickBookForm.get('zip_code')?.valid">{{ zipObj }}</span>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('zip_code')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="example@gmail.com">
+            <input matInput formControlName="email" placeholder="example@gmail.com" required>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('email')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phone" placeholder="000 000 0000">
+            <input matInput formControlName="phone" placeholder="000 000 0000" required>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('phone')?.invalid">Not Valid</mat-error>
         </mat-form-field>
         <button type="submit" mat-button class="quick-book" [disabled]="quickBookForm.invalid">Book Now</button>
