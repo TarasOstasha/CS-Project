@@ -460,10 +460,150 @@
                                 <h3 class="step-title-small">Please Enter Payment Detail</h3>
                             </ng-template>
                             <h1 class="step-title">PAYMENT</h1>
+                            <p class="step-subtitle">Tell us your address and other important details</p>
+                            <br>
+
+                            <div class="boxes">
+                                <div class="big-box big-box-left">
+                                    <!-- ********************************************* 1 group -->
+                                    <div class="inner-box inner-box-left">
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>First Name</mat-label>
+                                                <input matInput formControlName="first_name" placeholder="000000" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>ZIP code</mat-label>
+                                                <input matInput formControlName="zip_code" placeholder="000000" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Email address</mat-label>
+                                                <input matInput #input formControlName="email" placeholder="some@gmail.com" required>
+                                                <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+
+
+                                    </div>
+                                    <!-- ********************************************* 2 group -->
+                                    <div class="inner-box inner-box-right">
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Last Name</mat-label>
+                                                <input matInput formControlName="last_name" placeholder="000000" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>City</mat-label>
+                                                <input matInput #input formControlName="city" placeholder="some@gmail.com">
+                                                <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Door Access Info</mat-label>
+                                                <mat-select formControlName="doorAccess" required>
+                                                    <mat-option *ngFor="let item of stepper.doorAccess.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Select time</mat-label>
+                                                <mat-select formControlName="selectTime">
+                                                    <mat-option *ngFor="let item of stepper.selectTime.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- ********************************************* 3 group -->
+                                <div class="big-box big-box-right">
+                                    <div class="inner-box inner-box-left">
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Address</mat-label>
+                                                <input matInput formControlName="address" placeholder="000000" required>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>State</mat-label>
+                                                <mat-select formControlName="state">
+                                                    <mat-option *ngFor="let item of stepper.state.items" [value]="item.title">{{item.title}}</mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Special Instructions</mat-label>
+                                                <input matInput formControlName="specialInstructions" placeholder="000000">
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- ********************************************* 4 group -->
+                                    <div class="inner-box inner-box-right">
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>Apt/Suite</mat-label>
+                                                <input matInput formControlName="aptSuite" placeholder="000000">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input">
+                                            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                                                <mat-label>Phone number</mat-label>
+                                                <input matInput #input formControlName="phone" placeholder="+100000000">
+                                                <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="input" style="margin-top: .77rem;">
+                                            <mat-form-field>
+                                                <mat-label>How did you hear about us?</mat-label>
+                                                <input matInput formControlName="howDidYouHear" placeholder="000000">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <p class="step-note">You will be able to review your order before booking is complete</p>
 
                             <div class="buttons-panel">
+                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                                <!-- <button mat-button (click)="next1(stepperDOM)">Next</button> -->
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                                 <button mat-button matStepperPrevious>Back</button>
                                 <button mat-button matStepperNext>Next</button>
+                                <button mat-button (click)="fill(stepperDOM)">Fill</button>
                             </div>
 
                         </mat-step>
