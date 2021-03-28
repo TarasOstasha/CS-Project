@@ -83,31 +83,53 @@
                 </mat-card>
             </div>
             <div class="extra-checklist row">
-                <div class="col-12 col-md-6">
-                    <!-- <div class="extra-checklist-photo">
-                        <img src="../../../../assets/images/clean.jpg" alt="">
-                    </div> -->
-                </div>
-                <mat-card class="col-12 col-md-6 extra-checklist-text">
-                    <mat-card-header>
-                        <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
-                        <p>
-                            <span class="checkbox-list" 
-                                  *ngFor="let item of extraServices">
-                                  <i class="checkbox-name">
-                                      <span class="item-name">{{ item.title }}</span> 
-                                      <span class="item-price">{{ item.price }}</span>
-                                </i>
-                            </span>
-                        </p>
-                    </mat-card-header>
-                    <mat-card-content>
+                    <div class="col-12 col-md-6">
                         <div class="extra-checklist-photo">
-                            <img src="../../../../assets/images/clean.jpg" alt="">
+                            <img src="../../../../assets/images/services/service-page/deep-cleaning_1.jpg" alt="">
                         </div>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+                    </div>
+                    <mat-card class="col-12 col-md-6 extra-checklist-text">
+                        <mat-card-header>
+                            <mat-card-title class="checkbox-group-name">Extra Services </mat-card-title>
+                            <p>
+                                <span class="checkbox-list" *ngFor="let item of extraServices">
+                                    <i class="checkbox-name">
+                                        <span class="item-name">{{ item.title }}</span>
+                                        <span class="item-price">{{ item.price }}</span>
+                                    </i>
+    
+                                </span>
+                            </p>
+                        </mat-card-header>
+                        <mat-card-content>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="free-extra-checklist row">
+                    <mat-card class="col-12 col-md-6 col-lg-6 free-extra-checklist-text">
+                        <mat-card-header>
+                            <mat-card-title class="free-checkbox-group-name">Free Extra Services </mat-card-title>
+                            <p>
+                                <span class="checkbox-list" *ngFor="let item of freeExtraServices">
+                                    <i class="checkbox-name">
+                                        <span class="item-name">{{ item.title }}</span>
+                                        <span class="item-icon">
+                                            <i class="fas fa-check check-icon"></i>
+                                        </span>
+                                    </i>
+    
+                                </span>
+                            </p>
+                        </mat-card-header>
+                        <mat-card-content>
+                        </mat-card-content>
+                    </mat-card>
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <div class="free-extra-checklist-photo">
+                            <img src="../../../../assets/images/services/service-page/deep-cleaning_2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
         </div>
         <div class="book-btn">
             <a mat-button [routerLink]="['/booking']">Book Appointment</a>
