@@ -46,6 +46,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { QuickBookComponent } from './parts/quick-book/quick-book.component';
 import { OurServicesPartComponent } from './parts/our-services-part/our-services-part.component';
 import { BusinessFormComponent } from './parts/business-form/business-form.component';
+import { PoliciesComponent } from './pages/faq-pages/policies/policies.component';
+import { SafetyComponent } from './pages/faq-pages/safety/safety.component';
+import { UrgentIssuesComponent } from './pages/faq-pages/urgent-issues/urgent-issues.component';
+import { FaqServicesComponent } from './pages/faq-pages/faq-services/faq-services.component';
+import { FaqBookingComponent } from './pages/faq-pages/faq-booking/faq-booking.component';
+import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.component';
 // other material modules
 //import { MatCarouselModule } from '@ngmodule/material-carousel';
 
@@ -71,7 +77,13 @@ import { BusinessFormComponent } from './parts/business-form/business-form.compo
     StarRatingComponent,
     QuickBookComponent,
     OurServicesPartComponent,
-    BusinessFormComponent
+    BusinessFormComponent,
+    PoliciesComponent,
+    SafetyComponent,
+    UrgentIssuesComponent,
+    FaqServicesComponent,
+    FaqBookingComponent,
+    FaqBillingComponent
   ],
   imports: [
     BrowserModule,

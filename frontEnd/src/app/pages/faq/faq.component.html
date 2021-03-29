@@ -1,1 +1,30 @@
-<p>faq works!</p>
+<app-header></app-header>
+<div class="faq-wrapper">
+    <div class="big-top-img-section">
+        <div class="img">
+            <img src="../../../../assets/images/services/service-page/regular-cleaning__.png" alt="">
+        </div>
+        <div class="title">
+            <h1>Frequently Asked Questions</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row faq-card">
+
+            <mat-card class="example-card col-4 d-flex flex-column justify-content-center align-items-center"
+                *ngFor="let card of faqObj" [routerLink]=" '/faq' + card.routerLink"
+                routerLinkActive="router-link-active">
+                <img class="faq-img" mat-card-image [src]="card.img" [alt]="card.title">
+                <mat-card-header>
+                    <mat-card-title>{{ card.title }}</mat-card-title>
+                </mat-card-header>
+            </mat-card>
+
+        </div>
+    </div>
+
+</div>
+<!-- to enable child routes -->
+<!-- <router-outlet></router-outlet> -->
+<!-- to enable child routes -->
+<app-footer></app-footer>
