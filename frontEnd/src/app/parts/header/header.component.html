@@ -68,9 +68,21 @@
                                     <a class="nav-link" [routerLink]="['/contact-us']"
                                         routerLinkActive="router-link-active">Contact Us</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" [routerLink]="['/faq']"
-                                        routerLinkActive="router-link-active">FAQ</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" 
+                                        [routerLink]="['/faq']"
+                                        routerLinkActive="router-link-active" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        FAQ
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-list" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" [routerLink]="['/faq/billing-faq']">Billing & Payments</a>
+                                            <a class="dropdown-item" [routerLink]="['/faq/booking-faq']">Bookings</a>
+                                            <a class="dropdown-item" [routerLink]="['/faq/services-faq']">Our Services</a>
+                                            <a class="dropdown-item" [routerLink]="['/faq/policies-faq']">Policies</a>
+                                            <a class="dropdown-item" [routerLink]="['/safety-faq']">Trust & Safety</a>
+                                            <a class="dropdown-item" [routerLink]="['/faq/urgent-issues-faq']">Urgent Issues</a>
+                                        </div>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" [routerLink]="['/booking']"
