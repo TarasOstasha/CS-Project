@@ -1,0 +1,83 @@
+@import '../../styles/colors'; // imported colors
+@import '../../styles/fonts'; // imported colors
+
+.pricing-wrapper {
+    .big-top-img-section {
+        position: relative;
+
+        .img {
+            img {
+                width: 100%;
+            }
+        }
+
+        .title {
+            .title();
+        }
+    }
+    .price-cards {
+        margin: 100px 0;
+        .example-card {
+            background: @blueColor;
+            max-width: 300px;
+            margin: 30px auto;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+            transition: all ease 0.3s;
+            //padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            mat-card-title {
+                color: @whiteColor;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 10px 0;
+                transition: .5s;
+            }
+            mat-card-subtitle {
+                text-align: center;
+                font-weight: bold;
+                color: @whiteColor;
+                transition: .5s;
+            }
+            p {
+                text-align: center;
+                color: @whiteColor;
+                text-transform: capitalize;
+                transition: .5s;
+            }
+            button {
+                border: 2px solid @whiteColor;
+                text-transform: uppercase;
+                color: @whiteColor;
+                font-size: 18px;
+                margin-bottom: 20px; 
+                transition: .5s;
+            }
+            
+        }
+        .example-card:hover {
+            opacity: 1;
+            transform: translateY(-15px);
+            background: -moz-linear-gradient(-45deg, #ffffff 15%, #0bb8e3 100%);
+            background: -webkit-linear-gradient(-45deg, #ffffff 15%,#0bb8e3 100%);
+            background: linear-gradient(135deg, #ffffff 15%,#0bb8e3 100%);   
+            mat-card-title {
+                color: #066982;   //@blackColor;
+            }
+            mat-card-subtitle {
+                color: #066982;
+            }
+            p {
+                color: #066982;
+            }
+            button {
+                color: #066982;
+                border-color: #066982;
+            }            
+        }
+    }
+   
+}

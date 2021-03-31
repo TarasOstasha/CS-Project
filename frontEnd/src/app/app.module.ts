@@ -52,6 +52,7 @@ import { UrgentIssuesComponent } from './pages/faq-pages/urgent-issues/urgent-is
 import { FaqServicesComponent } from './pages/faq-pages/faq-services/faq-services.component';
 import { FaqBookingComponent } from './pages/faq-pages/faq-booking/faq-booking.component';
 import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.component';
+import { OfficeFormComponent } from './parts/office-form/office-form.component';
 // other material modules
 //import { MatCarouselModule } from '@ngmodule/material-carousel';
 
@@ -83,7 +84,8 @@ import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.c
     UrgentIssuesComponent,
     FaqServicesComponent,
     FaqBookingComponent,
-    FaqBillingComponent
+    FaqBillingComponent,
+    OfficeFormComponent
   ],
   imports: [
     BrowserModule,

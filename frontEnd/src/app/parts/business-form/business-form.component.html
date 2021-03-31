@@ -32,6 +32,13 @@
                         *ngIf="businessBookForm.errors?.required || businessBookForm.get('phone')?.invalid">
                         Not Valid</mat-error>
                 </mat-form-field>
+                <mat-form-field appearance="fill" style="width:100%">
+                        <mat-label>Full Address</mat-label>
+                        <input matInput formControlName="address" placeholder="8 Jackson Ave, Los Angeles 08765" required>
+                        <mat-error
+                            *ngIf="businessBookForm.errors?.required || businessBookForm.get('address')?.invalid">
+                            Not Valid</mat-error>
+                    </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Zip Code</mat-label>
                     <input matInput formControlName="zip_code" placeholder="00000" (keyup)="checkZipCode($event)" required>

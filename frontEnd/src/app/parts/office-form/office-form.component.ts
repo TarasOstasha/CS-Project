@@ -7,17 +7,15 @@ import { Router } from '@angular/router';
 
 import { pipe, Subject, Subscription, of } from 'rxjs';
 import { map, debounceTime } from 'rxjs/operators';
-
-
-
 @Component({
-  selector: 'app-business-form',
-  templateUrl: './business-form.component.html',
-  styleUrls: ['./business-form.component.less']
+  selector: 'app-office-form',
+  templateUrl: './office-form.component.html',
+  styleUrls: ['./office-form.component.less']
 })
-export class BusinessFormComponent implements OnInit {
+export class OfficeFormComponent implements OnInit {
 
-  businessBookForm!: FormGroup;
+  
+  officeBookForm!: FormGroup;
   quickBook: any = {
     approx_SF: {
       items: [
@@ -55,6 +53,13 @@ export class BusinessFormComponent implements OnInit {
     zip_code: '',
     email: '',
     phone: '',
+    time: {
+      items: [
+       { title: 'Morning' },
+       { title: 'Day' },
+       { title: 'Night' }
+      ]
+    }
   };
 
   constructor(
@@ -65,7 +70,7 @@ export class BusinessFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.businessBookForm = this._formBuilder.group({
+    this.officeBookForm = this._formBuilder.group({
       company_name: [''],
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
@@ -73,13 +78,14 @@ export class BusinessFormComponent implements OnInit {
       address: ['',[Validators.required]],
       zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
       approx_SF: ['', [Validators.required]],
+      time: ['', [Validators.required]],
       frequency: ['', [Validators.required]]
     });
     
   }
 
-  sendBusinessForm() {
-    this._form.sendBusinessDataForm(this.businessBookForm.value);
+  sendOfficeForm() {
+    this._form.sendOfficeDataForm(this.officeBookForm.value);
     this.router.navigate(['/booking']);
   }
 
@@ -115,6 +121,5 @@ export class BusinessFormComponent implements OnInit {
 
 
   
-
 
 }
