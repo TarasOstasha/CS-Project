@@ -20,6 +20,10 @@ export class BookingComponent implements OnInit, OnChanges {
   form!: FormGroup;
   isEditable = false;
 
+  createItems(amount: number) {
+    const arr = Array.from({ length: amount }, (v, k) => k + 1);
+    return arr.map((el) => ({ title: el }))
+  }
   stepper: any = {
     // step - 1
     checkedGroup: '',
@@ -52,19 +56,21 @@ export class BookingComponent implements OnInit, OnChanges {
     zip_code: '',
     email: '',
     bedrooms: {
-      items: [
-        { title: '1' },
-        { title: '... shoud be all ...' },
-        { title: '19' },
-      ]
+      items: this.createItems(20)
+      //  [
+      //   { title: '1' },
+      //   { title: '... shoud be all ...' },
+      //   { title: '19' },
+      // ]
     },
     date: '',
     bathrooms: {
-      items: [
-        { title: '1' },
-        { title: '... shoud be all ...' },
-        { title: '19' },
-      ]
+      items: this.createItems(20)
+      // items: [
+      //   { title: '1' },
+      //   { title: '... shoud be all ...' },
+      //   { title: '19' },
+      // ]
     },
     select_times: {
       items: [
@@ -209,7 +215,7 @@ export class BookingComponent implements OnInit, OnChanges {
     return this.form.controls['frequency'].value;
   }
 
-  get checkedGroup(){
+  get checkedGroup() {
     return this.form.controls['checkedGroup'].value;
 
   }
@@ -261,7 +267,7 @@ export class BookingComponent implements OnInit, OnChanges {
       );
   }
 
-  cheakFormGroup(groupName: any){
+  cheakFormGroup(groupName: any) {
     this.form.controls['checkedGroup'].setValue(groupName);
   }
 
