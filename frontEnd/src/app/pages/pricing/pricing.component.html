@@ -5,13 +5,25 @@
             <img src="../../../../assets/images/services/service-page/regular-cleaning__.png" alt="">
         </div>
         <div class="title">
-            <h1>Crystal system cleaning services prices</h1>
+            <h1>Crystal System Cleaning services Rates/Prices</h1>
+            <p>
+                We offer simple flat/ house pricing based on the size of the home and the number of bedrooms.
+            </p>
         </div>
     </div>
     <div class="price-cards">
         <div class="container">
+            <div class="child-service-info">
+                <p>
+                    <span>All flat/ house rate pricing includes your bedroom(s), one (1) bathroom, kitchen, and common areas. </span>
+                    <span>Each additional bathroom is $30. We offer our hourly package for any Custom Jobs, Large Apartments/Homes, and Offices. </span>
+                    <span>No surprises! If you need a custom office cleaning you can get an office cleaning quote <a routerLink="/services/office-cleaning">here</a>.</span>
+                </p>
+            </div>
+            <!-- <app-office-form></app-office-form> -->
             <div class="row">
-                <mat-card routerLink="/booking" class="example-card col-4 col-md-4 col-lg-4" *ngFor="let card of priceCard.items">
+                <mat-card routerLink="/booking" class="example-card col-4 col-md-4 col-lg-4"
+                    *ngFor="let card of priceCard.items">
                     <mat-card-header>
                         <mat-card-title>{{ card.type }}</mat-card-title>
                         <mat-card-subtitle>{{ card.price  }}</mat-card-subtitle>
