@@ -57,21 +57,11 @@ export class BookingComponent implements OnInit, OnChanges {
     zip_code: '',
     email: '',
     bedrooms: {
-      items: this.createItems(20)
-      //  [
-      //   { title: '1' },
-      //   { title: '... shoud be all ...' },
-      //   { title: '19' },
-      // ]
+      items: this.createItems(20), // -> from 1 to 20: [{ title: '1' }, { title: n }]
     },
     date: '',
     bathrooms: {
-      items: this.createItems(20)
-      // items: [
-      //   { title: '1' },
-      //   { title: '... shoud be all ...' },
-      //   { title: '19' },
-      // ]
+      items: this.createItems(20) // -> from 1 to 20: [{ title: '1' }, { title: n }]
     },
     select_times: {
       items: [
