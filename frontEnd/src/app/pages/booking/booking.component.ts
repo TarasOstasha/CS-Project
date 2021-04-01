@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
 import { FormService } from '../../services/form.service';
-
 const log = console.log;
 
 @Component({
@@ -24,7 +23,6 @@ export class BookingComponent implements OnInit, OnChanges {
 
   form!: FormGroup;
   isEditable = false;
-
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -150,7 +148,6 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     log('ngOnInit');
-
     this.form = this._formBuilder.group({
       checkedGroup: ['residential'],
       property_type: ['', Validators.required],
@@ -217,6 +214,7 @@ export class BookingComponent implements OnInit, OnChanges {
       total
     }
   }
+
   percentage(percent: number, total: number) {
     return +((total / 100) * percent).toFixed(2)
   }
@@ -285,6 +283,7 @@ export class BookingComponent implements OnInit, OnChanges {
   showMe(elm: any) {
     log(elm);
   }
+
 }
 
 
