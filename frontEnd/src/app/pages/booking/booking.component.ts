@@ -24,7 +24,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   form!: FormGroup;
   isEditable = false;
-  
+
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -205,15 +205,20 @@ export class BookingComponent implements OnInit, OnChanges {
     this.cdr.detectChanges();
   }
 
-  get calculatePipe(){
+  get calculatePipe() {
     const bedrooms = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value
     const bathrooms = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value
-
+    const subtotal = this.standard + bedrooms + bathrooms;
+    const tax = this.percentage(this.tax, subtotal);
+    const total = subtotal + tax;
     return {
-      subtotal: this.standard + bedrooms + bathrooms,
-      tax: 0,
-      total: 0
+      subtotal,
+      tax,
+      total
     }
+  }
+  percentage(percent: number, total: number) {
+    return +((total / 100) * percent).toFixed(2)
   }
 
   // crutches for material components: refresh the view of fields
