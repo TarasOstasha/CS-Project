@@ -58,10 +58,12 @@ export class BookingComponent implements OnInit, OnChanges {
     email: '',
     bedrooms: {
       items: this.createItems(20), // -> from 1 to 20: [{ title: '1' }, { title: n }]
+      price: 20
     },
     date: '',
     bathrooms: {
-      items: this.createItems(20) // -> from 1 to 20: [{ title: '1' }, { title: n }]
+      items: this.createItems(20), // -> from 1 to 20: [{ title: '1' }, { title: n }]
+      price: 30
     },
     select_times: {
       items: [
@@ -199,8 +201,9 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   get calculatePipe(){
+    const bedrooms = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value
     return {
-      subtotal: 0,
+      subtotal: bedrooms,
       tax: 0,
       total: 0
     }
