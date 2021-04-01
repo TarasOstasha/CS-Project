@@ -202,8 +202,10 @@ export class BookingComponent implements OnInit, OnChanges {
 
   get calculatePipe(){
     const bedrooms = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value
+    const bathrooms = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value
+
     return {
-      subtotal: bedrooms,
+      subtotal: bedrooms + bathrooms,
       tax: 0,
       total: 0
     }
