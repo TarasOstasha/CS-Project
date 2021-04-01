@@ -796,9 +796,22 @@
                                         <div class="summary">
                                             <h1>BOOKING SUMMARY</h1>
                                             <mat-divider></mat-divider>
-                                            <i class="fas fa-home"></i>
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <i class="fas fa-history"></i>
+                                            <div class="sum-row">
+                                                <i class="fas fa-home"></i>
+                                                <span class="sum-row-left">1 Bed / 2 Bath</span>
+                                                <span class="sum-row-right">$$$</span>
+                                            </div>
+                                            <div class="sum-row">
+                                                <i class="fas fa-calendar-alt">
+                                                </i>
+                                                <span class="sum-row-left">{{date | date: 'dd/MM/yyyy'}} @{{select_times}}</span>
+                                                <span class="sum-row-right"></span>
+                                            </div>
+                                            <div class="sum-row">
+                                                <i class="fas fa-history"></i>
+                                                <span class="sum-row-left">{{frequency}}</span>
+                                                <span class="sum-row-right"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

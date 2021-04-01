@@ -228,7 +228,14 @@ export class BookingComponent implements OnInit, OnChanges {
 
   get checkedGroup() {
     return this.form.controls['checkedGroup'].value;
+  }
 
+  get date() {
+    return this.form.controls['date'].value;
+  }
+
+  get select_times() {
+    return this.form.controls['select_times'].value;
   }
 
   goBack(stepperDOM: MatStepper) {
