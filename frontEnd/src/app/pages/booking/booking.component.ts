@@ -226,6 +226,14 @@ export class BookingComponent implements OnInit, OnChanges {
     return this.form.controls['frequency'].value;
   }
 
+  get bedrooms() {
+    return this.form.controls['bedrooms'].value;
+  }
+
+  get bathrooms() {
+    return this.form.controls['bathrooms'].value;
+  }
+
   get checkedGroup() {
     return this.form.controls['checkedGroup'].value;
   }
