@@ -17,9 +17,14 @@ const log = console.log;
 export class BookingComponent implements OnInit, OnChanges {
   @ViewChild('stepperDOM') stepperDOM!: MatStepper;
 
+  // ----------------------------------------------------------------------------------------------------------------- OPTIONS BEGIN
+  tax: number = 8.875; //%
+  standard: number = 70; //;
+  // ----------------------------------------------------------------------------------------------------------------- OPTIONS END
+
   form!: FormGroup;
   isEditable = false;
-  tax: number = 8.875; //%
+  
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -205,7 +210,7 @@ export class BookingComponent implements OnInit, OnChanges {
     const bathrooms = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value
 
     return {
-      subtotal: bedrooms + bathrooms,
+      subtotal: this.standard + bedrooms + bathrooms,
       tax: 0,
       total: 0
     }
