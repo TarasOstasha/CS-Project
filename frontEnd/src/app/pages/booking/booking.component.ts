@@ -19,6 +19,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   form!: FormGroup;
   isEditable = false;
+  tax: number = 8.875; //%
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -97,7 +98,6 @@ export class BookingComponent implements OnInit, OnChanges {
         { value: 'wall', color: '#dfe9f3', text: 'Interior Walls' },
         { value: 'pet', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
         // { value: 'oven', color: '#dfe9f3', text: 'Hour(s) of Organizing' },
-
         // { value: 'oven', color: '#dfe9f3', text: 'Laundry wash & dry' },
         // { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
         // { value: 'refrigerator', color: '#dfe9f3', text: 'Refrigerator' },
@@ -176,12 +176,10 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_refrigerator: [''],
       extras_oven: [''],
       extras_cabinet: [''],
-
       extras_washer: [''],
       extras_window: [''],
       extras_wall: [''],
       extras_pet: [''],
-
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       city: [''],
@@ -208,6 +206,14 @@ export class BookingComponent implements OnInit, OnChanges {
     log('ngAfterViewInit');
     this.stepperDOM.selectedIndex = 3;
     this.cdr.detectChanges();
+  }
+
+  get calculatePipe(){
+    return {
+      subtotal: 0,
+      tax: 0,
+      total: 0
+    }
   }
 
   // crutches for material components: refresh the view of fields
