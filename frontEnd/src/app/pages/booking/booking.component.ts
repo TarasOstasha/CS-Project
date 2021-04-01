@@ -203,9 +203,11 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   get calculatePipe() {
-    const bedrooms = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value
-    const bathrooms = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value
-    const subtotal = this.standard + bedrooms + bathrooms;
+    const bedrooms: number = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value;
+    const bathrooms: number = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value;
+    const frequency: string =  this.form.controls['frequency'].value;
+    let subtotal: number = bedrooms + bathrooms;
+    if (frequency == 'One Time') subtotal += this.standard;
     const tax = this.percentage(this.tax, subtotal);
     const total = subtotal + tax;
     return {
