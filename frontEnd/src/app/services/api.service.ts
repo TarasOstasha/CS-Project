@@ -9,7 +9,8 @@ import { Review } from '../interfaces/review-data.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private url = 'http://localhost:3000/';
+  //private url = 'http://localhost:3000/';
+  private url = '';
 
 
   constructor(private _http: HttpClient) { }
