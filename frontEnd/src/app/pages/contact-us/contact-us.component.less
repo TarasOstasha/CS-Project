@@ -1,0 +1,227 @@
+@import '../../styles/colors'; // imported colors
+@import '../../styles/fonts'; // imported colors
+
+.about-us-wrapper {
+    .big-top-img-section {
+        position: relative;
+
+        .img {
+            img {
+                width: 100%;
+            }
+        }
+
+        .title {
+            .title();
+            left: 30%;
+        }
+    }
+
+    .main-content {
+        margin: 100px 0;
+
+        h2 {
+            .fftitle();
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        p {
+            .ffbasic();
+            text-align: justify;
+        }
+
+        .working-area {
+            li {
+                list-style: none;
+                .ffbasic();
+
+                i {
+                    margin-right: 5px;
+                    font-size: 16px;
+                    color: @blueColor;
+                }
+            }
+
+        }
+
+        .choose-us {
+            .row {
+                margin: 0;
+            }
+            .ffbasic();
+            background: @blueColor;
+            background-image: url('../../../assets/images/patern-0bb8e3.jpg');
+            text-align: center;
+            .about-us-img {
+                img {
+                    //width: 100%;
+                }
+            }
+            .text-wrapper {
+                padding: 25px 15px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                h2 {
+                    color: @whiteColor;
+                }
+                .list {
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    li {
+                        list-style: none;
+                        text-align-last: left;
+                        padding: 5px 0;
+                        color: @whiteColor;
+                        img {
+                            width: 50px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Reviews
+        #reviews {
+            padding: @h1_padding 0;
+
+            mat-carousel {
+                background: transparent;
+            }
+
+            .title {
+                text-align: center;
+                padding-bottom: @h1_padding;
+
+                h2 {
+                    .h1();
+                }
+            }
+
+            .slider {
+
+                .slide {
+                    box-sizing: border-box;
+                    padding: 0 10px;
+
+                    div {
+                        strong {
+                            padding: 15px;
+                            .fftitle();
+                        }
+
+                        p {
+                            padding: 15px;
+                            margin: 15px 0;
+                            background: @blueColor;
+                            border-radius: 10px;
+                            .ffbasic();
+                            color: @whiteColor;
+                        }
+                    }
+
+                    .user-mark {
+                        display: flex;
+                        align-items: center;
+                        padding-left: 10px;
+                        //justify-content: flex-end;
+
+                        .date,
+                        .name,
+                        .rating {
+                            .ffbasic();
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        .rating {
+                            i {
+                                color: @blueColor;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .write-review {
+                margin: 25px 0;
+
+                mat-form-field {
+                    width: 100%;
+                }
+
+                .star-review {
+                    position: relative;
+
+                    .my-icon-star {
+                        font-size: 21px;
+                    }
+
+                    .black-stars {
+                        position: absolute;
+                        ///width:75px;
+                        display: flex;
+                    }
+
+                    .yellow-stars {
+                        position: absolute;
+                        top: 0;
+                    }
+                }
+
+                .review-btn {
+                    text-align: right;
+                }
+            }
+        }
+        .social-media {
+            ul {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                .facebook {
+                    list-style: none;
+                    margin: 10px;
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    border-radius: 40px;
+                    font-size: 30px;
+                    line-height: 30px;
+                    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                    a {
+                        color: #3b5998;
+                    }
+                }
+                .instagram {
+                    list-style: none;
+                    margin: 10px;
+                    display: inline-block;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    border-radius: 40px;
+                    font-size: 30px;
+                    line-height: 30px;
+                    vertical-align: middle;
+                    background: #d6249f;
+                    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+                    //box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+                    box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+                    a {
+                        color: #fff; 
+                    }
+                }
+            }
+            
+        }
+    }
+}

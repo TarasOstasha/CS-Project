@@ -1,1 +1,196 @@
-<p>contact-us works!</p>
+<app-header></app-header>
+<div class="about-us-wrapper">
+    <div class="big-top-img-section">
+        <div class="img">
+            <img src="../../../../assets/images/services/service-page/regular-cleaning__.png" alt="">
+        </div>
+        <div class="title">
+            <h1>About Us</h1>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <div class="row" style="margin-bottom:100px;">
+                <div class="col-6">
+                    <h2>A FEW WORDS ABOUT US</h2>
+                    <p>
+                        We are on a mission of keeping your space fresh and clean. Whether you are a residential
+                        homeowner or a commercial business owner, we believe that the cleanliness of your space makes
+                        great impact in your quality of life or performance. A clean office creates a good first
+                        impression for your clients and enhances productivity, and a clean home gives you peace of mind
+                        after a long day of work.
+                        We are hold a huge appreciation towards our relationships with our clients and are passionate
+                        about realizing their cleanly vision into a reality. By choosing Crystal System Cleaning
+                        services, we guarantee a difference in customer service and performance unmatched by our
+                        competitors. We will work for you until you are satisfied!
+                    </p>
+                </div>
+                <div class="col-6">
+                    <h2>Where Crystal System Cleaning Working?</h2>
+                    <ul class="working-area">
+                        <li><i class="fas fa-map-marker-alt"></i> Brooklyn</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Manhattan</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Queens</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Bronx</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Staten Island (several areas)</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New Jersey (several areas)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>    
+        <div class="choose-us" style="margin-bottom:100px;">
+            <div class="row">
+                <div class="col-6" style="padding:0;">
+                    <div class="about-us-img">
+                        <img src="../../../assets/images/about-us.jpg" alt="about-us">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="text-wrapper">
+                        <h2>Why Crystal System Cleaning?</h2>
+                        <ul class="list">
+                            <li>
+                                <img src="../../../assets/images/about-us/experience.png" alt="Experienced & Professional">
+                                <span>Experienced & Professional</span>
+                            </li>
+                            <li>
+                               <img src="../../../assets/images/about-us/reference.png" alt="Reference checked"> 
+                                <span>Reference checked</span>
+                            </li>
+                            <li>
+                                <img src="../../../assets/images/about-us/interviwed.png" alt="Interviewed in-person">
+                                <span>Interviewed in-person</span>
+                            </li>
+                            <li>
+                                <img src="../../../assets/images/about-us/arrive.png" alt="Arrive on time">
+                                <span>Arrive on time</span>
+                            </li>
+                            <li>
+                                <img src="../../../assets/images/about-us/honest.png" alt="Honest and Dependable">
+                                <span>Honest and Dependable</span>
+                            </li>
+                            <li>
+                                <img src="../../../assets/images/about-us/improving.png" alt="Always improving">
+                                <span>Always improving</span>
+                            </li>
+                            <li>
+                                <img src="../../../assets/images/about-us/insurance.png" alt="Insured / Bonded">
+                                <span>Insured / Bonded</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">   
+            <div class="reviews">
+                <section id="reviews">
+                    <div class="container">
+                        <div class="title">
+                            <h2>Our Reviews</h2>
+                        </div>
+                        <div class="slider">
+                            <div class="slide" *ngFor="let review of myReviewsArr">
+                                <div>
+                                    <!-- {{ myReviewsArr | json }} -->
+                                    <strong>{{ review.grade }}</strong>
+                                    <p>{{ review.message }}</p>
+                                </div>
+                                <div class="user-mark">
+                                    <div class="date">
+                                        {{ review.created | date: 'MM/dd/yyyy' }}
+                                    </div>
+                                    <div class="name">
+                                        &nbsp;{{ review.name | uppercase }}
+                                    </div>
+                                    <div class="rating" [style.width.px]=" review.stars * 18.4 ">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <!-- {{ review.stars }} -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="write-review">
+                            <form [formGroup]="experienceForm" (ngSubmit)="saveReview()">
+                                <mat-expansion-panel [expanded]="panelOpenState" (click)="openPanel()">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            Leave Review
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Tell Us About Your Experience</mat-label>
+                                            <mat-select formControlName="experience"
+                                                (selectionChange)="selectedExperience()" required>
+                                                <mat-option *ngFor="let experience of experiences"
+                                                    [value]="experience.value">
+                                                    <span>{{ experience.value }}</span>
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error
+                                                *ngIf="experienceForm.errors?.required || experienceForm.get('experience')?.invalid">
+                                                This Is Required</mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Your Name</mat-label>
+                                            <input matInput type="text" formControlName="name" required>
+                                            <mat-error
+                                                *ngIf="experienceForm.errors?.required || experienceForm.get('name')?.invalid">
+                                                Minimum Two Symbols </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Review</mat-label>
+                                            <textarea matInput formControlName="myTextArea" required></textarea>
+                                            <mat-error
+                                                *ngIf="experienceForm.errors?.required || experienceForm.get('myTextArea')?.invalid">
+                                                Minimum Twenty Symbols </mat-error>
+                                        </mat-form-field>
+                                    </p>
+                                    <p class="star-review">
+                                        <span class="black-stars" class="crop" [style.width.px]="starWidth"
+                                            [title]="rating">
+                                            <span style="width:118px;display:flex;">
+                                                <span style="color:#000;" *ngFor="let star of [1,2,3,4,5]"
+                                                    (click)="checkedStar(star);" class="fa fa-star my-icon-star"></span>
+                                            </span>
+                                        </span>
+                                        <span class="yellow-stars">
+                                            <app-star-rating [starWidth]="starWidth"
+                                                (ratingClicked)='onRatingClicked($event)'>
+                                            </app-star-rating>
+                                        </span>
+                                    </p>
+                                    <div class="review-btn">
+                                        <button type="submit" mat-raised-button
+                                            [disabled]="!experienceForm.valid || !clickedBtn">Send</button>
+                                    </div>
+                                </mat-expansion-panel>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="social-media">
+                <ul>
+                    <li class="facebook">
+                        <a href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        
+                    </li>
+                    <li class="instagram">
+                        <a href="">
+                            <i class="fab fa-instagram-square"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
