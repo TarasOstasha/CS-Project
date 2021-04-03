@@ -4,14 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { Review } from '../interfaces/review-data.model';
 
 
+if(location.hostname == 'localhost') var url = 'http://localhost'; //dev
+else var url = ''; //production
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   //private url = 'http://localhost:3000/';
-  private url = '';
-
+  //private url = '';
+ 
 
   constructor(private _http: HttpClient) { }
   
@@ -19,7 +21,8 @@ export class ApiService {
   sendReview(grade: string, name: string, message: string, star: number) {
     const reviewData: Review = { grade: grade, name: name, message, star: star };
     console.log(reviewData)
-    this._http.post( this.url + 'review', reviewData )
+    //this._http.post( this.url + 'review', reviewData )
+    this._http.post( url + 'review', reviewData )
       .subscribe(response => {
         console.log(response);
       })
@@ -33,7 +36,8 @@ export class ApiService {
   // }
 
   getReviews() {
-    return this._http.get( this.url + 'review' );
+    //return this._http.get( this.url + 'review' );
+    return this._http.get( url + 'review' );
   }
 
 
