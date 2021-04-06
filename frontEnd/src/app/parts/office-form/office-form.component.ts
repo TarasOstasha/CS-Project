@@ -13,7 +13,7 @@ import { map, debounceTime } from 'rxjs/operators';
   styleUrls: ['./office-form.component.less']
 })
 export class OfficeFormComponent implements OnInit {
-
+  errorFlag: boolean = false;
   
   officeBookForm!: FormGroup;
   quickBook: any = {
@@ -94,7 +94,8 @@ export class OfficeFormComponent implements OnInit {
   public zipObj: any;
   async checkZipCode(value: any) {
     try {
-      const zipCode = value.target.value.substr(1); // remove first symbol
+      console.log(value.target.value)
+      const zipCode = value.target.value;//.substr(1); // remove first symbol
       const where = encodeURIComponent(JSON.stringify({
         "US_Zip_Code": +zipCode
       }));
@@ -110,8 +111,25 @@ export class OfficeFormComponent implements OnInit {
       );
       
       const data = await response.json(); // Here you have the data that you need
-      //console.log(JSON.stringify(data, null, 2));
-      this.zipObj = data.results[0].County; //JSON.parse(data);
+      console.log(JSON.stringify(data, null, 2));
+      //this.zipObj = data.results[0].County; //JSON.parse(data); // if this.zipObj !== 'Hudson County' || this.zipObj !== 'New York County' || this.zipObj !== 'Bronx County' || this.zipObj !== 'Brooklyn' || this.zipObj !== 'Queens County' || this.zipObj !== 'Staten Island'
+
+      if(
+        data.results[0].County == 'Hudson County' || 
+        data.results[0].County == 'New York County' || 
+        data.results[0].County == 'Bronx County' || 
+        data.results[0].County == 'Brooklyn' || 
+        data.results[0].County == 'Queens County' || 
+        data.results[0].County == 'Staten Island'
+      ) {
+        console.log('there is a valid value');
+        this.zipObj = data.results[0].County; //JSON.parse(data); 
+        
+      } else {
+        this.errorFlag = true;
+        return
+      }
+      //console.log(this.zipObj);
     } catch (error) {
       //console.log(error);
     }

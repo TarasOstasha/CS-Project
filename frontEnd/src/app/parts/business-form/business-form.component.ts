@@ -88,7 +88,7 @@ export class BusinessFormComponent implements OnInit {
   public zipObj: any;
   async checkZipCode(value: any) {
     try {
-      const zipCode = value.target.value.substr(1); // remove first symbol
+      const zipCode = value.target.value;//.substr(1); // remove first symbol
       const where = encodeURIComponent(JSON.stringify({
         "US_Zip_Code": +zipCode
       }));

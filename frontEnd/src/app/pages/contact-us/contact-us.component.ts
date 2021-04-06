@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from '../../services/api.service';
 import { pipe, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -9,7 +9,9 @@ import { map } from 'rxjs/operators';
 declare var $: any;
 declare var jQuery: any;
 
-import { MatSnackBar } from '@angular/material/snack-bar';
+
+
+
 
 @Component({
   selector: 'app-contact-us',
