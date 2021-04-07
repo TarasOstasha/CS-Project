@@ -261,11 +261,11 @@
     }
   }
 
-  .big-box-right{
+  .big-box-right {
     padding-left: 1rem;
   }
 
-  .summary{
+  .summary {
     background: @blueColor;
     width: 20rem;
     height: 20rem;
@@ -276,8 +276,34 @@
     padding: 1rem;
     color: rgb(255 255 255);
     text-shadow: 2px 1px 2px rgb(0 0 0 / 10%), 2px 0px 2px rgb(0 0 0 / 18%);
+
     h1 {
       text-align: center;
+      margin: 0 0 .5rem 0;
+    }
+
+    .sum-row {
+      position: relative;
+        margin: .5rem 0 0 0;
+      .fas{
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .sum-row-left {
+        // margin: 0 0 0 .5rem;
+        position: relative;
+        left: 1.5rem;
+        div{
+          display: inline-block;
+        }
+      }
+
+      .sum-row-right {
+        display: inline-block;
+        position: absolute;
+        right: 1.5rem;
+      }
     }
   }
 }

@@ -306,7 +306,7 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   preventEmpty: any = (value: any) => (value == '') ? '-' : value; // for view fill '-' if ''
-  preventEmptyDate: any = (value: any) => (value == '') ? '-/-/-' : value; // for view fill of date '-/-/-' if ''
+  // preventEmptyDate: any = (value: any) => (value == '') ? '-/-/-' : value; // for view fill of date '-/-/-' if ''
 
 
 }
