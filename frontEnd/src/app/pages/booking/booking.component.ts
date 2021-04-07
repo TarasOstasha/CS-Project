@@ -186,9 +186,9 @@ export class BookingComponent implements OnInit, OnChanges {
       howDidYouHear: [''],
     });
 
-    setInterval(() => {
-      log(this.bedrooms);
-    }, 2000)
+    // setInterval(() => {
+    //   log(this.bedrooms);
+    // }, 2000)
 
     log('Can I GET FORM DATA& : ', this._form.formData);
     // set values
