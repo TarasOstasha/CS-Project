@@ -15,7 +15,9 @@
     "jade": "~1.11.0",
     "mongoose": "^5.12.0",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
