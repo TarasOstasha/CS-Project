@@ -186,6 +186,10 @@ export class BookingComponent implements OnInit, OnChanges {
       howDidYouHear: [''],
     });
 
+    setInterval(() => {
+      log(this.bedrooms);
+    }, 2000)
+
     log('Can I GET FORM DATA& : ', this._form.formData);
     // set values
     const keys = Object.keys(this._form.formData);
@@ -205,7 +209,7 @@ export class BookingComponent implements OnInit, OnChanges {
   get calculatePipe() {
     const bedrooms: number = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value;
     const bathrooms: number = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value;
-    const frequency: string =  this.form.controls['frequency'].value;
+    const frequency: string = this.form.controls['frequency'].value;
     let subtotal: number = bedrooms + bathrooms;
     if (frequency == 'One Time') subtotal += this.standard;
     const tax = this.percentage(this.tax, subtotal);
@@ -300,6 +304,10 @@ export class BookingComponent implements OnInit, OnChanges {
   showMe(elm: any) {
     log(elm);
   }
+
+  preventEmpty: any = (value: any) => (value == '') ? '-' : value; // for view fill '-' if ''
+  preventEmptyDate: any = (value: any) => (value == '') ? '-/-/-' : value; // for view fill of date '-/-/-' if ''
+
 
 }
 

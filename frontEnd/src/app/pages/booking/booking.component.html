@@ -798,19 +798,29 @@
                                             <mat-divider></mat-divider>
                                             <div class="sum-row">
                                                 <i class="fas fa-home"></i>
-                                                <span class="sum-row-left">{{bedrooms}} Bed / {{bathrooms}} Bath</span>
-                                                <span class="sum-row-right">$$$</span>
+                                                <span class="sum-row-left">
+                                                    {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
+                                                </span>
+                                                <span class="sum-row-right">
+                                                    $$$
+                                                </span>
                                             </div>
                                             <div class="sum-row">
                                                 <i class="fas fa-calendar-alt">
                                                 </i>
-                                                <span class="sum-row-left">{{date | date: 'dd/MM/yyyy'}} @{{select_times}}</span>
-                                                <span class="sum-row-right"></span>
+                                                <span class="sum-row-left">
+                                                    {{date | date: 'dd/MM/yyyy'}} @{{preventEmptyDate(select_times)}}
+                                                </span>
+                                                <span class="sum-row-right">
+                                                </span>
                                             </div>
                                             <div class="sum-row">
                                                 <i class="fas fa-history"></i>
-                                                <span class="sum-row-left">{{frequency}}</span>
-                                                <span class="sum-row-right"></span>
+                                                <span class="sum-row-left">
+                                                    {{preventEmpty(frequency)}}
+                                                </span>
+                                                <span class="sum-row-right">
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
