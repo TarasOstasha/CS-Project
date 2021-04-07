@@ -798,20 +798,47 @@
                                             <mat-divider></mat-divider>
                                             <div class="sum-row">
                                                 <i class="fas fa-home"></i>
-                                                <span class="sum-row-left">{{bedrooms}} Bed / {{bathrooms}} Bath</span>
-                                                <span class="sum-row-right">$$$</span>
+                                                <span class="sum-row-left">
+                                                    {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
+                                                </span>
+                                                <span class="sum-row-right">
+                                                    $$$
+                                                </span>
                                             </div>
                                             <div class="sum-row">
                                                 <i class="fas fa-calendar-alt">
                                                 </i>
-                                                <span class="sum-row-left">{{date | date: 'dd/MM/yyyy'}} @{{select_times}}</span>
-                                                <span class="sum-row-right"></span>
+                                                <span class="sum-row-left">
+                                                    <div *ngIf="date == ''">
+                                                        -/-/-
+                                                    </div>
+                                                    <div *ngIf="date != ''">
+                                                        {{date | date: 'dd/MM/yyyy'}}
+                                                    </div>
+                                                    @ {{preventEmpty(select_times)}}
+                                                </span>
+
+                                                <span class="sum-row-right">
+                                                </span>
                                             </div>
                                             <div class="sum-row">
                                                 <i class="fas fa-history"></i>
-                                                <span class="sum-row-left">{{frequency}}</span>
-                                                <span class="sum-row-right"></span>
+                                                <span class="sum-row-left">
+                                                    {{preventEmpty(frequency)}}
+                                                </span>
+                                                <span class="sum-row-right">
+                                                </span>
                                             </div>
+                                            <mat-divider></mat-divider>
+                                            <div class="sum-row">
+                                                <span class="sum-row-left">
+                                                    Weekly Total:
+                                                </span>
+                                                <span class="sum-row-right">
+                                                    $$$
+                                                </span>
+                                            </div>
+                                            <h1></h1>
                                         </div>
                                     </div>
                                 </div>
