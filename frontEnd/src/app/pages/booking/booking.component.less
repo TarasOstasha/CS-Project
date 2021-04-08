@@ -209,11 +209,18 @@
       }
 
       .counter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         position: absolute;
         top: .5rem;
-        right: .5rem;
+        right: -.2rem;
 
-        .number {}
+        .number {
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: #1976d2;
+        }
 
         .btns {
           display: flex;
@@ -223,6 +230,7 @@
             padding: 0 !important;
             background: rgb(14 184 226);
             color: rgb(255 255 255);
+
             &:focus {
               outline: none;
             }
@@ -231,12 +239,19 @@
           .mat-icon-button {
             width: 1.5rem;
             height: 1.5rem;
+            box-shadow: 0px 3px 5px rgb(0 0 0 / 22%), 2px 3px 4px rgb(0 0 0 / 16%);
+            margin: .5rem 0 0 0;
+            transition: .3s;
+
+            &:active {
+              box-shadow: 0px 0px 0px rgb(0 0 0 / 22%), 0px 0px 0px rgb(0 0 0 / 16%);
+
+            }
           }
 
           .mat-icon {
             font-size: 1rem;
-            line-height: .5rem;
-            
+            line-height: .4rem;
           }
         }
       }
