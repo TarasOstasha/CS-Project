@@ -90,10 +90,10 @@
                                     <div class="inner-box inner-box-right">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Approx SF</mat-label>
-                                                <mat-select formControlName="approx_SF">
+                                                <mat-label>sq.ft</mat-label>
+                                                <mat-select formControlName="sq_ft">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.approx_SF.items">
+                                                                *ngFor="let item of stepper.sq_ft.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -371,14 +371,17 @@
                             <mat-divider></mat-divider>
 
                             <section class="extras-blocks">
-                                <div *ngFor="let item of stepper.extras.items"
+                                <div (click)="event_hook2.click()"
+                                     *ngFor="let item of stepper.extras.items"
                                      class="extras-block">
-                                    <mat-checkbox #checkbox
+                                    <mat-checkbox (click)="stopPropagation( $event)"
+                                                  #checkbox
                                                   class="extras-checkbox"
                                                   formControlName="{{'extras_' + item.value}}">
+                                        <div #event_hook2></div>
                                     </mat-checkbox>
-                                    <div (click)="checkbox.checked = (checkbox.checked) ? false : true;"
-                                         [matRippleColor]="'rgb(0 0 0 / 10%)'"
+                                    <!-- (click)="checkbox.checked = (checkbox.checked) ? false : true;" -->
+                                    <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
                                          [matRippleDisabled]="false"
                                          class="ripple-container"
                                          matRipple
@@ -392,6 +395,28 @@
                                        class="recommended">
                                         <span class="text">Recommended</span>
                                     </p>
+
+                                    <div (click)="stopPropagation( $event)"
+                                         *ngIf="valueOf('extras_' + item.value)"
+                                         class="counter">
+                                        <div class="number">
+                                            {{item.amount}}
+                                        </div>
+                                        <div class="btns">
+                                            <button (click)="amount(item, '+')"
+                                                    aria-label="Example icon-button with a heart icon"
+                                                    mat-icon-button>
+                                                <mat-icon>add</mat-icon>
+                                            </button>
+                                            <button (click)="amount(item, '-')"
+                                                    aria-label="Example icon-button with a heart icon"
+                                                    mat-icon-button>
+                                                <mat-icon>remove</mat-icon>
+                                            </button>
+                                            <!-- <button mat-raised-button>+</button> -->
+                                            <!-- <button mat-raised-button>-</button> -->
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
 
