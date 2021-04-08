@@ -41,9 +41,9 @@ export class BookingComponent implements OnInit, OnChanges {
     frequency: {
       items: [
         { title: 'Weekly', color: '#1976d2', price: 123 }, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
-        { title: 'Biweekly', color: '#c62828', price: 139 },
-        { title: 'Monthly', color: '#c43e00', price: 156 },
-        { title: 'One Time', color: '#2e7d32', price: 160 },
+        { title: 'Biweekly', color: '#1976d2', price: 139 },
+        { title: 'Monthly', color: '#1976d2', price: 156 },
+        { title: 'One Time', color: '#1976d2', price: 160 },
       ]
     },
     sq_ft: {
