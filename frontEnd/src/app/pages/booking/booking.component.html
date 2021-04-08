@@ -393,14 +393,14 @@
                                         <span class="text">Recommended</span>
                                     </p>
 
-                                    <div class="counter">
-                                        <div class="number">7</div>
+                                    <div *ngIf="valueOf('extras_' + item.value)" class="counter">
+                                        <div class="number">{{item.amount}}</div>
                                         <div class="btns">
-                                            <button aria-label="Example icon-button with a heart icon"
+                                            <button (click)="amount(item, '+')" aria-label="Example icon-button with a heart icon"
                                                     mat-icon-button>
                                                 <mat-icon>add</mat-icon>
                                             </button>
-                                            <button aria-label="Example icon-button with a heart icon"
+                                            <button (click)="amount(item, '-')" aria-label="Example icon-button with a heart icon"
                                                     mat-icon-button>
                                                 <mat-icon>remove</mat-icon>
                                             </button>

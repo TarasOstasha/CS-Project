@@ -85,14 +85,14 @@ export class BookingComponent implements OnInit, OnChanges {
         // { value: 'move', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
         // { value: 'wash', color: '#eaf3fb', text: 'Hand Wash Dishes' },
         // { value: 'board', color: '#eaf3fb', text: 'Baseboards' },
-        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge' },
-        { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven' },
-        { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets' },
-        { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry' },
-        { value: 'window', color: '#dfe9f3', text: 'Windows' },
+        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1 },
+        { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven', amount: 1 },
+        { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets', amount: 1 },
+        { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry', amount: 1 },
+        { value: 'window', color: '#dfe9f3', text: 'Windows', amount: 1 },
+        { value: 'vacuum_sofa', color: '#dfe9f3', text: 'Vacuum the Sofa', amount: 1 },
         // { value: 'wall', color: '#dfe9f3', text: 'Interior Walls' },
         // { value: 'pet', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
-        { value: 'vacuum-sofa', color: '#dfe9f3', text: 'Vacuum the Sofa' },
         // { value: 'oven', color: '#dfe9f3', text: 'Hour(s) of Organizing' },
         // { value: 'oven', color: '#dfe9f3', text: 'Laundry wash & dry' },
         // { value: 'washer', color: '#dfe9f3', text: 'Inside oven' },
@@ -175,6 +175,7 @@ export class BookingComponent implements OnInit, OnChanges {
       extras_window: [''],
       extras_wall: [''],
       extras_pet: [''],
+      extras_vacuum_sofa: [''],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       city: [''],
@@ -309,6 +310,14 @@ export class BookingComponent implements OnInit, OnChanges {
   preventEmpty: any = (value: any) => (value == '') ? '-' : value; // for view fill '-' if ''
   // preventEmptyDate: any = (value: any) => (value == '') ? '-/-/-' : value; // for view fill of date '-/-/-' if ''
 
+  amount(item: any, _do: string) {
+    if (_do == '+') item.amount++;
+    if (_do == '-' && item.amount > 1) item.amount--;
+  }
+
+  valueOf(key: string){
+    return this.form.controls[key].value;
+  }
 
 }
 
