@@ -19,7 +19,8 @@
         padding: 40px 0;
         text-align: center;
         p {
-            .ffbasic();
+            .p();
+            //.ffbasic();
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,7 +32,7 @@
         margin: 50px 0 100px 0;
         .example-card {
             background: @blueColor;
-            max-width: 300px;
+            max-width: 310px;
             margin: 30px auto;
             cursor: pointer;
             box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
@@ -39,11 +40,12 @@
             //padding: 40px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between; //center;
             flex-direction: column;
             mat-card-title {
+                font-size: 20px;
                 color: @whiteColor;
-                text-transform: uppercase;
+                text-transform: capitalize;//uppercase;
                 text-align: center;
                 padding: 10px 0;
                 transition: .5s;
@@ -51,26 +53,34 @@
             mat-card-subtitle {
                 text-align: center;
                 font-weight: bold;
-                color: @whiteColor;
+                color: #066982;//@whiteColor;
                 transition: .5s;
-                font-size: 20px;
+                font-size: 25px;
             }
             p {
                 text-align: center;
                 color: @whiteColor;
-                text-transform: capitalize;
+                //text-transform: capitalize;
                 transition: .5s;
             }
             button {
                 border: 2px solid @whiteColor;
                 text-transform: uppercase;
-                color: @whiteColor;
-                font-size: 18px;
+                color: @blueColor;//@whiteColor;
+                background: @whiteColor;
+                font-size: 25px; //18px;
                 margin-bottom: 20px; 
                 transition: .5s;
             }
 
             
+        }
+        .example-card:last-child {
+            mat-card-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
         .example-card:hover {
             opacity: 1;
@@ -89,7 +99,9 @@
             }
             button {
                 color: #066982;
-                border-color: #066982;
+                border: 2px solid @whiteColor;
+                border-color: transparent;//#066982;
+                font-size: 25px;
             }            
         }
     }
