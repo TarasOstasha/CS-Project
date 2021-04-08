@@ -374,7 +374,8 @@
                                 <div (click)="event_hook2.click()"
                                      *ngFor="let item of stepper.extras.items"
                                      class="extras-block">
-                                    <mat-checkbox #checkbox
+                                    <mat-checkbox (click)="stopPropagation( $event)"
+                                                  #checkbox
                                                   class="extras-checkbox"
                                                   formControlName="{{'extras_' + item.value}}">
                                         <div #event_hook2></div>
