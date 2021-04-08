@@ -371,14 +371,16 @@
                             <mat-divider></mat-divider>
 
                             <section class="extras-blocks">
-                                <div *ngFor="let item of stepper.extras.items"
+                                <div (click)="event_hook2.click()"
+                                     *ngFor="let item of stepper.extras.items"
                                      class="extras-block">
                                     <mat-checkbox #checkbox
                                                   class="extras-checkbox"
                                                   formControlName="{{'extras_' + item.value}}">
+                                        <div #event_hook2>+++</div>
                                     </mat-checkbox>
-                                    <div (click)="checkbox.checked = (checkbox.checked) ? false : true;"
-                                         [matRippleColor]="'rgb(0 0 0 / 10%)'"
+                                    <!-- (click)="checkbox.checked = (checkbox.checked) ? false : true;" -->
+                                    <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
                                          [matRippleDisabled]="false"
                                          class="ripple-container"
                                          matRipple
@@ -393,14 +395,20 @@
                                         <span class="text">Recommended</span>
                                     </p>
 
-                                    <div *ngIf="valueOf('extras_' + item.value)" class="counter">
-                                        <div class="number">{{item.amount}}</div>
+                                    <div (click)="stopPropagation( $event)"
+                                         *ngIf="valueOf('extras_' + item.value)"
+                                         class="counter">
+                                        <div class="number">
+                                            {{item.amount}}
+                                        </div>
                                         <div class="btns">
-                                            <button (click)="amount(item, '+')" aria-label="Example icon-button with a heart icon"
+                                            <button (click)="amount(item, '+')"
+                                                    aria-label="Example icon-button with a heart icon"
                                                     mat-icon-button>
                                                 <mat-icon>add</mat-icon>
                                             </button>
-                                            <button (click)="amount(item, '-')" aria-label="Example icon-button with a heart icon"
+                                            <button (click)="amount(item, '-')"
+                                                    aria-label="Example icon-button with a heart icon"
                                                     mat-icon-button>
                                                 <mat-icon>remove</mat-icon>
                                             </button>

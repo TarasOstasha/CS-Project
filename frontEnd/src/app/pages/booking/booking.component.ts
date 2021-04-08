@@ -315,8 +315,12 @@ export class BookingComponent implements OnInit, OnChanges {
     if (_do == '-' && item.amount > 1) item.amount--;
   }
 
-  valueOf(key: string){
+  valueOf(key: string) {
     return this.form.controls[key].value;
+  }
+
+  stopPropagation(e: any) {
+    e.stopPropagation();
   }
 
 }
