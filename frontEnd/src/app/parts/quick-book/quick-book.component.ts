@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 
 import { FormService } from '../../services/form.service';
 import { quickBookForm } from '../../interfaces/quickForm-data.model';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-quick-book',
   templateUrl: './quick-book.component.html',
-  styleUrls: ['./quick-book.component.less']
+  styleUrls: ['./quick-book.component.less'],
+  encapsulation: ViewEncapsulation.None
 })
 export class QuickBookComponent implements OnInit {
   quickBookForm!: FormGroup;

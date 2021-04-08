@@ -83,7 +83,7 @@ export class MeveComponent implements OnInit {
 
   extraServices: any = [
     // { title: 'Garbage can inside/outside', price: '$20' },
-    { title: 'Windows inside', price: '$30/5' },
+    { title: 'Windows inside', price: '$30' },
     // { title: 'Baseboards', price: '$30' },
     { title: 'Vacuum sofa', price: '$30' },
     { title: 'Laundry', price: '$30' },

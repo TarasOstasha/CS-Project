@@ -26,12 +26,13 @@
         //max-width: 500px;
         //margin: 0 auto;
         p {
-            .ffbasic();
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            margin: 0;
+            // .ffbasic();
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            // flex-direction: column;
+            // margin: 0;
+            .p();
         }
     }
 
@@ -45,13 +46,17 @@
             margin-top: 50px;
 
             h2 {
-                .fftitle();
-                font-size: 30px;
-                text-transform: uppercase;
+                // .fftitle();
+                // font-size: 30px;
+                // text-transform: uppercase;
+                .h1();
             }
 
             p {
-                .ffbasic();
+                //.ffbasic();
+                .p();
+                max-width: 525px;
+                margin: 0 auto;
             }
         }
 
@@ -93,21 +98,23 @@
             }
             .extra-checklist-text {
                 background: @extraServicesColor;
-                padding: 150px 15px; //60px;
+                padding: 12% 0 14% 11%; //120px 15px; //60px;
                 position: absolute;
                 right: 10%;
-                top: 2.5%;
+                top: 3%; //2.5%;
                 z-index: 1;
 
                 mat-card-header {
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
+                    align-items: normal; //center;
 
                     .checkbox-group-name {
-                        //.fftitle();
-                        font-size: 18px;
+                        font-size: 20px; //18px;
+                        max-width: 150px;
                         border-bottom: 3px solid @blueColor;
+                        margin: 15px auto;
+                        text-align: center;
                     }
 
                     .checkbox-list {
@@ -140,7 +147,15 @@
             margin: 0;
             //display: block;
             .free-checkbox-group-name {
+                //border-bottom: 3px solid @blueColor;
+            }
+            .free-checkbox-group-name:after {
+                content: '';
                 border-bottom: 3px solid @blueColor;
+                position: absolute;
+                left: 22.5%;
+                width: 55%;
+                display: block;
             }
             .free-extra-checklist-text {
                 background: @extraServicesColor;

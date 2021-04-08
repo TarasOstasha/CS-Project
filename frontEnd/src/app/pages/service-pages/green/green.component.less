@@ -26,12 +26,15 @@
         //max-width: 500px;
         //margin: 0 auto;
         p {
-            .ffbasic();
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            margin: 0;
+            //.ffbasic();
+            .p();
+            max-width: 800px;
+            margin: 0 auto;
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            // flex-direction: column;
+            // margin: 0;
         }
     }
 
@@ -45,13 +48,17 @@
             margin-top: 50px;
 
             h2 {
-                .fftitle();
-                font-size: 30px;
-                text-transform: uppercase;
+                // .fftitle();
+                // font-size: 30px;
+                // text-transform: uppercase;
+                .h1();
             }
 
             p {
-                .ffbasic();
+                //.ffbasic();
+                .p();
+                max-width: 525px;
+                margin: 0 auto;
             }
         }
 
@@ -82,19 +89,23 @@
             //padding-bottom: @bottom_section_space;
             .extra-checklist-text {
                 position: relative;
-                padding: 90px;
-                display: flex;
-                align-items: flex-start; //flex-end;
-                flex-direction: column;
-
+                padding: 8% 0 8% 15%; //padding: 90px;
+                //display: flex;
+                //align-items: flex-start; //flex-end;
+                //flex-direction: column;
+                background: @extraServicesColor;
                 mat-card-header {
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
+                    //align-items: center;
 
                     .checkbox-group-name {
                         //.fftitle();
-                        font-size: 18px;
+                        font-size: 20px; //18px;
+                        max-width: 150px;
+                        border-bottom: 3px solid @blueColor;
+                        margin: 15px auto;
+                        text-align: center;
                     }
 
                     .checkbox-list {

@@ -26,7 +26,8 @@
         //max-width: 500px;
         //margin: 0 auto;
         p {
-            .ffbasic();
+            //.ffbasic();
+            .p();
             display: flex;
             align-items: center;
             justify-content: center;
@@ -45,18 +46,22 @@
             margin-top: 50px;
 
             h2 {
-                .fftitle();
-                font-size: 30px;
-                text-transform: uppercase;
+                //.fftitle();
+                .h1(); 
+                //font-size: 30px;
+                //text-transform: uppercase;
             }
 
             p {
-                .ffbasic();
+                //.ffbasic();
+                .p();
+                max-width: 525px;
+                margin: 0 auto;
             }
         }
 
         .checkbox-card {
-            margin: @bottom_section_space 0;
+            padding: @bottom_section_space 0;
 
             .checkbox-group-name {
                 .fftitle();
@@ -82,19 +87,23 @@
             //padding-bottom: @bottom_section_space;
             .extra-checklist-text {
                 position: relative;
-                padding: 90px;//80px;
-                display: flex;
-                align-items: flex-start;//flex-end;
+                padding: 8% 0 8% 15%; //90px;//80px;
+                //display: flex;
+                //align-items: flex-start;//flex-end;
                 flex-direction: column;
-
+                background: #e3f3f7;
                 mat-card-header {
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
+                    align-items: normal;
 
                     .checkbox-group-name {
                         //.fftitle();
-                        font-size: 18px;
+                        max-width: 150px;
+                        font-size: 20px;
+                        border-bottom: 3px solid @blueColor;
+                        margin: 15px auto;
+                        text-align: center;
                     }
 
                     .checkbox-list {
@@ -115,6 +124,7 @@
                             align-items: center;
                             justify-content: space-between;
                             width: 100%;
+                            text-transform: capitalize;
 
                             .item-price {
                                 padding-left: 5px;

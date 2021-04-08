@@ -94,6 +94,7 @@ export class DeepComponent implements OnInit {
     { title: 'Fridge inside/outside', price: '$30' },
     { title: 'Oven inside/outside', price: '$30' },
     { title: 'Cabinets inside/outside', price: '$30' },
+    { title: 'Windows inside', price: 30/5 },
     { title: 'Vacuum Sofa', price: '$30' },
     { title: 'Laundry', price: '$30' },
     // { title: 'Move in/out Package', price: '$140' },

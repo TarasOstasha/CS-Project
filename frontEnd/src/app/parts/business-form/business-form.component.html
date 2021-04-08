@@ -48,7 +48,7 @@
                         Not Valid (Please Call Us)</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Approx SF</mat-label>
+                    <mat-label>Sq.Ft</mat-label>
                     <mat-select formControlName="approx_SF" required>
                         <mat-option *ngFor="let item of quickBook.approx_SF.items" [value]="item.title">
                             {{ item.title }}
