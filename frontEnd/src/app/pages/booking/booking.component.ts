@@ -46,7 +46,7 @@ export class BookingComponent implements OnInit, OnChanges {
         { title: 'One Time', color: '#2e7d32', price: 160 },
       ]
     },
-    approx_SF: {
+    sq_ft: {
       items: [
         { title: 'Under 1000' },
         { title: '1000 - 1200' },
@@ -152,7 +152,7 @@ export class BookingComponent implements OnInit, OnChanges {
       checkedGroup: ['residential'],
       property_type: ['', Validators.required],
       frequency: ['', Validators.required,],
-      approx_SF: ['', Validators.required],
+      sq_ft: ['', Validators.required],
       zip_code: ['', Validators.required],
       email: ['', Validators.required],
       bedrooms: ['', Validators.required],
