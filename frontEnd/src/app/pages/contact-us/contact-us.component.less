@@ -21,20 +21,32 @@
         margin: 100px 0;
 
         h2 {
-            .fftitle();
-            font-size: 30px;
-            text-transform: uppercase;
+            .h1();
+            //.fftitle();
+            //font-size: 30px;
+            //text-transform: uppercase;
+        }
+        .title-h2:after {
+            content: '';
+            position: absolute;
+            border-bottom: 3px solid @blueColor;
+            width: 20%;
+            display: block;
+
         }
 
         p {
-            .ffbasic();
+            //.ffbasic();
+            .p();
             text-align: justify;
         }
 
         .working-area {
             li {
                 list-style: none;
-                .ffbasic();
+                //.ffbasic();
+                .p();
+                padding: 5px 0;
 
                 i {
                     margin-right: 5px;
@@ -100,6 +112,17 @@
 
                 h2 {
                     .h1();
+                }
+                span {
+                    position: relative;
+                }
+                span:after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    border-bottom: 3px solid @blueColor;
+                    width: 20%;
+                    display: block;
                 }
             }
 

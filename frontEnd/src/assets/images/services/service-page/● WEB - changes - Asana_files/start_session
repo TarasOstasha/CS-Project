@@ -1,0 +1,1 @@
+server_globals=(function() {return Deserializer.create().INSECURE_thaw({"S":"C","C":"Map","D":[["error_id","21 giant fish shrink hastily"]]});})()
