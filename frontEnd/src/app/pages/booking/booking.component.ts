@@ -311,8 +311,10 @@ export class BookingComponent implements OnInit, OnChanges {
   // preventEmptyDate: any = (value: any) => (value == '') ? '-/-/-' : value; // for view fill of date '-/-/-' if ''
 
   amount(item: any, _do: string) {
-    if (_do == '+') item.amount += 10;
-    if (_do == '-' && item.amount > 10) item.amount -= 10;
+    // if (_do == '+') item.amount += 10;
+    // if (_do == '-' && item.amount > 10) item.amount -= 10;
+    if (_do == '+') item.amount++;
+    if (_do == '-' && item.amount > 1) item.amount--;
   }
 
   valueOf(key: string) {
