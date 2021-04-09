@@ -396,12 +396,13 @@
                                         <span class="text">Recommended</span>
                                     </p>
 
+                                    <div class="number" *ngIf="valueOf('extras_' + item.value)">
+                                        {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} - {{(item.amount-1)*10+10}}
+                                    </div>
+
                                     <div (click)="stopPropagation( $event)"
                                          *ngIf="valueOf('extras_' + item.value)"
                                          class="counter">
-                                        <div class="number">
-                                            {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} - {{(item.amount-1)*10+10}}
-                                        </div>
                                         <div class="btns">
                                             <button (click)="amount(item, '+')"
                                                     aria-label="Example icon-button with a heart icon"
