@@ -400,7 +400,7 @@
                                          *ngIf="valueOf('extras_' + item.value)"
                                          class="counter">
                                         <div class="number">
-                                            {{item.amount}}
+                                            {{item.amount}} - {{item.amount+10}}
                                         </div>
                                         <div class="btns">
                                             <button (click)="amount(item, '+')"
@@ -417,6 +417,8 @@
                                             <!-- <button mat-raised-button>-</button> -->
                                         </div>
                                     </div>
+
+                                    <div class="price">$ {{item.price}}</div>
                                 </div>
                             </section>
 

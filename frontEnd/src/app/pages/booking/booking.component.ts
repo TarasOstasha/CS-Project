@@ -85,12 +85,12 @@ export class BookingComponent implements OnInit, OnChanges {
         // { value: 'move', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
         // { value: 'wash', color: '#eaf3fb', text: 'Hand Wash Dishes' },
         // { value: 'board', color: '#eaf3fb', text: 'Baseboards' },
-        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1 },
-        { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven', amount: 1 },
-        { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets', amount: 1 },
-        { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry', amount: 1 },
-        { value: 'window', color: '#dfe9f3', text: 'Windows', amount: 1 },
-        { value: 'vacuum_sofa', color: '#dfe9f3', text: 'Vacuum the Sofa', amount: 1 },
+        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1, price: 30 },
+        { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven', amount: 1, price: 30 },
+        { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets', amount: 1, price: 30 },
+        { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry', amount: 1, price: 30 },
+        { value: 'window', color: '#dfe9f3', text: 'Windows', amount: 1, price: 30 },
+        { value: 'vacuum_sofa', color: '#dfe9f3', text: 'Vacuum the Sofa', amount: 1, price: 30 },
         // { value: 'wall', color: '#dfe9f3', text: 'Interior Walls' },
         // { value: 'pet', color: '#dfe9f3', text: 'Pet Hair Clean-up' },
         // { value: 'oven', color: '#dfe9f3', text: 'Hour(s) of Organizing' },
@@ -311,8 +311,8 @@ export class BookingComponent implements OnInit, OnChanges {
   // preventEmptyDate: any = (value: any) => (value == '') ? '-/-/-' : value; // for view fill of date '-/-/-' if ''
 
   amount(item: any, _do: string) {
-    if (_do == '+') item.amount++;
-    if (_do == '-' && item.amount > 1) item.amount--;
+    if (_do == '+') item.amount += 10;
+    if (_do == '-' && item.amount > 10) item.amount -= 10;
   }
 
   valueOf(key: string) {
