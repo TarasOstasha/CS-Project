@@ -106,7 +106,7 @@
                 right: 10%;
                 top: 3%; //2.5%;
                 z-index: 1;
-
+                
                 mat-card-header {
                     display: flex;
                     flex-direction: column;
@@ -115,7 +115,7 @@
 
                     .checkbox-group-name {
                         //.fftitle();
-                        font-size: 20px;
+                        font-size: 22px;
                         //border-bottom: 3px solid @blueColor;
                         max-width: 150px;
                         //font-size: 18px;
@@ -132,6 +132,7 @@
 
                     .checkbox-list {
                         .ffbasic();
+                        font-size: 18px;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -145,7 +146,6 @@
                             align-items: center;
                             justify-content: space-between;
                             width: 100%;
-
                             .item-price {
                                 padding-left: 5px;
                             }
@@ -162,14 +162,16 @@
 
             //display: block;
             .free-checkbox-group-name {
+                font-size: 22px;
+
                 //border-bottom: 3px solid @blueColor;
             }
             .free-checkbox-group-name:after {
                 content: '';
                 border-bottom: 3px solid @blueColor;
                 position: absolute;
-                left: 22.5%;
-                width: 55%;
+                left: 21%;
+                width: 58%;
                 display: block;
               }
 
@@ -180,7 +182,10 @@
                 //right: 10%;
                 //top: 4%;
                 z-index: 1;
-
+                .item-name, .item-icon i {
+                    font-size: 18px;
+                }
+            
                 mat-card-header {
                     display: flex;
                     flex-direction: column;

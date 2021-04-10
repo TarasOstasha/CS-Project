@@ -31,19 +31,19 @@
                     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
                         alt="Photo of a Shiba Inu"> -->
                     <mat-card-content>
-                        <p>{{ card.frequency1 }}</p>
-                        <p>{{ card.frequency2 }}</p>
-                        <p>{{ card.frequency3 }}</p>
-                        <p>{{ card.frequency4 }}</p>
-                        <p>{{ card.rec_time }}</p>
-                        <p>{{ card.extraService1 }}</p>
-                        <p>{{ card.extraService2 }}</p>
-                        <p>{{ card.extraService3 }}</p>
-                        <p>{{ card.extraService4 }}</p>
-                        <p>{{ card.extraService5 }}</p>
-                        <p>{{ card.cleaners }}</p>
-                        <p>{{ card.cleaners2 }}</p>
-                        <p>{{ card.recommended_time }}</p>
+                        <p class="card-info">{{ card.frequency1 }}</p>
+                        <p class="card-info">{{ card.frequency2 }}</p>
+                        <p class="card-info">{{ card.frequency3 }}</p>
+                        <p class="card-info">{{ card.frequency4 }}</p>
+                        <p class="card-info">{{ card.rec_time }}</p>
+                        <p class="card-info"><span>{{ card.extraService1 | slice:0:12 }}</span><span>{{ card.extraService1 | slice:14:17 }}</span></p>
+                        <p class="card-info"><span>{{ card.extraService2 | slice:0:4 }}</span><span>{{ card.extraService2 | slice:6:9 }}</span></p>
+                        <p class="card-info"><span>{{ card.extraService3 | slice:0:14 }}</span><span>{{ card.extraService3 | slice:17:20 }}</span></p>
+                        <p class="card-info"><span>{{ card.extraService4 | slice:0:13 }}</span><span>{{ card.extraService4 | slice:16:20 }}</span></p>
+                        <p class="card-info"><span>{{ card.extraService5 | slice:0:15 }}</span><span>{{ card.extraService5 | slice:17:20 }}</span></p>
+                        <p class="card-info">{{ card.cleaners }}</p>
+                        <p class="card-info">{{ card.cleaners2 }}</p>
+                        <p class="card-info">{{ card.recommended_time }}</p>
                     </mat-card-content>
                     <mat-card-actions>
                         <button mat-button>Book</button>
