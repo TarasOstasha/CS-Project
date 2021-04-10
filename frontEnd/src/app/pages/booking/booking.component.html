@@ -380,6 +380,7 @@
                                                   formControlName="{{'extras_' + item.value}}">
                                         <div #event_hook2></div>
                                     </mat-checkbox>
+
                                     <!-- (click)="checkbox.checked = (checkbox.checked) ? false : true;" -->
                                     <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
                                          [matRippleDisabled]="false"
@@ -391,13 +392,23 @@
                                              style="height: 4rem" />
                                     </div>
                                     <p class="description">{{item.text}}</p>
+
                                     <p *ngIf="item.recommended"
                                        class="recommended">
                                         <span class="text">Recommended</span>
                                     </p>
 
-                                    <div class="number" *ngIf="valueOf('extras_' + item.value)">
-                                        {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} - {{(item.amount-1)*10+10}}
+                                    <div *ngIf="valueOf('extras_' + item.value)"
+                                         class="number">
+                                        <!-- if ranges -->
+                                        <div *ngIf="item.mode=='ranges'">
+                                            {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} - {{(item.amount-1)*10+10}}
+                                        </div>
+
+                                        <!-- if piece -->
+                                        <div *ngIf="item.mode=='piece'">
+                                            {{ item.amount}}
+                                        </div>
                                     </div>
 
                                     <div (click)="stopPropagation( $event)"
