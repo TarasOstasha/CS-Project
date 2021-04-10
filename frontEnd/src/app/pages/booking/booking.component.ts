@@ -106,7 +106,9 @@ export class BookingComponent implements OnInit, OnChanges {
     doorAccess: {
       items: [
         { title: 'Client will let us in' },
-        { title: '...' },
+        { title: 'Doorman' },
+        { title: 'Secure Key holding with eMails' },
+        { title: 'Other' },
       ]
     },
     selectTime: {
