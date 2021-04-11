@@ -492,39 +492,7 @@
                                                        required />
                                             </mat-form-field>
                                         </div>
-
-                                        <div class="input">
-                                            <mat-form-field appearance="fill"
-                                                            hintLabel="Max 10 characters">
-                                                <mat-label>
-                                                    Email address
-                                                </mat-label>
-                                                <input #input
-                                                       formControlName="email"
-                                                       matInput
-                                                       placeholder="some@gmail.com"
-                                                       required />
-                                                <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
-                                            </mat-form-field>
-                                        </div>
-
-                                        <div class="input">
-                                            <mat-form-field appearance="fill"
-                                                            color="accent">
-                                                <mat-label>
-                                                    Select date (M/D/Y)
-                                                </mat-label>
-                                                <input [matDatepicker]="picker4"
-                                                       formControlName="date"
-                                                       matInput />
-                                                <mat-datepicker-toggle [for]="picker4"
-                                                                       matSuffix>
-                                                </mat-datepicker-toggle>
-                                                <mat-datepicker #picker4
-                                                                color="primary">
-                                                </mat-datepicker>
-                                            </mat-form-field>
-                                        </div>
+                                      
                                     </div>
                                     <!-- ********************************************* 2 group -->
                                     <div class="inner-box inner-box-right">
@@ -566,21 +534,7 @@
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
-
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>
-                                                    Select time
-                                                </mat-label>
-                                                <mat-select formControlName="selectTime">
-                                                    <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.selectTime.items">
-                                                        {{item.title}}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                            </mat-form-field>
-                                        </div>
+                                       
                                     </div>
                                 </div>
 
@@ -633,22 +587,6 @@
                                                 <input formControlName="aptSuite"
                                                        matInput
                                                        placeholder="000000" />
-                                            </mat-form-field>
-                                        </div>
-
-                                        <div class="input">
-                                            <mat-form-field appearance="fill"
-                                                            hintLabel="Max 10 characters">
-                                                <mat-label>
-                                                    Phone number
-                                                </mat-label>
-                                                <input #input
-                                                       formControlName="phone"
-                                                       matInput
-                                                       placeholder="+100000000" />
-                                                <mat-hint align="end">
-                                                    {{input.value?.length || 0}}/10
-                                                </mat-hint>
                                             </mat-form-field>
                                         </div>
 

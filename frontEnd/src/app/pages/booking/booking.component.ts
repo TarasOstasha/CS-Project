@@ -106,7 +106,9 @@ export class BookingComponent implements OnInit, OnChanges {
     doorAccess: {
       items: [
         { title: 'Client will let us in' },
-        { title: '...' },
+        { title: 'Doorman' },
+        { title: 'Secure Key holding with eMails' },
+        { title: 'Other' },
       ]
     },
     selectTime: {
@@ -204,7 +206,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 1;
+    this.stepperDOM.selectedIndex = 2;
     this.cdr.detectChanges();
   }
 
