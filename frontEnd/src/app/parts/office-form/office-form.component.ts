@@ -13,7 +13,7 @@ import { map, debounceTime } from 'rxjs/operators';
   styleUrls: ['./office-form.component.less']
 })
 export class OfficeFormComponent implements OnInit {
-  errorFlag: boolean = false;
+  
   
   officeBookForm!: FormGroup;
   quickBook: any = {
@@ -81,7 +81,7 @@ export class OfficeFormComponent implements OnInit {
       time: ['', [Validators.required]],
       frequency: ['', [Validators.required]]
     });
-    
+    window.scrollTo(0, 0);
   }
 
   sendOfficeForm() {
@@ -91,50 +91,57 @@ export class OfficeFormComponent implements OnInit {
 
 
   // check if zip code valid
+  errorFlag: boolean = false;
   public zipObj: any;
   async checkZipCode(value: any) {
-    try {
-      console.log(value.target.value)
-      const zipCode = value.target.value;//.substr(1); // remove first symbol
-      const where = encodeURIComponent(JSON.stringify({
-        "US_Zip_Code": +zipCode
-      }));
-
-      const response = await fetch(
-        `https://parseapi.back4app.com/classes/Uszipcode_US_Zip_Code?limit=10&where=${where}`,
-        {
-          headers: {
-            'X-Parse-Application-Id': 'pj4KefXOJu9bSYoEZfTz5GK7y7UcSfWx0Xma7HWo', // This is your app's application id
-            'X-Parse-REST-API-Key': '1P9RXVt4WzuXPNK9VSAg84T1xssLnthslmPExhIL', // This is your app's REST API key
-          }
-        }
-      );
-      
-      const data = await response.json(); // Here you have the data that you need
-      console.log(JSON.stringify(data, null, 2));
-      //this.zipObj = data.results[0].County; //JSON.parse(data); // if this.zipObj !== 'Hudson County' || this.zipObj !== 'New York County' || this.zipObj !== 'Bronx County' || this.zipObj !== 'Brooklyn' || this.zipObj !== 'Queens County' || this.zipObj !== 'Staten Island'
-
-      if(
-        data.results[0].County == 'Hudson County' || 
-        data.results[0].County == 'New York County' || 
-        data.results[0].County == 'Bronx County' || 
-        data.results[0].County == 'Brooklyn' || 
-        data.results[0].County == 'Queens County' || 
-        data.results[0].County == 'Staten Island'
-      ) {
-        console.log('there is a valid value');
-        this.zipObj = data.results[0].County; //JSON.parse(data); 
-        
-      } else {
-        this.errorFlag = true;
-        return
-      }
-      //console.log(this.zipObj);
-    } catch (error) {
-      //console.log(error);
-    }
-
+    await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
+    this.errorFlag = this._form.errorFlag;
+    this.zipObj = this._form.zipObj;
+    console.log(this._form.errorFlag);
   }
+  // async checkZipCode(value: any) {
+  //   try {
+  //     console.log(value.target.value)
+  //     const zipCode = value.target.value;//.substr(1); // remove first symbol
+  //     const where = encodeURIComponent(JSON.stringify({
+  //       "US_Zip_Code": +zipCode
+  //     }));
+
+  //     const response = await fetch(
+  //       `https://parseapi.back4app.com/classes/Uszipcode_US_Zip_Code?limit=10&where=${where}`,
+  //       {
+  //         headers: {
+  //           'X-Parse-Application-Id': 'pj4KefXOJu9bSYoEZfTz5GK7y7UcSfWx0Xma7HWo', // This is your app's application id
+  //           'X-Parse-REST-API-Key': '1P9RXVt4WzuXPNK9VSAg84T1xssLnthslmPExhIL', // This is your app's REST API key
+  //         }
+  //       }
+  //     );
+      
+  //     const data = await response.json(); // Here you have the data that you need
+  //     console.log(JSON.stringify(data, null, 2));
+  //     //this.zipObj = data.results[0].County; //JSON.parse(data); // if this.zipObj !== 'Hudson County' || this.zipObj !== 'New York County' || this.zipObj !== 'Bronx County' || this.zipObj !== 'Brooklyn' || this.zipObj !== 'Queens County' || this.zipObj !== 'Staten Island'
+
+  //     if(
+  //       data.results[0].County == 'Hudson County' || 
+  //       data.results[0].County == 'New York County' || 
+  //       data.results[0].County == 'Bronx County' || 
+  //       data.results[0].County == 'Brooklyn' || 
+  //       data.results[0].County == 'Queens County' || 
+  //       data.results[0].County == 'Staten Island'
+  //     ) {
+  //       console.log('there is a valid value');
+  //       this.zipObj = data.results[0].County; //JSON.parse(data); 
+        
+  //     } else {
+  //       this.errorFlag = true;
+  //       return
+  //     }
+  //     //console.log(this.zipObj);
+  //   } catch (error) {
+  //     //console.log(error);
+  //   }
+
+  // }
 
 
 

@@ -34,6 +34,7 @@
             <input matInput formControlName="zip_code" placeholder="00000" (keyup)="checkZipCode($event)" required>
             <span *ngIf="quickBookForm.get('zip_code')?.valid">{{ zipObj }}</span>
             <mat-error *ngIf="quickBookForm.errors?.required || quickBookForm.get('zip_code')?.invalid">Not Valid</mat-error>
+            <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>
         </mat-form-field>
         <mat-form-field appearance="fill" class="myField">
             <mat-label>Email</mat-label>

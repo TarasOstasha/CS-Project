@@ -103,34 +103,14 @@ export class QuickBookComponent implements OnInit {
       );
   }
 
-    // check if zip code valid
-    public zipObj: any;
-    async checkZipCode(value: any) {
-  
-      try {
-        const zipCode = value.target.value; //.substr(1); // remove first symbol
-        const where = encodeURIComponent(JSON.stringify({
-          "US_Zip_Code": +zipCode
-        }));
-  
-        const response = await fetch(
-          `https://parseapi.back4app.com/classes/Uszipcode_US_Zip_Code?limit=10&where=${where}`,
-          {
-            headers: {
-              'X-Parse-Application-Id': 'pj4KefXOJu9bSYoEZfTz5GK7y7UcSfWx0Xma7HWo', // This is your app's application id
-              'X-Parse-REST-API-Key': '1P9RXVt4WzuXPNK9VSAg84T1xssLnthslmPExhIL', // This is your app's REST API key
-            }
-          }
-        );
-  
-        const data = await response.json(); // Here you have the data that you need
-        //console.log(JSON.stringify(data, null, 2));
-        this.zipObj = data.results[0].County; //JSON.parse(data);
-      } catch (error) {
-        //console.log(error);
-      }
-  
-    }
+   // check if zip code valid
+   errorFlag: boolean = false;
+   public zipObj: any;
+   async checkZipCode(value: any) {
+     await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
+     this.errorFlag = this._form.errorFlag;
+     this.zipObj = this._form.zipObj;
+   }
 
 }
 

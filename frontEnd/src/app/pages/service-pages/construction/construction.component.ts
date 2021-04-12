@@ -218,4 +218,6 @@ export class ConstructionComponent implements OnInit {
     });
   }
 
+
+
 }

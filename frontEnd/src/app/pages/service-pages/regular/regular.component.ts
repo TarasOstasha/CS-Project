@@ -85,6 +85,7 @@ export class RegularComponent implements OnInit {
     // { title: 'Organic Cleaning', price: 30 }
   ]
 
+
   
   constructor() { }
 

@@ -45,7 +45,9 @@
                     <span *ngIf="businessBookForm.get('zip_code')?.valid">{{ zipObj }}</span>
                     <mat-error
                         *ngIf="businessBookForm.errors?.required || businessBookForm.get('zip_code')?.invalid">
-                        Not Valid (Please Call Us)</mat-error>
+                        Not Valid
+                    </mat-error>
+                    <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Sq.Ft</mat-label>
@@ -58,19 +60,8 @@
                         *ngIf="businessBookForm.errors?.required || businessBookForm.get('approx_SF')?.invalid">
                         Please Choose Value </mat-error>
                 </mat-form-field>
-                <!-- <mat-form-field appearance="fill" style="width:100%;">
-                    <mat-label>Frequency</mat-label>
-                    <mat-select formControlName="frequency">
-                        <mat-option *ngFor="let item of quickBook.frequency.items" [value]="item.title">
-                            {{ item.title }}</mat-option>
-                    </mat-select>
-                    <mat-error
-                        *ngIf="businessBookForm.errors?.required || businessBookForm.get('frequency')?.invalid">
-                        Please Choose Value </mat-error>
-                </mat-form-field> -->
                 <div class="business-book-btn">
-                    <button type="submit" [disabled]="businessBookForm.invalid" mat-button>Book
-                        Appointment</button>
+                    <button type="submit" [disabled]="businessBookForm.invalid" mat-button>Book Appointment</button>
                 </div>
             </form>
         </div>
