@@ -2,9 +2,9 @@ import {Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Review } from '../interfaces/review-data.model';
+import { officeBookForm } from '../interfaces/officeBookForm-data.model';
 
-
-if(location.hostname == 'localhost') var url = 'http://localhost'; //dev
+if(location.hostname == 'localhost') var url = 'http://localhost/'; //dev
 else var url = ''; //production
 
 @Injectable({
@@ -13,7 +13,7 @@ else var url = ''; //production
 export class ApiService {
   //private url = 'http://localhost:3000/';
   //private url = '';
- 
+  officeFormData: any = {};
 
   constructor(private _http: HttpClient) { }
   
@@ -41,7 +41,13 @@ export class ApiService {
   }
 
 
-
+  sendOfficeDataForm(value: officeBookForm) {
+    console.log(value);
+    this.officeFormData = value;
+    return this._http.post( url + 'sendmail', this.officeFormData ).subscribe(response => {
+      console.log(response);
+    });
+  }
 
 
 

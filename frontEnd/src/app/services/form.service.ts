@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { quickBookForm } from '../interfaces/quickForm-data.model';
 import { businessBookForm } from '../interfaces/businessForm-data.model';
 import { officeBookForm } from '../interfaces/officeBookForm-data.model';
+import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class FormService {
   businessFormData: any = {};
   officeFormData: any = {};
   
-  constructor() { }
+  constructor(private _api: ApiService) { }
 
   // quick review form data
   sendDataForm(value: quickBookForm) {
@@ -26,10 +27,10 @@ export class FormService {
   }
 
   // form which should be use for office service
-  sendOfficeDataForm(value: officeBookForm) {
-    console.log(value);
-    this.officeFormData = value;
-  }
+  // sendOfficeDataForm(value: officeBookForm) {
+  //   console.log(value);
+  //   this.officeFormData = value;
+  // }
 
 
   // check zip code

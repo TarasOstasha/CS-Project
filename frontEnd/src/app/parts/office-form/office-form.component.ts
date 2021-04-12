@@ -85,8 +85,8 @@ export class OfficeFormComponent implements OnInit {
   }
 
   sendOfficeForm() {
-    this._form.sendOfficeDataForm(this.officeBookForm.value);
-    this.router.navigate(['/booking']);
+    this._api.sendOfficeDataForm(this.officeBookForm.value);
+    //this.router.navigate(['/booking']);
   }
 
 
