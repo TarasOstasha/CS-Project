@@ -125,8 +125,8 @@ async function sendMail(user, callback) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: 'tonyjoss1990@gmail.com',
-            pass: 'tonyjoss19901102@'
+            //user: //'user@gmail.com',
+            //pass: //'pass...'
         }
     });
     const myMailAddress = [user.email, 'tonyjoss1990@gmail.com'];
