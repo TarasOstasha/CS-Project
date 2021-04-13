@@ -91,17 +91,20 @@
         .example-card:hover {
             opacity: 1;
             transform: translateY(-15px);
-            background: -moz-linear-gradient(-45deg, #ffffff 15%, #0bb8e3 100%);
-            background: -webkit-linear-gradient(-45deg, #ffffff 15%,#0bb8e3 100%);
-            background: linear-gradient(135deg, #ffffff 15%,#0bb8e3 100%);   
+            background: darken(@blueColor, 1%);
+            // background: -moz-linear-gradient(-45deg, #ffffff 15%, #0bb8e3 100%);
+            // background: -webkit-linear-gradient(-45deg, #ffffff 15%,#0bb8e3 100%);
+            // background: linear-gradient(135deg, #ffffff 15%,#0bb8e3 100%);   
             mat-card-title {
-                color: #066982;   //@blackColor;
+                color: @whiteColor;//#066982;   //@blackColor;
             }
             mat-card-subtitle {
-                color: #066982;
+                color: @whiteColor;//#066982;
+               text-decoration: underline;
             }
+
             p {
-                color: #066982;
+                color: @whiteColor;//#066982;
             }
             button {
                 color: #066982;

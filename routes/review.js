@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
+// const dotenv = require('dotenv');
+// dotenv.config();
+require("dotenv").config();
 const nodemailer = require('nodemailer');
-
 const Review = require('../models/reviewModel');
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -125,8 +128,14 @@ async function sendMail(user, callback) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            //user: //'user@gmail.com',
-            //pass: //'pass...'
+            user: process.env.EMAIL, //'user@gmail.com',
+            pass: process.env.PASS //'pass...'
+        }
+    }, (err, info)=>{
+        if (err) {
+            throw new Error(err)
+        } else {
+            console.log('Email sent: ' + info.response);
         }
     });
     const myMailAddress = [user.email, 'tonyjoss1990@gmail.com'];

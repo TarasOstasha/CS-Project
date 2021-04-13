@@ -5,26 +5,29 @@
 // HEADER
 .main-header-wrapper {
     background: @whiteColor; //@blackColor; //@blueColor;
+
     .row {
         margin: 0;
     }
+
     header {
         position: relative;
 
         .top-header {
-            
+
             .top-header-list {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 padding: 20px 0 20px 0;
+
                 li {
                     padding: @padding;
                     list-style: none;
 
                     a {
                         text-decoration: none;
-                        color: @blackColor;//@whiteColor;
+                        color: @blackColor; //@whiteColor;
                         .ffbasic();
                     }
                 }
@@ -34,6 +37,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
                 li {
                     a {
                         .ffbasic();
@@ -41,6 +45,7 @@
                         transition: .3;
                         color: @blueColor;
                     }
+
                     a:hover {
                         //color: @blueColor;
                         color: darken(@blueColor, 20%);
@@ -51,23 +56,27 @@
 
 
         .bottom-header {
-            background: @blueColor!important; // @whiteBg;
+            background: @blueColor !important; // @whiteBg;
             padding: 0px;
             position: absolute;
             width: 100%;
             top: 60px; //40px; //90px;
             z-index: 2;
+
             nav {
                 box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
             }
+
             .bottom-header-list {
                 width: 100%;
                 margin: 0;
                 padding: 0;
+
                 li {
                     list-style: none;
                     //padding: 30px;
                     cursor: pointer;
+
                     a {
                         color: @whiteColor; //@blackColor; //@blueColor;
                         .ffnavmenu();
@@ -77,49 +86,75 @@
                         border-bottom: 2px solid transparent;
                         //background: @whiteColor;
                     }
+
                     a:hover {
                         text-decoration: none;
                         color: @whiteColor; //@blackColor; 
-                        border-bottom: 2px solid @blackColor;
+                        border-bottom: 2px solid @whiteColor; //@blackColor;
                         display: block;
+                        background: #35d0f7;
                         //margin-bottom: 1px;
                         //z-index: 3;
                         //border-bottom: 1px solid;
                     }
+
                     .router-link-active {
-                        background: darken(@blueColor, 20%);
+                        background: #35d0f7; //darken(@blueColor, 20%);
                         border-bottom: 2px solid @whiteColor;
                     }
+
                     .dropdown-menu-list {
                         z-index: 10;
+
                         a:hover {
                             color: @blackColor;
                         }
                     }
                 }
+
                 li:last-child {
-                    background: #17a2b8;//lighten(@blueColor, 20%); //darken(@blueColor, 20%); 
+                    background: #00dbff; //#17a2b8;//lighten(@blueColor, 20%); //darken(@blueColor, 20%); 
+                    animation-name: booking-pulsing;
+                    animation-duration: 2s;
+                    animation-iteration-count: infinite;
                 }
+
                 li:nth-child(2):hover {
                     .dropdown-menu {
                         display: block;
                     }
                 }
+
                 li:nth-child(5):hover {
                     .dropdown-menu {
                         display: block;
                     }
                 }
             }
+
             .dropdown-menu-list {
                 background: @blueColor;
+
                 a {
-                    .fftitle()!important;
-                    padding: 6px!important;
-                    border-bottom: none!important;
+                    .fftitle() !important;
+                    padding: 6px !important;
+                    border-bottom: none !important;
 
                 }
             }
+        }
+    }
+    @keyframes booking-pulsing {
+        0% {
+            background-color: #00dbff;
+        }
+    
+        50% {
+            background-color: darken(#00dbff, 2%);//#4285f4;
+        }
+    
+        100% {
+            background-color: darken(#00dbff, 3%);
         }
     }
 
