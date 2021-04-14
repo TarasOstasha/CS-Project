@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, NgForm, FormGroupDirective } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormService } from '../../services/form.service';
 import { ApiService } from '../../services/api.service';
@@ -16,7 +16,7 @@ import { map, debounceTime } from 'rxjs/operators';
   styleUrls: ['./business-form.component.less']
 })
 export class BusinessFormComponent implements OnInit {
-
+  @ViewChild(FormGroupDirective) myForm: any;
   businessBookForm!: FormGroup;
   quickBook: any = {
     approx_SF: {
@@ -83,6 +83,7 @@ export class BusinessFormComponent implements OnInit {
       .subscribe((response: any) => {
       if(response.ok) {
         this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+        this.myForm.resetForm();
       }  
     }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
   }

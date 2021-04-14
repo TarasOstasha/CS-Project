@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, NgForm, FormGroupDirective } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormService } from '../../services/form.service';
 import { ApiService } from '../../services/api.service';
@@ -14,7 +14,7 @@ import { map, debounceTime } from 'rxjs/operators';
 })
 export class OfficeFormComponent implements OnInit {
   
-  
+  @ViewChild(FormGroupDirective) myForm: any;
   officeBookForm!: FormGroup;
   quickBook: any = {
     approx_SF: {
@@ -67,7 +67,7 @@ export class OfficeFormComponent implements OnInit {
     private _api: ApiService,
     private _form: FormService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -86,21 +86,23 @@ export class OfficeFormComponent implements OnInit {
   }
 
   sendOfficeForm() {
+    console.log(this.officeBookForm.controls.name);
     this._api.sendOfficeDataForm(this.officeBookForm.value)
     .subscribe((response: any) => {
       if(response.ok) {
         this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+        this.myForm.resetForm();
       }  
     }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
     //this.router.navigate(['/booking']);
   }
 
-    // popup menu after submitted form
-    openSnackBar(message: string, action: any) {
-      this._snackBar.open(message, action, {
-        duration: 4000,
-      });
-    }
+  // popup menu after submitted form
+  openSnackBar(message: string, action: any) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
+  }
 
 
   // check if zip code valid
@@ -110,7 +112,7 @@ export class OfficeFormComponent implements OnInit {
     await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
     this.errorFlag = this._form.errorFlag;
     this.zipObj = this._form.zipObj;
-    console.log(this._form.errorFlag);
+    //console.log(this._form.errorFlag);
   }
   // async checkZipCode(value: any) {
   //   try {
