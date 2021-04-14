@@ -58,12 +58,15 @@
         }
 
         .choose-us {
+            
             .row {
                 margin: 0;
             }
             .ffbasic();
-            background: @blueColor;
-            background-image: url('../../../assets/images/patern-0bb8e3.jpg');
+            //background: @blueColor;
+            //background-image: url('../../../assets/images/patern-0bb8e3.jpg');
+            background-image: url('../../../assets/images/about-us/gettyimages-519916757-2048x2048.jpg');
+            background-size: cover; 
             text-align: center;
             .about-us-img {
                 img {
@@ -75,15 +78,18 @@
                 height: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                align-items: flex-end;
+                //justify-content: flex-end;//space-around;
 
                 h2 {
-                    color: @whiteColor;
+                    color: @blueColor;//@whiteColor;
+                    text-align: right;
                 }
                 .list {
                     margin: 0;
                     display: flex;
                     flex-direction: column;
+                    width: 40%;
                     li {
                         list-style: none;
                         text-align-last: left;
