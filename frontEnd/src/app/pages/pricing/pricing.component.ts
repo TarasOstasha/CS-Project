@@ -26,6 +26,7 @@ export class PricingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0); 
   }
 
 }

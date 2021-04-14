@@ -73,6 +73,7 @@ export class MainComponent implements OnInit {
       myTextArea: ['', [Validators.required, Validators.minLength(20)]]
     });
     this.getMyReview();
+    window.scrollTo(0, 0); 
   }
 
 

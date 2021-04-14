@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormService } from '../../services/form.service';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
@@ -61,7 +61,8 @@ export class BusinessFormComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _api: ApiService,
     private _form: FormService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -70,27 +71,38 @@ export class BusinessFormComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')]],
-      address: ['',[Validators.required]],
+      address: ['', [Validators.required]],
       zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
       approx_SF: ['', [Validators.required]]
     });
-    
+
   }
 
   sendBusinessForm() {
-    this._form.sendBusinessDataForm(this.businessBookForm.value);
-    this.router.navigate(['/booking']);
+    this._api.sendBusinessDataForm(this.businessBookForm.value)
+      .subscribe((response: any) => {
+      if(response.ok) {
+        this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+      }  
+    }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
+  }
+
+  // popup menu after submitted form
+  openSnackBar(message: string, action: any) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
   }
 
 
-   // check if zip code valid
-   errorFlag: boolean = false;
+    // check if zip code valid
+    errorFlag: boolean = false;
    public zipObj: any;
-   async checkZipCode(value: any) {
-     await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
-     this.errorFlag = this._form.errorFlag;
-     this.zipObj = this._form.zipObj;
-   }
+  async checkZipCode(value: any) {
+    await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
+    this.errorFlag = this._form.errorFlag;
+    this.zipObj = this._form.zipObj;
+  }
 
 
 

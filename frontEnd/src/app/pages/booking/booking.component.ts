@@ -202,6 +202,8 @@ export class BookingComponent implements OnInit, OnChanges {
       const serviceValue = this._form.formData[key];
       if (serviceValue.length > 0) this.form.controls[key].setValue(serviceValue);
     });
+
+    
   }
 
   ngAfterViewInit() {

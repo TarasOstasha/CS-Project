@@ -9,8 +9,8 @@ import { ApiService } from './api.service';
 export class FormService {
 
   formData: any = {};
-  businessFormData: any = {};
-  officeFormData: any = {};
+  // businessFormData: any = {};
+  // officeFormData: any = {};
   
   constructor(private _api: ApiService) { }
 
@@ -19,19 +19,6 @@ export class FormService {
     console.log(value)
     this.formData = value;
   }
-
-  // form which should be use for construction and renovation services
-  sendBusinessDataForm(value: businessBookForm) {
-    console.log(value);
-    this.businessFormData = value;
-  }
-
-  // form which should be use for office service
-  // sendOfficeDataForm(value: officeBookForm) {
-  //   console.log(value);
-  //   this.officeFormData = value;
-  // }
-
 
   // check zip code
   errorFlag: boolean = false; // show error msg if not valid zip

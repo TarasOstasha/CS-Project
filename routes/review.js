@@ -103,7 +103,7 @@ router.get('/review', (req, res) => {
 //     // send mail with defined transports object
 //     let info = await transporter.sendMail(mailOptions);
 //     callback(info)
-  
+
 //     // another method step 3
 //     // transporter.sendMail(mailoptions, function(err, data) {
 //     //   if(err) console.log('Error!!!')
@@ -112,14 +112,20 @@ router.get('/review', (req, res) => {
 //   }
 
 router.post('/sendmail', (req, res) => {
-    let user = req.body;
-    console.log(user)
-    sendMail(user, info => {
-        res.status(200).json({
-            info: info,
-            msg: 'The Mail Has been Sent'
+    try {
+        let user = req.body;
+        console.log(user)
+        sendMail(user, info => {
+            res.status(200).json({
+                info,
+                msg: 'The Mail Has been Sent',
+                ok: true
+            });
         });
-    });
+    } catch (error) {
+        return res.status(500).json({ error: error.toString() });
+    }
+
 });
 
 async function sendMail(user, callback) {
@@ -131,7 +137,7 @@ async function sendMail(user, callback) {
             user: process.env.EMAIL, //'user@gmail.com',
             pass: process.env.PASS //'pass...'
         }
-    }, (err, info)=>{
+    }, (err, info) => {
         if (err) {
             throw new Error(err)
         } else {

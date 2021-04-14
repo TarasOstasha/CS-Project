@@ -56,6 +56,7 @@ export class ContactUsComponent implements OnInit {
       myTextArea: ['', [Validators.required, Validators.minLength(20)]]
     });
     this.getMyReview();
+    window.scrollTo(0, 0); 
   }
 
   getMyReview() {

@@ -27,7 +27,7 @@ export class FaqComponent implements OnInit {
       console.log(params);
     });
  
-
+    window.scrollTo(0, 0); 
   }
 
 }
