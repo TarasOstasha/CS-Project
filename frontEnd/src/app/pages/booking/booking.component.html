@@ -86,6 +86,19 @@
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
+                                                <mat-label>Cleaning type</mat-label>
+                                                <mat-select [ngModel]="cleaning_type"
+                                                            formControlName="cleaning_type">
+                                                    <mat-option [value]="item.title"
+                                                                *ngFor="let item of stepper.cleaning_type.items">
+                                                        {{item.title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
                                     </div>
                                     <div class="inner-box inner-box-right">
                                         <div class="input">
@@ -110,18 +123,19 @@
                                                        required />
                                             </mat-form-field>
                                         </div>
+                                        <div class="input" style="padding-top: .1rem;">
+                                            <mat-form-field appearance="fill"
+                                                            hintLabel="Max 10 characters">
+                                                <mat-label>Email address</mat-label>
+                                                <input #input
+                                                       formControlName="email"
+                                                       matInput
+                                                       placeholder="some@gmail.com" />
+                                                <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
                                     </div>
-                                    <div class="input">
-                                        <mat-form-field appearance="fill"
-                                                        hintLabel="Max 10 characters">
-                                            <mat-label>Email address</mat-label>
-                                            <input #input
-                                                   formControlName="email"
-                                                   matInput
-                                                   placeholder="some@gmail.com" />
-                                            <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
+                                   
                                 </div>
 
                                 <div class="big-box big-box-right">

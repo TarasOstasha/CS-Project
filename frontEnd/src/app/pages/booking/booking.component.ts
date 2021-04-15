@@ -38,6 +38,16 @@ export class BookingComponent implements OnInit, OnChanges {
         { title: 'AirBNB' },
       ]
     },
+    cleaning_type: {
+      items: [
+        { title: 'Regular cleaning' },
+        { title: 'Deep cleaning' },
+        { title: 'Organic cleaning' },
+        { title: 'Move cleaning' },
+        { title: 'Post construction cleaning' },
+        { title: 'Post renovation cleaning' },
+      ]
+    },
     frequency: {
       items: [
         { title: 'Weekly', color: '#1976d2', price: 123 }, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
@@ -154,6 +164,7 @@ export class BookingComponent implements OnInit, OnChanges {
     this.form = this._formBuilder.group({
       checkedGroup: ['residential'],
       property_type: ['', Validators.required],
+      cleaning_type: ['', Validators.required],
       frequency: ['', Validators.required,],
       sq_ft: ['', Validators.required],
       zip_code: ['', Validators.required],
@@ -208,7 +219,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 2;
+    this.stepperDOM.selectedIndex = 0;
     this.cdr.detectChanges();
   }
 
@@ -234,6 +245,10 @@ export class BookingComponent implements OnInit, OnChanges {
   // crutches for material components: refresh the view of fields
   get frequency() {
     return this.form.controls['frequency'].value;
+  }
+  
+  get cleaning_type() {
+    return this.form.controls['cleaning_type'].value;
   }
 
   get bedrooms() {
