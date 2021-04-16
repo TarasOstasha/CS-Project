@@ -419,6 +419,11 @@
                                             {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} - {{(item.amount-1)*10+10}}
                                         </div>
 
+                                        <!-- if ranges -->
+                                        <div *ngIf="item.mode=='ranges-5'">
+                                            {{ (item.amount-1 == 0) ? 1: (item.amount-1)*5 }} - {{(item.amount-1)*5+5}}
+                                        </div>
+
                                         <!-- if piece -->
                                         <div *ngIf="item.mode=='piece'">
                                             {{ item.amount}}
