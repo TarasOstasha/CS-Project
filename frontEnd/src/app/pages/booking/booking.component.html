@@ -61,6 +61,19 @@
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
+                                                <mat-label>Cleaning type</mat-label>
+                                                <mat-select [ngModel]="cleaning_type"
+                                                            formControlName="cleaning_type">
+                                                    <mat-option [value]="item.title"
+                                                                *ngFor="let item of stepper.cleaning_type.items">
+                                                        {{item.title}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="input">
+                                            <mat-form-field appearance="fill">
                                                 <mat-label>
                                                     Property type
                                                 </mat-label>
@@ -80,19 +93,6 @@
                                                             formControlName="frequency">
                                                     <mat-option [value]="item.title"
                                                                 *ngFor="let item of stepper.frequency.items">
-                                                        {{item.title}}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                            </mat-form-field>
-                                        </div>
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Cleaning type</mat-label>
-                                                <mat-select [ngModel]="cleaning_type"
-                                                            formControlName="cleaning_type">
-                                                    <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.cleaning_type.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>

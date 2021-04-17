@@ -28,6 +28,12 @@ export class BookingComponent implements OnInit, OnChanges {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
     return arr.map((el) => ({ title: el }))
   }
+  createBedrooms() {
+      const arr: any = this.createItems(10); // -> from 1 to 20: [{ title: '1' }, { title: n }]
+      arr.unshift({ title:  '0 - Studio'});
+      return arr
+  }
+
   stepper: any = {
     // step - 1
     checkedGroup: '',
@@ -70,7 +76,7 @@ export class BookingComponent implements OnInit, OnChanges {
     zip_code: '',
     email: '',
     bedrooms: {
-      items: this.createItems(10), // -> from 1 to 20: [{ title: '1' }, { title: n }]
+      items: this.createBedrooms(),
       price: 20
     },
     date: '',
