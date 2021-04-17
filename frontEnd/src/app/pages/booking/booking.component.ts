@@ -173,7 +173,7 @@ export class BookingComponent implements OnInit, OnChanges {
       cleaning_type: ['', Validators.required],
       frequency: ['', Validators.required,],
       sq_ft: ['', Validators.required],
-      zip_code: ['', Validators.required],
+      zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
       email: ['', Validators.required],
       bedrooms: ['', Validators.required],
       date: ['', Validators.required],
