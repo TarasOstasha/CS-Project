@@ -130,8 +130,8 @@ export class BookingComponent implements OnInit, OnChanges {
     address: '',
     state: {
       items: [
-        { title: 'State some' },
-        { title: '...' },
+        { title: 'NY' },
+        { title: 'NJ' },
       ]
     },
     specialInstructions: '',
@@ -342,6 +342,18 @@ export class BookingComponent implements OnInit, OnChanges {
 
   stopPropagation(e: any) {
     e.stopPropagation();
+  }
+
+
+
+  // zip code check added by Taras 07/17/21
+  errorFlag: boolean = false;
+  public zipObj: any;
+  async checkZipCode(value: any) {
+    await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
+    this.errorFlag = this._form.errorFlag;
+    this.zipObj = this._form.zipObj;
+    console.log(this._form.errorFlag);
   }
 
 }

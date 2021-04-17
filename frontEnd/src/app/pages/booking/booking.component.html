@@ -120,7 +120,10 @@
                                                 <input formControlName="zip_code"
                                                        matInput
                                                        placeholder="000000"
+                                                       (keyup)="checkZipCode($event)"
                                                        required />
+                                                <!-- <span *ngIf="form.get('zip_code')?.valid">{{ zipObj }}</span>        -->
+                                                <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>
                                             </mat-form-field>
                                         </div>
                                         <div class="input" style="padding-top: .1rem;">
@@ -216,108 +219,16 @@
 
                             <!-- office -->
                             <div *ngIf="checkedGroup == 'office'" class="boxes">
-                                <div class="big-box big-box-left">
-                                    <div class="input">
-                                        <mat-form-field appearance="fill"
-                                                        hintLabel="Max 10 characters">
-                                            <mat-label>Phone number</mat-label>
-                                            <input #input
-                                                   formControlName="phone"
-                                                   matInput
-                                                   placeholder="+100000000" />
-                                            <mat-hint align="end">
-                                                {{input.value?.length || 0}}/10
-                                            </mat-hint>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="input">
-                                        <mat-form-field appearance="fill"
-                                                        hintLabel="Max 10 characters">
-                                            <mat-label>Phone number</mat-label>
-                                            <input #input
-                                                   formControlName="phone"
-                                                   matInput
-                                                   placeholder="+100000000" />
-                                            <mat-hint align="end">
-                                                {{input.value?.length || 0}}/10
-                                            </mat-hint>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="input"
-                                         style="margin-top: .77rem;">
-                                        <mat-form-field>
-                                            <mat-label>ZIP code</mat-label>
-                                            <input formControlName="zip_code"
-                                                   matInput
-                                                   placeholder="000000"
-                                                   required />
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-
-                                <div class="big-box big-box-right">
-                                    <div class="input">
-                                        <mat-form-field appearance="fill"
-                                                        hintLabel="Max 10 characters">
-                                            <mat-label>Phone number</mat-label>
-                                            <input #input
-                                                   formControlName="phone"
-                                                   matInput
-                                                   placeholder="+100000000" />
-                                            <mat-hint align="end">
-                                                {{input.value?.length || 0}}/10
-                                            </mat-hint>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="input">
-                                        <mat-form-field appearance="fill"
-                                                        hintLabel="Max 10 characters">
-                                            <mat-label>Email address</mat-label>
-                                            <input #input
-                                                   formControlName="email"
-                                                   matInput
-                                                   placeholder="some@gmail.com" />
-                                            <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div class="inner-box inner-box-left">
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Approx SF</mat-label>
-                                                <mat-select formControlName="approx_SF">
-                                                    <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.approx_SF.items">
-                                                        {{item.title}}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                                    <div class="inner-box inner-box-right">
-                                        <div class="input">
-                                            <mat-form-field appearance="fill">
-                                                <mat-label>Frequency</mat-label>
-                                                <mat-select [ngModel]="frequency"
-                                                            formControlName="frequency">
-                                                    <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.frequency.items">
-                                                        {{item.title}}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
+                                <div class="wrapper-form" style="width:70%;margin:0 auto;">
+                                    <app-office-form></app-office-form>
                                 </div>
                             </div>
-
                             <!-- commercial -->
-                            <!-- !!! -->
+                            <div *ngIf="checkedGroup == 'commercial'" class="boxes">
+                                <div class="wrapper-form" style="width:70%;margin:0 auto;">
+                                    <app-business-form></app-business-form>
+                                </div>
+                            </div>
 
                             <p class="step-note">
                                 You will be able to review your order before booking is complete
@@ -535,7 +446,10 @@
                                                 <input formControlName="zip_code"
                                                        matInput
                                                        placeholder="000000"
+                                                       (keyup)="checkZipCode($event)"
                                                        required />
+                                                <!-- <span *ngIf="form.get('zip_code')?.valid">{{ zipObj }}</span>  -->
+                                                <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>      
                                             </mat-form-field>
                                         </div>
                                       
