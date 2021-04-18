@@ -52,15 +52,29 @@ export class QuickBookComponent implements OnInit {
     bedrooms: {
       items: [
         { title: '1' },
-        { title: '... shoud be all ...' },
-        { title: '19' },
+        { title: '2' },
+        { title: '3' },
+        { title: '4' },
+        { title: '5' },
+        { title: '6' },
+        { title: '7' },
+        { title: '8' },
+        { title: '9' },
+        { title: '10' }
       ]
     },
     bathrooms: {
       items: [
         { title: '1' },
-        { title: '... shoud be all ...' },
-        { title: '19' },
+        { title: '2' },
+        { title: '3' },
+        { title: '4' },
+        { title: '5' },
+        { title: '6' },
+        { title: '7' },
+        { title: '8' },
+        { title: '9' },
+        { title: '10' }
       ]
     },
     frequency: {
