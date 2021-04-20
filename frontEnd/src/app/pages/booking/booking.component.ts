@@ -29,9 +29,9 @@ export class BookingComponent implements OnInit, OnChanges {
     return arr.map((el) => ({ title: el }))
   }
   createBedrooms() {
-      const arr: any = this.createItems(10); // -> from 1 to 20: [{ title: '1' }, { title: n }]
-      arr.unshift({ title:  '0 - Studio'});
-      return arr
+    const arr: any = this.createItems(10); // -> from 1 to 20: [{ title: '1' }, { title: n }]
+    arr.unshift({ title: '0 - Studio' });
+    return arr
   }
 
   stepper: any = {
@@ -101,7 +101,7 @@ export class BookingComponent implements OnInit, OnChanges {
         // { value: 'move', color: '#eaf3fb', text: 'Move In/Out Cleaning' },
         // { value: 'wash', color: '#eaf3fb', text: 'Hand Wash Dishes' },
         // { value: 'board', color: '#eaf3fb', text: 'Baseboards' },
-        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1, price: 30, mode: 'piece' }, 
+        { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1, price: 30, mode: 'piece' },
         { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven', amount: 1, price: 30, mode: 'piece' },
         { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets', amount: 1, price: 30, mode: 'ranges' },
         { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry', amount: 1, price: 30, mode: 'piece' },
@@ -207,9 +207,9 @@ export class BookingComponent implements OnInit, OnChanges {
       howDidYouHear: [''],
     });
 
-    // setInterval(() => {
-    //   log(this.bedrooms);
-    // }, 2000)
+    setInterval(() => {
+      log('>>>', this.cleaning_type)
+    }, 2000)
 
     log('Can I GET FORM DATA& : ', this._form.formData);
     // set values
@@ -220,20 +220,28 @@ export class BookingComponent implements OnInit, OnChanges {
       if (serviceValue.length > 0) this.form.controls[key].setValue(serviceValue);
     });
 
-    
+
   }
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 1;
+    this.stepperDOM.selectedIndex = 0;
     this.cdr.detectChanges();
   }
 
   get calculatePipe() {
+    let subtotal: number = 0;
+    // type
+    if (this.cleaning_type == 'Deep cleaning') subtotal += 40;
+    if (this.cleaning_type == 'Organic cleaning') subtotal += 10;
+    if (this.cleaning_type == 'Move cleaning') subtotal += 40;
+    if (this.cleaning_type == 'Post construction cleaning') subtotal += 160;
+    if (this.cleaning_type == 'Post renovation cleaning') subtotal += 160;
+    //
     const bedrooms: number = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value;
     const bathrooms: number = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value;
     const frequency: string = this.form.controls['frequency'].value;
-    let subtotal: number = bedrooms + bathrooms;
+    subtotal += bedrooms + bathrooms;
     if (frequency == 'One Time') subtotal += this.standard;
     const tax = this.percentage(this.tax, subtotal);
     const total = subtotal + tax;
@@ -252,7 +260,7 @@ export class BookingComponent implements OnInit, OnChanges {
   get frequency() {
     return this.form.controls['frequency'].value;
   }
-  
+
   get cleaning_type() {
     return this.form.controls['cleaning_type'].value;
   }
@@ -296,9 +304,10 @@ export class BookingComponent implements OnInit, OnChanges {
     // log(this.form.value);
     // this.form.value.checkedGroup
     const example = {
+      cleaning_type: 'Organic cleaning',
       property_type: 'House',
       frequency: 'Monthly',
-      approx_SF: '1500 - 2000',
+      sq_ft: '1500 - 2000',
       zip_code: '29000',
       email: 'hello@world.com',
       bedrooms: '1',
@@ -319,9 +328,10 @@ export class BookingComponent implements OnInit, OnChanges {
     };
     Object
       .entries(example)
-      .forEach(keyValue =>
+      .forEach(keyValue => {
+        log('v:', keyValue)
         this.form.controls[keyValue[0]].setValue(keyValue[1])
-      );
+      });
   }
 
   cheakFormGroup(groupName: any) {
