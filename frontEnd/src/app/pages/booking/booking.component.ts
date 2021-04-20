@@ -238,17 +238,31 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.cleaning_type == 'Post construction cleaning') subtotal += 160;
     if (this.cleaning_type == 'Post renovation cleaning') subtotal += 160;
     //
-    const bedrooms: number = this.stepper.bedrooms.price * this.form.controls['bedrooms'].value;
-    const bathrooms: number = this.stepper.bathrooms.price * this.form.controls['bathrooms'].value;
-    const frequency: string = this.form.controls['frequency'].value;
-    subtotal += bedrooms + bathrooms;
-    if (frequency == 'One Time') subtotal += this.standard;
+    subtotal += this.bedrooms + this.bathrooms;
+    // frequency
+    if (this.frequency == 'Weekly') subtotal += 10;
+    if (this.frequency == 'Biweekly') subtotal += 10;
+    if (this.frequency == 'Monthly') subtotal += 10;
+    if (this.frequency == 'One Time') subtotal += 15;
+    // sq.ft
+    subtotal += this.standard; // standard
+    if (this.sq_ft == '1000 - 1200') subtotal += 20;
+    if (this.sq_ft == '1200 - 1500') subtotal += 20;
+    if (this.sq_ft == '1500 - 2000') subtotal += 30;
+    if (this.sq_ft == '2000 - 2500') subtotal += 30;
+    if (this.sq_ft == '2500 - 3000') subtotal += 30;
+    if (this.sq_ft == '3000 - 3500') subtotal += 30;
+    // tax
     const tax = this.percentage(this.tax, subtotal);
+    // total
     const total = subtotal + tax;
+    // recommend time for cleaning
+    const recommendTime = Math.round(subtotal/40);
     return {
       subtotal,
       tax,
-      total
+      total,
+      recommendTime
     }
   }
 
@@ -285,6 +299,10 @@ export class BookingComponent implements OnInit, OnChanges {
     return this.form.controls['select_times'].value;
   }
 
+  get sq_ft() {
+    return this.form.controls['sq_ft'].value;
+  }
+
   goBack(stepperDOM: MatStepper) {
     stepperDOM.previous();
   }
@@ -310,9 +328,9 @@ export class BookingComponent implements OnInit, OnChanges {
       sq_ft: '1500 - 2000',
       zip_code: '29000',
       email: 'hello@world.com',
-      bedrooms: '1',
+      bedrooms: 2,
       date: new Date(),
-      bathrooms: '1',
+      bathrooms: 2,
       select_times: 'Afternoon',
       phone: '+3807465486',
       first_name: 'example',
