@@ -53,6 +53,8 @@ import { FaqServicesComponent } from './pages/faq-pages/faq-services/faq-service
 import { FaqBookingComponent } from './pages/faq-pages/faq-booking/faq-booking.component';
 import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.component';
 import { OfficeFormComponent } from './parts/office-form/office-form.component';
+//import { MainModule } from './pages/main/main.modules';
+
 // other material modules
 //import { MatCarouselModule } from '@ngmodule/material-carousel';
 
@@ -85,7 +87,8 @@ import { OfficeFormComponent } from './parts/office-form/office-form.component';
     FaqServicesComponent,
     FaqBookingComponent,
     FaqBillingComponent,
-    OfficeFormComponent
+    OfficeFormComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ import { OfficeFormComponent } from './parts/office-form/office-form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    //MainModule
     //MatCarouselModule.forRoot(),
   ],
   providers: [

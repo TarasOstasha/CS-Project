@@ -26,6 +26,8 @@ import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.c
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
+  //{ path: 'main', loadChildren: () => import('./pages/main/main.modules').then(m => m.MainModule) },
+
   // { path: 'services', component: ServicesComponent, children: [
   //   { path: 'move-cleaning', component: MeveComponent }, 
   //   { path: 'office-cleaning', component: OfficeComponent }, 
