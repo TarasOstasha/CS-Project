@@ -253,6 +253,13 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.sq_ft == '2000 - 2500') subtotal += 30;
     if (this.sq_ft == '2500 - 3000') subtotal += 30;
     if (this.sq_ft == '3000 - 3500') subtotal += 30;
+    //extras
+    if (this.extras_fridge) subtotal += this.getExtrasTotalByKey('fridge');
+    if (this.extras_oven) subtotal += this.getExtrasTotalByKey('oven');
+    if (this.extras_cabinet) subtotal += this.getExtrasTotalByKey('cabinet');
+    if (this.extras_washer) subtotal += this.getExtrasTotalByKey('washer');
+    if (this.extras_window) subtotal += this.getExtrasTotalByKey('window');
+    if (this.extras_vacuum_sofa) subtotal += this.getExtrasTotalByKey('vacuum_sofa');
     // tax
     const tax = this.percentage(this.tax, subtotal);
     // total
