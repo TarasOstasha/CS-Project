@@ -671,6 +671,30 @@
                                         <mat-divider></mat-divider>
                                         <mat-list-item>
                                             <div class="info-field">
+                                                <b>Extras:</b>
+                                                <span></span>
+                                            </div>
+                                        </mat-list-item>
+
+                                        <div *ngFor="let item of extras_list">
+                                            <div *ngIf="item.value">
+                                                <mat-divider></mat-divider>
+                                                <mat-list-item>
+                                                    <div class="info-field">
+                                                        <span>
+                                                            - {{item.text}}
+                                                        </span>
+                                                        <span>
+                                                            {{calculatePipe.bedBath | currency}}
+                                                        </span>
+                                                    </div>
+                                                </mat-list-item>
+                                            </div>
+                                        </div>
+
+                                        <mat-divider></mat-divider>
+                                        <mat-list-item>
+                                            <div class="info-field">
                                                 <b>SUBTOTAL</b>
                                                 <span>
                                                     {{calculatePipe.subtotal | currency}}

@@ -180,21 +180,21 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: ['', Validators.required],
       select_times: ['', Validators.required],
       phone: ['', Validators.required],
-      extras_same_day: [''],
-      extras_disinfection: [''],
-      extras_cleaning: [''],
-      extras_move: [''],
-      extras_wash: [''],
-      extras_board: [''],
+      // extras_same_day: [''],
+      // extras_disinfection: [''],
+      // extras_cleaning: [''],
+      // extras_move: [''],
       extras_fridge: [''],
-      extras_refrigerator: [''],
       extras_oven: [''],
       extras_cabinet: [''],
       extras_washer: [''],
       extras_window: [''],
-      extras_wall: [''],
-      extras_pet: [''],
       extras_vacuum_sofa: [''],
+      // extras_wash: [''],
+      // extras_board: [''],
+      // extras_refrigerator: [''],
+      // extras_wall: [''],
+      // extras_pet: [''],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       city: [''],
@@ -258,7 +258,7 @@ export class BookingComponent implements OnInit, OnChanges {
     // total
     const total = subtotal + tax;
     // recommend time for cleaning
-    const recommendTime = Math.round(subtotal/40);
+    const recommendTime = Math.round(subtotal / 40);
     return {
       bedBath,
       subtotal,
@@ -272,38 +272,7 @@ export class BookingComponent implements OnInit, OnChanges {
     return +((total / 100) * percent).toFixed(2)
   }
 
-  // crutches for material components: refresh the view of fields
-  get frequency() {
-    return this.form.controls['frequency'].value;
-  }
 
-  get cleaning_type() {
-    return this.form.controls['cleaning_type'].value;
-  }
-
-  get bedrooms() {
-    return this.form.controls['bedrooms'].value;
-  }
-
-  get bathrooms() {
-    return this.form.controls['bathrooms'].value;
-  }
-
-  get checkedGroup() {
-    return this.form.controls['checkedGroup'].value;
-  }
-
-  get date() {
-    return this.form.controls['date'].value;
-  }
-
-  get select_times() {
-    return this.form.controls['select_times'].value;
-  }
-
-  get sq_ft() {
-    return this.form.controls['sq_ft'].value;
-  }
 
   goBack(stepperDOM: MatStepper) {
     stepperDOM.previous();
@@ -390,6 +359,76 @@ export class BookingComponent implements OnInit, OnChanges {
     console.log(this._form.errorFlag);
   }
 
+  // crutches for material components: refresh the view of fields
+  get frequency() {
+    return this.form.controls['frequency'].value;
+  }
+
+  get cleaning_type() {
+    return this.form.controls['cleaning_type'].value;
+  }
+
+  get bedrooms() {
+    return this.form.controls['bedrooms'].value;
+  }
+
+  get bathrooms() {
+    return this.form.controls['bathrooms'].value;
+  }
+
+  get checkedGroup() {
+    return this.form.controls['checkedGroup'].value;
+  }
+
+  get date() {
+    return this.form.controls['date'].value;
+  }
+
+  get sq_ft() {
+    return this.form.controls['sq_ft'].value;
+  }
+
+  get select_times() {
+    return this.form.controls['select_times'].value;
+  }
+
+  // extras
+
+  get extras_fridge() {
+    return this.form.controls['extras_fridge'].value;
+  }
+
+  get extras_oven() {
+    return this.form.controls['extras_oven'].value;
+  }
+
+  get extras_cabinet() {
+    return this.form.controls['extras_cabinet'].value;
+  }
+
+  get extras_washer() {
+    return this.form.controls['extras_washer'].value;
+  }
+
+  get extras_window() {
+    return this.form.controls['extras_window'].value;
+  }
+
+  get extras_vacuum_sofa() {
+    return this.form.controls['extras_vacuum_sofa'].value;
+  }
+
+  // extras list
+
+  get extras_list() {
+    return [
+      { text: 'Inside the Fridge', key: 'extras_fridge', value: this.extras_fridge },
+      { text: 'Inside the Oven', key: 'extras_oven', value: this.extras_oven },
+      { text: 'Inside the Cabinets', key: 'extras_cabinet', value: this.extras_cabinet },
+      { text: 'Load(s) of Laundry', key: 'extras_washer', value: this.extras_washer },
+      { text: 'Windows', key: 'extras_window', value: this.extras_window },
+      { text: 'Vacuum the Sofa', key: 'extras_vacuum_sofa', value: this.extras_vacuum_sofa },
+    ];
+  }
+
 }
-
-
