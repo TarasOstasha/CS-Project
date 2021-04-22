@@ -61,7 +61,9 @@
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
                                             <mat-form-field appearance="fill">
-                                                <mat-label>Cleaning type</mat-label>
+                                                <mat-label>
+                                                    Cleaning type
+                                                </mat-label>
                                                 <mat-select [ngModel]="cleaning_type"
                                                             formControlName="cleaning_type">
                                                     <mat-option [value]="item.title"
@@ -117,19 +119,25 @@
                                              style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
-                                                <input formControlName="zip_code"
+                                                <input (keyup)="checkZipCode($event)"
+                                                       formControlName="zip_code"
                                                        matInput
                                                        placeholder="000000"
-                                                       (keyup)="checkZipCode($event)"
                                                        required />
                                                 <!-- <span *ngIf="form.get('zip_code')?.valid">{{ zipObj }}</span>        -->
-                                                <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>
+                                                <div *ngIf="errorFlag"
+                                                     style="color:red">
+                                                    Not Valid (Please Call Us)
+                                                </div>
                                             </mat-form-field>
                                         </div>
-                                        <div class="input" style="padding-top: .1rem;">
+                                        <div class="input"
+                                             style="padding-top: .1rem;">
                                             <mat-form-field appearance="fill"
                                                             hintLabel="Max 10 characters">
-                                                <mat-label>Email address</mat-label>
+                                                <mat-label>
+                                                    Email address
+                                                </mat-label>
                                                 <input #input
                                                        formControlName="email"
                                                        matInput
@@ -138,7 +146,6 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-                                   
                                 </div>
 
                                 <div class="big-box big-box-right">
@@ -219,13 +226,16 @@
 
                             <!-- office -->
                             <div *ngIf="checkedGroup == 'office'" class="boxes">
-                                <div class="wrapper-form" style="width:70%;margin:0 auto;">
+                                <div class="wrapper-form"
+                                     style="width:70%;margin:0 auto;">
                                     <app-office-form></app-office-form>
                                 </div>
                             </div>
                             <!-- commercial -->
-                            <div *ngIf="checkedGroup == 'commercial'" class="boxes">
-                                <div class="wrapper-form" style="width:70%;margin:0 auto;">
+                            <div *ngIf="checkedGroup == 'commercial'"
+                                 class="boxes">
+                                <div class="wrapper-form"
+                                     style="width:70%;margin:0 auto;">
                                     <app-business-form></app-business-form>
                                 </div>
                             </div>
@@ -387,7 +397,7 @@
                                 </h3>
                             </ng-template>
 
-                            <br>
+                            <br />
                             <div class="booking-links">
                                 <ul>
                                     <li (click)="cheakFormGroup('residential')"
@@ -443,16 +453,18 @@
                                              style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
-                                                <input formControlName="zip_code"
+                                                <input (keyup)="checkZipCode($event)"
+                                                       formControlName="zip_code"
                                                        matInput
                                                        placeholder="000000"
-                                                       (keyup)="checkZipCode($event)"
                                                        required />
                                                 <!-- <span *ngIf="form.get('zip_code')?.valid">{{ zipObj }}</span>  -->
-                                                <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>      
+                                                <div *ngIf="errorFlag"
+                                                     style="color:red">
+                                                    Not Valid (Please Call Us)
+                                                </div>
                                             </mat-form-field>
                                         </div>
-                                      
                                     </div>
                                     <!-- ********************************************* 2 group -->
                                     <div class="inner-box inner-box-right">
@@ -494,7 +506,6 @@
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
-                                       
                                     </div>
                                 </div>
 
@@ -623,7 +634,9 @@
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <b>Service Date:</b>
-                                                <span>{{date | date: 'MM/dd/yyyy'}}</span>
+                                                <span>
+                                                    {{date | date: 'MM/dd/yyyy'}}
+                                                </span>
                                             </div>
                                         </mat-list-item>
 
@@ -631,7 +644,9 @@
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <b>Service Time:</b>
-                                                <span>{{preventEmpty(select_times)}}</span>
+                                                <span>
+                                                    {{preventEmpty(select_times)}}
+                                                </span>
                                             </div>
                                         </mat-list-item>
 
@@ -647,7 +662,9 @@
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <span>- {{cleaning_type}}</span>
-                                                <span>{{calculatePipe.bedBath | currency}}</span>
+                                                <span>
+                                                    {{calculatePipe.bedBath | currency}}
+                                                </span>
                                             </div>
                                         </mat-list-item>
 
@@ -778,15 +795,13 @@
                                                 </span>
                                             </div>
 
-                                            
-
                                             <mat-divider></mat-divider>
                                             <div class="sum-row">
                                                 <span class="sum-row-left">
                                                     {{frequency}} Total:
                                                 </span>
                                                 <span class="sum-row-right">
-                                                    $$$
+                                                    {{calculatePipe.total | currency}}
                                                 </span>
                                             </div>
                                             <h1></h1>
