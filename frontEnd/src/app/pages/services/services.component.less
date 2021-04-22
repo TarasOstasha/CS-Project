@@ -8,6 +8,13 @@
         position: relative;
     
         .img {
+            position: relative;
+            div {
+                width: 100%;
+                position: absolute;
+                height: 100%;
+                background: rgba(0,0,0,.7);
+            }
             img {
                 width: 100%;
             }
@@ -33,6 +40,7 @@
                 max-width: 650px;
                 text-align: left;
                 position: relative;
+                line-height: initial;
             }
             h1:after {
                 content: '';
@@ -41,8 +49,8 @@
                 //width: 100%;
                 display: block;
                 position: absolute;
-                top: -6%;
-                left: -3%;
+                top: -15%;
+                left: -5%;
             }
 
             h1:before {
@@ -53,7 +61,7 @@
                 display: block;
                 position: absolute;
                 top: -15%;
-                left: -3%;
+                left: -4%;
             }
         }
     }
