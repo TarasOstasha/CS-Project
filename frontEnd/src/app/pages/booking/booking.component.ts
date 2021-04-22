@@ -237,8 +237,9 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.cleaning_type == 'Move cleaning') subtotal += 40;
     if (this.cleaning_type == 'Post construction cleaning') subtotal += 160;
     if (this.cleaning_type == 'Post renovation cleaning') subtotal += 160;
-    //
-    subtotal += this.bedrooms + this.bathrooms;
+    // bed bath
+    const bedBath = this.bedrooms * this.stepper.bedrooms.price + this.bathrooms * this.stepper.bathrooms.price;
+    subtotal += bedBath; //this.bedrooms + this.bathrooms;
     // frequency
     if (this.frequency == 'Weekly') subtotal += 10;
     if (this.frequency == 'Biweekly') subtotal += 10;
@@ -259,6 +260,7 @@ export class BookingComponent implements OnInit, OnChanges {
     // recommend time for cleaning
     const recommendTime = Math.round(subtotal/40);
     return {
+      bedBath,
       subtotal,
       tax,
       total,
@@ -377,8 +379,6 @@ export class BookingComponent implements OnInit, OnChanges {
   stopPropagation(e: any) {
     e.stopPropagation();
   }
-
-
 
   // zip code check added by Taras 07/17/21
   errorFlag: boolean = false;
