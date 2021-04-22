@@ -606,7 +606,7 @@
                                             <div class="info-field">
                                                 <b>Rooms:</b>
                                                 <span>
-                                                    qqq bedroom, qqq bathroom
+                                                    {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
                                                 </span>
                                             </div>
                                         </mat-list-item>
@@ -615,7 +615,7 @@
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <b>Frequency:</b>
-                                                <span>qqq</span>
+                                                <span>{{frequency}}</span>
                                             </div>
                                         </mat-list-item>
 
@@ -623,7 +623,7 @@
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <b>Service Date:</b>
-                                                <span>qqq</span>
+                                                <span>{{date | date: 'MM/dd/yyyy'}}</span>
                                             </div>
                                         </mat-list-item>
 
@@ -631,7 +631,7 @@
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <b>Service Time:</b>
-                                                <span>qqq</span>
+                                                <span>{{preventEmpty(select_times)}}</span>
                                             </div>
                                         </mat-list-item>
 
@@ -646,8 +646,8 @@
                                         <mat-divider></mat-divider>
                                         <mat-list-item>
                                             <div class="info-field">
-                                                <span>- qqq</span>
-                                                <span>qqq</span>
+                                                <span>- {{cleaning_type}}</span>
+                                                <span>{{calculatePipe.bedBath | currency}}</span>
                                             </div>
                                         </mat-list-item>
 
