@@ -422,13 +422,37 @@ export class BookingComponent implements OnInit, OnChanges {
 
   get extras_list() {
     return [
-      { text: 'Inside the Fridge', key: 'extras_fridge', value: this.extras_fridge },
-      { text: 'Inside the Oven', key: 'extras_oven', value: this.extras_oven },
-      { text: 'Inside the Cabinets', key: 'extras_cabinet', value: this.extras_cabinet },
-      { text: 'Load(s) of Laundry', key: 'extras_washer', value: this.extras_washer },
-      { text: 'Windows', key: 'extras_window', value: this.extras_window },
-      { text: 'Vacuum the Sofa', key: 'extras_vacuum_sofa', value: this.extras_vacuum_sofa },
+      { stepKey: 'fridge', formKey: 'extras_fridge', value: this.extras_fridge },
+      { stepKey: 'oven', formKey: 'extras_oven', value: this.extras_oven },
+      { stepKey: 'cabinet', formKey: 'extras_cabinet', value: this.extras_cabinet },
+      { stepKey: 'washer', formKey: 'extras_washer', value: this.extras_washer },
+      { stepKey: 'window', formKey: 'extras_window', value: this.extras_window },
+      { stepKey: 'vacuum_sofa', formKey: 'extras_vacuum_sofa', value: this.extras_vacuum_sofa },
     ];
   }
 
+  getExtrasByKey(k: any){
+    return this.stepper.extras.items.filter( (item: any) => item.value == k )
+  }
+
+  getExtrasTextByKey(k: any){
+    const obj = this.getExtrasByKey(k);
+    return obj[0].text
+  }
+
+  getExtrasTotalByKey(k: any){
+    const obj = this.getExtrasByKey(k);
+    const amount = obj[0].amount;
+    const price = obj[0].price;
+    return amount * price
+  }
+
 }
+
+
+// { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1, price: 30, mode: 'piece' },
+// { value: 'oven', color: '#eaf3fb', text: 'Inside the Oven', amount: 1, price: 30, mode: 'piece' },
+// { value: 'cabinet', color: '#dfe9f3', text: 'Inside the Cabinets', amount: 1, price: 30, mode: 'ranges' },
+// { value: 'washer', color: '#dfe9f3', text: 'Load(s) of Laundry', amount: 1, price: 30, mode: 'piece' },
+// { value: 'window', color: '#dfe9f3', text: 'Windows', amount: 1, price: 30, mode: 'ranges-5' },
+// { value: 'vacuum_sofa', color: '#dfe9f3', text: 'Vacuum the Sofa', amount: 1, price: 30, mode: 'piece' },

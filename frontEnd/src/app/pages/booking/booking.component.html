@@ -682,10 +682,10 @@
                                                 <mat-list-item>
                                                     <div class="info-field">
                                                         <span>
-                                                            - {{item.text}}
+                                                            - {{getExtrasTextByKey(item.stepKey)}}
                                                         </span>
                                                         <span>
-                                                            {{calculatePipe.bedBath | currency}}
+                                                            {{getExtrasTotalByKey(item.stepKey) | currency}}
                                                         </span>
                                                     </div>
                                                 </mat-list-item>
