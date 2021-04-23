@@ -124,7 +124,23 @@ export class MainComponent implements OnInit {
       slidesToScroll: 2,
       autoplaySpeed: 5000,
       mobileFirst: true,
-      adaptiveHeight: true
+      adaptiveHeight: true,
+      responsive: [
+        {
+          breakpoint: 920,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 320,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     });
   }
 
