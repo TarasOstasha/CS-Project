@@ -7,19 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PoliciesComponent implements OnInit {
   faqAccordion = [
-    { title: 'What are your hours of operation?', paragraph: `
-      Depending on your location, the hours that we are available to clean changes. In order to check, simply going to our booking process here, enter your address and proceed to the ‘Date and Time’ page. All of the available dates and times that we are available to clean your home will be shown there.
-      Usually, you will be able to schedule a Lazy Susans clean to take place any time between 7am and 10pm, 7 days a week.
-      Our customer support line operates from 9am – 6pm, Monday to Friday.
-    ` },
-    { title: 'How does your 100% satisfaction guarantee work?', paragraph: `
-      In the rare event that you are not 100% satisfied with the job, please contact us so we can make it right for you. We will offer to send another Lazy Susans professional to ensure that you are satisfied with the standard of our service.
-      Enquiries regarding the satisfaction guarantee must be made within 48 hours of completion of the booking.
-    ` },
-    { title: 'What is your cancellation or rescheduling policy?', paragraph: `
-      You can cancel or reschedule your booking free of charge, provided you give at least 48 hours’ notice.
-      However, if you do cancel or reschedule your booking within 24 hours of its starting time, you will incur an $80.00 fee. Rescheduling no fee within 48 hours but canceling  within 48 hours will result in $40.00. This is because our cleaners have already locked in that day and lose valuable working hours if you cancel with short notice.
-    ` }
+    { title: "1. What is your cancellation or rescheduling policy?", paragraph: "If you need to cancel or reschedule, call to us in advance. There is a $60 fee if less then 24hrs are given." },
+    { title: "2. Which payment forms Crystal System Cleaning accept?", paragraph: "Visa, Mastercard, Discover, American Express, Cash and Check." },
+    { title: "3. Can I leave keys for convenient entry into my place?", paragraph: "Keys may be supplied to us for convenient entry. Please fill out a Key Release Form for this free service, along with two (2) sets of keys. We will send you a Key Release Form with Confirmation Letter on the email." },
+    { title: "4. What can happen if I missed appointment for cleaning and didn't let them go in?", paragraph: "There will be a fee in the full service amount for any appointments missed due to inability to gain access to the home. " },
+    {
+      title: "5. What to do if the cleaner damaged the item in my house?", paragraph: `Any damages discovered should be reported to Crystal System Cleaning within 24 hours of the service date. 
+      Crystal System Cleaning is not responsible for any damage to an item due to improper installation of that item, or improper instructions given to the cleaner.` }
   ]
 
   constructor() { }

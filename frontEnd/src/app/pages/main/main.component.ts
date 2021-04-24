@@ -134,6 +134,13 @@ export class MainComponent implements OnInit {
           }
         },
         {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
           breakpoint: 320,
           settings: {
             slidesToShow: 1,
