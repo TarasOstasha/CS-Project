@@ -21,6 +21,7 @@ import { UrgentIssuesComponent } from './pages/faq-pages/urgent-issues/urgent-is
 import { FaqBookingComponent } from './pages/faq-pages/faq-booking/faq-booking.component';
 import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.component';
 import { AuthComponent } from './parts/auth/auth.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 
@@ -64,7 +65,8 @@ const routes: Routes = [
   //   { path: 'urgent-issues-faq', component: UrgentIssuesComponent },
   // ] },
   { path: 'booking', component: BookingComponent },
-  { path: 'admin', component: AuthComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: 'admin', component: AdminComponent },
   { path: '**', redirectTo: '/p404' } //should be last one
 ];
 

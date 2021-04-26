@@ -54,6 +54,7 @@ import { FaqBookingComponent } from './pages/faq-pages/faq-booking/faq-booking.c
 import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.component';
 import { OfficeFormComponent } from './parts/office-form/office-form.component';
 import { AuthComponent } from './parts/auth/auth.component';
+import { AdminComponent } from './pages/admin/admin.component';
 //import { MainModule } from './pages/main/main.modules';
 
 // other material modules
@@ -90,6 +91,7 @@ import { AuthComponent } from './parts/auth/auth.component';
     FaqBillingComponent,
     OfficeFormComponent,
     AuthComponent,
+    AdminComponent,
    
   ],
   imports: [

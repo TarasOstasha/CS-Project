@@ -22,20 +22,12 @@ export class AuthComponent implements OnInit {
       email: ['', [Validators.required, Validators.email] ],
       password: ['', [Validators.required, Validators.pattern('^test1111$')] ]
     })
-    // this.email = new FormControl('', [Validators.required, Validators.email]);
-    // this.password = new FormControl('', [Validators.required]);
   }
   
 
 
   sendAuthForm() {
-    console.log(this.authForm)
-    if( this.authForm.value.email == 'test@gmail.com' && this.authForm.value.password == 'test1111' ) {
-      //this.disabled = false;
-      this._router.navigate(['main']);
-      
-    } 
-    else false
+    if( this.authForm.value.email == 'test@gmail.com' && this.authForm.value.password == 'test1111' ) this._router.navigate(['admin']); 
   }
 
 }
