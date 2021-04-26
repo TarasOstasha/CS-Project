@@ -1,0 +1,21 @@
+<app-header></app-header>
+<!-- <div class="logo">
+    <img src="../../../assets/images/Logo_1_.png" alt="">
+</div> -->
+<form [formGroup]="authForm" class="example-container" (change)="sendAuthForm()">
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input formControlName="email" matInput placeholder="pat@example.com" required>
+        <mat-error *ngIf="authForm.get('email')?.invalid">Not a valid email</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="authForm.invalid">Sign In</button>
+</form>
+<app-footer></app-footer>

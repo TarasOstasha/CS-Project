@@ -20,6 +20,7 @@ import { SafetyComponent } from './pages/faq-pages/safety/safety.component';
 import { UrgentIssuesComponent } from './pages/faq-pages/urgent-issues/urgent-issues.component';
 import { FaqBookingComponent } from './pages/faq-pages/faq-booking/faq-booking.component';
 import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.component';
+import { AuthComponent } from './parts/auth/auth.component';
 
 
 
@@ -63,6 +64,7 @@ const routes: Routes = [
   //   { path: 'urgent-issues-faq', component: UrgentIssuesComponent },
   // ] },
   { path: 'booking', component: BookingComponent },
+  { path: 'admin', component: AuthComponent },
   { path: '**', redirectTo: '/p404' } //should be last one
 ];
 
