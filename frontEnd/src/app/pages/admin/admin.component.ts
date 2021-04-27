@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+declare var $: any;
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.less']
 })
 export class AdminComponent implements OnInit {
+  bookings: any = '';
+  
 
-  constructor() { }
+  constructor(public _api: ApiService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+  this.bookings = await this._api.getBookingData();
+    console.log(this.bookings)
   }
+
+
 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
 import { FormService } from '../../services/form.service';
+import { ApiService } from 'src/app/services/api.service';
 const log = console.log;
 
 @Component({
@@ -150,6 +151,7 @@ export class BookingComponent implements OnInit, OnChanges {
     private _formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private _form: FormService,
+    private _api: ApiService
   ) { }
 
   /* 
@@ -452,6 +454,23 @@ export class BookingComponent implements OnInit, OnChanges {
     const amount = obj[0].amount;
     const price = obj[0].price;
     return amount * price
+  }
+
+  // added by Taras 04/26/2021
+  collectData() {
+    const collectedData = {
+      name: this.form.value.first_name,
+      last_name: this.form.value.last_name,
+      address: this.form.value.address,
+      city: this.form.value.city,
+      state: this.form.value.state,
+      zip_code: this.form.value.state,
+      phone: this.form.value.phone,
+      email: this.form.value.email
+    }
+    this._api.sendBookingData(collectedData)
+      .subscribe(response => console.log(response))
+    console.log(this.form)
   }
 
 }

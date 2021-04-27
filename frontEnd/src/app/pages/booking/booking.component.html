@@ -847,7 +847,7 @@
                                 <button mat-button matStepperPrevious>
                                     Back
                                 </button>
-                                <button mat-button matStepperNext>Next</button>
+                                <button mat-button matStepperNext (click)="collectData()">Next</button>
                                 <button (click)="fill(stepperDOM)" mat-button>
                                     Fill
                                 </button>

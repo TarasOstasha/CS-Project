@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Review } from '../interfaces/review-data.model';
 import { officeBookForm } from '../interfaces/officeBookForm-data.model';
 import { businessBookForm } from '../interfaces/businessForm-data.model';
+import { bookingData } from '../interfaces/booking-data.model';
 
 if(location.hostname == 'localhost') var url = 'http://localhost/'; //dev
 else var url = ''; //production
@@ -54,6 +55,17 @@ export class ApiService {
     console.log(value);
     this.businessFormData = value;
     return this._http.post( url + 'sendmail', this.businessFormData );
+  }
+
+  sendBookingData(data: bookingData) {
+    return this._http.post( url + 'booking-data', data )
+  }
+
+  getBookingData() {
+    return this._http.get(url + 'booking-data').toPromise();
+    //   .subscribe(response => {
+    //   console.log(response);
+    // })
   }
 
 

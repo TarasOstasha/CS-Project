@@ -4,3 +4,36 @@
         <img src="../../../assets/images/Logo_1_.png" alt="logo">
     </div>
 </div>
+<div class="table-wrapper">
+    <div class="container">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">ZIP</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let booking of bookings.booking; let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td >{{ booking.name }}</td>
+                    <td >{{ booking.last_name }}</td>
+                    <td >{{ booking.address }}</td>
+                    <td >{{ booking.state }}</td>
+                    <td >{{ booking.zip_code }}</td>
+                    <td >{{ booking.email }}</td>
+                    <td >{{ booking.phone }}</td>
+                    <td >{{ booking.created }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
