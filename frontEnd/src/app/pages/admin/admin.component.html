@@ -6,6 +6,13 @@
 </div>
 <div class="table-wrapper">
     <div class="container">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search" aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
         <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -18,22 +25,26 @@
                     <th scope="col">ZIP</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Added</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let booking of bookings.booking; let i = index">
                     <th scope="row">{{ i+1 }}</th>
-                    <td >{{ booking.name }}</td>
-                    <td >{{ booking.last_name }}</td>
-                    <td >{{ booking.address }}</td>
-                    <td >{{ booking.state }}</td>
-                    <td >{{ booking.zip_code }}</td>
-                    <td >{{ booking.email }}</td>
-                    <td >{{ booking.phone }}</td>
-                    <td >{{ booking.created }}</td>
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.last_name }}</td>
+                    <td>{{ booking.address }}</td>
+                    <td>{{ booking.city }}</td>
+                    <td>{{ booking.state }}</td>
+                    <td>{{ booking.zip_code }}</td>
+                    <td>{{ booking.email }}</td>
+                    <td>{{ booking.phone }}</td>
+                    <td>{{ booking.created | date: 'MM/dd/yyyy' }}</td>
                 </tr>
             </tbody>
         </table>
+        <button mat-raised-button color="primary" (click)="saveAllEmails()">Save Emails</button>
     </div>
 
 </div>
+

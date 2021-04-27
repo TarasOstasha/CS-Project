@@ -10,14 +10,22 @@ declare var $: any;
 export class AdminComponent implements OnInit {
   bookings: any = '';
   
-
+  
   constructor(public _api: ApiService) { }
 
   async ngOnInit() {
-  this.bookings = await this._api.getBookingData();
-    console.log(this.bookings)
+    this.bookings = await this._api.getBookingData();
+    console.log(this.bookings.booking)
   }
 
+
+  async saveAllEmails() {
+    const emailsFromServer: any = this._api.myEmails();
+    console.log(emailsFromServer);
+    // for(const value of this.bookings.booking) {
+    //   console.log( value.email)
+    // }
+  }
 
 
 }

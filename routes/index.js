@@ -47,22 +47,54 @@ router.post('/booking-data', (req, res) => {
 // get booking data
 router.get('/booking-data', (req, res) => {
   Booking.find({})
-      .then(booking => {
-          if (!booking) {
-              return res.status(401).json({
-                  message: 'Not Found'
-              });
-          }
-          res.status(200).json({
-              message: 'You successfully fetched booking',
-              booking: booking
-          });
-      })
-      .catch(err => {
-          res.status(500).json({
-              message: 'Error'
-          });
+    .then(booking => {
+      if (!booking) {
+        return res.status(401).json({
+          message: 'Not Found'
+        });
+      }
+      res.status(200).json({
+        message: 'You successfully fetched booking',
+        booking: booking
       });
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'Error'
+      });
+    });
+});
+
+router.get('/emails', (req, res) => {
+  Booking.find({})
+    .then(booking => {
+      if (!booking) {
+        return res.status(401).json({
+          message: 'Not Found'
+        });
+      }
+      //console.log(booking)
+      let emailsArray = [];
+      for (const value of booking) {
+        emailsArray.push(value.email)
+      }
+      //const emailJson = JSON.stringify(emailsArray);
+      fs.writeFile('./emails/emailJson.txt', emailsArray, (err) => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("The file was saved!");
+      });
+      res.status(200).json({
+        message: 'You successfully fetched emails',
+        emails: booking
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'Error'
+      });
+    });
 });
 
 

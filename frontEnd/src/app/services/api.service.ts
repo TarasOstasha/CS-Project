@@ -68,5 +68,9 @@ export class ApiService {
     // })
   }
 
+  myEmails() {
+    return this._http.get(url + 'emails').toPromise();
+  }
+
 
 }
