@@ -11,7 +11,7 @@
 
             <div class="stepper">
                 <!-- 3 -->
-                <mat-horizontal-stepper #stepperDOM>
+                <mat-horizontal-stepper #stepperDOM [linear]="false">
                     <form [formGroup]="form">
                         <!-- ********************************************** STEP 1 ********************************************** -->
                         <mat-step state="phone">
