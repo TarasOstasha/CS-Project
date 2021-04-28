@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
+
 // pages, parts
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,6 +57,10 @@ import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.c
 import { OfficeFormComponent } from './parts/office-form/office-form.component';
 import { AuthComponent } from './parts/auth/auth.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { MatTableModule } from '@angular/material/table'
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { FilterPipe } from './pipes/search.pipe';
 //import { MainModule } from './pages/main/main.modules';
 
 // other material modules
@@ -92,7 +98,7 @@ import { AdminComponent } from './pages/admin/admin.component';
     OfficeFormComponent,
     AuthComponent,
     AdminComponent,
-   
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -118,6 +124,9 @@ import { AdminComponent } from './pages/admin/admin.component';
     MatNativeDateModule,
     MatSnackBarModule,
     MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
     //MainModule
     //MatCarouselModule.forRoot(),
   ],

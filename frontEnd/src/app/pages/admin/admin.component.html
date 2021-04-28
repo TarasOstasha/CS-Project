@@ -8,10 +8,10 @@
     <div class="container">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">@</span>
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
             <input type="text" class="form-control" placeholder="Search" aria-label="Username"
-                aria-describedby="basic-addon1">
+                aria-describedby="basic-addon1" (keyup)="updateSearch($event)">
         </div>
         <table class="table table-hover">
             <thead class="thead-dark">
@@ -44,7 +44,36 @@
             </tbody>
         </table>
         <button mat-raised-button color="primary" (click)="saveAllEmails()">Save Emails</button>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 
 </div>
 
+<div class="content" role="main">
+        <div class="card">
+          <div class="form-group">
+            <label for="search-text">Search Text</label>
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+              [(ngModel)]="searchText" placeholder="Enter text to search" 
+              autofocus>
+          </div>
+          <ul class="list-group list-group-flush">
+            <!-- results of ngFor is passed to appFilter with argument searchText -->
+            <li class="list-group-item" *ngFor="let c of characters | appFilter: searchText">
+              {{c}}
+            </li>
+          </ul>
+        </div>
+      </div>
