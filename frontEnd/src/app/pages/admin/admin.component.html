@@ -10,7 +10,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Search" aria-label="Username"
+            <input type="text" class="form-control" placeholder="Search by Name" aria-label="Username"
                 aria-describedby="basic-addon1" (keyup)="updateSearch($event)">
         </div>
         <table class="table table-hover">
@@ -29,7 +29,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let booking of bookings.booking; let i = index">
+                <!-- <tr *ngFor="let booking of bookings.booking; let i = index"> -->
+                <tr *ngFor="let booking of filteredProduct; let i = index">
                     <th scope="row">{{ i+1 }}</th>
                     <td>{{ booking.name }}</td>
                     <td>{{ booking.last_name }}</td>
@@ -61,7 +62,7 @@
 
 </div>
 
-<div class="content" role="main">
+<!-- <div class="content" role="main">
         <div class="card">
           <div class="form-group">
             <label for="search-text">Search Text</label>
@@ -70,10 +71,9 @@
               autofocus>
           </div>
           <ul class="list-group list-group-flush">
-            <!-- results of ngFor is passed to appFilter with argument searchText -->
             <li class="list-group-item" *ngFor="let c of characters | appFilter: searchText">
               {{c}}
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->

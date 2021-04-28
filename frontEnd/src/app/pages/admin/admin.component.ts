@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 import { ApiService } from 'src/app/services/api.service';
 import { pipe, of, fromEvent, Subject, Observable } from 'rxjs';
 import { debounceTime, map, filter, switchAll, distinctUntilChanged } from 'rxjs/operators';
-
+import { FilterPipe } from '../../pipes/search.pipe';
 
 declare var $: any;
 
@@ -10,7 +10,8 @@ declare var $: any;
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.less']
+  styleUrls: ['./admin.component.less'],
+
 })
 export class AdminComponent implements OnInit {
 
@@ -26,34 +27,21 @@ export class AdminComponent implements OnInit {
   public updateSearch(event: any) {
     this._searchSubject.next(event.target.value);
   }
-
-  myFlag: boolean = false;
-  copyObj:any;
+  copyObj: any;
+  filteredProduct: any;
   private _setSearchSubscription() {
     this._searchSubject.pipe(
       debounceTime(500)
-    ).subscribe((searchValue: string) => {
+    ).subscribe(async (searchValue: string) => {
       console.log(searchValue)
       // Filter Function
-
-      this.bookings.booking = this.bookings.booking.filter( (item:any, index:number) => {
-        return item.name == searchValue
-      })
-      // here create method to return table if value not equal
-
-      // this.bookings.booking.forEach(async (item: any, index: any) => {
-      //   if (item.name === searchValue.toLocaleLowerCase()) {
-      //     this.myFlag = true;
-      //     this.bookings.booking = this.bookings.booking.splice(this.bookings.booking.indexOf(item[index]), 1); // value from input;
-      //     //console.log(this.bookings.booking, this.bookings2.booking,this.myFlag )
-      //   }
-      //   else if (item.name !== searchValue.toLocaleLowerCase()) {
-      //     this.myFlag = false;
-      //     //this.copyObj.push(currentValue);
-      //     //this.bookings.booking = [...this.copyObj]; // paste copy obj to main obj
-      //     //console.log(this.copyObj)
-      //   }
-      // })
+      this.filteredProduct = this.filteredProduct.filter((item: any) => {
+        return item.name.toLowerCase() == searchValue.toLowerCase();
+      }
+      );
+      if (this.filteredProduct.length === 0) { // check if length of product == 0
+        return this.filteredProduct = this.bookings.booking; // rerender view
+      }
 
     });
   }
@@ -62,13 +50,14 @@ export class AdminComponent implements OnInit {
     this._searchSubject.unsubscribe();
   }
 
-  bookings2: any;
+ 
   async ngOnInit() {
-    this.bookings = await this._api.getBookingData(); // main object
+    this.bookings = await this._api.getBookingData(); // main object from server
+    this.filteredProduct = this.bookings.booking;
+  }
 
-    //this.bookings2 = await this._api.getBookingData(); // second obj for search method
-    //this.copyObj = Object.assign(this.bookings2.booking); // copy data from server to object to return back value when search value not equal to input value
-    //console.log(this.bookings.booking)
+  async getUserData() {
+    return await this._api.getBookingData(); // main object
   }
 
 
@@ -91,7 +80,7 @@ export class AdminComponent implements OnInit {
     'Batgirl',
     'Batman',
     'Batwoman',
-  
+
   ]
 
 
