@@ -1,5 +1,5 @@
 import { NgModule, Component } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { MainComponent } from './pages/main/main.component'
 import { ServicesComponent } from './pages/services/services.component';
 import { MeveComponent } from './pages/service-pages/meve/meve.component';
@@ -23,7 +23,7 @@ import { FaqBillingComponent } from './pages/faq-pages/faq-billing/faq-billing.c
 import { AuthComponent } from './parts/auth/auth.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
-
+import { AuthGuard } from './parts/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -66,12 +66,13 @@ const routes: Routes = [
   // ] },
   { path: 'booking', component: BookingComponent },
   { path: 'auth', component: AuthComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/p404' } //should be last one
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

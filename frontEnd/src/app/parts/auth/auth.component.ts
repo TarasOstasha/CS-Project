@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,9 +14,10 @@ export class AuthComponent implements OnInit {
   disabled = true;
   email: any;
   password: any;
+  
 
 
-  constructor(private _formBuilder: FormBuilder, private _router: Router) { }
+  constructor(private _formBuilder: FormBuilder, private _router: Router, private _auth: AuthService) { }
 
   ngOnInit(): void {
     this.authForm = this._formBuilder.group({
@@ -24,10 +26,24 @@ export class AuthComponent implements OnInit {
     })
   }
   
+  // getIsAuth() {
+  //   return this.isAuthenticated;
+  // }
 
 
   sendAuthForm() {
-    if( this.authForm.value.email == 'test@gmail.com' && this.authForm.value.password == 'test1111' ) this._router.navigate(['admin']); 
+    if( this.authForm.value.email == 'test@gmail.com' && this.authForm.value.password == 'test1111' ) {
+      this._auth.isAuthenticated = true;
+      this._router.navigate(['admin']); 
+    } 
   }
+
+  // canActivate(): boolean {
+  //   if (!this.isAuthenticated) {
+  //     this._router.navigate(['auth']);
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
 }
