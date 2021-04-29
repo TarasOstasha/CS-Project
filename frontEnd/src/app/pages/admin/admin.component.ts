@@ -14,6 +14,8 @@ declare var $: any;
 
 })
 export class AdminComponent implements OnInit {
+  p: number = 1; // for npx pagination
+  config: any; // for npx pagination (not using right now)
 
   bookings: any = '';
   @Output() setValue: EventEmitter<string> = new EventEmitter();
@@ -22,6 +24,12 @@ export class AdminComponent implements OnInit {
 
   constructor(public _api: ApiService) {
     this._setSearchSubscription();
+    // one method for npx pagination(ajust config in ts file)
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: setTimeout(()=>{this.bookings.booking.length},1000) 
+    };
   }
 
   public updateSearch(event: any) {
@@ -50,10 +58,17 @@ export class AdminComponent implements OnInit {
     this._searchSubject.unsubscribe();
   }
 
- 
+
+  pageChanged(event:any){
+    this.config.currentPage = event;
+  }
+  
+
   async ngOnInit() {
     this.bookings = await this._api.getBookingData(); // main object from server
     this.filteredProduct = this.bookings.booking;
+    console.log(this.bookings.booking.length)
+
   }
 
   async getUserData() {
@@ -69,19 +84,18 @@ export class AdminComponent implements OnInit {
     // }
   }
 
+  // searchText = '';
+  // characters = [
+  //   'Ant-Man',
+  //   'Aquaman',
+  //   'Asterix',
+  //   'The Atom',
+  //   'The Avengers',
+  //   'Batgirl',
+  //   'Batman',
+  //   'Batwoman',
 
-  searchText = '';
-  characters = [
-    'Ant-Man',
-    'Aquaman',
-    'Asterix',
-    'The Atom',
-    'The Avengers',
-    'Batgirl',
-    'Batman',
-    'Batwoman',
-
-  ]
+  //]
 
 
 }
