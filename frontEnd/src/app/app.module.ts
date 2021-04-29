@@ -61,6 +61,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FilterPipe } from './pipes/search.pipe';
+import { Page404Component } from './pages/page404/page404.component';
 //import { MainModule } from './pages/main/main.modules';
 
 // other material modules
@@ -98,7 +99,8 @@ import { FilterPipe } from './pipes/search.pipe';
     OfficeFormComponent,
     AuthComponent,
     AdminComponent,
-    FilterPipe
+    FilterPipe,
+    Page404Component
   ],
   imports: [
     BrowserModule,

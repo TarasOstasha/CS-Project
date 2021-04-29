@@ -24,6 +24,7 @@ import { AuthComponent } from './parts/auth/auth.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
 import { AuthGuard } from './parts/auth/auth.guard';
+import { Page404Component } from './pages/page404/page404.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -67,6 +68,7 @@ const routes: Routes = [
   { path: 'booking', component: BookingComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'p404', component: Page404Component },
   { path: '**', redirectTo: '/p404' } //should be last one
 ];
 
