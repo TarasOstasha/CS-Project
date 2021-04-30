@@ -12,6 +12,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var reviewRouter = require('./routes/review');
 
+const calendar = require('./public/calendar');
+
 var app = express();
 
 // ** connection to data base ** \\
@@ -43,6 +45,13 @@ app.use('/', reviewRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+// calendar
+app.use((req, res, next) => {
+  console.log('calendar')
+  calendar()
+  next()
+});
+ app.use(calendar)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,5 +75,6 @@ app.use(function(err, req, res, next) {
 });
 
 
-
 module.exports = app;
+
+

@@ -458,6 +458,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   // added by Taras 04/26/2021
   collectData() {
+    console.log(this.form)
     const collectedData = {
       name: this.form.value.first_name,
       last_name: this.form.value.last_name,
