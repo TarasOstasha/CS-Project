@@ -5,6 +5,11 @@ import { MatStepper } from '@angular/material/stepper';
 import { FormService } from '../../services/form.service';
 import { ApiService } from 'src/app/services/api.service';
 const log = console.log;
+declare var window: any;
+declare var stripe: any;
+declare var elements: any;
+
+
 
 @Component({
   selector: 'app-booking',
@@ -15,6 +20,8 @@ const log = console.log;
   }]
 })
 export class BookingComponent implements OnInit, OnChanges {
+
+
   @ViewChild('stepperDOM') stepperDOM!: MatStepper;
 
   // ----------------------------------------------------------------------------------------------------------------- OPTIONS BEGIN
@@ -26,6 +33,8 @@ export class BookingComponent implements OnInit, OnChanges {
   form_1_1!: FormGroup;
   form_1_2!: FormGroup;
   form_1_3!: FormGroup;
+ 
+  stripePaymentForm!: FormGroup;
 
   isEditable = false;
 
@@ -155,7 +164,7 @@ export class BookingComponent implements OnInit, OnChanges {
     private _formBuilder: FormBuilder,
     private cdr: ChangeDetectorRef,
     private _form: FormService,
-    private _api: ApiService
+    private _api: ApiService,
   ) { }
 
   /* 
@@ -230,12 +239,12 @@ export class BookingComponent implements OnInit, OnChanges {
     this.form = this._formBuilder.group({
     });
 
-    setInterval(() => {
-      // this.form_1_1.reset();// = "VALID";
-      // touched
-      log('>>>', this.form_1_1)
-      // log('>>>', this.form_1_3)
-    }, 2000)
+    // setInterval(() => {
+    //   // this.form_1_1.reset();// = "VALID";
+    //   // touched
+    //   log('>>>', this.form_1_1)
+    //   // log('>>>', this.form_1_3)
+    // }, 2000)
 
     log('Can I GET FORM DATA& : ', this._form.formData);
     // set values
@@ -245,7 +254,34 @@ export class BookingComponent implements OnInit, OnChanges {
       const serviceValue = this._form.formData[key];
       if (serviceValue.length > 0) this.form.controls[key].setValue(serviceValue);
     });
+
+    this.stripePaymentForm = this._formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      email: ['']
+    });
   }
+
+  placeOrder() {
+    this.paymentTransaction();
+  }
+
+  paymentTransaction() {
+    window.elementsModal.create({
+      type: 'stripe',
+      totalPrice: 100,
+      // the modal demo will handle non-zero currencies automatically
+      // items sent into the server can calculate their amounts and send back to the client
+      //items: [{ sku: "sku_1234", quantity: 1 }],
+      // Supported currencies here https://stripe.com/docs/currencies#presentment-currencies
+      currency: "USD",
+      businessName: 'test',
+      productName: 'test1',
+      customerEmail: 'test@gmail.com',
+      customerName: 'Jack',
+    });
+  }
+
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
@@ -505,20 +541,21 @@ export class BookingComponent implements OnInit, OnChanges {
 
   // added by Taras 04/26/2021
   collectData() {
-    console.log(this.form)
+    console.log(this.form.value)
+    const name = this.form_1_3.value.first_name.toLowerCase();
     const collectedData = {
-      name: this.form.value.first_name,
-      last_name: this.form.value.last_name,
-      address: this.form.value.address,
-      city: this.form.value.city,
-      state: this.form.value.state,
-      zip_code: this.form.value.state,
-      phone: this.form.value.phone,
-      email: this.form.value.email
+      name: name,
+      last_name: this.form_1_3.value.last_name,
+      address: this.form_1_3.value.address,
+      city: this.form_1_3.value.city,
+      state: this.form_1_3.value.state,
+      zip_code: this.form_1_3.value.state,
+      phone: this.form_1_1.value.phone,
+      email: this.form_1_1.value.email
     }
     this._api.sendBookingData(collectedData)
       .subscribe(response => console.log(response))
-    console.log(this.form)
+  
   }
 
 }

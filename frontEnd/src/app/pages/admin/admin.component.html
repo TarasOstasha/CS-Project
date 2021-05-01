@@ -31,7 +31,7 @@
             <tbody>
                 <!-- <tr *ngFor="let booking of bookings.booking; let i = index"> -->
                 <!-- <tr *ngFor="let booking of filteredProduct | paginate: config; let i = index "> -->
-                <tr *ngFor="let booking of filteredProduct | paginate: { itemsPerPage: 4, currentPage: p }; let i = index ">
+                <tr *ngFor="let booking of filteredProduct | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
                     <th scope="row">{{ i+1 }}</th>
                     <td>{{ booking.name }}</td>
                     <td>{{ booking.last_name }}</td>

@@ -17,6 +17,7 @@ export class AdminComponent implements OnInit {
   p: number = 1; // for npx pagination
   config: any; // for npx pagination (not using right now)
 
+  searchText = ''
   bookings: any = '';
   @Output() setValue: EventEmitter<string> = new EventEmitter();
 
@@ -44,7 +45,8 @@ export class AdminComponent implements OnInit {
       console.log(searchValue)
       // Filter Function
       this.filteredProduct = this.filteredProduct.filter((item: any) => {
-        return item.name.toLowerCase() == searchValue.toLowerCase();
+        console.log(item.name,'-item name', searchValue,'value from input')
+        return item.name == searchValue.toLowerCase();
       }
       );
       if (this.filteredProduct.length === 0) { // check if length of product == 0

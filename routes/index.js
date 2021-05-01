@@ -2,11 +2,14 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs');
 const pfs = fs.promises;
+//import { compareAsc, format, format, formatDistance, formatRelative, subDays } from 'date-fns'
+var moment = require('moment');
+
 
 const Booking = require('../models/bookingModel');
 
-const calendar = require('../public/calendar');
-calendar();
+//const calendar = require('../public/calendar');
+//calendar();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -14,7 +17,9 @@ router.get('/', function (req, res, next) {
 });
 
 
-
+var formatedDate = moment().format(
+  "dddd, MMMM Do YYYY, h:mm:ss a");
+console.log(formatedDate);
 
 
 // send booking data
@@ -99,61 +104,136 @@ router.get('/emails', (req, res) => {
     });
 });
 
-    // const { google } = require('googleapis');
-    // const { OAuth2 } = google.auth;
-    
-    // const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
-    
-    // oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
-    
-    // const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
-    
-    // // time 
-    // const eventStartTime = new Date()
-    // eventStartTime.setDate(eventStartTime.getDay() + 2)
-    
-    // const eventEndTime = new Date()
-    // eventEndTime.setDate(eventEndTime.getDay() + 2)
-    // eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
-    
-    // const event = {
-    //     summary: 'Meet with Natalya',
-    //     location: '2nd St, Carlstadt, NJ 07072',
-    //     describtion: 'Meeting with Yuliana to make permament makeup',
-    //     start: {
-    //         dateTime: eventStartTime,
-    //         timeZone: 'America/New_York'
-    //     },
-    //     end: {
-    //         dateTime: eventEndTime,
-    //         timeZone: 'America/New_York'
-    //     },
-    //     colorId: 1
-    // }
-    
-    // calendar.freebusy.query(
-    //     {
-    //         resource: {
-    //             timeMin: eventStartTime,
-    //             timeMax: eventEndTime,
-    //             timeZone: 'America/New_York',
-    //             items: [{ id: 'primary'}],
-    //         },
-    //     },
-    //     (err, res) => {
-    //         if(err) return console.error('free busy query error', err)
-    
-    //         const eventsArr = res.data.calendars.primary.busy
-    
-    //         if(eventsArr.length === 0) return calendar.events.insert({calendarId: 'primary', resource: event}, (err)=>{
-    //             if(err) return console.error('calendar event creation error', err)
-    //             return console.log('calendar event created')
-    //         })
-    //         return console.log('im busy')
-    //     }
-    // )
-    ////////////////
-    
+const { google } = require('googleapis');
+const { OAuth2 } = google.auth;
+
+const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
+
+oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
+
+const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+
+// time 
+const morning = moment(new Date("2021, 5, 01")).hour(4);
+const eventStartTime = morning; //moment(new Date(2021, 4, 01))
+//eventStartTime.setDate(eventStartTime.getDay() + 2)
+
+const evening = moment(new Date("2021, 5, 02")).hour(6);
+const eventEndTime = evening; //moment(new Date(2021, 4, 02))
+//eventEndTime.setDate(eventEndTime.getDay() + 2)
+//eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
+
+const event = {
+  summary: 'Hello World',
+  location: '10 Arlington Ave, Clifton, NJ 07011',
+  describtion: 'Meeting with Some people ',
+  start: {
+    dateTime: eventStartTime,
+    timeZone: 'America/New_York'
+  },
+  end: {
+    dateTime: eventEndTime,
+    timeZone: 'America/New_York'
+  },
+  colorId: 1
+}
+
+calendar.freebusy.query(
+  {
+    resource: {
+      timeMin: eventStartTime,
+      timeMax: eventEndTime,
+      timeZone: 'America/New_York',
+      items: [{ id: 'primary' }],
+    },
+  },
+  (err, res) => {
+    if (err) return console.error('free busy query error', err)
+
+    const eventsArr = res.data.calendars.primary.busy
+
+    if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
+      if (err) return console.error('calendar event creation error', err)
+      return console.log('calendar event created')
+    })
+    return console.log('im busy')
+  }
+)
+////////////////
+
+
+// STRIPE
+const stripe = require('stripe')('sk_test_51Ii2wOEAP4YefPUsr9n4cXyrZtVDTpwtCQw2jFOPdVNEB5n35WvB8ydHkhX2zHSIZH6Odq0m9NgJabszSPVOwRid00n1krxZAK');
+
+// router.post('/stripe/payment', (req, res) => {
+//   console.log(req.body, 'request body stripe')
+//   stripe.charges.create({
+//     amount: req.body.amount,
+//     currency: 'USD',
+//     description: 'One time setup fee',
+//     source: req.body.token.id
+//   }, (err, charge)=>{
+//     if(err) {
+//       next(err)
+//     }
+//     res.json({ success: true, status: 'Payment Successfull' })
+//   })
+//   console.log(req.body)
+// })
+
+
+
+router.post('/payment_intents', async (req, res) => {
+  try {
+    // 1 step
+    // let { currency, totalPrice } = req.body;
+    // const transaction = new Transaction(req.body);
+    // await transaction.save();
+    let totalPrice = 100;
+    let currency = 'USD'
+    // 2 step
+    const paymentIntent = await stripe.paymentIntents.create({ //token
+      amount: totalPrice,
+      currency
+    });
+    // await Transaction.findOneAndUpdate({
+    //   _id: transaction._id
+    // }, {
+    //     status: 'intend (stage 2)',
+    //     paymentIntent // paymentIntent: paymentIntent
+    //   })
+    //console.log('paymentIntent', paymentIntent);
+    return res.json(paymentIntent);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+// 3 step
+router.post('/payment-intense-approve', async (req, res) => {
+  try {
+    //console.log('payment-intense-approve', req.body)
+    // const transaction = await Transaction.findOneAndUpdate({
+    //   "paymentIntent.id": req.body.paymentIntend_forStatus.id
+    // }, {
+    //     status: 'success'
+    //   })
+    // mailer.send('tdeveloper241@gmail.com', transaction.customerEmail, 'MEGASHOP: Your order has been submitted',
+    //   `
+    //   <p>Your Price is ${transaction.totalPrice}</p>
+    //   <p>Product name is ${transaction.productName}</p>
+    // `)
+    res.json({
+      ok: true,
+      message: 'Transaction Success'
+    });
+    //console.log(transaction, 'stage 3!!!!')
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
+
 
 
 

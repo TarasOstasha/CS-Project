@@ -1,5 +1,6 @@
-let myCalendar = function myApp() {
 
+let myCalendar = function myApp() {
+    
 
     const { google } = require('googleapis');
     const { OAuth2 } = google.auth;
@@ -11,12 +12,12 @@ let myCalendar = function myApp() {
     const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
     
     // time 
-    const eventStartTime = new Date(2021, 3, 30, 0, 0)
+    const eventStartTime = new Date(2021, 3, 29)
     //eventStartTime.setDate(eventStartTime.getDay() + 20)
 
    
 
-    const eventEndTime = new Date(2021, 3, 30, 1, 0)
+    const eventEndTime = new Date(2021, 3, 30)
     // eventEndTime.setDate(eventEndTime.getDay() + 20)
     // eventEndTime.setMinutes(eventEndTime.getMinutes() + 45)
     

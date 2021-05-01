@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { NgxStripeModule } from 'ngx-stripe';
 
 // pages, parts
 import { AppRoutingModule } from './app-routing.module';
@@ -129,7 +129,8 @@ import { Page404Component } from './pages/page404/page404.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    NgxStripeModule.forRoot('pk_test_51Ii2wOEAP4YefPUsdGmiQjB2dxV57lUqM6NXWmuctJjrnXJsEbPNIfFNJ2CVrtF6ithkCcOo5jw1qbEzX8saLQjl004BiwFpWX')
     //MainModule
     //MatCarouselModule.forRoot(),
   ],

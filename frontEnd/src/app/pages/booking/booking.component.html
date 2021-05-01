@@ -4,8 +4,7 @@
         <section id="booking">
             <div class="booking-wrapper">
                 <div class="booking-img">
-                    <img alt="booking"
-                         src="../../../assets/images/book-main.jpg" />
+                    <img alt="booking" src="../../../assets/images/book-main.jpg" />
                 </div>
             </div>
 
@@ -30,22 +29,19 @@
                                 <ul>
                                     <li (click)="cheakFormGroup('residential')"
                                         [class]="(checkedGroup == 'residential') ? 'active' : '' ">
-                                        <a [routerLink]="['/booking']"
-                                           class="d-flex">
+                                        <a [routerLink]="['/booking']" class="d-flex">
                                             <i class="fas fa-house-user"></i>&nbsp;Residential
                                         </a>
                                     </li>
                                     <li (click)="cheakFormGroup('office')"
                                         [class]="(checkedGroup == 'office') ? 'active' : '' ">
-                                        <a [routerLink]="['/booking']"
-                                           class="d-flex">
+                                        <a [routerLink]="['/booking']" class="d-flex">
                                             <i class="far fa-building"></i>&nbsp;Office
                                         </a>
                                     </li>
                                     <li (click)="cheakFormGroup('commercial')"
                                         [class]="(checkedGroup == 'commercial') ? 'active' : '' ">
-                                        <a [routerLink]="['/booking']"
-                                           class="d-flex">
+                                        <a [routerLink]="['/booking']" class="d-flex">
                                             <i class="fas fa-warehouse"></i>&nbsp;Commercial
                                         </a>
                                     </li>
@@ -56,8 +52,7 @@
                             <br />
 
                             <!-- residential -->
-                            <div *ngIf="checkedGroup == 'residential'"
-                                 class="boxes">
+                            <div *ngIf="checkedGroup == 'residential'" class="boxes">
                                 <div class="big-box big-box-left">
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
@@ -65,10 +60,9 @@
                                                 <mat-label>
                                                     Cleaning type
                                                 </mat-label>
-                                                <mat-select [ngModel]="cleaning_type"
-                                                            formControlName="cleaning_type">
+                                                <mat-select [ngModel]="cleaning_type" formControlName="cleaning_type">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.cleaning_type.items">
+                                                        *ngFor="let item of stepper.cleaning_type.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -82,7 +76,7 @@
                                                 </mat-label>
                                                 <mat-select formControlName="property_type">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.property_type.items">
+                                                        *ngFor="let item of stepper.property_type.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -92,10 +86,9 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Frequency</mat-label>
-                                                <mat-select [ngModel]="frequency"
-                                                            formControlName="frequency">
+                                                <mat-select [ngModel]="frequency" formControlName="frequency">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.frequency.items">
+                                                        *ngFor="let item of stepper.frequency.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -109,40 +102,31 @@
                                                 <mat-label>sq.ft</mat-label>
                                                 <mat-select formControlName="sq_ft">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.sq_ft.items">
+                                                        *ngFor="let item of stepper.sq_ft.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
                                                 <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                             </mat-form-field>
                                         </div>
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
-                                                <input (keyup)="checkZipCode($event)"
-                                                       formControlName="zip_code"
-                                                       matInput
-                                                       placeholder="000000"
-                                                       required />
+                                                <input (keyup)="checkZipCode($event)" formControlName="zip_code"
+                                                    matInput placeholder="000000" required />
                                                 <!-- <span *ngIf="form.get('zip_code')?.valid">{{ zipObj }}</span>        -->
-                                                <div *ngIf="errorFlag"
-                                                     style="color:red">
+                                                <div *ngIf="errorFlag" style="color:red">
                                                     Not Valid (Please Call Us)
                                                 </div>
                                             </mat-form-field>
                                         </div>
-                                        <div class="input"
-                                             style="padding-top: .1rem;">
-                                            <mat-form-field appearance="fill"
-                                                            hintLabel="Max 10 characters">
+                                        <div class="input" style="padding-top: .1rem;">
+                                            <mat-form-field appearance="fill" hintLabel="Max 10 characters">
                                                 <mat-label>
                                                     Email address
                                                 </mat-label>
-                                                <input #input
-                                                       formControlName="email"
-                                                       matInput
-                                                       placeholder="some@gmail.com" />
+                                                <input #input formControlName="email" matInput
+                                                    placeholder="some@gmail.com" />
                                                 <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
                                             </mat-form-field>
                                         </div>
@@ -156,7 +140,7 @@
                                                 <mat-label>Bedrooms</mat-label>
                                                 <mat-select formControlName="bedrooms">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.bedrooms.items">
+                                                        *ngFor="let item of stepper.bedrooms.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -164,19 +148,14 @@
                                             </mat-form-field>
                                         </div>
                                         <div class="input">
-                                            <mat-form-field appearance="fill"
-                                                            color="accent">
+                                            <mat-form-field appearance="fill" color="accent">
                                                 <mat-label>
                                                     Select date (M/D/Y)
                                                 </mat-label>
-                                                <input [matDatepicker]="picker2"
-                                                       formControlName="date"
-                                                       matInput />
-                                                <mat-datepicker-toggle [for]="picker2"
-                                                                       matSuffix>
+                                                <input [matDatepicker]="picker2" formControlName="date" matInput />
+                                                <mat-datepicker-toggle [for]="picker2" matSuffix>
                                                 </mat-datepicker-toggle>
-                                                <mat-datepicker #picker2
-                                                                color="primary">
+                                                <mat-datepicker #picker2 color="primary">
                                                 </mat-datepicker>
                                             </mat-form-field>
                                         </div>
@@ -187,7 +166,7 @@
                                                 <mat-label>Bathrooms</mat-label>
                                                 <mat-select formControlName="bathrooms">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.bathrooms.items">
+                                                        *ngFor="let item of stepper.bathrooms.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -201,7 +180,7 @@
                                                 </mat-label>
                                                 <mat-select formControlName="select_times">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.select_times.items">
+                                                        *ngFor="let item of stepper.select_times.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -210,13 +189,9 @@
                                         </div>
                                     </div>
                                     <div class="input">
-                                        <mat-form-field appearance="fill"
-                                                        hintLabel="Max 10 characters">
+                                        <mat-form-field appearance="fill" hintLabel="Max 10 characters">
                                             <mat-label>Phone number</mat-label>
-                                            <input #input
-                                                   formControlName="phone"
-                                                   matInput
-                                                   placeholder="+100000000" />
+                                            <input #input formControlName="phone" matInput placeholder="+100000000" />
                                             <mat-hint align="end">
                                                 {{input.value?.length || 0}}/10
                                             </mat-hint>
@@ -227,16 +202,13 @@
 
                             <!-- office -->
                             <div *ngIf="checkedGroup == 'office'" class="boxes">
-                                <div class="wrapper-form"
-                                     style="width:70%;margin:0 auto;">
+                                <div class="wrapper-form" style="width:70%;margin:0 auto;">
                                     <app-office-form></app-office-form>
                                 </div>
                             </div>
                             <!-- commercial -->
-                            <div *ngIf="checkedGroup == 'commercial'"
-                                 class="boxes">
-                                <div class="wrapper-form"
-                                     style="width:70%;margin:0 auto;">
+                            <div *ngIf="checkedGroup == 'commercial'" class="boxes">
+                                <div class="wrapper-form" style="width:70%;margin:0 auto;">
                                     <app-business-form></app-business-form>
                                 </div>
                             </div>
@@ -273,21 +245,14 @@
                         <mat-divider></mat-divider>
 
                         <form [formGroup]="form_1_2">
-                            <mat-radio-group [ngModel]="frequency"
-                                             formControlName="frequency">
+                            <mat-radio-group [ngModel]="frequency" formControlName="frequency">
                                 <div class="frequency-blocks">
-                                    <div (click)="event_hook.click()"
-                                         *ngFor="let item of stepper.frequency.items"
-                                         class="frequency-block">
-                                        <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
-                                             [matRippleDisabled]="false"
-                                             class="ripple-container"
-                                             matRipple
-                                             style="background: {{item.color}}">
-                                            <mat-radio-button [value]="item.title"
-                                                              class="mat-radio-button">
-                                                <div #event_hook
-                                                     class="fr-head">
+                                    <div (click)="event_hook.click()" *ngFor="let item of stepper.frequency.items"
+                                        class="frequency-block">
+                                        <div [matRippleColor]="'rgb(0 0 0 / 10%)'" [matRippleDisabled]="false"
+                                            class="ripple-container" matRipple style="background: {{item.color}}">
+                                            <mat-radio-button [value]="item.title" class="mat-radio-button">
+                                                <div #event_hook class="fr-head">
                                                     {{item.title}}
                                                 </div>
                                             </mat-radio-button>
@@ -306,38 +271,30 @@
                             <mat-divider></mat-divider>
 
                             <section class="extras-blocks">
-                                <div (click)="event_hook2.click()"
-                                     *ngFor="let item of stepper.extras.items"
-                                     class="extras-block">
-                                    <mat-checkbox (click)="stopPropagation( $event)"
-                                                  #checkbox
-                                                  class="extras-checkbox"
-                                                  formControlName="{{'extras_' + item.value}}">
+                                <div (click)="event_hook2.click()" *ngFor="let item of stepper.extras.items"
+                                    class="extras-block">
+                                    <mat-checkbox (click)="stopPropagation( $event)" #checkbox class="extras-checkbox"
+                                        formControlName="{{'extras_' + item.value}}">
                                         <div #event_hook2></div>
                                     </mat-checkbox>
 
                                     <!-- (click)="checkbox.checked = (checkbox.checked) ? false : true;" -->
-                                    <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
-                                         [matRippleDisabled]="false"
-                                         class="ripple-container"
-                                         matRipple
-                                         style="background: {{item.color}}">
-                                        <img [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'"
-                                             alt
-                                             style="height: 4rem" />
+                                    <div [matRippleColor]="'rgb(0 0 0 / 10%)'" [matRippleDisabled]="false"
+                                        class="ripple-container" matRipple style="background: {{item.color}}">
+                                        <img [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'" alt
+                                            style="height: 4rem" />
                                     </div>
                                     <p class="description">{{item.text}}</p>
 
-                                    <p *ngIf="item.recommended"
-                                       class="recommended">
+                                    <p *ngIf="item.recommended" class="recommended">
                                         <span class="text">Recommended</span>
                                     </p>
 
-                                    <div *ngIf="valueOf('extras_' + item.value)"
-                                         class="number">
+                                    <div *ngIf="valueOf('extras_' + item.value)" class="number">
                                         <!-- if ranges -->
                                         <div *ngIf="item.mode=='ranges'">
-                                            {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} - {{(item.amount-1)*10+10}}
+                                            {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} -
+                                            {{(item.amount-1)*10+10}}
                                         </div>
 
                                         <!-- if ranges -->
@@ -351,18 +308,15 @@
                                         </div>
                                     </div>
 
-                                    <div (click)="stopPropagation( $event)"
-                                         *ngIf="valueOf('extras_' + item.value)"
-                                         class="counter">
+                                    <div (click)="stopPropagation( $event)" *ngIf="valueOf('extras_' + item.value)"
+                                        class="counter">
                                         <div class="btns">
                                             <button (click)="amount(item, '+')"
-                                                    aria-label="Example icon-button with a heart icon"
-                                                    mat-icon-button>
+                                                aria-label="Example icon-button with a heart icon" mat-icon-button>
                                                 <mat-icon>add</mat-icon>
                                             </button>
                                             <button (click)="amount(item, '-')"
-                                                    aria-label="Example icon-button with a heart icon"
-                                                    mat-icon-button>
+                                                aria-label="Example icon-button with a heart icon" mat-icon-button>
                                                 <mat-icon>remove</mat-icon>
                                             </button>
                                             <!-- <button mat-raised-button>+</button> -->
@@ -407,31 +361,23 @@
                                 <div class="big-box big-box-left">
                                     <!-- ********************************************* 1 group -->
                                     <div class="inner-box inner-box-left">
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>
                                                     First Name
                                                 </mat-label>
-                                                <input formControlName="first_name"
-                                                       matInput
-                                                       placeholder="000000"
-                                                       required />
+                                                <input formControlName="first_name" matInput placeholder="000000"
+                                                    required />
                                             </mat-form-field>
                                         </div>
 
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>ZIP code</mat-label>
-                                                <input (keyup)="checkZipCode($event)"
-                                                       formControlName="zip_code"
-                                                       matInput
-                                                       placeholder="000000"
-                                                       required />
+                                                <input (keyup)="checkZipCode($event)" formControlName="zip_code"
+                                                    matInput placeholder="000000" required />
                                                 <!-- <span *ngIf="form.get('zip_code')?.valid">{{ zipObj }}</span>  -->
-                                                <div *ngIf="errorFlag"
-                                                     style="color:red">
+                                                <div *ngIf="errorFlag" style="color:red">
                                                     Not Valid (Please Call Us)
                                                 </div>
                                             </mat-form-field>
@@ -439,25 +385,19 @@
                                     </div>
                                     <!-- ********************************************* 2 group -->
                                     <div class="inner-box inner-box-right">
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>Last Name</mat-label>
-                                                <input formControlName="last_name"
-                                                       matInput
-                                                       placeholder="000000"
-                                                       required />
+                                                <input formControlName="last_name" matInput placeholder="000000"
+                                                    required />
                                             </mat-form-field>
                                         </div>
 
                                         <div class="input">
-                                            <mat-form-field appearance="fill"
-                                                            hintLabel="Max 10 characters">
+                                            <mat-form-field appearance="fill" hintLabel="Max 10 characters">
                                                 <mat-label>City</mat-label>
-                                                <input #input
-                                                       formControlName="city"
-                                                       matInput
-                                                       placeholder="some@gmail.com" />
+                                                <input #input formControlName="city" matInput
+                                                    placeholder="some@gmail.com" />
                                                 <!-- <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> -->
                                             </mat-form-field>
                                         </div>
@@ -467,10 +407,9 @@
                                                 <mat-label>
                                                     Door Access Info
                                                 </mat-label>
-                                                <mat-select formControlName="doorAccess"
-                                                            required>
+                                                <mat-select formControlName="doorAccess" required>
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.doorAccess.items">
+                                                        *ngFor="let item of stepper.doorAccess.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -483,14 +422,11 @@
                                 <!-- ********************************************* 3 group -->
                                 <div class="big-box big-box-right">
                                     <div class="inner-box inner-box-left">
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>Address</mat-label>
-                                                <input formControlName="address"
-                                                       matInput
-                                                       placeholder="000000"
-                                                       required />
+                                                <input formControlName="address" matInput placeholder="000000"
+                                                    required />
                                             </mat-form-field>
                                         </div>
 
@@ -499,7 +435,7 @@
                                                 <mat-label>State</mat-label>
                                                 <mat-select formControlName="state">
                                                     <mat-option [value]="item.title"
-                                                                *ngFor="let item of stepper.state.items">
+                                                        *ngFor="let item of stepper.state.items">
                                                         {{item.title}}
                                                     </mat-option>
                                                 </mat-select>
@@ -507,40 +443,32 @@
                                             </mat-form-field>
                                         </div>
 
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>
                                                     Special Instructions
                                                 </mat-label>
-                                                <input formControlName="specialInstructions"
-                                                       matInput
-                                                       placeholder="000000" />
+                                                <input formControlName="specialInstructions" matInput
+                                                    placeholder="000000" />
                                             </mat-form-field>
                                         </div>
                                     </div>
 
                                     <!-- ********************************************* 4 group -->
                                     <div class="inner-box inner-box-right">
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>Apt/Suite</mat-label>
-                                                <input formControlName="aptSuite"
-                                                       matInput
-                                                       placeholder="000000" />
+                                                <input formControlName="aptSuite" matInput placeholder="000000" />
                                             </mat-form-field>
                                         </div>
 
-                                        <div class="input"
-                                             style="margin-top: .77rem;">
+                                        <div class="input" style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>
                                                     How did you hear about us?
                                                 </mat-label>
-                                                <input formControlName="howDidYouHear"
-                                                       matInput
-                                                       placeholder="000000" />
+                                                <input formControlName="howDidYouHear" matInput placeholder="000000" />
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -576,7 +504,8 @@
                         </ng-template>
                         <h1 class="step-title">PAYMENT</h1>
                         <p class="step-subtitle">
-                            Your card will be submitted for reservation purposes only. You will not be charged until the cleaning has been completed.
+                            Your card will be submitted for reservation purposes only. You will not be charged until the
+                            cleaning has been completed.
                         </p>
                         <br />
 
@@ -742,6 +671,42 @@
 
                                 <!-- ********************************************* 4 group -->
                                 <div class="inner-box inner-box-right">
+                                    <!-- STRIPE -->
+
+                                    <!-- FORM Payment-->
+                                    <div class="stripe">
+                                        <form role="form" class="" [formGroup]="stripePaymentForm">
+                                            <!-- form-group name -->
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="inputname">First Name</label>
+                                                        <input formControlName="firstName" type="text"
+                                                            class="form-control form-control-large" id="inputname"
+                                                            placeholder="Enter name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="inputname">Last Name</label>
+                                                        <input formControlName="lastName" type="text"
+                                                            class="form-control form-control-large" id="inputname"
+                                                            placeholder="Enter name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputname">email</label>
+                                                <input formControlName="email" type="text"
+                                                    class="form-control form-control-large" id="inputname"
+                                                    placeholder="Enter name">
+                                            </div>
+                                            <div class="well">
+                                                <button type="button" class="btn btn-success btn-lg btn-block"
+                                                    (click)="placeOrder()"> Place Order</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <div class="summary">
                                         <h1>BOOKING SUMMARY</h1>
                                         <mat-divider></mat-divider>
@@ -811,9 +776,7 @@
                             <!-- <button mat-button matStepperNext>Next</button> -->
                             <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                             <button mat-button matStepperPrevious>Back</button>
-                            <button (click)="collectData()"
-                                    mat-button
-                                    matStepperNext>
+                            <button (click)="collectData()" mat-button matStepperNext>
                                 Next
                             </button>
                             <!-- <button (click)="fill(stepperDOM)" mat-button> Fill </button> -->

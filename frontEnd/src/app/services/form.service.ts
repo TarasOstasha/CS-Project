@@ -16,7 +16,7 @@ export class FormService {
 
   // quick review form data
   sendDataForm(value: quickBookForm) {
-    console.log(value)
+    console.log(value, 'value from quick booking')
     this.formData = value;
   }
 
