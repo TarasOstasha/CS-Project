@@ -175,6 +175,8 @@ export class BookingComponent implements OnInit, OnChanges {
     log('ngOnInit');
 
     this.form_1_1 = this._formBuilder.group({
+      checkedGroup: ['residential'],
+      //
       cleaning_type: ['', Validators.required],
       property_type: ['', Validators.required],
       frequency: ['', Validators.required,],
@@ -226,11 +228,13 @@ export class BookingComponent implements OnInit, OnChanges {
     });
 
     this.form = this._formBuilder.group({
-      checkedGroup: ['residential'],
     });
 
     setInterval(() => {
-      log('>>>', this.cleaning_type)
+      // this.form_1_1.reset();// = "VALID";
+      // touched
+      log('>>>', this.form_1_1)
+      // log('>>>', this.form_1_3)
     }, 2000)
 
     log('Can I GET FORM DATA& : ', this._form.formData);
@@ -241,13 +245,11 @@ export class BookingComponent implements OnInit, OnChanges {
       const serviceValue = this._form.formData[key];
       if (serviceValue.length > 0) this.form.controls[key].setValue(serviceValue);
     });
-
-
   }
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    this.stepperDOM.selectedIndex = 0;
+    // this.stepperDOM.selectedIndex = 0;
     this.cdr.detectChanges();
   }
 
@@ -301,8 +303,6 @@ export class BookingComponent implements OnInit, OnChanges {
     return +((total / 100) * percent).toFixed(2)
   }
 
-
-
   goBack(stepperDOM: MatStepper) {
     stepperDOM.previous();
   }
@@ -316,7 +316,7 @@ export class BookingComponent implements OnInit, OnChanges {
     else log('Must fill!');
   }
 
-  fill(stepperDOM: MatStepper) {
+  fill_1(stepperDOM: MatStepper) {
     // log(stepperDOM);
     // log(this.form);
     // log(this.form.value);
@@ -345,8 +345,17 @@ export class BookingComponent implements OnInit, OnChanges {
         log('v:', keyValue)
         this.form_1_1.controls[keyValue[0]].setValue(keyValue[1])
       });
+  }
 
+  
+
+  fill_2(stepperDOM: MatStepper) {
     // Step 2
+  }
+
+  
+
+  fill_3(stepperDOM: MatStepper) {
     const example2 = {
       first_name: 'example',
       zip_code: '29000', // <--- <--- <--- <--- <--- <--- <--- <--- <--- <--- <---  DUPLICATE !!!
@@ -372,7 +381,7 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   cheakFormGroup(groupName: any) {
-    this.form.controls['checkedGroup'].setValue(groupName);
+    this.form_1_1.controls['checkedGroup'].setValue(groupName);
   }
 
   showMe(elm: any) {
@@ -425,7 +434,7 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   get checkedGroup() {
-    return this.form.controls['checkedGroup'].value;
+    return this.form_1_1.controls['checkedGroup'].value;
   }
 
   get date() {

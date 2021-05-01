@@ -11,51 +11,53 @@
 
             <div class="stepper">
                 <!-- 3 -->
-                <mat-horizontal-stepper [linear]="false" #stepperDOM>
+                <mat-horizontal-stepper [linear]="true" #stepperDOM>
                     <!-- <form [formGroup]="form"> -->
                     <!-- ********************************************** STEP 1 ********************************************** -->
-                    <mat-step state="phone">
-                        <ng-template matStepLabel>
-                            <h2 class="step-title-big">Appointment Details</h2>
-                            <h3 class="step-title-small">
-                                Please Fill Information
-                            </h3>
-                        </ng-template>
-                        <br />
-
-                        <div class="booking-links">
-                            <ul>
-                                <li (click)="cheakFormGroup('residential')"
-                                    [class]="(checkedGroup == 'residential') ? 'active' : '' ">
-                                    <a [routerLink]="['/booking']"
-                                       class="d-flex">
-                                        <i class="fas fa-house-user"></i>&nbsp;Residential
-                                    </a>
-                                </li>
-                                <li (click)="cheakFormGroup('office')"
-                                    [class]="(checkedGroup == 'office') ? 'active' : '' ">
-                                    <a [routerLink]="['/booking']"
-                                       class="d-flex">
-                                        <i class="far fa-building"></i>&nbsp;Office
-                                    </a>
-                                </li>
-                                <li (click)="cheakFormGroup('commercial')"
-                                    [class]="(checkedGroup == 'commercial') ? 'active' : '' ">
-                                    <a [routerLink]="['/booking']"
-                                       class="d-flex">
-                                        <i class="fas fa-warehouse"></i>&nbsp;Commercial
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <h1 class="step-title">SERVICES DETAILS</h1>
-                        <br />
-
-                        <!-- residential -->
+                    <mat-step [stepControl]="form_1_1" state="phone">
                         <form [formGroup]="form_1_1">
-                        <div *ngIf="checkedGroup == 'residential'"
-                             class="boxes">
+                            <ng-template matStepLabel>
+                                <h2 class="step-title-big">
+                                    Appointment Details
+                                </h2>
+                                <h3 class="step-title-small">
+                                    Please Fill Information
+                                </h3>
+                            </ng-template>
+                            <br />
+
+                            <div class="booking-links">
+                                <ul>
+                                    <li (click)="cheakFormGroup('residential')"
+                                        [class]="(checkedGroup == 'residential') ? 'active' : '' ">
+                                        <a [routerLink]="['/booking']"
+                                           class="d-flex">
+                                            <i class="fas fa-house-user"></i>&nbsp;Residential
+                                        </a>
+                                    </li>
+                                    <li (click)="cheakFormGroup('office')"
+                                        [class]="(checkedGroup == 'office') ? 'active' : '' ">
+                                        <a [routerLink]="['/booking']"
+                                           class="d-flex">
+                                            <i class="far fa-building"></i>&nbsp;Office
+                                        </a>
+                                    </li>
+                                    <li (click)="cheakFormGroup('commercial')"
+                                        [class]="(checkedGroup == 'commercial') ? 'active' : '' ">
+                                        <a [routerLink]="['/booking']"
+                                           class="d-flex">
+                                            <i class="fas fa-warehouse"></i>&nbsp;Commercial
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h1 class="step-title">SERVICES DETAILS</h1>
+                            <br />
+
+                            <!-- residential -->
+                            <div *ngIf="checkedGroup == 'residential'"
+                                 class="boxes">
                                 <div class="big-box big-box-left">
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
@@ -222,43 +224,44 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- office -->
+                            <div *ngIf="checkedGroup == 'office'" class="boxes">
+                                <div class="wrapper-form"
+                                     style="width:70%;margin:0 auto;">
+                                    <app-office-form></app-office-form>
+                                </div>
+                            </div>
+                            <!-- commercial -->
+                            <div *ngIf="checkedGroup == 'commercial'"
+                                 class="boxes">
+                                <div class="wrapper-form"
+                                     style="width:70%;margin:0 auto;">
+                                    <app-business-form></app-business-form>
+                                </div>
+                            </div>
+
+                            <p class="step-note">
+                                You will be able to review your order before booking is complete
+                            </p>
+
+                            <div class="buttons-panel">
+                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                                <button (click)="next1(stepperDOM)" mat-button>
+                                    Next
+                                </button>
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
+                                <button (click)="fill_1(stepperDOM)" mat-button>
+                                    Fill
+                                </button>
+                            </div>
                         </form>
-
-                        <!-- office -->
-                        <div *ngIf="checkedGroup == 'office'" class="boxes">
-                            <div class="wrapper-form"
-                                 style="width:70%;margin:0 auto;">
-                                <app-office-form></app-office-form>
-                            </div>
-                        </div>
-                        <!-- commercial -->
-                        <div *ngIf="checkedGroup == 'commercial'" class="boxes">
-                            <div class="wrapper-form"
-                                 style="width:70%;margin:0 auto;">
-                                <app-business-form></app-business-form>
-                            </div>
-                        </div>
-
-                        <p class="step-note">
-                            You will be able to review your order before booking is complete
-                        </p>
-
-                        <div class="buttons-panel">
-                            <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
-                            <button (click)="next1(stepperDOM)" mat-button>
-                                Next
-                            </button>
-                            <!-- <button mat-button matStepperNext>Next</button> -->
-                            <!-- <button mat-button matStepperNext>Next</button> -->
-                            <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
-                            <button (click)="fill(stepperDOM)" mat-button>
-                                Fill
-                            </button>
-                        </div>
                     </mat-step>
 
                     <!-- ********************************************** STEP 2 ********************************************** -->
-                    <mat-step state="chat">
+                    <mat-step [stepControl]="form_1_2" state="chat">
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Plan & Pricing</h2>
                             <h3 class="step-title-small">
@@ -388,7 +391,7 @@
                     </mat-step>
 
                     <!-- ********************************************** STEP 3 ********************************************** -->
-                    <mat-step>
+                    <mat-step  [stepControl]="form_1_3" >
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Address</h2>
                             <h3 class="step-title-small">
@@ -560,7 +563,7 @@
                             <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                             <button mat-button matStepperPrevious>Back</button>
                             <button mat-button matStepperNext>Next</button>
-                            <button (click)="fill(stepperDOM)" mat-button>
+                            <button (click)="fill_3(stepperDOM)" mat-button>
                                 Fill
                             </button>
                         </div>
@@ -816,9 +819,7 @@
                                     matStepperNext>
                                 Next
                             </button>
-                            <button (click)="fill(stepperDOM)" mat-button>
-                                Fill
-                            </button>
+                            <!-- <button (click)="fill(stepperDOM)" mat-button> Fill </button> -->
                         </div>
                     </mat-step>
 
