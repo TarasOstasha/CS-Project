@@ -23,6 +23,10 @@ export class BookingComponent implements OnInit, OnChanges {
   // ----------------------------------------------------------------------------------------------------------------- OPTIONS END
 
   form!: FormGroup;
+  form_1_1!: FormGroup;
+  form_1_2!: FormGroup;
+  form_1_3!: FormGroup;
+
   isEditable = false;
 
   createItems(amount: number) {
@@ -169,19 +173,26 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     log('ngOnInit');
-    this.form = this._formBuilder.group({
-      checkedGroup: ['residential'],
-      property_type: ['', Validators.required],
+
+    this.form_1_1 = this._formBuilder.group({
       cleaning_type: ['', Validators.required],
+      property_type: ['', Validators.required],
       frequency: ['', Validators.required,],
+      //
       sq_ft: ['', Validators.required],
       zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
       email: ['', Validators.required],
+      //
       bedrooms: ['', Validators.required],
       date: ['', Validators.required],
+      phone: ['', Validators.required],
+      //
       bathrooms: ['', Validators.required],
       select_times: ['', Validators.required],
-      phone: ['', Validators.required],
+    });
+
+    this.form_1_2 = this._formBuilder.group({
+      frequency: ['', Validators.required,],
       // extras_same_day: [''],
       // extras_disinfection: [''],
       // extras_cleaning: [''],
@@ -197,6 +208,9 @@ export class BookingComponent implements OnInit, OnChanges {
       // extras_refrigerator: [''],
       // extras_wall: [''],
       // extras_pet: [''],
+    });
+
+    this.form_1_3 = this._formBuilder.group({
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       city: [''],
@@ -207,6 +221,12 @@ export class BookingComponent implements OnInit, OnChanges {
       specialInstructions: [''],
       aptSuite: [''],
       howDidYouHear: [''],
+      //
+      zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
+    });
+
+    this.form = this._formBuilder.group({
+      checkedGroup: ['residential'],
     });
 
     setInterval(() => {
@@ -350,8 +370,8 @@ export class BookingComponent implements OnInit, OnChanges {
     if (_do == '-' && item.amount > 1) item.amount--;
   }
 
-  valueOf(key: string) {
-    return this.form.controls[key].value;
+  valueOf(  key: string) {
+    return this.form_1_2.controls[key].value;
   }
 
   stopPropagation(e: any) {
@@ -370,19 +390,19 @@ export class BookingComponent implements OnInit, OnChanges {
 
   // crutches for material components: refresh the view of fields
   get frequency() {
-    return this.form.controls['frequency'].value;
+    return this.form_1_1.controls['frequency'].value;
   }
 
   get cleaning_type() {
-    return this.form.controls['cleaning_type'].value;
+    return this.form_1_1.controls['cleaning_type'].value;
   }
 
   get bedrooms() {
-    return this.form.controls['bedrooms'].value;
+    return this.form_1_1.controls['bedrooms'].value;
   }
 
   get bathrooms() {
-    return this.form.controls['bathrooms'].value;
+    return this.form_1_1.controls['bathrooms'].value;
   }
 
   get checkedGroup() {
@@ -390,41 +410,40 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   get date() {
-    return this.form.controls['date'].value;
+    return this.form_1_1.controls['date'].value;
   }
 
   get sq_ft() {
-    return this.form.controls['sq_ft'].value;
+    return this.form_1_1.controls['sq_ft'].value;
   }
 
   get select_times() {
-    return this.form.controls['select_times'].value;
+    return this.form_1_1.controls['select_times'].value;
   }
 
   // extras
-
   get extras_fridge() {
-    return this.form.controls['extras_fridge'].value;
+    return this.form_1_2.controls['extras_fridge'].value;
   }
 
   get extras_oven() {
-    return this.form.controls['extras_oven'].value;
+    return this.form_1_2.controls['extras_oven'].value;
   }
 
   get extras_cabinet() {
-    return this.form.controls['extras_cabinet'].value;
+    return this.form_1_2.controls['extras_cabinet'].value;
   }
 
   get extras_washer() {
-    return this.form.controls['extras_washer'].value;
+    return this.form_1_2.controls['extras_washer'].value;
   }
 
   get extras_window() {
-    return this.form.controls['extras_window'].value;
+    return this.form_1_2.controls['extras_window'].value;
   }
 
   get extras_vacuum_sofa() {
-    return this.form.controls['extras_vacuum_sofa'].value;
+    return this.form_1_2.controls['extras_vacuum_sofa'].value;
   }
 
   // extras list
@@ -440,16 +459,16 @@ export class BookingComponent implements OnInit, OnChanges {
     ];
   }
 
-  getExtrasByKey(k: any){
-    return this.stepper.extras.items.filter( (item: any) => item.value == k )
+  getExtrasByKey(k: any) {
+    return this.stepper.extras.items.filter((item: any) => item.value == k)
   }
 
-  getExtrasTextByKey(k: any){
+  getExtrasTextByKey(k: any) {
     const obj = this.getExtrasByKey(k);
     return obj[0].text
   }
 
-  getExtrasTotalByKey(k: any){
+  getExtrasTotalByKey(k: any) {
     const obj = this.getExtrasByKey(k);
     const amount = obj[0].amount;
     const price = obj[0].price;

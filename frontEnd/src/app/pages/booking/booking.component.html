@@ -11,52 +11,51 @@
 
             <div class="stepper">
                 <!-- 3 -->
-                <mat-horizontal-stepper #stepperDOM [linear]="false">
-                    <form [formGroup]="form">
-                        <!-- ********************************************** STEP 1 ********************************************** -->
-                        <mat-step state="phone">
-                            <ng-template matStepLabel>
-                                <h2 class="step-title-big">
-                                    Appointment Details
-                                </h2>
-                                <h3 class="step-title-small">
-                                    Please Fill Information
-                                </h3>
-                            </ng-template>
-                            <br />
+                <mat-horizontal-stepper [linear]="false" #stepperDOM>
+                    <!-- <form [formGroup]="form"> -->
+                    <!-- ********************************************** STEP 1 ********************************************** -->
+                    <mat-step state="phone">
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Appointment Details</h2>
+                            <h3 class="step-title-small">
+                                Please Fill Information
+                            </h3>
+                        </ng-template>
+                        <br />
 
-                            <div class="booking-links">
-                                <ul>
-                                    <li (click)="cheakFormGroup('residential')"
-                                        [class]="(checkedGroup == 'residential') ? 'active' : '' ">
-                                        <a [routerLink]="['/booking']"
-                                           class="d-flex">
-                                            <i class="fas fa-house-user"></i>&nbsp;Residential
-                                        </a>
-                                    </li>
-                                    <li (click)="cheakFormGroup('office')"
-                                        [class]="(checkedGroup == 'office') ? 'active' : '' ">
-                                        <a [routerLink]="['/booking']"
-                                           class="d-flex">
-                                            <i class="far fa-building"></i>&nbsp;Office
-                                        </a>
-                                    </li>
-                                    <li (click)="cheakFormGroup('commercial')"
-                                        [class]="(checkedGroup == 'commercial') ? 'active' : '' ">
-                                        <a [routerLink]="['/booking']"
-                                           class="d-flex">
-                                            <i class="fas fa-warehouse"></i>&nbsp;Commercial
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="booking-links">
+                            <ul>
+                                <li (click)="cheakFormGroup('residential')"
+                                    [class]="(checkedGroup == 'residential') ? 'active' : '' ">
+                                    <a [routerLink]="['/booking']"
+                                       class="d-flex">
+                                        <i class="fas fa-house-user"></i>&nbsp;Residential
+                                    </a>
+                                </li>
+                                <li (click)="cheakFormGroup('office')"
+                                    [class]="(checkedGroup == 'office') ? 'active' : '' ">
+                                    <a [routerLink]="['/booking']"
+                                       class="d-flex">
+                                        <i class="far fa-building"></i>&nbsp;Office
+                                    </a>
+                                </li>
+                                <li (click)="cheakFormGroup('commercial')"
+                                    [class]="(checkedGroup == 'commercial') ? 'active' : '' ">
+                                    <a [routerLink]="['/booking']"
+                                       class="d-flex">
+                                        <i class="fas fa-warehouse"></i>&nbsp;Commercial
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-                            <h1 class="step-title">SERVICES DETAILS</h1>
-                            <br />
+                        <h1 class="step-title">SERVICES DETAILS</h1>
+                        <br />
 
-                            <!-- residential -->
-                            <div *ngIf="checkedGroup == 'residential'"
-                                 class="boxes">
+                        <!-- residential -->
+                        <form [formGroup]="form_1_1">
+                        <div *ngIf="checkedGroup == 'residential'"
+                             class="boxes">
                                 <div class="big-box big-box-left">
                                     <div class="inner-box inner-box-left">
                                         <div class="input">
@@ -223,56 +222,57 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
 
-                            <!-- office -->
-                            <div *ngIf="checkedGroup == 'office'" class="boxes">
-                                <div class="wrapper-form"
-                                     style="width:70%;margin:0 auto;">
-                                    <app-office-form></app-office-form>
-                                </div>
+                        <!-- office -->
+                        <div *ngIf="checkedGroup == 'office'" class="boxes">
+                            <div class="wrapper-form"
+                                 style="width:70%;margin:0 auto;">
+                                <app-office-form></app-office-form>
                             </div>
-                            <!-- commercial -->
-                            <div *ngIf="checkedGroup == 'commercial'"
-                                 class="boxes">
-                                <div class="wrapper-form"
-                                     style="width:70%;margin:0 auto;">
-                                    <app-business-form></app-business-form>
-                                </div>
+                        </div>
+                        <!-- commercial -->
+                        <div *ngIf="checkedGroup == 'commercial'" class="boxes">
+                            <div class="wrapper-form"
+                                 style="width:70%;margin:0 auto;">
+                                <app-business-form></app-business-form>
                             </div>
+                        </div>
 
-                            <p class="step-note">
-                                You will be able to review your order before booking is complete
-                            </p>
+                        <p class="step-note">
+                            You will be able to review your order before booking is complete
+                        </p>
 
-                            <div class="buttons-panel">
-                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
-                                <button (click)="next1(stepperDOM)" mat-button>
-                                    Next
-                                </button>
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
-                                <button (click)="fill(stepperDOM)" mat-button>
-                                    Fill
-                                </button>
-                            </div>
-                        </mat-step>
+                        <div class="buttons-panel">
+                            <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                            <button (click)="next1(stepperDOM)" mat-button>
+                                Next
+                            </button>
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
+                            <button (click)="fill(stepperDOM)" mat-button>
+                                Fill
+                            </button>
+                        </div>
+                    </mat-step>
 
-                        <!-- ********************************************** STEP 2 ********************************************** -->
-                        <mat-step state="chat">
-                            <ng-template matStepLabel>
-                                <h2 class="step-title-big">Plan & Pricing</h2>
-                                <h3 class="step-title-small">
-                                    Choose Services Plan
-                                </h3>
-                            </ng-template>
+                    <!-- ********************************************** STEP 2 ********************************************** -->
+                    <mat-step state="chat">
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Plan & Pricing</h2>
+                            <h3 class="step-title-small">
+                                Choose Services Plan
+                            </h3>
+                        </ng-template>
 
-                            <h1 class="step-title">ECONOMY CLEANING</h1>
-                            <br />
+                        <h1 class="step-title">ECONOMY CLEANING</h1>
+                        <br />
 
-                            <h2 class="step-subtitle-div">Frequency</h2>
-                            <mat-divider></mat-divider>
+                        <h2 class="step-subtitle-div">Frequency</h2>
+                        <mat-divider></mat-divider>
 
+                        <form [formGroup]="form_1_2">
                             <mat-radio-group [ngModel]="frequency"
                                              formControlName="frequency">
                                 <div class="frequency-blocks">
@@ -375,36 +375,34 @@
                                     </div>
                                 </div>
                             </section>
+                        </form>
 
-                            <p class="step-note">
-                                You will be able to review your order before booking is complete
-                            </p>
+                        <p class="step-note">
+                            You will be able to review your order before booking is complete
+                        </p>
 
-                            <div class="buttons-panel">
-                                <button mat-button matStepperPrevious>
-                                    Back
-                                </button>
-                                <button mat-button matStepperNext>Next</button>
-                            </div>
-                        </mat-step>
+                        <div class="buttons-panel">
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </mat-step>
 
-                        <!-- ********************************************** STEP 3 ********************************************** -->
-                        <mat-step>
-                            <ng-template matStepLabel>
-                                <h2 class="step-title-big">Address</h2>
-                                <h3 class="step-title-small">
-                                    Please Enter Address Detail
-                                </h3>
-                            </ng-template>
+                    <!-- ********************************************** STEP 3 ********************************************** -->
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Address</h2>
+                            <h3 class="step-title-small">
+                                Please Enter Address Detail
+                            </h3>
+                        </ng-template>
 
-                            <h1 class="step-title">
-                                WHERE SHOULD WE COME CLEAN?
-                            </h1>
-                            <p class="step-subtitle">
-                                Tell us your address and other important details
-                            </p>
-                            <br />
+                        <h1 class="step-title">WHERE SHOULD WE COME CLEAN?</h1>
+                        <p class="step-subtitle">
+                            Tell us your address and other important details
+                        </p>
+                        <br />
 
+                        <form [formGroup]="form_1_3">
                             <div class="boxes">
                                 <div class="big-box big-box-left">
                                     <!-- ********************************************* 1 group -->
@@ -548,168 +546,165 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
 
-                            <p class="step-note">
-                                You will be able to review your order before booking is complete
-                            </p>
+                        <p class="step-note">
+                            You will be able to review your order before booking is complete
+                        </p>
 
-                            <div class="buttons-panel">
-                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
-                                <!-- <button mat-button (click)="next1(stepperDOM)">Next</button> -->
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
-                                <button mat-button matStepperPrevious>
-                                    Back
-                                </button>
-                                <button mat-button matStepperNext>Next</button>
-                                <button (click)="fill(stepperDOM)" mat-button>
-                                    Fill
-                                </button>
-                            </div>
-                        </mat-step>
+                        <div class="buttons-panel">
+                            <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                            <!-- <button mat-button (click)="next1(stepperDOM)">Next</button> -->
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                            <button (click)="fill(stepperDOM)" mat-button>
+                                Fill
+                            </button>
+                        </div>
+                    </mat-step>
 
-                        <!-- ********************************************** STEP 4 ********************************************** -->
-                        <mat-step>
-                            <ng-template matStepLabel>
-                                <h2 class="step-title-big">Payment</h2>
-                                <h3 class="step-title-small">
-                                    Please Enter Payment Detail
-                                </h3>
-                            </ng-template>
-                            <h1 class="step-title">PAYMENT</h1>
-                            <p class="step-subtitle">
-                                Your card will be submitted for reservation purposes only. You will not be charged until the cleaning has been completed.
-                            </p>
-                            <br />
+                    <!-- ********************************************** STEP 4 ********************************************** -->
+                    <mat-step>
+                        <ng-template matStepLabel>
+                            <h2 class="step-title-big">Payment</h2>
+                            <h3 class="step-title-small">
+                                Please Enter Payment Detail
+                            </h3>
+                        </ng-template>
+                        <h1 class="step-title">PAYMENT</h1>
+                        <p class="step-subtitle">
+                            Your card will be submitted for reservation purposes only. You will not be charged until the cleaning has been completed.
+                        </p>
+                        <br />
 
-                            <div class="boxes boxes-4">
-                                <div class="big-box big-box-left">
-                                    <mat-list>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>Rooms:</b>
-                                                <span>
-                                                    {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>Frequency:</b>
-                                                <span>{{frequency}}</span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>Service Date:</b>
-                                                <span>
-                                                    {{date | date: 'MM/dd/yyyy'}}
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>Service Time:</b>
-                                                <span>
-                                                    {{preventEmpty(select_times)}}
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>Type of Service:</b>
-                                                <span></span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <span>- {{cleaning_type}}</span>
-                                                <span>
-                                                    {{calculatePipe.bedBath | currency}}
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>Extras:</b>
-                                                <span></span>
-                                            </div>
-                                        </mat-list-item>
-
-                                        <div *ngFor="let item of extras_list">
-                                            <div *ngIf="item.value">
-                                                <mat-divider></mat-divider>
-                                                <mat-list-item>
-                                                    <div class="info-field">
-                                                        <span>
-                                                            - {{getExtrasTextByKey(item.stepKey)}}
-                                                        </span>
-                                                        <span>
-                                                            {{getExtrasTotalByKey(item.stepKey) | currency}}
-                                                        </span>
-                                                    </div>
-                                                </mat-list-item>
-                                            </div>
+                        <div class="boxes boxes-4">
+                            <div class="big-box big-box-left">
+                                <mat-list>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>Rooms:</b>
+                                            <span>
+                                                {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
+                                            </span>
                                         </div>
+                                    </mat-list-item>
 
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>SUBTOTAL</b>
-                                                <span>
-                                                    {{calculatePipe.subtotal | currency}}
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>Frequency:</b>
+                                            <span>{{frequency}}</span>
+                                        </div>
+                                    </mat-list-item>
 
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>SALES TAX {{tax}}%</b>
-                                                <span>
-                                                    {{calculatePipe.tax | currency}}
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>Service Date:</b>
+                                            <span>
+                                                {{date | date: 'MM/dd/yyyy'}}
+                                            </span>
+                                        </div>
+                                    </mat-list-item>
 
-                                        <mat-divider></mat-divider>
-                                        <mat-list-item>
-                                            <div class="info-field">
-                                                <b>TOTAL</b>
-                                                <span>
-                                                    {{calculatePipe.total | currency}}
-                                                </span>
-                                            </div>
-                                        </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>Service Time:</b>
+                                            <span>
+                                                {{preventEmpty(select_times)}}
+                                            </span>
+                                        </div>
+                                    </mat-list-item>
 
-                                        <!-- <mat-divider></mat-divider>
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>Type of Service:</b>
+                                            <span></span>
+                                        </div>
+                                    </mat-list-item>
+
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <span>- {{cleaning_type}}</span>
+                                            <span>
+                                                {{calculatePipe.bedBath | currency}}
+                                            </span>
+                                        </div>
+                                    </mat-list-item>
+
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>Extras:</b>
+                                            <span></span>
+                                        </div>
+                                    </mat-list-item>
+
+                                    <div *ngFor="let item of extras_list">
+                                        <div *ngIf="item.value">
+                                            <mat-divider></mat-divider>
+                                            <mat-list-item>
+                                                <div class="info-field">
+                                                    <span>
+                                                        - {{getExtrasTextByKey(item.stepKey)}}
+                                                    </span>
+                                                    <span>
+                                                        {{getExtrasTotalByKey(item.stepKey) | currency}}
+                                                    </span>
+                                                </div>
+                                            </mat-list-item>
+                                        </div>
+                                    </div>
+
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>SUBTOTAL</b>
+                                            <span>
+                                                {{calculatePipe.subtotal | currency}}
+                                            </span>
+                                        </div>
+                                    </mat-list-item>
+
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>SALES TAX {{tax}}%</b>
+                                            <span>
+                                                {{calculatePipe.tax | currency}}
+                                            </span>
+                                        </div>
+                                    </mat-list-item>
+
+                                    <mat-divider></mat-divider>
+                                    <mat-list-item>
+                                        <div class="info-field">
+                                            <b>TOTAL</b>
+                                            <span>
+                                                {{calculatePipe.total | currency}}
+                                            </span>
+                                        </div>
+                                    </mat-list-item>
+
+                                    <!-- <mat-divider></mat-divider>
                                         <mat-list-item>
                                             <div class="info-field">
                                                 <b></b> <span></span>
                                             </div>
-                                        </mat-list-item>-->
-                                    </mat-list>
-                                </div>
+                                    </mat-list-item>-->
+                                </mat-list>
+                            </div>
 
-                                <!-- ********************************************* 3 group -->
-                                <div class="big-box big-box-right">
-
-                                    <div class="inner-box inner-box-left">
-
-                                        <!-- <div class="input"
+                            <!-- ********************************************* 3 group -->
+                            <div class="big-box big-box-right">
+                                <div class="inner-box inner-box-left">
+                                    <!-- <div class="input"
                                              style="margin-top: .77rem;">
                                             <mat-form-field>
                                                 <mat-label>Address</mat-label>
@@ -742,103 +737,101 @@
                                                        matInput
                                                        placeholder="000000" />
                                             </mat-form-field>
-                                        </div> -->
+                                    </div>-->
+                                </div>
 
-                                    </div>
-
-                                    <!-- ********************************************* 4 group -->
-                                    <div class="inner-box inner-box-right">
-                                        <div class="summary">
-                                            <h1>BOOKING SUMMARY</h1>
-                                            <mat-divider></mat-divider>
-                                            <div class="sum-row">
-                                                <i class="fas fa-home"></i>
-                                                <span class="sum-row-left">
-                                                    {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
-                                                </span>
-                                                <span class="sum-row-right">
-                                                    {{calculatePipe.bedBath | currency}}
-                                                </span>
-                                            </div>
-                                            <div class="sum-row">
-                                                <i class="fas fa-calendar-alt">
-                                                </i>
-                                                <span class="sum-row-left">
-                                                    <div *ngIf="date == ''">
-                                                        -/-/-
-                                                    </div>
-                                                    <div *ngIf="date != ''">
-                                                        {{date | date: 'MM/dd/yyyy'}}
-                                                    </div>
-                                                    @ {{preventEmpty(select_times)}}
-                                                </span>
-
-                                                <span class="sum-row-right">
-                                                </span>
-                                            </div>
-                                            <div class="sum-row">
-                                                <i class="fas fa-history"></i>
-                                                <span class="sum-row-left">
-                                                    {{preventEmpty(frequency)}}
-                                                </span>
-                                                <span class="sum-row-right">
-                                                </span>
-                                            </div>
-                                            <mat-divider></mat-divider>
-                                            <div class="sum-row">
-                                                <span class="sum-row-left">
-                                                    Recommend time:
-                                                </span>
-                                                <span class="sum-row-right">
-                                                    {{calculatePipe.recommendTime}} h
-                                                </span>
-                                            </div>
-
-                                            <mat-divider></mat-divider>
-                                            <div class="sum-row">
-                                                <span class="sum-row-left">
-                                                    {{frequency}} Total:
-                                                </span>
-                                                <span class="sum-row-right">
-                                                    {{calculatePipe.total | currency}}
-                                                </span>
-                                            </div>
-                                            <h1></h1>
+                                <!-- ********************************************* 4 group -->
+                                <div class="inner-box inner-box-right">
+                                    <div class="summary">
+                                        <h1>BOOKING SUMMARY</h1>
+                                        <mat-divider></mat-divider>
+                                        <div class="sum-row">
+                                            <i class="fas fa-home"></i>
+                                            <span class="sum-row-left">
+                                                {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}} Bath
+                                            </span>
+                                            <span class="sum-row-right">
+                                                {{calculatePipe.bedBath | currency}}
+                                            </span>
                                         </div>
+                                        <div class="sum-row">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <span class="sum-row-left">
+                                                <div *ngIf="date == ''">
+                                                    -/-/-
+                                                </div>
+                                                <div *ngIf="date != ''">
+                                                    {{date | date: 'MM/dd/yyyy'}}
+                                                </div>
+                                                @ {{preventEmpty(select_times)}}
+                                            </span>
+
+                                            <span class="sum-row-right"></span>
+                                        </div>
+                                        <div class="sum-row">
+                                            <i class="fas fa-history"></i>
+                                            <span class="sum-row-left">
+                                                {{preventEmpty(frequency)}}
+                                            </span>
+                                            <span class="sum-row-right"></span>
+                                        </div>
+                                        <mat-divider></mat-divider>
+                                        <div class="sum-row">
+                                            <span class="sum-row-left">
+                                                Recommend time:
+                                            </span>
+                                            <span class="sum-row-right">
+                                                {{calculatePipe.recommendTime}} h
+                                            </span>
+                                        </div>
+
+                                        <mat-divider></mat-divider>
+                                        <div class="sum-row">
+                                            <span class="sum-row-left">
+                                                {{frequency}} Total:
+                                            </span>
+                                            <span class="sum-row-right">
+                                                {{calculatePipe.total | currency}}
+                                            </span>
+                                        </div>
+                                        <h1></h1>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <p class="step-note">
-                                You will be able to review your order before booking is complete
-                            </p>
+                        <p class="step-note">
+                            You will be able to review your order before booking is complete
+                        </p>
 
-                            <div class="buttons-panel">
-                                <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
-                                <!-- <button mat-button (click)="next1(stepperDOM)">Next</button> -->
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
-                                <button mat-button matStepperPrevious>
-                                    Back
-                                </button>
-                                <button mat-button matStepperNext (click)="collectData()">Next</button>
-                                <button (click)="fill(stepperDOM)" mat-button>
-                                    Fill
-                                </button>
-                            </div>
-                        </mat-step>
+                        <div class="buttons-panel">
+                            <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
+                            <!-- <button mat-button (click)="next1(stepperDOM)">Next</button> -->
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button matStepperNext>Next</button> -->
+                            <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button (click)="collectData()"
+                                    mat-button
+                                    matStepperNext>
+                                Next
+                            </button>
+                            <button (click)="fill(stepperDOM)" mat-button>
+                                Fill
+                            </button>
+                        </div>
+                    </mat-step>
 
-                        <!-- ********************************************** Icon overrides. ********************************************** -->
+                    <!-- ********************************************** Icon overrides. ********************************************** -->
 
-                        <ng-template matStepperIcon="phone">
-                            <mat-icon>call_end</mat-icon>
-                        </ng-template>
+                    <ng-template matStepperIcon="phone">
+                        <mat-icon>call_end</mat-icon>
+                    </ng-template>
 
-                        <ng-template matStepperIcon="chat">
-                            <mat-icon>forum</mat-icon>
-                        </ng-template>
-                    </form>
+                    <ng-template matStepperIcon="chat">
+                        <mat-icon>forum</mat-icon>
+                    </ng-template>
+                    <!-- </form> -->
                 </mat-horizontal-stepper>
             </div>
         </section>
