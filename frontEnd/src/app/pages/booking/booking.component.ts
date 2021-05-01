@@ -321,6 +321,8 @@ export class BookingComponent implements OnInit, OnChanges {
     // log(this.form);
     // log(this.form.value);
     // this.form.value.checkedGroup
+
+    // Step 1
     const example = {
       cleaning_type: 'Organic cleaning',
       property_type: 'House',
@@ -337,7 +339,6 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: 2,
       select_times: 'Afternoon',
     };
-    
     Object
       .entries(example)
       .forEach(keyValue => {
@@ -345,49 +346,29 @@ export class BookingComponent implements OnInit, OnChanges {
         this.form_1_1.controls[keyValue[0]].setValue(keyValue[1])
       });
 
-    
-    // first_name: 'example',
-    // last_name: 'example',
-    // city: 'City',
-    // doorAccess: 'Client will let us in',
-    // selectTime: 'Morning',
-    // address: 'Some address',
-    // state: 'State some',
-    // specialInstructions: 'Some instructions',
-    // aptSuite: 'Apt/Suite',
-    // howDidYouHear: 'Some history'
-
-
-
-    //   const example2 = {
-    //     cleaning_type: 'Organic cleaning',
-    //     property_type: 'House',
-    //     frequency: 'Monthly',
-    //     sq_ft: '1500 - 2000',
-    //     zip_code: '29000',
-    //     email: 'hello@world.com',
-    //     bedrooms: 2,
-    //     date: new Date(),
-    //     bathrooms: 2,
-    //     select_times: 'Afternoon',
-    //     phone: '+3807465486',
-    //     first_name: 'example',
-    //     last_name: 'example',
-    //     city: 'City',
-    //     doorAccess: 'Client will let us in',
-    //     selectTime: 'Morning',
-    //     address: 'Some address',
-    //     state: 'State some',
-    //     specialInstructions: 'Some instructions',
-    //     aptSuite: 'Apt/Suite',
-    //     howDidYouHear: 'Some history'
-    //   };
-    //   Object
-    //     .entries(example2)
-    //     .forEach(keyValue => {
-    //       log('v:', keyValue)
-    //       this.form.controls[keyValue[0]].setValue(keyValue[1])
-    //     });
+    // Step 2
+    const example2 = {
+      first_name: 'example',
+      zip_code: '29000', // <--- <--- <--- <--- <--- <--- <--- <--- <--- <--- <---  DUPLICATE !!!
+      //
+      last_name: 'example',
+      city: 'City',
+      doorAccess: 'Client will let us in',
+      //
+      address: 'Some address',
+      state: 'NY',
+      specialInstructions: 'Some instructions',
+      //
+      // selectTime: 'Morning', // <--- <--- <--- <--- <--- <--- <--- <--- <--- <--- <--- ???
+      aptSuite: 'Apt/Suite',
+      howDidYouHear: 'Some history'
+    };
+    Object
+      .entries(example2)
+      .forEach(keyValue => {
+        log('v:', keyValue)
+        this.form_1_3.controls[keyValue[0]].setValue(keyValue[1])
+      });
   }
 
   cheakFormGroup(groupName: any) {
@@ -408,7 +389,7 @@ export class BookingComponent implements OnInit, OnChanges {
     if (_do == '-' && item.amount > 1) item.amount--;
   }
 
-  valueOf(  key: string) {
+  valueOf(key: string) {
     return this.form_1_2.controls[key].value;
   }
 
