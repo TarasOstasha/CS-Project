@@ -1,10 +1,20 @@
+<app-header></app-header>
 <div class="logo">
     <div class="container">
         <h1>Welcome to Admin Panel</h1>
         <img src="../../../assets/images/Logo_1_.png" alt="logo">
     </div>
 </div>
+<div class="calendar">
+    <div class="container">
+        <h2>My Schedule Calendar</h2>
+        <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=dG9ueWpvc3MxOTkwQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=dWsudWtyYWluaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%237986CB&amp;color=%2333B679&amp;color=%230B8043"
+            style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+</div>
 <div class="table-wrapper">
+    <h2>Customers Contact Lists</h2>
     <div class="container">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -31,7 +41,8 @@
             <tbody>
                 <!-- <tr *ngFor="let booking of bookings.booking; let i = index"> -->
                 <!-- <tr *ngFor="let booking of filteredProduct | paginate: config; let i = index "> -->
-                <tr *ngFor="let booking of filteredProduct | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
+                <tr
+                    *ngFor="let booking of filteredProduct | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
                     <th scope="row">{{ i+1 }}</th>
                     <td>{{ booking.name }}</td>
                     <td>{{ booking.last_name }}</td>
@@ -54,7 +65,7 @@
     </div>
 
 </div>
-
+<app-footer></app-footer>
 <!-- <div class="content" role="main">
         <div class="card">
           <div class="form-group">
