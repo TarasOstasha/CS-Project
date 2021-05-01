@@ -311,10 +311,10 @@ export class BookingComponent implements OnInit, OnChanges {
   //   stepperDOM.next();
   // }
 
-  next1(stepperDOM: MatStepper) {
-    if (this.form.status == "VALID") stepperDOM.next()
-    else log('Must fill!');
-  }
+  // next1(stepperDOM: MatStepper) {
+  //   if (this.form.status == "VALID") stepperDOM.next()
+  //   else log('Must fill!');
+  // }
 
   fill_1(stepperDOM: MatStepper) {
     // log(stepperDOM);

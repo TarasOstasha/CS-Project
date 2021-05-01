@@ -247,12 +247,9 @@
 
                             <div class="buttons-panel">
                                 <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
-                                <button (click)="next1(stepperDOM)" mat-button>
-                                    Next
-                                </button>
-                                <!-- <button mat-button matStepperNext>Next</button> -->
-                                <!-- <button mat-button matStepperNext>Next</button> -->
+                                <!-- <button (click)="next1(stepperDOM)" mat-button> Next  </button>-->
                                 <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
+                                <button mat-button matStepperNext>Next</button>
                                 <button (click)="fill_1(stepperDOM)" mat-button>
                                     Fill
                                 </button>
@@ -391,7 +388,7 @@
                     </mat-step>
 
                     <!-- ********************************************** STEP 3 ********************************************** -->
-                    <mat-step  [stepControl]="form_1_3" >
+                    <mat-step [stepControl]="form_1_3">
                         <ng-template matStepLabel>
                             <h2 class="step-title-big">Address</h2>
                             <h3 class="step-title-small">
