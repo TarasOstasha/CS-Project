@@ -325,31 +325,69 @@ export class BookingComponent implements OnInit, OnChanges {
       cleaning_type: 'Organic cleaning',
       property_type: 'House',
       frequency: 'Monthly',
+      //
       sq_ft: '1500 - 2000',
       zip_code: '29000',
       email: 'hello@world.com',
+      //
       bedrooms: 2,
       date: new Date(),
+      phone: '+3807465486',
+      //
       bathrooms: 2,
       select_times: 'Afternoon',
-      phone: '+3807465486',
-      first_name: 'example',
-      last_name: 'example',
-      city: 'City',
-      doorAccess: 'Client will let us in',
-      selectTime: 'Morning',
-      address: 'Some address',
-      state: 'State some',
-      specialInstructions: 'Some instructions',
-      aptSuite: 'Apt/Suite',
-      howDidYouHear: 'Some history'
     };
+    
     Object
       .entries(example)
       .forEach(keyValue => {
         log('v:', keyValue)
-        this.form.controls[keyValue[0]].setValue(keyValue[1])
+        this.form_1_1.controls[keyValue[0]].setValue(keyValue[1])
       });
+
+    
+    // first_name: 'example',
+    // last_name: 'example',
+    // city: 'City',
+    // doorAccess: 'Client will let us in',
+    // selectTime: 'Morning',
+    // address: 'Some address',
+    // state: 'State some',
+    // specialInstructions: 'Some instructions',
+    // aptSuite: 'Apt/Suite',
+    // howDidYouHear: 'Some history'
+
+
+
+    //   const example2 = {
+    //     cleaning_type: 'Organic cleaning',
+    //     property_type: 'House',
+    //     frequency: 'Monthly',
+    //     sq_ft: '1500 - 2000',
+    //     zip_code: '29000',
+    //     email: 'hello@world.com',
+    //     bedrooms: 2,
+    //     date: new Date(),
+    //     bathrooms: 2,
+    //     select_times: 'Afternoon',
+    //     phone: '+3807465486',
+    //     first_name: 'example',
+    //     last_name: 'example',
+    //     city: 'City',
+    //     doorAccess: 'Client will let us in',
+    //     selectTime: 'Morning',
+    //     address: 'Some address',
+    //     state: 'State some',
+    //     specialInstructions: 'Some instructions',
+    //     aptSuite: 'Apt/Suite',
+    //     howDidYouHear: 'Some history'
+    //   };
+    //   Object
+    //     .entries(example2)
+    //     .forEach(keyValue => {
+    //       log('v:', keyValue)
+    //       this.form.controls[keyValue[0]].setValue(keyValue[1])
+    //     });
   }
 
   cheakFormGroup(groupName: any) {
