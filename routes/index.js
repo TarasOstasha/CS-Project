@@ -104,62 +104,85 @@ router.get('/emails', (req, res) => {
     });
 });
 
-const { google } = require('googleapis');
-const { OAuth2 } = google.auth;
+// booking date
+router.post('/date', (req, res) => {
+  const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code, price } = req.body;
+  const convertedDate = moment(date).format('lll');
+  // let morning = '9:00 AM';
+  // let afternoon = '1:00 PM';
+  // let evening = '5:00 PM';
+  console.log(convertedDate)
+  ///////////////////////////////
+  const { google } = require('googleapis');
+  const { OAuth2 } = google.auth;
 
-const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
+  const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
 
-oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
+  oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
 
-const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+  const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
-// time 
-const morning = moment(new Date("2021, 5, 01")).hour(4);
-const eventStartTime = morning; //moment(new Date(2021, 4, 01))
-//eventStartTime.setDate(eventStartTime.getDay() + 2)
+  // time 
+  const morning = moment(new Date("2021, 5, 01")).hour(9).minute(0);
+  const eventStartTime = morning; //moment(new Date(2021, 4, 01))
+  //eventStartTime.setDate(eventStartTime.getDay() + 2)
 
-const evening = moment(new Date("2021, 5, 02")).hour(6);
-const eventEndTime = evening; //moment(new Date(2021, 4, 02))
-//eventEndTime.setDate(eventEndTime.getDay() + 2)
-//eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
+  const evening = moment(new Date("2021, 5, 02")).hour(9).minute(1);
+  const eventEndTime = evening; //moment(new Date(2021, 4, 02))
+  //eventEndTime.setDate(eventEndTime.getDay() + 2)
+  //eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
 
-const event = {
-  summary: 'Hello World',
-  location: '10 Arlington Ave, Clifton, NJ 07011',
-  describtion: 'Meeting with Some people ',
-  start: {
-    dateTime: eventStartTime,
-    timeZone: 'America/New_York'
-  },
-  end: {
-    dateTime: eventEndTime,
-    timeZone: 'America/New_York'
-  },
-  colorId: 1
-}
-
-calendar.freebusy.query(
-  {
-    resource: {
-      timeMin: eventStartTime,
-      timeMax: eventEndTime,
-      timeZone: 'America/New_York',
-      items: [{ id: 'primary' }],
+  const event = {
+    summary: `You received a new booking from ${first_name}`,
+    location: `${address}, ${city}, ${state} ${zip_code}`,
+    description: ` 
+      Option Lists 
+      Select Times - ${period}
+      Cleaning Type - ${cleaning_type}
+      Frequency - ${frequency}
+      Square Ft - ${sq_ft}
+      Bedrooms Quantity - ${bedrooms}
+      Bathrooms Quantity - ${bathrooms}
+      Contact Number is ${phone}
+      Total Price is ${price.total}
+      Recommended working hours is ${price.recommendTime}
+    `,
+    start: {
+      dateTime: eventStartTime,
+      timeZone: 'America/New_York'
     },
-  },
-  (err, res) => {
-    if (err) return console.error('free busy query error', err)
-
-    const eventsArr = res.data.calendars.primary.busy
-
-    if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
-      if (err) return console.error('calendar event creation error', err)
-      return console.log('calendar event created')
-    })
-    return console.log('im busy')
+    end: {
+      dateTime: eventEndTime,
+      timeZone: 'America/New_York'
+    },
+    colorId: 1
   }
-)
-////////////////
+
+  calendar.freebusy.query(
+    {
+      resource: {
+        timeMin: eventStartTime,
+        timeMax: eventEndTime,
+        timeZone: 'America/New_York',
+        items: [{ id: 'primary' }],
+      },
+    },
+    (err, res) => {
+      if (err) return console.error('free busy query error', err)
+
+      const eventsArr = res.data.calendars.primary.busy
+
+      if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
+        if (err) return console.error('calendar event creation error', err)
+        return console.log('calendar event created')
+      })
+      return console.log('im busy')
+    }
+  )
+  ////////////////
+})
+
+
 
 
 // STRIPE

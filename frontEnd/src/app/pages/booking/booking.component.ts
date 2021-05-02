@@ -557,6 +557,30 @@ export class BookingComponent implements OnInit, OnChanges {
       .subscribe(response => console.log(response))
   
   }
+  // get booking date added by Taras 05/01/2021
+  getDate() {
+    console.log(this.calculatePipe)
+    const bookingDate = {
+      date: this.form_1_1.value.date,
+      period: this.form_1_1.value.select_times,
+      cleaning_type: this.form_1_1.value.cleaning_type,
+      frequency: this.form_1_1.value.frequency,
+      sq_ft: this.form_1_1.value.sq_ft, 
+      bedrooms: this.form_1_1.value.bedrooms,
+      bathrooms: this.form_1_1.value.bathrooms,
+      phone: this.form_1_1.value.phone,
+      first_name: this.form_1_3.value.first_name,
+      last_name: this.form_1_3.value.last_name,
+      city: this.form_1_3.value.city,
+      address: this.form_1_3.value.address,
+      state: this.form_1_3.value.state,
+      zip_code: this.form_1_1.value.zip_code,
+      price: this.calculatePipe
+    }
+    this._api.sendDate(bookingDate)
+      .subscribe((response:any) => console.log(response))
+    //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
+  }
 
 }
 
