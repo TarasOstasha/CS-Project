@@ -158,13 +158,13 @@ export class MainComponent implements OnInit {
   onRatingClicked(message: any): void {
     this.starRating = message
     this.clickedBtn = true;
-    //rconsole.log(this.starRating)
+    console.log(this.starRating)
   }
 
   checkedStar(icon: any) {
     this.starWidth = icon * 118 / 5;
     //console.log(icon)
-    //console.log(this.starWidth, 'px')
+    console.log(this.starWidth, 'px')
   }
 
   openPanel() {
