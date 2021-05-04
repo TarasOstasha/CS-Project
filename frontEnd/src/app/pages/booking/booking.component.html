@@ -121,7 +121,7 @@
                                             </mat-form-field>
                                         </div>
                                         <div class="input" style="padding-top: .1rem;">
-                                            <mat-form-field appearance="fill" hintLabel="Max 10 characters">
+                                            <mat-form-field appearance="fill" hintLabel="Max 20 characters">
                                                 <mat-label>
                                                     Email address
                                                 </mat-label>
@@ -191,7 +191,7 @@
                                     <div class="input">
                                         <mat-form-field appearance="fill" hintLabel="Max 10 characters">
                                             <mat-label>Phone number</mat-label>
-                                            <input #input formControlName="phone" matInput placeholder="+100000000" />
+                                            <input maxlength="10" #input formControlName="phone" matInput placeholder="+100000000" />
                                             <mat-hint align="end">
                                                 {{input.value?.length || 0}}/10
                                             </mat-hint>
