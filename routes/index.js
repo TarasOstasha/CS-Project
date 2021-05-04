@@ -111,7 +111,20 @@ router.post('/date', (req, res) => {
   // let morning = '9:00 AM';
   // let afternoon = '1:00 PM';
   // let evening = '5:00 PM';
-  console.log(convertedDate)
+  let appropriateDate = {
+    year: new Date(date).getFullYear(),
+    month: new Date(date).getMonth(),
+    day: new Date(date).getDate(),
+    hours: new Date(date).getHours(),
+    minutes: new Date(date).getMinutes()
+  } 
+  const startDate = new Date(date).toISOString()
+  console.log(appropriateDate, 'startDate')
+  console.log(convertedDate, 'converted date')
+  console.log(date, 'original date')
+  
+
+
   ///////////////////////////////
   const { google } = require('googleapis');
   const { OAuth2 } = google.auth;
@@ -123,11 +136,12 @@ router.post('/date', (req, res) => {
   const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
   // time 
-  const morning = moment(new Date("2021, 5, 01")).hour(9).minute(0);
+  const morning = moment(new Date("2021, 5, 03")).hour(9).minute(0); // new Date(date); thats correct
+  //console.log(morning, 'morning')
   const eventStartTime = morning; //moment(new Date(2021, 4, 01))
   //eventStartTime.setDate(eventStartTime.getDay() + 2)
 
-  const evening = moment(new Date("2021, 5, 02")).hour(9).minute(1);
+  const evening = moment(new Date("2021, 5, 03")).hour(9).minute(1); //new Date(appropriateDate.year, appropriateDate.month, appropriateDate.day, appropriateDate.hours, appropriateDate.minutes+1); //
   const eventEndTime = evening; //moment(new Date(2021, 4, 02))
   //eventEndTime.setDate(eventEndTime.getDay() + 2)
   //eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
@@ -155,7 +169,7 @@ router.post('/date', (req, res) => {
       dateTime: eventEndTime,
       timeZone: 'America/New_York'
     },
-    colorId: 1
+    colorId: 1,
   }
 
   calendar.freebusy.query(
