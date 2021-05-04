@@ -27,7 +27,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Phone Number</mat-label>
-                    <input matInput formControlName="phone" placeholder="000 000 0000" required>
+                    <input matInput formControlName="phone" placeholder="000 000 0000" maxlength="10" required>
                     <mat-error
                         *ngIf="businessBookForm.errors?.required || businessBookForm.get('phone')?.invalid">
                         Not Valid</mat-error>
@@ -41,7 +41,7 @@
                     </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Zip Code</mat-label>
-                    <input matInput formControlName="zip_code" placeholder="00000" (keyup)="checkZipCode($event)" required>
+                    <input matInput formControlName="zip_code" maxlength="5" placeholder="00000" (keyup)="checkZipCode($event)" required>
                     <span *ngIf="businessBookForm.get('zip_code')?.valid">{{ zipObj }}</span>
                     <mat-error
                         *ngIf="businessBookForm.errors?.required || businessBookForm.get('zip_code')?.invalid">

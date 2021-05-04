@@ -77,7 +77,7 @@ export class OfficeFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')]],
       address: ['',[Validators.required]],
-      zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
+      zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('/\b\d{5}-\d{4}\b/')]],
       approx_SF: ['', [Validators.required]],
       time: ['', [Validators.required]],
       frequency: ['', [Validators.required]]

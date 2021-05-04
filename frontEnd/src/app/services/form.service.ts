@@ -44,14 +44,16 @@ export class FormService {
       const data = await response.json(); // Here you have the data that you need
       //console.log(JSON.stringify(data, null, 2));
       //this.zipObj = data.results[0].County; //JSON.parse(data); // if this.zipObj !== 'Hudson County' || this.zipObj !== 'New York County' || this.zipObj !== 'Bronx County' || this.zipObj !== 'Brooklyn' || this.zipObj !== 'Queens County' || this.zipObj !== 'Staten Island'
-
+        console.log(data)
       if(
         data.results[0].County == 'Hudson County' || 
         data.results[0].County == 'New York County' || 
         data.results[0].County == 'Bronx County' || 
-        data.results[0].County == 'Brooklyn' || 
+        //data.results[0].County == 'Brooklyn' || 
         data.results[0].County == 'Queens County' || 
-        data.results[0].County == 'Staten Island'
+        //data.results[0].County == 'Staten Island' || 
+        data.results[0].County == 'Richmond County' ||
+        data.results[0].County == 'Kings County'
       ) {
         console.log('there is a valid value');
         this.errorFlag = false;
@@ -59,10 +61,11 @@ export class FormService {
         
       } else {
         this.errorFlag = true;
+        this.zipObj = null;
         console.log('there is a not valid value');
         return
       }
-      //console.log(this.zipObj);
+      console.log(this.zipObj);
     } catch (error) {
       //console.log(error);
     }
