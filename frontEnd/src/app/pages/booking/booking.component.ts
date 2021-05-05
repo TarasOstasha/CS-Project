@@ -40,7 +40,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
-    return arr.map((el) => ({ title: el }))
+    return arr.map((el) => ({ title: el.toString() }))
   }
   createBedrooms() {
     const arr: any = this.createItems(10); // -> from 1 to 20: [{ title: '1' }, { title: n }]
@@ -186,12 +186,13 @@ export class BookingComponent implements OnInit, OnChanges {
   ngOnInit() {
     log('ngOnInit');
 
-    // setInterval(()=>{
-    //   log(this.checkedGroup)
-    // }, 1000);
+    setInterval(() => {
+      log(this._form.formData);
+      log(this.form_1_1);
+    }, 1000);
 
     // the fix
-    setTimeout(()=>{
+    setTimeout(() => {
       this.checkFormGroup('residential')
     }, 300);
 
@@ -259,12 +260,29 @@ export class BookingComponent implements OnInit, OnChanges {
     // }, 2000)
 
     log('Can I GET FORM DATA& : ', this._form.formData);
-    // set values
+    // set values from service
     const keys = Object.keys(this._form.formData);
     keys.forEach((key: any) => {
-      log('key - ', key);
+      // log('key - ', key);
       const serviceValue = this._form.formData[key];
-      if (serviceValue.length > 0) this.form.controls[key].setValue(serviceValue);
+      // crutches
+      // ... bedrooms  bathrooms
+      // approx_SF: "1000 - 1200"
+      // bathrooms: "2"
+      // bedrooms: "2"
+      // email: "shadespiritenator@gmail.com"
+      // frequency: "Biweekly"
+      // phone: "3123123123"
+      // zip_code: "29000"
+      if (key == 'approx_SF') { // crutch
+        this.form_1_1.controls.sq_ft.setValue(serviceValue);
+      } else if (key == 'bathrooms') {
+        this.form_1_1.controls.bathrooms.setValue(serviceValue);
+      } else if (this.form_1_1.controls[key]) {
+        log('key ---- ', key, serviceValue);
+        this.form_1_1.controls[key].setValue(serviceValue);
+      };
+      // this.cdr.detectChanges();
     });
 
     this.stripePaymentForm = this._formBuilder.group({
@@ -275,7 +293,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   }
 
-  
+
 
 
   placeOrder() {
@@ -390,11 +408,11 @@ export class BookingComponent implements OnInit, OnChanges {
       zip_code: '29000',
       email: 'hello@world.com',
       //
-      bedrooms: 2,
+      bedrooms: '2',
       date: new Date(),
       phone: '807465486',
       //
-      bathrooms: 2,
+      bathrooms: '2',
       select_times: 'Afternoon',
     };
     Object
