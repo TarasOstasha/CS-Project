@@ -11,11 +11,11 @@
             </div>
             <div class="booking-links">
                 <ul>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i
+                    <li><a [routerLink]="['/booking']" [queryParams]="{ type: 'residential' }" class="d-flex"><i
                                 class="fas fa-house-user"></i>&nbsp;Residential</a></li>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
+                    <li><a [routerLink]="['/booking']" [queryParams]="{ type: 'office' }" class="d-flex"><i class="far fa-building"></i>&nbsp;Office</a>
                     </li>
-                    <li><a [routerLink]="['/booking']" class="d-flex"><i
+                    <li><a [routerLink]="['/booking']" [queryParams]="{ type: 'commercial' }" class="d-flex"><i
                                 class="fas fa-warehouse"></i>&nbsp;Commercial</a></li>
                 </ul>
             </div>

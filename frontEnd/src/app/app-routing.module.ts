@@ -25,6 +25,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 
 import { AuthGuard } from './parts/auth/auth.guard';
 import { Page404Component } from './pages/page404/page404.component';
+import { OfficeFormComponent } from './parts/office-form/office-form.component';
+import { BusinessFormComponent } from './parts/business-form/business-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },

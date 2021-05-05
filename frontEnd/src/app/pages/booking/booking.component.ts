@@ -4,6 +4,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
 import { FormService } from '../../services/form.service';
 import { ApiService } from 'src/app/services/api.service';
+import { Router, ActivatedRoute } from '@angular/router';
 const log = console.log;
 declare var window: any;
 declare var stripe: any;
@@ -33,7 +34,7 @@ export class BookingComponent implements OnInit, OnChanges {
   form_1_1!: FormGroup;
   form_1_2!: FormGroup;
   form_1_3!: FormGroup;
- 
+
   stripePaymentForm!: FormGroup;
 
   isEditable = false;
@@ -165,7 +166,10 @@ export class BookingComponent implements OnInit, OnChanges {
     private cdr: ChangeDetectorRef,
     private _form: FormService,
     private _api: ApiService,
-  ) { }
+    private _activatedRoute: ActivatedRoute
+  ) {
+
+  }
 
   /* 
     ngOnInit() is called after ngOnChanges(). 
@@ -260,7 +264,11 @@ export class BookingComponent implements OnInit, OnChanges {
       lastName: [''],
       email: ['']
     });
+
   }
+
+  
+
 
   placeOrder() {
     this.paymentTransaction();
@@ -284,6 +292,13 @@ export class BookingComponent implements OnInit, OnChanges {
 
 
   ngAfterViewInit() {
+    // move to appropriate tab menu (residential, office, commercial) when press from main page
+    this._activatedRoute.queryParams.subscribe(params => {
+      this.form_1_1.value.checkedGroup = params.type;
+      //console.log(this.form_1_1.value.checkedGroup);
+      //console.log(params); // Print the parameter to the console. 
+      this.cheakFormGroup(this.form_1_1.value.checkedGroup);
+    });
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 0;
     this.cdr.detectChanges();
@@ -383,13 +398,13 @@ export class BookingComponent implements OnInit, OnChanges {
       });
   }
 
-  
+
 
   fill_2(stepperDOM: MatStepper) {
     // Step 2
   }
 
-  
+
 
   fill_3(stepperDOM: MatStepper) {
     const example2 = {
@@ -555,7 +570,7 @@ export class BookingComponent implements OnInit, OnChanges {
     }
     this._api.sendBookingData(collectedData)
       .subscribe(response => console.log(response))
-  
+
   }
   // get booking date added by Taras 05/01/2021
   getDate() {
@@ -565,7 +580,7 @@ export class BookingComponent implements OnInit, OnChanges {
       period: this.form_1_1.value.select_times,
       cleaning_type: this.form_1_1.value.cleaning_type,
       frequency: this.form_1_1.value.frequency,
-      sq_ft: this.form_1_1.value.sq_ft, 
+      sq_ft: this.form_1_1.value.sq_ft,
       bedrooms: this.form_1_1.value.bedrooms,
       bathrooms: this.form_1_1.value.bathrooms,
       phone: this.form_1_1.value.phone,
@@ -578,9 +593,12 @@ export class BookingComponent implements OnInit, OnChanges {
       price: this.calculatePipe
     }
     this._api.sendDate(bookingDate)
-      .subscribe((response:any) => console.log(response))
+      .subscribe((response: any) => console.log(response))
     //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
   }
+
+
+
 
 }
 
