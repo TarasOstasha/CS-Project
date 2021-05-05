@@ -27,19 +27,19 @@
 
                             <div class="booking-links">
                                 <ul>
-                                    <li (click)="cheakFormGroup('residential')"
+                                    <li (click)="checkFormGroup('residential')"
                                         [class]="(checkedGroup == 'residential') ? 'active' : '' ">
                                         <a [routerLink]="['/booking']" class="d-flex">
                                             <i class="fas fa-house-user"></i>&nbsp;Residential
                                         </a>
                                     </li>
-                                    <li (click)="cheakFormGroup('office')"
+                                    <li (click)="checkFormGroup('office')"
                                         [class]="(checkedGroup == 'office') ? 'active' : '' ">
                                         <a [routerLink]="['/booking']" class="d-flex">
                                             <i class="far fa-building"></i>&nbsp;Office
                                         </a>
                                     </li>
-                                    <li (click)="cheakFormGroup('commercial')"
+                                    <li (click)="checkFormGroup('commercial')"
                                         [class]="(checkedGroup == 'commercial') ? 'active' : '' ">
                                         <a [routerLink]="['/booking']" class="d-flex">
                                             <i class="fas fa-warehouse"></i>&nbsp;Commercial

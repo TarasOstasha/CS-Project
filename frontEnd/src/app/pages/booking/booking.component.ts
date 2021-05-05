@@ -10,8 +10,6 @@ declare var window: any;
 declare var stripe: any;
 declare var elements: any;
 
-
-
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -38,6 +36,7 @@ export class BookingComponent implements OnInit, OnChanges {
   stripePaymentForm!: FormGroup;
 
   isEditable = false;
+  // checkedGroup: string = 'residential';
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -51,7 +50,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   stepper: any = {
     // step - 1
-    checkedGroup: '',
+    checkedGroup: 'residential',
     property_type: {
       items: [
         { title: 'Apartment' },
@@ -187,6 +186,15 @@ export class BookingComponent implements OnInit, OnChanges {
   ngOnInit() {
     log('ngOnInit');
 
+    // setInterval(()=>{
+    //   log(this.checkedGroup)
+    // }, 1000);
+
+    // the fix
+    setTimeout(()=>{
+      this.checkFormGroup('residential')
+    }, 300);
+
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
       //
@@ -290,14 +298,13 @@ export class BookingComponent implements OnInit, OnChanges {
     });
   }
 
-
   ngAfterViewInit() {
     // move to appropriate tab menu (residential, office, commercial) when press from main page
     this._activatedRoute.queryParams.subscribe(params => {
       this.form_1_1.value.checkedGroup = params.type;
       //console.log(this.form_1_1.value.checkedGroup);
       //console.log(params); // Print the parameter to the console. 
-      this.cheakFormGroup(this.form_1_1.value.checkedGroup);
+      this.checkFormGroup(this.form_1_1.value.checkedGroup);
     });
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 0;
@@ -385,7 +392,7 @@ export class BookingComponent implements OnInit, OnChanges {
       //
       bedrooms: 2,
       date: new Date(),
-      phone: '+3807465486',
+      phone: '807465486',
       //
       bathrooms: 2,
       select_times: 'Afternoon',
@@ -398,13 +405,9 @@ export class BookingComponent implements OnInit, OnChanges {
       });
   }
 
-
-
   fill_2(stepperDOM: MatStepper) {
     // Step 2
   }
-
-
 
   fill_3(stepperDOM: MatStepper) {
     const example2 = {
@@ -431,7 +434,7 @@ export class BookingComponent implements OnInit, OnChanges {
       });
   }
 
-  cheakFormGroup(groupName: any) {
+  checkFormGroup(groupName: any) {
     this.form_1_1.controls['checkedGroup'].setValue(groupName);
   }
 
@@ -596,9 +599,6 @@ export class BookingComponent implements OnInit, OnChanges {
       .subscribe((response: any) => console.log(response))
     //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
   }
-
-
-
 
 }
 
