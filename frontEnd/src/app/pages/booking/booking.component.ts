@@ -584,7 +584,7 @@ export class BookingComponent implements OnInit, OnChanges {
   }
   // get booking date added by Taras 05/01/2021
   getDate() {
-    console.log(this.calculatePipe)
+    //console.log(this.calculatePipe)
     const bookingDate = {
       date: this.form_1_1.value.date,
       period: this.form_1_1.value.select_times,
@@ -600,7 +600,7 @@ export class BookingComponent implements OnInit, OnChanges {
       address: this.form_1_3.value.address,
       state: this.form_1_3.value.state,
       zip_code: this.form_1_1.value.zip_code,
-      price: this.calculatePipe
+      //price: this.calculatePipe
     }
     this._api.sendDate(bookingDate)
       .subscribe((response: any) => console.log(response))

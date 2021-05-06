@@ -104,96 +104,120 @@ router.get('/emails', (req, res) => {
     });
 });
 
-// booking date
+// ***************** CALENDAR SCHEDULE APPOINTMENT **********************
 router.post('/date', (req, res) => {
-  const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code, price } = req.body;
-  const convertedDate = moment(date).format('lll');
-  // let morning = '9:00 AM';
-  // let afternoon = '1:00 PM';
-  // let evening = '5:00 PM';
-  let appropriateDate = {
-    year: new Date(date).getFullYear(),
-    month: new Date(date).getMonth(),
-    day: new Date(date).getDate(),
-    hours: new Date(date).getHours(),
-    minutes: new Date(date).getMinutes()
-  } 
-  const startDate = new Date(date).toISOString()
-  console.log(appropriateDate, 'startDate')
-  console.log(convertedDate, 'converted date')
-  console.log(date, 'original date')
+ 
+  const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code } = req.body;
+  const year = new Date(date).getFullYear();
+  const month = new Date(date).getMonth();
+  const day = new Date(date).getDate();
+  let hour = new Date(date).getHours();
   
-
-
-  ///////////////////////////////
-  const { google } = require('googleapis');
-  const { OAuth2 } = google.auth;
-
-  const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
-
-  oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
-
-  const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
-
-  // time 
-  const morning = moment(new Date("2021, 5, 03")).hour(9).minute(0); // new Date(date); thats correct
-  //console.log(morning, 'morning')
-  const eventStartTime = morning; //moment(new Date(2021, 4, 01))
-  //eventStartTime.setDate(eventStartTime.getDay() + 2)
-
-  const evening = moment(new Date("2021, 5, 03")).hour(9).minute(1); //new Date(appropriateDate.year, appropriateDate.month, appropriateDate.day, appropriateDate.hours, appropriateDate.minutes+1); //
-  const eventEndTime = evening; //moment(new Date(2021, 4, 02))
-  //eventEndTime.setDate(eventEndTime.getDay() + 2)
-  //eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
-
-  const event = {
-    summary: `You received a new booking from ${first_name}`,
-    location: `${address}, ${city}, ${state} ${zip_code}`,
-    description: ` 
-      Option Lists 
-      Select Times - ${period}
-      Cleaning Type - ${cleaning_type}
-      Frequency - ${frequency}
-      Square Ft - ${sq_ft}
-      Bedrooms Quantity - ${bedrooms}
-      Bathrooms Quantity - ${bathrooms}
-      Contact Number is ${phone}
-      Total Price is ${price.total}
-      Recommended working hours is ${price.recommendTime}
-    `,
-    start: {
-      dateTime: eventStartTime,
-      timeZone: 'America/New_York'
-    },
-    end: {
-      dateTime: eventEndTime,
-      timeZone: 'America/New_York'
-    },
-    colorId: 1,
+  function getRandomArbitrary(min, max) { // create function random number 
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+  let myTimeObj = {
+    year, month, day, hour,
+    minuteStart: getRandomArbitrary(10,60),
   }
 
-  calendar.freebusy.query(
-    {
-      resource: {
-        timeMin: eventStartTime,
-        timeMax: eventEndTime,
-        timeZone: 'America/New_York',
-        items: [{ id: 'primary' }],
-      },
+/////////////////////////////// google calendar API ||||||||||
+const { google } = require('googleapis');
+const { OAuth2 } = google.auth;
+
+const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
+
+oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
+
+const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+
+// start time frame *********
+let startTimeFrame;
+if(period == 'Morning') {
+  startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 9, myTimeObj.minuteStart);
+  console.log('this is morning');
+}
+else if(period == 'Afternoon') {
+  startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 13, myTimeObj.minuteStart);
+  console.log('this is afternoon');
+}
+else if(period == 'Anytime') {
+  startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 17, myTimeObj.minuteStart);
+  console.log('this is evening');
+}
+//const morning = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart); //new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart);   // new Date(date); thats correct
+//console.log(morning, 'morning')
+const eventStartTime = startTimeFrame; //moment(new Date(2021, 4, 01))
+//eventStartTime.setDate(eventStartTime.getDay() + 2)
+
+// finish time frame *********
+//const evening = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart);//new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteFinish);  //moment(new Date("2021, 5, 03")).hour(9).minute(1); //new Date(appropriateDate.year, appropriateDate.month, appropriateDate.day, appropriateDate.hours, appropriateDate.minutes+1); //
+let finishTimeFrame;
+if(period == 'Morning') {
+  finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 9, myTimeObj.minuteStart);
+  console.log('this is morning');
+}
+else if(period == 'Afternoon') {
+  finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 13, myTimeObj.minuteStart);
+  console.log('this is afternoon');
+}
+else if(period == 'Anytime') {
+  finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 17, myTimeObj.minuteStart);
+  console.log('this is evening');
+}
+const eventEndTime = finishTimeFrame;//evening; //moment(new Date(2021, 4, 02))
+//eventEndTime.setDate(eventEndTime.getDay() + 2)
+eventEndTime.setMinutes(eventEndTime.getMinutes() + 1)
+
+
+const event = {
+  summary: `You received a new booking from ${first_name}`,
+  location: `${address}, ${city}, ${state} ${zip_code}`,
+  description: ` 
+    Option Lists 
+    Select Times - ${period}
+    Cleaning Type - ${cleaning_type}
+    Frequency - ${frequency}
+    Square Ft - ${sq_ft}
+    Bedrooms Quantity - ${bedrooms}
+    Bathrooms Quantity - ${bathrooms}
+    Contact Number is ${phone}
+  `,
+  start: {
+    dateTime: eventStartTime,
+    timeZone: 'America/New_York'
+  },
+  end: {
+    dateTime: eventEndTime,
+    timeZone: 'America/New_York'
+  },
+  colorId: 1,
+}
+
+calendar.freebusy.query(
+  {
+    resource: {
+      timeMin: eventStartTime,
+      timeMax: eventEndTime,
+      timeZone: 'America/New_York',
+      items: [{ id: 'primary' }],
     },
-    (err, res) => {
-      if (err) return console.error('free busy query error', err)
+  },
+  (err, res) => {
+    if (err) return console.error('free busy query error', err)
 
-      const eventsArr = res.data.calendars.primary.busy
+    const eventsArr = res.data.calendars.primary.busy
 
-      if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
-        if (err) return console.error('calendar event creation error', err)
-        return console.log('calendar event created')
-      })
-      return console.log('im busy')
-    }
-  )
+    if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
+      if (err) return console.error('calendar event creation error', err)
+      return console.log('calendar event created')
+    })
+    return console.log('im busy')
+  }
+)
+  
   ////////////////
+  res.json({ ok: true, message: 'Calendar Event Created' })
 })
 
 
