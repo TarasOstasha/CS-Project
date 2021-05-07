@@ -24,6 +24,7 @@
     "@ngmodule/material-carousel": "^0.6.0",
     "@stripe/stripe-js": "^1.14.0",
     "bootstrap": "^4.6.0",
+    "file-saver": "^2.0.5",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "ngx-pagination": "^5.0.0",

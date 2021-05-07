@@ -5,7 +5,6 @@ const pfs = fs.promises;
 //import { compareAsc, format, format, formatDistance, formatRelative, subDays } from 'date-fns'
 var moment = require('moment');
 
-
 const Booking = require('../models/bookingModel');
 
 //const calendar = require('../public/calendar');
@@ -86,15 +85,17 @@ router.get('/emails', (req, res) => {
         emailsArray.push(value.email)
       }
       //const emailJson = JSON.stringify(emailsArray);
-      fs.writeFile('./emails/emailJson.txt', emailsArray, (err) => {
-        if (err) {
-          return console.log(err);
-        }
-        console.log("The file was saved!");
-      });
+      // old method
+      // fs.writeFile('./emails/emailJson.txt', emailsArray, (err) => {
+      //   if (err) {
+      //     return console.log(err);
+      //   }
+      //   console.log("The file was saved!");
+      // });
       res.status(200).json({
         message: 'You successfully fetched emails',
-        emails: booking
+        emails: booking,
+        savedEmails: emailsArray
       });
     })
     .catch(err => {
@@ -167,7 +168,7 @@ else if(period == 'Anytime') {
 }
 const eventEndTime = finishTimeFrame;//evening; //moment(new Date(2021, 4, 02))
 //eventEndTime.setDate(eventEndTime.getDay() + 2)
-eventEndTime.setMinutes(eventEndTime.getMinutes() + 1)
+eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long event
 
 
 const event = {

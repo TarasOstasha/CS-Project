@@ -4,6 +4,8 @@ import { pipe, of, fromEvent, Subject, Observable } from 'rxjs';
 import { debounceTime, map, filter, switchAll, distinctUntilChanged } from 'rxjs/operators';
 import { FilterPipe } from '../../pipes/search.pipe';
 
+import { saveAs } from 'file-saver'; // file saver
+
 declare var $: any;
 
 
@@ -80,7 +82,10 @@ export class AdminComponent implements OnInit {
 
   async saveAllEmails() {
     const emailsFromServer: any = this._api.myEmails();
-    console.log(emailsFromServer);
+    const result = await emailsFromServer;
+    console.log(result);
+    var blob = new Blob(result.savedEmails, {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "savedEmails.txt");
     // for(const value of this.bookings.booking) {
     //   console.log( value.email)
     // }
