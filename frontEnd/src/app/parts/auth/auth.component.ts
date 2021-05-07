@@ -30,10 +30,12 @@ export class AuthComponent implements OnInit {
   //   return this.isAuthenticated;
   // }
 
+  public isAuthenticated = false;
 
   sendAuthForm() {
     if( this.authForm.value.email == 'test@gmail.com' && this.authForm.value.password == 'test1111' ) {
       this._auth.isAuthenticated = true;
+      localStorage.setItem('state', 'true'); // set value to the local storage
       this._router.navigate(['admin']); 
     } 
   }

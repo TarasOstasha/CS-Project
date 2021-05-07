@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     route: import("@angular/router").ActivatedRouteSnapshot, 
         state: import("@angular/router").RouterStateSnapshot
         ): boolean | import("@angular/router").UrlTree | import("rxjs").Observable<boolean | import("@angular/router").UrlTree> | Promise<boolean | import("@angular/router").UrlTree> {
-            const isAuth = this._auth.getIsAuth();
+            const isAuth = localStorage.getItem('state'); //this._auth.getIsAuth(); - method to use without localStorage
             if(!isAuth) {
                 alert('Not Authorized!!! You Do not have permission to view this page')
                 this._router.navigate(['/auth']);

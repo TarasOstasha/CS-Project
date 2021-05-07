@@ -3,8 +3,9 @@ import { ApiService } from 'src/app/services/api.service';
 import { pipe, of, fromEvent, Subject, Observable } from 'rxjs';
 import { debounceTime, map, filter, switchAll, distinctUntilChanged } from 'rxjs/operators';
 import { FilterPipe } from '../../pipes/search.pipe';
+import {  Router } from '@angular/router';
 
-import { saveAs } from 'file-saver'; // file saver
+import { saveAs } from 'file-saver'; // file saver for email
 
 declare var $: any;
 
@@ -25,7 +26,7 @@ export class AdminComponent implements OnInit {
 
   private _searchSubject: Subject<string> = new Subject(); // create search Subject
 
-  constructor(public _api: ApiService) {
+  constructor(public _api: ApiService, private _router: Router) {
     this._setSearchSubscription();
     // one method for npx pagination(ajust config in ts file)
     this.config = {
@@ -91,18 +92,12 @@ export class AdminComponent implements OnInit {
     // }
   }
 
-  // searchText = '';
-  // characters = [
-  //   'Ant-Man',
-  //   'Aquaman',
-  //   'Asterix',
-  //   'The Atom',
-  //   'The Avengers',
-  //   'Batgirl',
-  //   'Batman',
-  //   'Batwoman',
+  logOut() { // logout from admin panel
+    localStorage.removeItem('state');
+    this._router.navigate(['main']); 
+  }
 
-  //]
+
 
 
 }
