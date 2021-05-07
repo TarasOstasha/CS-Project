@@ -279,11 +279,7 @@ export class BookingComponent implements OnInit, OnChanges {
       lastName: [''],
       email: ['']
     });
-
   }
-
-
-
 
   placeOrder() {
     this.paymentTransaction();
@@ -487,7 +483,9 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   get bedrooms() {
-    return this.form_1_1.controls['bedrooms'].value;
+    let value = this.form_1_1.controls['bedrooms'].value;
+    if ('0 - Studio') value = 0;
+    return value
   }
 
   get bathrooms() {
