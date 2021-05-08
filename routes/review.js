@@ -144,9 +144,10 @@ async function sendMail(user, callback) {
             console.log('Email sent: ' + info.response);
         }
     });
-    const myMailAddress = [user.email, 'tonyjoss1990@gmail.com'];
+    const myMailAddress = [user.email, 'crystalsystemcleaning@gmail.com'];
+    console.log(myMailAddress);
     let mailOptions = {
-        from: 'tonyjoss1990@gmail.com', // sender address
+        from: 'crystalsystemcleaning@gmail.com', // sender address
         to: myMailAddress, // list of receivers 
         subject: "New Order", // subject line
         html: `
