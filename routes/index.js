@@ -169,29 +169,96 @@ const eventEndTime = finishTimeFrame;//evening; //moment(new Date(2021, 4, 02))
 eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long event
 
 
-const event = {
-  summary: `You received a new booking from ${first_name}`,
-  location: `${address}, ${city}, ${state} ${zip_code}`,
-  description: ` 
-    Option Lists 
-    Select Times - ${period}
-    Cleaning Type - ${cleaning_type}
-    Frequency - ${frequency}
-    Square Ft - ${sq_ft}
-    Bedrooms Quantity - ${bedrooms}
-    Bathrooms Quantity - ${bathrooms}
-    Contact Number is ${phone}
-  `,
-  start: {
-    dateTime: eventStartTime,
-    timeZone: 'America/New_York'
-  },
-  end: {
-    dateTime: eventEndTime,
-    timeZone: 'America/New_York'
-  },
-  colorId: 1,
+const calendarEvent = (freq, untilTime, interval, colorID) => {
+  const myEvent = {
+    summary: `You received a new booking from ${first_name}`,
+    location: `${address}, ${city}, ${state} ${zip_code}`,
+    description: ` 
+      Option Lists 
+      Select Times - ${period}
+      Cleaning Type - ${cleaning_type}
+      Frequency - ${frequency}
+      Square Ft - ${sq_ft}
+      Bedrooms Quantity - ${bedrooms}
+      Bathrooms Quantity - ${bathrooms}
+      Contact Number is ${phone}
+    `,
+    start: {
+      dateTime: eventStartTime,
+      timeZone: 'America/New_York'
+    },
+    end: {
+      dateTime: eventEndTime,
+      timeZone: 'America/New_York'
+    },
+    "recurrence": [
+      //"RRULE:FREQ=WEEKLY;UNTIL=20210528;INTERVAL=1"
+      `RRULE:FREQ=${freq};UNTIL=${untilTime};INTERVAL=${interval}`
+    ],
+    colorId: colorID,
+  }
+  return myEvent
 }
+
+// for one time schedule
+let bookedDateArray = new Array(new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day)); // transform booked date to array
+let untilDateOneTime = bookedDateArray.map((v)=>v.toISOString().slice(0,10)).join("").split('-').join(""); // slice just date(year,month,day)
+// other time schedule
+let bookedMyTime = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day); // get date booked obj
+const myYear = bookedMyTime.getFullYear(); 
+const myMonth = ("0" + (bookedMyTime.getMonth() + 2)).slice(-2); // get month in two digit format and set duration 1 month
+const threeMonthLater = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
+const myDay = ("0" + bookedMyTime.getDay()).slice(-2); // get day in two digit format
+let untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+let untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+
+
+let event; 
+switch(frequency) {
+  case 'One Time':
+  event = calendarEvent('DAILY',untilDateOneTime,1,1); // booked one time
+  console.log('One Time selected');
+  break;
+  case 'Weekly':
+  event = calendarEvent('WEEKLY',untilDateWeeklyTime,1,2); // booked 4 times
+  console.log('Weekly selected');
+  break;
+  case 'Biweekly':
+  event = calendarEvent('WEEKLY',untilDateWeeklyTime,2,3); // booked 4 times
+  console.log('Biweekly selected');
+  break;
+  case 'Monthly':
+  event = calendarEvent('MONTHLY',untilDateMonthlyTime,1,4); // booked 3 times
+  console.log('Monthly selected');
+  break;
+}
+
+// const event = {
+//   summary: `You received a new booking from ${first_name}`,
+//   location: `${address}, ${city}, ${state} ${zip_code}`,
+//   description: ` 
+//     Option Lists 
+//     Select Times - ${period}
+//     Cleaning Type - ${cleaning_type}
+//     Frequency - ${frequency}
+//     Square Ft - ${sq_ft}
+//     Bedrooms Quantity - ${bedrooms}
+//     Bathrooms Quantity - ${bathrooms}
+//     Contact Number is ${phone}
+//   `,
+//   start: {
+//     dateTime: eventStartTime,
+//     timeZone: 'America/New_York'
+//   },
+//   end: {
+//     dateTime: eventEndTime,
+//     timeZone: 'America/New_York'
+//   },
+//   "recurrence": [
+//     "RRULE:FREQ=WEEKLY;UNTIL=20210528;INTERVAL=1"
+//   ],
+//   colorId: 1,
+// }
 
 calendar.freebusy.query(
   {
