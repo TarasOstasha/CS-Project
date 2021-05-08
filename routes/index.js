@@ -202,7 +202,8 @@ const calendarEvent = (freq, untilTime, interval, colorID) => {
 
 // for one time schedule
 let bookedDateArray = new Array(new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day)); // transform booked date to array
-let untilDateOneTime = bookedDateArray.map((v)=>v.toISOString().slice(0,10)).join("").split('-').join(""); // slice just date(year,month,day)
+let untilDateOneTime = bookedDateArray.map((v)=>v.toISOString().slice(0,10)).join("").split('-').join(""); 
+
 // other time schedule
 let bookedMyTime = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day); // get date booked obj
 const myYear = bookedMyTime.getFullYear(); 
