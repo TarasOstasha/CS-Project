@@ -4,7 +4,7 @@ const fs = require('fs');
 const pfs = fs.promises;
 //import { compareAsc, format, format, formatDistance, formatRelative, subDays } from 'date-fns'
 var moment = require('moment');
-
+require("dotenv").config();
 const Booking = require('../models/bookingModel');
 
 //const calendar = require('../public/calendar');
@@ -16,9 +16,6 @@ router.get('/', function (req, res, next) {
 });
 
 
-var formatedDate = moment().format(
-  "dddd, MMMM Do YYYY, h:mm:ss a");
-console.log(formatedDate);
 
 
 // send booking data
@@ -126,9 +123,10 @@ router.post('/date', (req, res) => {
 const { google } = require('googleapis');
 const { OAuth2 } = google.auth;
 
-const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
 
-oAuth2Client.setCredentials({ refresh_token: '1//04GhcZzfLIJG7CgYIARAAGAQSNwF-L9Ir3n2zg8K0ccegF6ceR9G4DxcLQ2-WtW6Nug8PIoSkF8K-eFrbpvLkPjaZ9ZwKrzUCNEE' })
+const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
+
+oAuth2Client.setCredentials({ refresh_token: '1//04qkL3X9_IQj5CgYIARAAGAQSNwF-L9IrRVmO7WkhSbVa3ApuX44M6mUy0TGL796WYQoti61ZzL2-McfEfzr4i0aQqOetytIIa34' })
 
 const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
