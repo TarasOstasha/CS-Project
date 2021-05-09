@@ -47,6 +47,13 @@ export class BookingComponent implements OnInit, OnChanges {
     arr.unshift({ title: '0 - Studio' });
     return arr
   }
+  create_sq_ft() {
+    const arr = Array.from({ length: 20 }, (v, k) => k + 1);
+    return arr.map((el) => ({
+      value: el.toString(),
+      title: ((el - 1) * 500).toString() + ' - ' + (el * 500)
+    }));
+  }
 
   stepper: any = {
     // step - 1
@@ -77,15 +84,17 @@ export class BookingComponent implements OnInit, OnChanges {
       ]
     },
     sq_ft: {
-      items: [
-        { title: 'Under 1000' },
-        { title: '1000 - 1200' },
-        { title: '1200 - 1500' },
-        { title: '1500 - 2000' },
-        { title: '2000 - 2500' },
-        { title: '2500 - 3000' },
-        { title: '3000 - 3500' },
-      ]
+      items: this.create_sq_ft(),
+      price: 30
+      // items: [
+      // { title: 'Under 1000' },
+      // { title: '1000 - 1200' },
+      // { title: '1200 - 1500' },
+      // { title: '1500 - 2000' },
+      // { title: '2000 - 2500' },
+      // { title: '2500 - 3000' },
+      // { title: '3000 - 3500' },
+      // ]
     },
     zip_code: '',
     email: '',
@@ -316,6 +325,8 @@ export class BookingComponent implements OnInit, OnChanges {
 
   get calculatePipe() {
     let subtotal: number = 0;
+    // standard
+    subtotal += this.standard;
     // type
     if (this.cleaning_type == 'Deep cleaning') subtotal += 40;
     if (this.cleaning_type == 'Organic cleaning') subtotal += 10;
@@ -326,18 +337,19 @@ export class BookingComponent implements OnInit, OnChanges {
     const bedBath = this.bedrooms * this.stepper.bedrooms.price + this.bathrooms * this.stepper.bathrooms.price;
     subtotal += bedBath; //this.bedrooms + this.bathrooms;
     // frequency
-    if (this.frequency == 'Weekly') subtotal += 10;
-    if (this.frequency == 'Biweekly') subtotal += 10;
+    if (this.frequency == 'Weekly') subtotal -= 10;
+    if (this.frequency == 'Biweekly') subtotal += 0;
     if (this.frequency == 'Monthly') subtotal += 10;
     if (this.frequency == 'One Time') subtotal += 15;
     // sq.ft
-    subtotal += this.standard; // standard
-    if (this.sq_ft == '1000 - 1200') subtotal += 20;
-    if (this.sq_ft == '1200 - 1500') subtotal += 20;
-    if (this.sq_ft == '1500 - 2000') subtotal += 30;
-    if (this.sq_ft == '2000 - 2500') subtotal += 30;
-    if (this.sq_ft == '2500 - 3000') subtotal += 30;
-    if (this.sq_ft == '3000 - 3500') subtotal += 30;
+    subtotal += this.sq_ft * this.stepper.sq_ft.price;
+    // log('>>>>>>>>>>>>>>>>>>', this.sq_ft, this.sq_ft * this.stepper.sq_ft.price );
+    // if (this.sq_ft == '1000 - 1200') subtotal += 20;
+    // if (this.sq_ft == '1200 - 1500') subtotal += 20;
+    // if (this.sq_ft == '1500 - 2000') subtotal += 30;
+    // if (this.sq_ft == '2000 - 2500') subtotal += 30;
+    // if (this.sq_ft == '2500 - 3000') subtotal += 30;
+    // if (this.sq_ft == '3000 - 3500') subtotal += 30;
     //extras
     if (this.extras_fridge) subtotal += this.getExtrasTotalByKey('fridge');
     if (this.extras_oven) subtotal += this.getExtrasTotalByKey('oven');
@@ -389,7 +401,7 @@ export class BookingComponent implements OnInit, OnChanges {
       property_type: 'House',
       frequency: 'Monthly',
       //
-      sq_ft: '1500 - 2000',
+      sq_ft: '1', //'1500 - 2000',
       zip_code: '29000',
       email: 'hello@world.com',
       //
