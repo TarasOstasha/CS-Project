@@ -490,6 +490,10 @@ export class BookingComponent implements OnInit, OnChanges {
     return this.form_1_1.controls['frequency'].value;
   }
 
+  get frequency_2() {
+    return this.form_1_2.controls['frequency'].value;
+  }
+
   get cleaning_type() {
     return this.form_1_1.controls['cleaning_type'].value;
   }
@@ -615,6 +619,13 @@ export class BookingComponent implements OnInit, OnChanges {
     this._api.sendDate(bookingDate)
       .subscribe((response: any) => console.log(response))
     //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
+  }
+
+  bindFrequencyFields(value, who) {
+    log('****', value);
+    if (who == 1) this.form_1_2.controls.frequency.setValue(value);
+    if (who == 2) this.form_1_1.controls.frequency.setValue(value);
+    
   }
 
 }

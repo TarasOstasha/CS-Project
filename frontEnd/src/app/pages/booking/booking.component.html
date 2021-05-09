@@ -86,7 +86,7 @@
                                         <div class="input">
                                             <mat-form-field appearance="fill">
                                                 <mat-label>Frequency</mat-label>
-                                                <mat-select [ngModel]="frequency" formControlName="frequency">
+                                                <mat-select [ngModel]="frequency" (ngModelChange)="bindFrequencyFields(frequency, 1)" formControlName="frequency">
                                                     <mat-option [value]="item.title"
                                                         *ngFor="let item of stepper.frequency.items">
                                                         {{item.title}}
@@ -245,9 +245,9 @@
                         <mat-divider></mat-divider>
 
                         <form [formGroup]="form_1_2">
-                            <mat-radio-group [ngModel]="frequency" formControlName="frequency">
+                            <mat-radio-group [ngModel]="frequency_2" formControlName="frequency">
                                 <div class="frequency-blocks">
-                                    <div (click)="event_hook.click()" *ngFor="let item of stepper.frequency.items"
+                                    <div (click)="event_hook.click(); bindFrequencyFields(frequency_2, 2)" *ngFor="let item of stepper.frequency.items"
                                         class="frequency-block">
                                         <div [matRippleColor]="'rgb(0 0 0 / 10%)'" [matRippleDisabled]="false"
                                             class="ripple-container" matRipple style="background: {{item.color}}">
