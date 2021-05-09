@@ -205,13 +205,50 @@ let bookedDateArray = new Array(new Date(myTimeObj.year, myTimeObj.month, myTime
 let untilDateOneTime = bookedDateArray.map((v)=>v.toISOString().slice(0,10)).join("").split('-').join(""); 
 
 // other time schedule
+let myMonth;
+let threeMonthLater;
+let myDay;
+let untilDateWeeklyTime;
+let untilDateMonthlyTime; 
 let bookedMyTime = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day); // get date booked obj
-const myYear = bookedMyTime.getFullYear(); 
-const myMonth = ("0" + (bookedMyTime.getMonth() + 2)).slice(-2); // get month in two digit format and set duration 1 month
-const threeMonthLater = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
-const myDay = ("0" + bookedMyTime.getDay()).slice(-2); // get day in two digit format
-let untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
-let untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+let myYear = bookedMyTime.getFullYear(); 
+
+// update date if the next schedule appointment will be on the next year
+if( bookedMyTime.getMonth() == 9 ) { 
+  myYear += 1;
+  myMonth = '01';
+  threeMonthLater = '01';
+  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+}
+else if(bookedMyTime.getMonth() == 10) {
+  myYear += 1;
+  myMonth = '02';
+  threeMonthLater = '02';
+  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+}
+else if(bookedMyTime.getMonth() == 11) {
+  myYear += 1;
+  myMonth = '03';
+  threeMonthLater = '03';
+  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+}
+else {
+  myMonth = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
+  threeMonthLater = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
+  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+  
+  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+  //console.log(untilDateWeeklyTime,untilDateWeeklyTime,myMonth,threeMonthLater,myDay)
+  
+}
+console.log(untilDateWeeklyTime)
 
 
 let event; 
