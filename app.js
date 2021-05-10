@@ -30,6 +30,7 @@ mongoose.connect('mongodb+srv://user:1111@cluster0.olmgj.mongodb.net/crystal?ret
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

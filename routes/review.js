@@ -4,7 +4,13 @@ var router = express.Router();
 // dotenv.config();
 require("dotenv").config();
 const nodemailer = require('nodemailer');
+var jade = require('jade');
+var renderFunc = jade.compileFile('./views/email.jade');
+
+
 const Review = require('../models/reviewModel');
+
+
 
 
 /* GET home page. */
@@ -150,16 +156,26 @@ async function sendMail(user, callback) {
         from: 'crystalsystemcleaning@gmail.com', // sender address
         to: myMailAddress, // list of receivers 
         subject: "New Order", // subject line
-        html: `
-            <h1>Company Name is ${user.company_name}</h1>
-            <br>
-            <h3>Client Name Is ${user.name}</h3><br>
-            <p>Cellphone is ${user.phone}</p>
-            <p>Email is ${user.email}</p>
-            <p>Approx Sq.Ft id ${user.approx_SF}</p>
-            <p>Time is ${user.time}</p>
-            <p>Frequency: ${user.frequency}</p>
-        `
+        html: renderFunc({ 
+            //title: 'Express',
+            company_name: user.company_name,
+            client_name: user.name,
+            cellphone: user.phone,
+            email: user.email,
+            sq_ft: user.approx_SF,
+            time: user.time,
+            frequency: user.frequency
+        })
+        // html: `
+        //     <h1>Company Name is ${user.company_name}</h1>
+        //     <br>
+        //     <h3>Client Name Is ${user.name}</h3><br>
+        //     <p>Cellphone is ${user.phone}</p>
+        //     <p>Email is ${user.email}</p>
+        //     <p>Approx Sq.Ft id ${user.approx_SF}</p>
+        //     <p>Time is ${user.time}</p>
+        //     <p>Frequency: ${user.frequency}</p>
+        // `
     }
 
     // send mail with defined transport object
@@ -168,6 +184,10 @@ async function sendMail(user, callback) {
     callback(info)
 }
 
+/* GET home page. */
+router.get('/preview', function (req, res, next) {
+    res.render('email', { title: 'Express' });
+});
 
 
 
