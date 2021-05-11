@@ -32,7 +32,7 @@ export class BookingComponent implements OnInit, OnChanges {
   form_1_1!: FormGroup;
   form_1_2!: FormGroup;
   form_1_3!: FormGroup;
-
+  form_1_4!: FormGroup;
   stripePaymentForm!: FormGroup;
 
   isEditable = false;
@@ -195,16 +195,14 @@ export class BookingComponent implements OnInit, OnChanges {
   ngOnInit() {
     log('ngOnInit');
 
+    // setInterval(() => {
+    //   log(this._form.formData);
+    //   log(this.form_1_1);
+    // }, 1000);
+
     setInterval(() => {
-      log(this._form.formData);
-      log(this.form_1_1);
-
-    }, 1000);
-
-    // the fix
-    // setTimeout(() => {
-    //   this.checkFormGroup('residential')
-    // }, 300);
+      log(this.form_1_4.value.terms);
+    }, 3000);
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -259,7 +257,14 @@ export class BookingComponent implements OnInit, OnChanges {
       zip_code: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5), Validators.pattern('^[0-9]*$')]],
     });
 
-    this.form = this._formBuilder.group({
+    this.form_1_4 = this._formBuilder.group({
+      terms: [''],
+    });
+
+    this.stripePaymentForm = this._formBuilder.group({
+      firstName: [''],
+      lastName: [''],
+      email: ['']
     });
 
     // move to appropriate tab menu (residential, office, commercial) when press from main page
@@ -284,11 +289,7 @@ export class BookingComponent implements OnInit, OnChanges {
       // this.cdr.detectChanges();
     });
 
-    this.stripePaymentForm = this._formBuilder.group({
-      firstName: [''],
-      lastName: [''],
-      email: ['']
-    });
+
   }
 
   placeOrder() {
@@ -313,7 +314,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngAfterViewInit() {
     log('ngAfterViewInit');
-    // this.stepperDOM.selectedIndex = 0;
+    // this.stepperDOM.selectedIndex = 3;
     this.cdr.detectChanges();
   }
 
