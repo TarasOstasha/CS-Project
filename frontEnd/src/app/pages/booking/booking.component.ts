@@ -48,10 +48,10 @@ export class BookingComponent implements OnInit, OnChanges {
     return arr
   }
   create_sq_ft() {
-    const arr = Array.from({ length: 20 }, (v, k) => k + 1);
+    const arr = Array.from({ length: 20 }, (v, k) => k);
     return arr.map((el) => ({
       value: el.toString(),
-      title: ((el - 1) * 500).toString() + ' - ' + (el * 500)
+      title: ((el + 1) * 500).toString() + ' - ' + ((el + 2) * 500)
     }));
   }
 
@@ -77,10 +77,10 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     frequency: {
       items: [
-        { title: 'Weekly', color: '#1976d2', price: 123 }, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
-        { title: 'Biweekly', color: '#1976d2', price: 139 },
-        { title: 'Monthly', color: '#1976d2', price: 156 },
-        { title: 'One Time', color: '#1976d2', price: 160 },
+        { title: 'Weekly', color: '#1976d2', value: 'weekly'}, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
+        { title: 'Biweekly', color: '#1976d2', value: 'biweekly'},
+        { title: 'Monthly', color: '#1976d2', value: 'monthly'},
+        { title: 'One Time', color: '#1976d2', value: 'oneTime'},
       ]
     },
     sq_ft: {
@@ -327,22 +327,36 @@ export class BookingComponent implements OnInit, OnChanges {
     let subtotal: number = 0;
     // standard
     subtotal += this.standard;
+    log('standard: ', subtotal);
     // type
     if (this.cleaning_type == 'Deep cleaning') subtotal += 40;
     if (this.cleaning_type == 'Organic cleaning') subtotal += 10;
     if (this.cleaning_type == 'Move cleaning') subtotal += 40;
     if (this.cleaning_type == 'Post construction cleaning') subtotal += 160;
     if (this.cleaning_type == 'Post renovation cleaning') subtotal += 160;
+    log('type: ', subtotal);
+
     // bed bath
     const bedBath = this.bedrooms * this.stepper.bedrooms.price + this.bathrooms * this.stepper.bathrooms.price;
     subtotal += bedBath; //this.bedrooms + this.bathrooms;
+    log('bed n bath: ', subtotal);
+
+    // sq.ft
+    subtotal += this.sq_ft * this.stepper.sq_ft.price;
+    log('sq.ft: ', subtotal);
+
+    const weekly = subtotal - 10;
+    const biweekly = subtotal;
+    const monthly = subtotal + 10;
+    const oneTime = subtotal + 15;
+
     // frequency
     if (this.frequency == 'Weekly') subtotal -= 10;
     if (this.frequency == 'Biweekly') subtotal += 0;
     if (this.frequency == 'Monthly') subtotal += 10;
     if (this.frequency == 'One Time') subtotal += 15;
-    // sq.ft
-    subtotal += this.sq_ft * this.stepper.sq_ft.price;
+    log('freqency: ', subtotal);
+
     // log('>>>>>>>>>>>>>>>>>>', this.sq_ft, this.sq_ft * this.stepper.sq_ft.price );
     // if (this.sq_ft == '1000 - 1200') subtotal += 20;
     // if (this.sq_ft == '1200 - 1500') subtotal += 20;
@@ -357,14 +371,24 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.extras_washer) subtotal += this.getExtrasTotalByKey('washer');
     if (this.extras_window) subtotal += this.getExtrasTotalByKey('window');
     if (this.extras_vacuum_sofa) subtotal += this.getExtrasTotalByKey('vacuum_sofa');
+    log('extras: ', subtotal);
+
     // tax
     const tax = this.percentage(this.tax, subtotal);
+    log('tax: ', subtotal);
+
     // total
     const total = subtotal + tax;
+    log('total: ', subtotal);
+
     // recommend time for cleaning
     const recommendTime = Math.round(subtotal / 40);
     return {
       bedBath,
+      weekly,
+      biweekly,
+      monthly,
+      oneTime,
       subtotal,
       tax,
       total,
@@ -397,19 +421,19 @@ export class BookingComponent implements OnInit, OnChanges {
 
     // Step 1
     const example = {
-      cleaning_type: 'Organic cleaning',
+      cleaning_type: 'Regular cleaning',
       property_type: 'House',
-      frequency: 'Monthly',
+      frequency: 'Biweekly',
       //
-      sq_ft: '1', //'1500 - 2000',
+      sq_ft: '0', //'1500 - 2000',
       zip_code: '29000',
       email: 'hello@world.com',
       //
-      bedrooms: '2',
+      bedrooms: '0 - Studio',
       date: new Date(),
       phone: '807465486',
       //
-      bathrooms: '2',
+      bathrooms: '1',
       select_times: 'Afternoon',
     };
     Object
@@ -625,7 +649,7 @@ export class BookingComponent implements OnInit, OnChanges {
     log('****', value);
     if (who == 1) this.form_1_2.controls.frequency.setValue(value);
     if (who == 2) this.form_1_1.controls.frequency.setValue(value);
-    
+
   }
 
 }

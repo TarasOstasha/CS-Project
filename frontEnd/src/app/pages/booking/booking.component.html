@@ -258,13 +258,18 @@
                                             </mat-radio-button>
                                             <div class="fr-price">
                                                 <span>
-                                                    Price {{item.price | currency}}
+                                                    Price {{calculatePipe[item.value] | currency}} 
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </mat-radio-group>
+
+                            <!-- weekly,
+                            biweekly,
+                            monthly,
+                            oneTime, -->
 
                             <br />
                             <h2 class="step-subtitle-div">Extras</h2>
@@ -562,7 +567,7 @@
                                         <div class="info-field">
                                             <span>- {{cleaning_type}}</span>
                                             <span>
-                                                {{calculatePipe.bedBath | currency}}
+                                                <!-- {{calculatePipe.bedBath | currency}} -->
                                             </span>
                                         </div>
                                     </mat-list-item>
