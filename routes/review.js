@@ -184,9 +184,18 @@ async function sendMail(user, callback) {
     callback(info)
 }
 
+
 /* GET home page. */
 router.get('/preview', function (req, res, next) {
-    res.render('email', { title: 'Express' });
+    res.render('email', { 
+        company_name: 'Apple',
+        client_name: 'Jack',
+        cellphone: '345980967',
+        email: 'test@gmail.com',
+        sq_ft: '1000',
+        time: 'morning',
+        frequency: 'one time'
+     });
 });
 
 

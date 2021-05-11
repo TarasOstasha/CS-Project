@@ -1,13 +1,40 @@
 extends layout
 
 block content
-  //h1= title
-  
-  p #{ title }
-  p #{ company_name }
-  p #{ client_name }
-  p #{ cellphone }
-  p #{ email }
-  p #{ sq_ft }
-  p #{ time }
-  p #{ frequency }
+  .container
+    .logo
+        img(src='/assets/imgs/logo_1_.png' alt='logo')
+    .title
+        h3 Thanks For Booking!
+    table.table.table-bordered
+      thead
+        tr
+          th(scope='col') #
+          th(scope='col') company_name
+          th(scope='col') client_name
+          th(scope='col') cellphone
+          th(scope='col') email
+          th(scope='col') sq_ft
+          th(scope='col') time
+          th(scope='col') frequency
+      tbody
+        tr
+          th(scope='row') 1
+          td #{ company_name }
+          td #{ client_name }
+          td #{ cellphone }
+          td #{ email }
+          td #{ sq_ft }
+          td #{ time }
+          td #{ frequency }
+    .buttons
+      <a href="tel:+122170961709" type="button" class="btn btn-primary" style="color:#fff">Visit Web-Site</a>
+      <a type="button" class="btn btn-primary" style="color:#fff">Contact Us</a>
+    //- p #{ title }
+    //- p #{ company_name }
+    //- p #{ client_name }
+    //- p #{ cellphone }
+    //- p #{ email }
+    //- p #{ sq_ft }
+    //- p #{ time }
+    //- p #{ frequency }
