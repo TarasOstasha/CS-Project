@@ -569,6 +569,10 @@ export class BookingComponent implements OnInit, OnChanges {
     return this.form_1_2.controls['extras_vacuum_sofa'].value;
   }
 
+  get terms() {
+    return this.form_1_4.controls['terms'].value;
+  }
+
   // extras list
 
   get extras_list() {
