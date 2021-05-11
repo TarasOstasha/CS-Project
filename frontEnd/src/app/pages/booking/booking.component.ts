@@ -77,10 +77,10 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     frequency: {
       items: [
-        { title: 'Weekly', color: '#1976d2', value: 'weekly'}, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
-        { title: 'Biweekly', color: '#1976d2', value: 'biweekly'},
-        { title: 'Monthly', color: '#1976d2', value: 'monthly'},
-        { title: 'One Time', color: '#1976d2', value: 'oneTime'},
+        { title: 'Weekly', color: '#1976d2', value: 'weekly' }, // MATERIAL COLORS: https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=1976D2
+        { title: 'Biweekly', color: '#1976d2', value: 'biweekly' },
+        { title: 'Monthly', color: '#1976d2', value: 'monthly' },
+        { title: 'One Time', color: '#1976d2', value: 'oneTime' },
       ]
     },
     sq_ft: {
@@ -198,12 +198,13 @@ export class BookingComponent implements OnInit, OnChanges {
     setInterval(() => {
       log(this._form.formData);
       log(this.form_1_1);
+
     }, 1000);
 
     // the fix
-    setTimeout(() => {
-      this.checkFormGroup('residential')
-    }, 300);
+    // setTimeout(() => {
+    //   this.checkFormGroup('residential')
+    // }, 300);
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -261,12 +262,12 @@ export class BookingComponent implements OnInit, OnChanges {
     this.form = this._formBuilder.group({
     });
 
-    // setInterval(() => {
-    //   // this.form_1_1.reset();// = "VALID";
-    //   // touched
-    //   log('>>>', this.form_1_1)
-    //   // log('>>>', this.form_1_3)
-    // }, 2000)
+    // move to appropriate tab menu (residential, office, commercial) when press from main page
+    this._activatedRoute.queryParams.subscribe(params => {
+      this.form_1_1.value.checkedGroup = params.type;
+      log('params.type ------  ', params.type);
+      this.checkFormGroup(this.form_1_1.value.checkedGroup);
+    });
 
     log('Can I GET FORM DATA& : ', this._form.formData);
     // set values from service
@@ -311,13 +312,6 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   ngAfterViewInit() {
-    // move to appropriate tab menu (residential, office, commercial) when press from main page
-    this._activatedRoute.queryParams.subscribe(params => {
-      this.form_1_1.value.checkedGroup = params.type;
-      //console.log(this.form_1_1.value.checkedGroup);
-      //console.log(params); // Print the parameter to the console. 
-      this.checkFormGroup(this.form_1_1.value.checkedGroup);
-    });
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 0;
     this.cdr.detectChanges();
@@ -327,23 +321,24 @@ export class BookingComponent implements OnInit, OnChanges {
     let subtotal: number = 0;
     // standard
     subtotal += this.standard;
-    log('standard: ', subtotal);
+    // log('standard: ', subtotal);
+
     // type
     if (this.cleaning_type == 'Deep cleaning') subtotal += 40;
     if (this.cleaning_type == 'Organic cleaning') subtotal += 10;
     if (this.cleaning_type == 'Move cleaning') subtotal += 40;
     if (this.cleaning_type == 'Post construction cleaning') subtotal += 160;
     if (this.cleaning_type == 'Post renovation cleaning') subtotal += 160;
-    log('type: ', subtotal);
+    // log('type: ', subtotal);
 
     // bed bath
     const bedBath = this.bedrooms * this.stepper.bedrooms.price + this.bathrooms * this.stepper.bathrooms.price;
     subtotal += bedBath; //this.bedrooms + this.bathrooms;
-    log('bed n bath: ', subtotal);
+    // log('bed n bath: ', subtotal);
 
     // sq.ft
     subtotal += this.sq_ft * this.stepper.sq_ft.price;
-    log('sq.ft: ', subtotal);
+    // log('sq.ft: ', subtotal);
 
     const weekly = subtotal - 10;
     const biweekly = subtotal;
@@ -355,7 +350,7 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.frequency == 'Biweekly') subtotal += 0;
     if (this.frequency == 'Monthly') subtotal += 10;
     if (this.frequency == 'One Time') subtotal += 15;
-    log('freqency: ', subtotal);
+    // log('freqency: ', subtotal);
 
     // log('>>>>>>>>>>>>>>>>>>', this.sq_ft, this.sq_ft * this.stepper.sq_ft.price );
     // if (this.sq_ft == '1000 - 1200') subtotal += 20;
@@ -371,15 +366,15 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.extras_washer) subtotal += this.getExtrasTotalByKey('washer');
     if (this.extras_window) subtotal += this.getExtrasTotalByKey('window');
     if (this.extras_vacuum_sofa) subtotal += this.getExtrasTotalByKey('vacuum_sofa');
-    log('extras: ', subtotal);
+    // log('extras: ', subtotal);
 
     // tax
     const tax = this.percentage(this.tax, subtotal);
-    log('tax: ', subtotal);
+    // log('tax: ', subtotal);
 
     // total
     const total = subtotal + tax;
-    log('total: ', subtotal);
+    // log('total: ', subtotal);
 
     // recommend time for cleaning
     const recommendTime = Math.round(subtotal / 40);

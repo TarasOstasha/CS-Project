@@ -30,7 +30,7 @@
                                     <li (click)="checkFormGroup('residential')"
                                         [class]="(checkedGroup == 'residential') ? 'active' : '' ">
                                         <a [routerLink]="['/booking']" class="d-flex">
-                                            <i class="fas fa-house-user"></i>&nbsp;Residential
+                                            <i class="fas fa-house-user"></i>&nbsp;Residential {{checkedGroup}}
                                         </a>
                                     </li>
                                     <li (click)="checkFormGroup('office')"
