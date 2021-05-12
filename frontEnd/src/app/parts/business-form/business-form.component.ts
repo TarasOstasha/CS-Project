@@ -28,20 +28,42 @@ export class BusinessFormComponent implements OnInit {
         { title: '2000 - 2500' },
         { title: '2500 - 3000' },
         { title: '3000 - 3500' },
+        { title: '3500 - 4000' },
+        { title: '4500 - 5000' },
+        { title: '5500 - 6000' },
+        { title: '6500 - 7000' },
+        { title: '7500 - 8000' },
+        { title: '8500 - 9000' },
+        { title: '9500 - 10000' }
       ]
     },
     bedrooms: {
       items: [
+        { title: '0' },
         { title: '1' },
-        { title: '... shoud be all ...' },
-        { title: '19' },
+        { title: '2' },
+        { title: '3' },
+        { title: '4' },
+        { title: '5' },
+        { title: '6' },
+        { title: '7' },
+        { title: '8' },
+        { title: '9' },
+        { title: '10' }
       ]
     },
     bathrooms: {
       items: [
         { title: '1' },
-        { title: '... shoud be all ...' },
-        { title: '19' },
+        { title: '2' },
+        { title: '3' },
+        { title: '4' },
+        { title: '5' },
+        { title: '6' },
+        { title: '7' },
+        { title: '8' },
+        { title: '9' },
+        { title: '10' }
       ]
     },
     frequency: {

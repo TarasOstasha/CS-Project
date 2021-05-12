@@ -94,7 +94,7 @@ export class DeepComponent implements OnInit {
     { title: 'Fridge inside/outside', price: '$30' },
     { title: 'Oven inside/outside', price: '$30' },
     { title: 'Cabinets inside/outside', price: '$30' },
-    { title: 'Windows inside', price: 30/5 },
+    { title: 'Windows inside', price: '$60' },
     { title: 'Vacuum Sofa', price: '$30' },
     { title: 'Laundry', price: '$30' },
     // { title: 'Move in/out Package', price: '$140' },
@@ -102,7 +102,6 @@ export class DeepComponent implements OnInit {
   ]
 
   freeExtraServices: any = [
-    { title: 'Extra services included by free' },
     { title: 'Tile area scrubbed' },
     { title: 'Baseboards dusted' },
     { title: 'Garbage can inside/outside' },

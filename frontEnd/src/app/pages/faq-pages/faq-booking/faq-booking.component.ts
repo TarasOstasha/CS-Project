@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class FaqBookingComponent implements OnInit {
 
   faqAccordion = [
-    { title: "1. Can I Make A Booking For Today?", paragraph: "Yes Of Course, We Accept Day Bookings. Please Call To Us Or Check Online If We Available Today." },
-    { title: "2. Can I Request A Specific Cleaner?", paragraph: "Of Course, Let Us Know Please Who You Want To Come To You For Cleaning. And We Will See When Your Particular Cleaner Is Available." },
-    { title: "3. Why Can’t I Book The Date And Time That I Want?", paragraph: "For This Date And Time There Is No Cleaner Available, You Will Have To Choose A Different Date And Time." },
-    { title: "4. How Do I Cancel A Booking? ", paragraph: " You Can Cancel Your Booking By Calling Us. Please Note That If A Cancellation To Your Schedule Service  Is Made Less Than 24 Hours There Is A $60 Fee." }
+    { title: "1. Can I make a booking for today?", paragraph: "Yes of course, we accept day bookings. Please call to us or check online if we available today." },
+    { title: "2. Can I request a specific cleaner?", paragraph: "Of course, let us know please who you want to come to you for cleaning. And we will see when your particular cleaner is available." },
+    { title: "3. Why can’t I book the date and time that I want?", paragraph: "For this date and time there is no cleaner available, you will have to choose a different date and time." },
+    { title: "4. How do I cancel a booking? ", paragraph: " You can cancel your booking by calling us. Please note that if a cancellation to your schedule service is made less than 24 hours there is a $60 fee." }
   ]
 
   constructor() { }

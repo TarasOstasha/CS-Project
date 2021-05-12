@@ -77,7 +77,7 @@ export class RegularComponent implements OnInit {
     { title: 'Oven inside/outside', price: 30 },
     { title: 'Cabinets inside/outside', price: 30 },
     // { title: 'Garbage can inside/outside', price: 30 },
-    { title: 'Windows inside', price: 30/5 },
+    { title: 'Windows inside', price: 60 },
     // { title: 'Baseboards', price: 30 },
     { title: 'Vacuum Sofa', price: 30 },
     { title: 'Laundry', price: 30 },

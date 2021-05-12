@@ -78,7 +78,7 @@ export class GreenComponent implements OnInit {
     { title: 'Laundry', price: '$30' },
     // { title: 'Move in/out Package', price: '$140' },
     // { title: 'Organic Cleaning', price: '$30' },
-    { title: 'Windows inside', price: '$30/5' },
+    { title: 'Windows inside', price: '$60' },
     // { title: 'Baseboards', price: '$30' }
   ]
 
