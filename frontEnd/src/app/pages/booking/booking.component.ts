@@ -270,7 +270,6 @@ export class BookingComponent implements OnInit, OnChanges {
     // move to appropriate tab menu (residential, office, commercial) when press from main page
     this._activatedRoute.queryParams.subscribe(params => {
       this.form_1_1.value.checkedGroup = params.type;
-      log('params.type ------  ', params.type);
       this.checkFormGroup(this.form_1_1.value.checkedGroup);
     });
 
@@ -283,7 +282,7 @@ export class BookingComponent implements OnInit, OnChanges {
       if (key == 'approx_SF') { // crutch
         this.form_1_1.controls.sq_ft.setValue(serviceValue);
       } else if (this.form_1_1.controls[key]) {
-        log('key ---- ', key, serviceValue);
+        // log('key ---- ', key, serviceValue);
         this.form_1_1.controls[key].setValue(serviceValue);
       };
       // this.cdr.detectChanges();
@@ -470,6 +469,7 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   checkFormGroup(groupName: any) {
+    if (!groupName) groupName = 'residential';
     this.form_1_1.controls['checkedGroup'].setValue(groupName);
   }
 
