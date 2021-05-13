@@ -332,6 +332,7 @@ export class BookingComponent implements OnInit, OnChanges {
     // log('type: ', subtotal);
 
     // bed bath
+    log('******>>>>> ', this.bedrooms, this.stepper.bedrooms.price, this.bathrooms , this.stepper.bathrooms.price);
     const bedBath = this.bedrooms * this.stepper.bedrooms.price + this.bathrooms * this.stepper.bathrooms.price;
     subtotal += bedBath; //this.bedrooms + this.bathrooms;
     // log('bed n bath: ', subtotal);
@@ -520,7 +521,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   get bedrooms() {
     let value = this.form_1_1.controls['bedrooms'].value;
-    if ('0 - Studio') value = 0;
+    if (value == '0 - Studio') value = '0';
     return value
   }
 
