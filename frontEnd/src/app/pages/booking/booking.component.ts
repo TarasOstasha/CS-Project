@@ -49,10 +49,17 @@ export class BookingComponent implements OnInit, OnChanges {
   }
   create_sq_ft() {
     const arr = Array.from({ length: 20 }, (v, k) => k);
-    return arr.map((el) => ({
-      value: el.toString(),
+    const items: any = arr.map((el) => ({
+      value: (el + 1).toString(),
       title: ((el + 1) * 500).toString() + ' - ' + ((el + 2) * 500)
     }));
+    log(items);
+    items.shift();
+    items.shift();
+    items.unshift({ value: '2', title: '1200 - 1500' });
+    items.unshift({ value: '1', title: '1000 - 1200' });
+    items.unshift({ value: '0', title: 'Under 1000' });
+    return items
   }
 
   stepper: any = {
@@ -85,6 +92,7 @@ export class BookingComponent implements OnInit, OnChanges {
     },
     sq_ft: {
       items: this.create_sq_ft(),
+      priceBegin: 20,
       price: 30
       // items: [
       // { title: 'Under 1000' },
@@ -195,13 +203,8 @@ export class BookingComponent implements OnInit, OnChanges {
   ngOnInit() {
     log('ngOnInit');
 
-    // setInterval(() => {
-    //   log(this._form.formData);
-    //   log(this.form_1_1);
-    // }, 1000);
-
     setInterval(() => {
-      log(this.form_1_4.value.terms);
+      // log(this.form_1_4.value.terms);
     }, 3000);
 
     this.form_1_1 = this._formBuilder.group({
@@ -332,13 +335,19 @@ export class BookingComponent implements OnInit, OnChanges {
     // log('type: ', subtotal);
 
     // bed bath
-    log('******>>>>> ', this.bedrooms, this.stepper.bedrooms.price, this.bathrooms , this.stepper.bathrooms.price);
     const bedBath = this.bedrooms * this.stepper.bedrooms.price + this.bathrooms * this.stepper.bathrooms.price;
     subtotal += bedBath; //this.bedrooms + this.bathrooms;
     // log('bed n bath: ', subtotal);
 
     // sq.ft
-    subtotal += this.sq_ft * this.stepper.sq_ft.price;
+    if (this.sq_ft > 0 && this.sq_ft < 3) {
+      subtotal += this.sq_ft * this.stepper.sq_ft.priceBegin;
+      // log('ko: ', this.sq_ft * this.stepper.sq_ft.priceBegin);
+    } else if (this.sq_ft > 2) {
+      subtotal += this.sq_ft * this.stepper.sq_ft.price - 20;
+      // log('ko: ', this.sq_ft * this.stepper.sq_ft.price - 20);
+    };
+
     // log('sq.ft: ', subtotal);
 
     const weekly = subtotal - 10;
