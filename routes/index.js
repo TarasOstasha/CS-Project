@@ -308,7 +308,7 @@ calendar.freebusy.query(
     },
   },
   (err, res) => {
-    console.log(res.data.calendars)
+    console.log(res)
     if (err) return console.error('free busy query error', err)
 
     const eventsArr = res.data.calendars.primary.busy
