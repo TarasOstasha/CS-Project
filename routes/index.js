@@ -168,9 +168,9 @@ const eventEndTime = finishTimeFrame;//evening; //moment(new Date(2021, 4, 02))
 //eventEndTime.setDate(eventEndTime.getDay() + 2)
 eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long event
 
-
+let myEvent;
 const calendarEvent = (freq, untilTime, interval, colorID) => {
-  const myEvent = {
+  myEvent = {
     summary: `You received a new booking from ${first_name}`,
     location: `${address}, ${city}, ${state} ${zip_code}`,
     description: ` 
@@ -271,41 +271,12 @@ switch(frequency) {
   break;
 }
 
-// const event = {
-//   summary: `You received a new booking from ${first_name}`,
-//   location: `${address}, ${city}, ${state} ${zip_code}`,
-//   description: ` 
-//     Option Lists 
-//     Select Times - ${period}
-//     Cleaning Type - ${cleaning_type}
-//     Frequency - ${frequency}
-//     Square Ft - ${sq_ft}
-//     Bedrooms Quantity - ${bedrooms}
-//     Bathrooms Quantity - ${bathrooms}
-//     Contact Number is ${phone}
-//   `,
-//   start: {
-//     dateTime: eventStartTime,
-//     timeZone: 'America/New_York'
-//   },
-//   end: {
-//     dateTime: eventEndTime,
-//     timeZone: 'America/New_York'
-//   },
-//   "recurrence": [
-//     "RRULE:FREQ=WEEKLY;UNTIL=20210528;INTERVAL=1"
-//   ],
-//   colorId: 1,
-// }
-console.log(calendar.freebusy.query,'calendar.freebusy')
 calendar.freebusy.query(
   {
     resource: {
       headers: { "content-type" : "application/json" },
-      // timeMin: eventStartTime,
-      // timeMax: eventEndTime,
-      timeMin: new Date(2021,05,15),
-      timeMax: new Date(2021,05,16),
+      timeMin: eventStartTime,
+      timeMax: eventEndTime,
       timeZone: 'America/New_York',
       items: [{ id: 'primary' }]
     },
@@ -313,13 +284,21 @@ calendar.freebusy.query(
   (err, res) => {
     if (err) return console.error('free busy query error', err)
     const eventsArr = res.data.calendars.primary.busy
-    if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
+    if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: myEvent }, (err) => {
       if (err) return console.error('calendar event creation error', err)
       return console.log('calendar event created')
     })
     return console.log('im busy')
   }
 )
+
+// var request = gapi.client.calendar.events.insert({
+//   'calendarId': 'primary',
+//   'resource': calendarEvent
+// });
+// request.execute(function(resp) {
+//   console.log(resp);
+// });
   
   ////////////////
   res.json({ ok: true, message: 'Calendar Event Created' })
