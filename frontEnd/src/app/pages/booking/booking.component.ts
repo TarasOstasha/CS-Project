@@ -175,6 +175,13 @@ export class BookingComponent implements OnInit, OnChanges {
     aptSuite: '',
     howDidYouHear: '',
     // step - 4
+    payBy: {
+      items: [
+        { title: 'Pay by check' },
+        { title: 'Pay by cash' },
+        { title: 'Pay by card' },
+      ]
+    }
   };
 
   constructor(
@@ -264,7 +271,8 @@ export class BookingComponent implements OnInit, OnChanges {
     this.stripePaymentForm = this._formBuilder.group({
       firstName: [''],
       lastName: [''],
-      email: ['']
+      email: [''],
+      payBy: [''],
     });
 
     // move to appropriate tab menu (residential, office, commercial) when press from main page
