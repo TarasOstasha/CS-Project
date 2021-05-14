@@ -248,7 +248,7 @@ else {
   //console.log(untilDateWeeklyTime,untilDateWeeklyTime,myMonth,threeMonthLater,myDay)
   
 }
-console.log(untilDateWeeklyTime)
+//console.log(untilDateWeeklyTime)
 
 
 let event; 
