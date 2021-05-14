@@ -202,10 +202,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     log('ngOnInit');
-
-    setInterval(() => {
-      // log(this.form_1_4.value.terms);
-    }, 3000);
+    // this.cdr.detectChanges();
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -280,18 +277,17 @@ export class BookingComponent implements OnInit, OnChanges {
     // set values from service
     const keys = Object.keys(this._form.formData);
     keys.forEach((key: any) => {
-      // log('key - ', key);
+      log('key - ', key);
       const serviceValue = this._form.formData[key];
       if (key == 'approx_SF') { // crutch
-        this.form_1_1.controls.sq_ft.setValue(serviceValue);
+        // find value by title
+        const o = this.stepper.sq_ft.items.filter(item => item.title == serviceValue)[0];
+        if (o) this.form_1_1.controls.sq_ft.setValue(o.value);
       } else if (this.form_1_1.controls[key]) {
         // log('key ---- ', key, serviceValue);
         this.form_1_1.controls[key].setValue(serviceValue);
       };
-      // this.cdr.detectChanges();
     });
-
-
   }
 
   placeOrder() {
