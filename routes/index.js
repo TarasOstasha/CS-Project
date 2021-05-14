@@ -297,7 +297,7 @@ switch(frequency) {
 //   ],
 //   colorId: 1,
 // }
-
+console.log(calendar.freebusy.query,'calendar.freebusy')
 calendar.freebusy.query(
   {
     resource: {
