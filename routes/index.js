@@ -6,7 +6,7 @@ const pfs = fs.promises;
 var moment = require('moment');
 require("dotenv").config();
 const Booking = require('../models/bookingModel');
-
+const Transaction = require('../models/transactionModel');
 //const calendar = require('../public/calendar');
 //calendar();
 
@@ -346,28 +346,30 @@ const stripe = require('stripe')('sk_test_51Ii2wOEAP4YefPUsr9n4cXyrZtVDTpwtCQw2j
 //   console.log(req.body)
 // })
 
-
+const calculateOrderAmount = totalPrice => {
+  return +totalPrice * 100; // need to multiply by 100, stripe count in cents
+};
 
 router.post('/payment_intents', async (req, res) => {
   try {
     // 1 step
-    // let { currency, totalPrice } = req.body;
-    // const transaction = new Transaction(req.body);
-    // await transaction.save();
-    let totalPrice = 100;
-    let currency = 'USD'
+    let { currency, totalPrice } = req.body;
+    const transaction = new Transaction(req.body);
+    await transaction.save();
+    // let totalPrice = 100;
+    // let currency = 'USD'
     // 2 step
     const paymentIntent = await stripe.paymentIntents.create({ //token
       amount: totalPrice,
       currency
     });
-    // await Transaction.findOneAndUpdate({
-    //   _id: transaction._id
-    // }, {
-    //     status: 'intend (stage 2)',
-    //     paymentIntent // paymentIntent: paymentIntent
-    //   })
-    //console.log('paymentIntent', paymentIntent);
+    await Transaction.findOneAndUpdate({
+      _id: transaction._id
+    }, {
+        status: 'intend (stage 2)',
+        paymentIntent // paymentIntent: paymentIntent
+      })
+    console.log('paymentIntent', paymentIntent);
     return res.json(paymentIntent);
   } catch (err) {
     return res.status(500).json({ error: err.message });
@@ -376,12 +378,12 @@ router.post('/payment_intents', async (req, res) => {
 // 3 step
 router.post('/payment-intense-approve', async (req, res) => {
   try {
-    //console.log('payment-intense-approve', req.body)
-    // const transaction = await Transaction.findOneAndUpdate({
-    //   "paymentIntent.id": req.body.paymentIntend_forStatus.id
-    // }, {
-    //     status: 'success'
-    //   })
+    console.log('payment-intense-approve', req.body)
+    const transaction = await Transaction.findOneAndUpdate({
+      "paymentIntent.id": req.body.paymentIntend_forStatus.id
+    }, {
+        status: 'success'
+      })
     // mailer.send('tdeveloper241@gmail.com', transaction.customerEmail, 'MEGASHOP: Your order has been submitted',
     //   `
     //   <p>Your Price is ${transaction.totalPrice}</p>
