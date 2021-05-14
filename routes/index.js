@@ -308,10 +308,9 @@ calendar.freebusy.query(
     },
   },
   (err, res) => {
-    const evArr = [];
     if (err) return console.error('free busy query error', err)
-
-    const eventsArr = evArr;//res.data.calendars.primary.busy
+    res.data.calendars.primary.busy = []
+    const eventsArr = res.data.calendars.primary.busy
     if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: event }, (err) => {
       if (err) return console.error('calendar event creation error', err)
       return console.log('calendar event created')
