@@ -328,7 +328,8 @@ calendar.freebusy.query(
 
 
 // STRIPE
-const stripe = require('stripe')('sk_test_51Ii2wOEAP4YefPUsr9n4cXyrZtVDTpwtCQw2jFOPdVNEB5n35WvB8ydHkhX2zHSIZH6Odq0m9NgJabszSPVOwRid00n1krxZAK');
+const stripe = require('stripe')('sk_test_ehdqOsyApE9vD2SR7ZJeAJ8M00ZpRuVV5y'); // test
+//const stripe = require('stripe')('sk_test_51Ii2wOEAP4YefPUsr9n4cXyrZtVDTpwtCQw2jFOPdVNEB5n35WvB8ydHkhX2zHSIZH6Odq0m9NgJabszSPVOwRid00n1krxZAK');
 
 // router.post('/stripe/payment', (req, res) => {
 //   console.log(req.body, 'request body stripe')
