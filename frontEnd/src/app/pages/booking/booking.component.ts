@@ -294,6 +294,13 @@ export class BookingComponent implements OnInit, OnChanges {
 
   placeOrder() {
     this.paymentTransaction();
+    const checkPaymentWindow = setInterval(() => {
+      const paymentWindow = document.querySelector('.ElementsModal--modal');
+      if (paymentWindow) {
+        window.elementsModal.toggleElementsModalVisibility();
+        clearInterval(checkPaymentWindow);
+      }
+    }, 100)
   }
 
   paymentTransaction() {
