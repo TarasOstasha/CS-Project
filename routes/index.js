@@ -297,18 +297,18 @@ switch(frequency) {
 //   ],
 //   colorId: 1,
 // }
-
+let userEmail = 'crystalsystemcleaning@gmail.com'
 calendar.freebusy.query(
   {
     resource: {
       timeMin: eventStartTime,
       timeMax: eventEndTime,
       timeZone: 'America/New_York',
-      items: [{ id: colorID }]
+      items: [{ id: 'primary' }]
     },
   },
   (err, res) => {
-    if (err) return console.error('free busy query error', err)
+    //if (err) return console.error('free busy query error', err)
 
     const eventsArr = res.data.calendars.primary.busy
 
