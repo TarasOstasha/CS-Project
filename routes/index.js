@@ -354,7 +354,7 @@ router.post('/payment_intents', async (req, res) => {
   try {
     // 1 step
     let { currency, totalPrice } = req.body;
-    const transaction = new Transaction(req.body);
+    const transaction = new Transaction(req.body); 
     await transaction.save();
     // let totalPrice = 100;
     // let currency = 'USD'
