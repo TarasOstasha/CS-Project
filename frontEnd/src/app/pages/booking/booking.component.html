@@ -669,6 +669,18 @@
                                                     class="form-control form-control-large" id="inputname"
                                                     placeholder="Enter name">
                                             </div>
+                                            <div class="input">
+                                                <mat-form-field appearance="fill">
+                                                    <mat-label>Pay by ...</mat-label>
+                                                    <mat-select formControlName="payBy">
+                                                        <mat-option [value]="item.title"
+                                                            *ngFor="let item of stepper.payBy.items">
+                                                            {{item.title}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                    <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
+                                                </mat-form-field>
+                                            </div>
                                             <div class="well">
                                                 <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="!terms"
                                                     (click)="placeOrder()"> Place Order</button>
