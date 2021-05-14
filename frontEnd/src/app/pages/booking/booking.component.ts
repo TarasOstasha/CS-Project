@@ -298,7 +298,8 @@ export class BookingComponent implements OnInit, OnChanges {
     });
   }
 
-  placeOrder() {
+  stripePayment(){
+    log('The stripePayment()');
     this.paymentTransaction();
     const checkPaymentWindow = setInterval(() => {
       const paymentWindow = document.querySelector('.ElementsModal--modal');
@@ -306,7 +307,13 @@ export class BookingComponent implements OnInit, OnChanges {
         window.elementsModal.toggleElementsModalVisibility();
         clearInterval(checkPaymentWindow);
       }
-    }, 100)
+    }, 100);
+  }
+
+  placeOrder() {
+    log('payBy: ', this.payBy);
+    if (this.payBy == 'Pay by card') this.stripePayment();
+    this.getDate();
   }
 
   paymentTransaction() {
@@ -592,6 +599,10 @@ export class BookingComponent implements OnInit, OnChanges {
 
   get terms() {
     return this.form_1_4.controls['terms'].value;
+  }
+
+  get payBy() {
+    return this.stripePaymentForm.controls['payBy'].value;
   }
 
   // extras list
