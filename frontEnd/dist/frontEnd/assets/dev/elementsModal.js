@@ -465,7 +465,7 @@ function createPaymentIntent(content) {
 }
 
 function getPublicKey() {
-    return  'pk_test_51Ii2wOEAP4YefPUsdGmiQjB2dxV57lUqM6NXWmuctJjrnXJsEbPNIfFNJ2CVrtF6ithkCcOo5jw1qbEzX8saLQjl004BiwFpWX' //'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
+    return 'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
 //   return fetch(HOST_URL + "/public-key", {
 //     method: "get",
 //     headers: {
@@ -521,7 +521,7 @@ function create(content) {
 }
 
 function createElements(content, paymentIntent, publicKey) {
-  var stripe = Stripe('pk_test_51Ii2wOEAP4YefPUsdGmiQjB2dxV57lUqM6NXWmuctJjrnXJsEbPNIfFNJ2CVrtF6ithkCcOo5jw1qbEzX8saLQjl004BiwFpWX') //Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
+  var stripe = Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
 
   // Create an instance of Elements.
   var elements = stripe.elements();
@@ -576,12 +576,12 @@ function createElements(content, paymentIntent, publicKey) {
 
 function stripePaymentHandler() {
   toggleElementsModalVisibility();
-  console.log('Your payment has been submited')
-  // swal.fire({
-  //   title: "Your payment has been submited",
-  //   text: "Thank you for purchasing",
-  //   icon: "succsess",
-  // });
+
+  swal.fire({
+    title: "Your payment has been submited",
+    text: "Thank you for purchasing",
+    icon: "succsess",
+  });
   //approve fetch
   fetch(HOST_URL + '/payment-intense-approve', {
     headers: {
