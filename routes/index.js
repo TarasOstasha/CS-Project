@@ -304,7 +304,7 @@ calendar.freebusy.query(
       timeMin: eventStartTime,
       timeMax: eventEndTime,
       timeZone: 'America/New_York',
-      //items: [{ id: 'primary' }]
+      items: [{ id: colorID }]
     },
   },
   (err, res) => {
