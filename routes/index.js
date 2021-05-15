@@ -124,8 +124,8 @@ router.post('/date', (req, res) => {
     const { OAuth2 } = google.auth;
 
 
-    //const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
-    const oAuth2Client = new OAuth2('1049102095093-qnede4gp5bmri5a8akrr6ndrbarkkon9.apps.googleusercontent.com', 'l3al91_HOshMv77tDdATmRlv')
+    const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
+    
 
     oAuth2Client.setCredentials({ refresh_token: '1//04qkL3X9_IQj5CgYIARAAGAQSNwF-L9IrRVmO7WkhSbVa3ApuX44M6mUy0TGL796WYQoti61ZzL2-McfEfzr4i0aQqOetytIIa34' })
 
