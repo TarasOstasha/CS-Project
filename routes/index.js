@@ -124,11 +124,8 @@ const { google } = require('googleapis');
 const { OAuth2 } = google.auth;
 
 
-//const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
-const oAuth2Client = new OAuth2('1049102095093-qnede4gp5bmri5a8akrr6ndrbarkkon9.apps.googleusercontent.com', 'l3al91_HOshMv77tDdATmRlv')
-
-
-oAuth2Client.setCredentials({ refresh_token: '1//04qkL3X9_IQj5CgYIARAAGAQSNwF-L9IrRVmO7WkhSbVa3ApuX44M6mUy0TGL796WYQoti61ZzL2-McfEfzr4i0aQqOetytIIa34' })
+const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
+oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
 
 const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
@@ -172,7 +169,7 @@ eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long even
 
 let myEvent;
 const calendarEvent = (freq, untilTime, interval, colorID) => {
-  myEvent = {
+    myEvent = {
     summary: `You received a new booking from ${first_name}`,
     location: `${address}, ${city}, ${state} ${zip_code}`,
     description: ` 
@@ -276,7 +273,6 @@ switch(frequency) {
 calendar.freebusy.query(
   {
     resource: {
-      headers: { "content-type" : "application/json" },
       timeMin: eventStartTime,
       timeMax: eventEndTime,
       timeZone: 'America/New_York',
@@ -284,17 +280,15 @@ calendar.freebusy.query(
     },
   },
   (err, res) => {
-    //  console.log(myEvent, 'myEvent')
     if (err) return console.error('free busy query error', err)
     const eventsArr = res.data.calendars.primary.busy
     if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: myEvent }, (err) => {
       if (err) return console.error('calendar event creation error', err)
-      return console.log('calendar event created from calendar.events.insert')
+      return console.log('calendar event created')
     })
     return console.log('im busy')
   }
 )
-
 
   
   ////////////////
