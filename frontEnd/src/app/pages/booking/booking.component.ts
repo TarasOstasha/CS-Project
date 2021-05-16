@@ -313,7 +313,8 @@ export class BookingComponent implements OnInit, OnChanges {
   placeOrder() {
     log('payBy: ', this.payBy);
     if (this.payBy == 'Pay by card') this.stripePayment();
-    this.getDate();
+    this.getDate(); // write all information in calendar
+    this.collectData(); // write user data in admin panel table
   }
 
   paymentTransaction() {
