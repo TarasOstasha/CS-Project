@@ -25,6 +25,7 @@
             </div>
         </div>
         <div class="book-btn">
-            <a mat-button [routerLink]="['/booking']">Book Appointment</a>
+            <!-- <a mat-button [routerLink]="['/booking']">Book Appointment</a> -->
+            <a mat-button [routerLink]="['/booking']" [queryParams]="{ type: bookingType }">Book Appointment</a>
         </div>
     </div>

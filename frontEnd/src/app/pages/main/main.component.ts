@@ -125,6 +125,9 @@ export class MainComponent implements OnInit {
       autoplaySpeed: 5000,
       mobileFirst: true,
       adaptiveHeight: true,
+      arrows: true,
+      // prevArrow: '<button class="slide-arrow prev-arrow"></button>',
+      // nextArrow: '<button class="slide-arrow next-arrow"></button>',
       responsive: [
         {
           breakpoint: 920,

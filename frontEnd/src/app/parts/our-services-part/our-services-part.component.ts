@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-our-services-part',
@@ -7,6 +7,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None // turned off to edit .mat-list-item-content in css mat-list
 })
 export class OurServicesPartComponent implements OnInit {
+  //bookingType!: string;
+  @Input() bookingType;
 
   serviceCards = [
     { name: 'regular cleaning', routerLink: ['/regular-cleaning'], img: '../../../assets/images/services/regular-cleaning.jpg' },
@@ -21,6 +23,7 @@ export class OurServicesPartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.bookingType, 'booking type from our services part')
   }
 
 }

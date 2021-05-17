@@ -19,7 +19,7 @@ declare var jQuery: any;
   styleUrls: ['./construction.component.less']
 })
 export class ConstructionComponent implements OnInit {
-
+  bookingType: string = 'commercial'; 
   public myReviewsArr: any = [];
 
 

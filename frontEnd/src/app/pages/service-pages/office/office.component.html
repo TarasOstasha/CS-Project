@@ -140,9 +140,9 @@
             </div>
         </div>
         <div class="book-btn">
-            <a mat-button [routerLink]="['/booking']">Book Appointment</a>
+            <a mat-button [routerLink]="['/booking']" [queryParams]="{ type: 'office' }">Book Appointment</a>
         </div>
     </div>
-    <app-our-services-part></app-our-services-part>
+    <app-our-services-part [bookingType]="bookingType"></app-our-services-part>
 </div>
 <app-footer></app-footer>

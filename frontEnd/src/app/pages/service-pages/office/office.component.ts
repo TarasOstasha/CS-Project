@@ -19,6 +19,7 @@ declare var jQuery: any;
   styleUrls: ['./office.component.less']
 })
 export class OfficeComponent implements OnInit {
+  bookingType: string = 'office'; 
   public myReviewsArr: any = [];
  
 
