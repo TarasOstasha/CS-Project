@@ -140,8 +140,8 @@ async function sendMail(user, callback) {
         port: 465, //587,
         secure: true, //false, // true for 465, false for other ports
         auth: {
-            user: process.env.EMAIL, //'user@gmail.com',
-            pass: process.env.PASS //'pass...'
+            user: 'crystalsystemcleaning@gmail.com', //process.env.EMAIL, //'user@gmail.com',
+            pass: 'crystalsys'//process.env.PASS //'pass...'
         }
     }, (err, info) => {
         if (err) {
