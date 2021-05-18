@@ -137,7 +137,7 @@ router.post('/sendmail', (req, res) => {
 async function sendMail(user, callback) {
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 587,
+        port: 465, //587,
         secure: true, //false, // true for 465, false for other ports
         auth: {
             user: process.env.EMAIL, //'user@gmail.com',
