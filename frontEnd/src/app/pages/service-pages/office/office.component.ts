@@ -198,7 +198,9 @@ export class OfficeComponent implements OnInit {
     $('.slider').slick({
       infinite: true,
       autoplay: true,
-      slidesToShow: 1,
+      // slidesToShow: 1,
+      // slidesToScroll: 1,
+      slidesToShow: 2,
       slidesToScroll: 2,
       autoplaySpeed: 5000,
       mobileFirst: true,

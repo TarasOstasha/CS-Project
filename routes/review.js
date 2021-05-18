@@ -120,7 +120,7 @@ router.get('/review', (req, res) => {
 router.post('/sendmail', (req, res) => {
     try {
         let user = req.body;
-        console.log(user)
+        console.log(user, 'user send mailer')
         sendMail(user, info => {
             res.status(200).json({
                 info,
@@ -135,15 +135,13 @@ router.post('/sendmail', (req, res) => {
 });
 
 async function sendMail(user, callback) {
-    //EMAIL=crystalsystemcleaning@gmail.com
-    //PASS=crystalsys
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
-        secure: false, // true for 465, false for other ports
+        secure: true, //false, // true for 465, false for other ports
         auth: {
-            user: 'crystalsystemcleaning@gmail.com', //process.env.EMAIL, //'user@gmail.com',
-            pass: 'crystalsys' //process.env.PASS //'pass...'
+            user: process.env.EMAIL, //'user@gmail.com',
+            pass: process.env.PASS //'pass...'
         }
     }, (err, info) => {
         if (err) {
