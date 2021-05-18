@@ -135,13 +135,15 @@ router.post('/sendmail', (req, res) => {
 });
 
 async function sendMail(user, callback) {
+    //EMAIL=crystalsystemcleaning@gmail.com
+    //PASS=crystalsys
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: process.env.EMAIL, //'user@gmail.com',
-            pass: process.env.PASS //'pass...'
+            user: 'crystalsystemcleaning@gmail.com', //process.env.EMAIL, //'user@gmail.com',
+            pass: 'crystalsys' //process.env.PASS //'pass...'
         }
     }, (err, info) => {
         if (err) {
