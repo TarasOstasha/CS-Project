@@ -7,7 +7,7 @@ import { businessBookForm } from '../interfaces/businessForm-data.model';
 import { bookingData } from '../interfaces/booking-data.model';
 
 if(location.hostname == 'localhost') var url = 'http://localhost/'; //dev
-else var url = ''; //production
+else var url = '/'; //production
 
 @Injectable({
   providedIn: 'root'
