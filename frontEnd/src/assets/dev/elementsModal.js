@@ -427,8 +427,8 @@ function init(content, paymentIntent, publicKey) {
 
           <!-- Edit your terms and conditions here   -->
           <div class="footer ElementsModal--footer-text">
-            By purchasing this chair, you agree to KAVHOLM’s
-            <a class="ElementsModal--footer-text" href="stripe.com"
+            By purchasing this service(s), you agree to Crystal System Cleaning
+            <a class="ElementsModal--footer-text" href="../../../assets/pdf/Terms-Crystal-System-Cleaning-Service.pdf" download
               >Terms and Conditions.</a
             >
           </div>

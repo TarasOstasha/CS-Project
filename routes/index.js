@@ -326,13 +326,14 @@ router.post('/payment_intents', async (req, res) => {
   try {
     // 1 step
     let { currency, totalPrice } = req.body;
+    console.log(currency, totalPrice, 'currency, totalPrice')
     const transaction = new Transaction(req.body); 
     await transaction.save();
     // let totalPrice = 100;
     // let currency = 'USD'
     // 2 step
     const paymentIntent = await stripe.paymentIntents.create({ //token
-      amount: totalPrice,
+      amount: calculateOrderAmount(totalPrice), //totalPrice,
       currency
     });
     await Transaction.findOneAndUpdate({
@@ -343,6 +344,7 @@ router.post('/payment_intents', async (req, res) => {
       })
     console.log('paymentIntent', paymentIntent);
     return res.json(paymentIntent);
+    //return res.json({ paymentIntent, ok: true, message: 'paymentIntent response true' });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }

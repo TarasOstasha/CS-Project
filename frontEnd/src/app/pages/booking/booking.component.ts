@@ -312,24 +312,25 @@ export class BookingComponent implements OnInit, OnChanges {
 
   placeOrder() {
     log('payBy: ', this.payBy);
+    console.log(this.calculatePipe.total,this.form_1_1.value.checkedGroup,this.form_1_1.value.cleaning_type,this.form_1_1.value.email,this.form_1_3.value.first_name)
     if (this.payBy == 'Pay by card') this.stripePayment();
-    this.getDate(); // write all information in calendar
-    this.collectData(); // write user data in admin panel table
+    //this.getDate(); // write all information in calendar
+    //this.collectData(); // write user data in admin panel table
   }
 
   paymentTransaction() {
     window.elementsModal.create({
       type: 'stripe',
-      totalPrice: 100,
+      totalPrice: this.calculatePipe.total, //100,
       // the modal demo will handle non-zero currencies automatically
       // items sent into the server can calculate their amounts and send back to the client
       //items: [{ sku: "sku_1234", quantity: 1 }],
       // Supported currencies here https://stripe.com/docs/currencies#presentment-currencies
       currency: "USD",
-      businessName: 'test',
-      productName: 'test1',
-      customerEmail: 'test@gmail.com',
-      customerName: 'Jack',
+      businessName: this.form_1_1.value.checkedGroup, //'test',
+      productName: this.form_1_1.value.cleaning_type, //'test1',
+      customerEmail: this.form_1_1.value.email, //'test@gmail.com',
+      customerName: this.form_1_3.value.first_name //'Jack',
     });
   }
 
