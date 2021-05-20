@@ -9,7 +9,8 @@
 // var imported = document.createElement('script');
 // imported.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js';
 // document.head.appendChild(imported);
-
+if(location.hostname == 'localhost') var url = 'http://localhost/'; //dev
+else var url = '/'; //production
 
 var HOST_URL = "http://localhost";
 
@@ -54,7 +55,7 @@ function zeroDecimalCurrencies(currency) {
 
 function calculateDisplayAmountFromCurrency(paymentIntent) {
   var amountToDisplay = paymentIntent.amount;
-
+  console.log(amountToDisplay, 'amountToDisplay')
   if (zeroDecimalCurrencies(paymentIntent.currency) === -1) {
     amountToDisplay = amountToDisplay / 100;
   }
@@ -127,10 +128,10 @@ function init(content, paymentIntent, publicKey) {
         </button>
       </div>
       <div class="ElementsModal--product ElementsModal--details">${content.productName ||
-        ""}</div>
+    ""}</div>
       <div class="ElementsModal--price ElementsModal--details">${amount}</div>
       <div class="ElementsModal--email ElementsModal--details">${content.customerEmail ||
-        ""}</div>
+    ""}</div>
     </div>
   </div>
   <div class="ElementsModal--payment-details">
@@ -422,7 +423,7 @@ function init(content, paymentIntent, publicKey) {
               name="description"
               value="${content.productName}"
             />
-            <button class="ElementsModal--pay-button">Pay ${amount}</button>
+            <button class="ElementsModal--pay-button" onclick="sendBookingData()">Pay ${amount}</button>
           </div>
 
           <!-- Edit your terms and conditions here   -->
@@ -456,33 +457,33 @@ function createPaymentIntent(content) {
     },
     body: JSON.stringify(content)
   })
-    .then(function(response) {
+    .then(function (response) {
       return response.json();
     })
-    .then(function(paymentIntent) {
+    .then(function (paymentIntent) {
       return paymentIntent;
     });
 }
 
 function getPublicKey() {
-    return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib'
-//   return fetch(HOST_URL + "/public-key", {
-//     method: "get",
-//     headers: {
-//       "Content-Type": "application/json"
-//     }
-//   })
-//     .then(function(response) {
-//       return response.json();
-//     })
-//     .then(function(stripePublicKey) {
-//       return stripePublicKey.publicKey;
-//     });
+  return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib' //'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
+  //   return fetch(HOST_URL + "/public-key", {
+  //     method: "get",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   })
+  //     .then(function(response) {
+  //       return response.json();
+  //     })
+  //     .then(function(stripePublicKey) {
+  //       return stripePublicKey.publicKey;
+  //     });
 }
 
 let paymentIntend_forStatus;
 function create(content) {
-  Promise.all([createPaymentIntent(content), getPublicKey()]).then(function(
+  Promise.all([createPaymentIntent(content), getPublicKey()]).then(function (
     result
   ) {
     var [paymentIntent, publicKey] = result;
@@ -504,7 +505,7 @@ function create(content) {
   window.addEventListener("click", dismissElementsModalOnWindowClick);
 
   // Allows the user to dismiss the Elements modal when using the esc key
-  document.addEventListener("keyup", function(event) {
+  document.addEventListener("keyup", function (event) {
     if (event.defaultPrevented) {
       return;
     }
@@ -521,7 +522,7 @@ function create(content) {
 }
 
 function createElements(content, paymentIntent, publicKey) {
-  var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib'); //Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
+  var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib');//Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
 
   // Create an instance of Elements.
   var elements = stripe.elements();
@@ -553,7 +554,7 @@ function createElements(content, paymentIntent, publicKey) {
 
   // Handle payment submission when user clicks the pay button.
   var form = document.getElementById("payment-form");
-  form.addEventListener("submit", function(event) {
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
 
     stripe
@@ -563,7 +564,7 @@ function createElements(content, paymentIntent, publicKey) {
           billing_details: { name: content.customerName }
         }
       })
-      .then(function(result) {
+      .then(function (result) {
         if (result.error) {
           var displayError = document.getElementById("card-errors");
           displayError.textContent = result.error.message;
@@ -589,12 +590,15 @@ function stripePaymentHandler() {
       'Content-Type': 'application/json'
     },
     method: 'post',
-    body: JSON.stringify({ paymentIntend_forStatus}) // token from back end, transaction
-  }).then((response)=>{
+    body: JSON.stringify({ paymentIntend_forStatus }) // token from back end, transaction
+  }).then((response) => {
     return response.json();
-  }).then((result)=>{
+  }).then((result) => {
     console.log(result);
-    if(result.ok)  window.location.href = 'http://localhost:4200/main' //alert('DO ALL(Clear trash, close window)');
+    if (result.ok) {
+      
+      window.location.href = 'http://localhost:4200/main' //alert('DO ALL(Clear trash, close window)');
+    }
     //1 ->
     //
   })
@@ -604,3 +608,23 @@ function stripePaymentHandler() {
 window.elementsModal = (() => {
   return { create, toggleElementsModalVisibility };
 })();
+
+
+
+// save all user data 
+function sendBookingData() {
+  fetch(`${url}/booking-data`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(window.bookingDate),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
