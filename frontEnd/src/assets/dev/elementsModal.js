@@ -9,10 +9,10 @@
 // var imported = document.createElement('script');
 // imported.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js';
 // document.head.appendChild(imported);
-if(location.hostname == 'localhost') var url = 'http://localhost/'; //dev
+if(location.hostname == 'localhost') var url = 'http://localhost'; //dev
 else var url = '/'; //production
 
-var HOST_URL = "http://localhost";
+var HOST_URL = url; //"http://localhost";
 
 function browserLocale() {
   var lang;
@@ -613,12 +613,28 @@ window.elementsModal = (() => {
 
 // save all user data 
 function sendBookingData() {
+  // booking data
   fetch(`${url}/booking-data`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(window.bookingDate),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  // calendar booking
+  fetch(`${url}/date`, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(window.collectedData),
   })
     .then(response => response.json())
     .then(data => {
