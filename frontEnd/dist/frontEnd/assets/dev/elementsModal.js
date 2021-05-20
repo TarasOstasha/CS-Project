@@ -427,8 +427,8 @@ function init(content, paymentIntent, publicKey) {
 
           <!-- Edit your terms and conditions here   -->
           <div class="footer ElementsModal--footer-text">
-            By purchasing this order, you agree to Crystal System Cleaning
-            <a class="ElementsModal--footer-text" href="stripe.com"
+            By purchasing this service(s), you agree to Crystal System Cleaning
+            <a class="ElementsModal--footer-text" href="../../../assets/pdf/Terms-Crystal-System-Cleaning-Service.pdf" download
               >Terms and Conditions.</a
             >
           </div>
@@ -576,11 +576,11 @@ function createElements(content, paymentIntent, publicKey) {
 
 function stripePaymentHandler() {
   toggleElementsModalVisibility();
-
+  console.log('Your payment has been submitted')
   swal.fire({
-    title: "Your payment has been submited",
+    title: "Your payment has been submitted",
     text: "Thank you for purchasing",
-    icon: "succsess",
+    icon: "success",
   });
   //approve fetch
   fetch(HOST_URL + '/payment-intense-approve', {
@@ -594,7 +594,7 @@ function stripePaymentHandler() {
     return response.json();
   }).then((result)=>{
     console.log(result);
-    if(result.ok) alert('DO ALL(Clear trash, close window)');
+    if(result.ok)  window.location.href = 'http://localhost:4200/main' //alert('DO ALL(Clear trash, close window)');
     //1 ->
     //
   })
