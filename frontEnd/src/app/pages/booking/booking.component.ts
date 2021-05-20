@@ -10,6 +10,7 @@ declare var window: any;
 declare var stripe: any;
 declare var elements: any;
 
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -298,7 +299,7 @@ export class BookingComponent implements OnInit, OnChanges {
     });
   }
 
-  stripePayment(){
+  stripePayment() {
     log('The stripePayment()');
     this.paymentTransaction();
     const checkPaymentWindow = setInterval(() => {
@@ -312,26 +313,36 @@ export class BookingComponent implements OnInit, OnChanges {
 
   placeOrder() {
     log('payBy: ', this.payBy);
-    console.log(this.calculatePipe.total,this.form_1_1.value.checkedGroup,this.form_1_1.value.cleaning_type,this.form_1_1.value.email,this.form_1_3.value.first_name)
+    console.log(this.calculatePipe.total, this.form_1_1.value.checkedGroup, this.form_1_1.value.cleaning_type, this.form_1_1.value.email, this.form_1_3.value.first_name)
     if (this.payBy == 'Pay by card') this.stripePayment();
-    //this.getDate(); // write all information in calendar
-    //this.collectData(); // write user data in admin panel table
+    else {
+      this.getDate(); // write all information in calendar
+      this.collectData(); // write user data in admin panel table
+    }
+
   }
 
   paymentTransaction() {
-    window.elementsModal.create({
-      type: 'stripe',
-      totalPrice: this.calculatePipe.total, //100,
-      // the modal demo will handle non-zero currencies automatically
-      // items sent into the server can calculate their amounts and send back to the client
-      //items: [{ sku: "sku_1234", quantity: 1 }],
-      // Supported currencies here https://stripe.com/docs/currencies#presentment-currencies
-      currency: "USD",
-      businessName: this.form_1_1.value.checkedGroup, //'test',
-      productName: this.form_1_1.value.cleaning_type, //'test1',
-      customerEmail: this.form_1_1.value.email, //'test@gmail.com',
-      customerName: this.form_1_3.value.first_name //'Jack',
-    });
+    try {
+      window.elementsModal.create({
+        type: 'stripe',
+        totalPrice: this.calculatePipe.total, //100,
+        // the modal demo will handle non-zero currencies automatically
+        // items sent into the server can calculate their amounts and send back to the client
+        //items: [{ sku: "sku_1234", quantity: 1 }],
+        // Supported currencies here https://stripe.com/docs/currencies#presentment-currencies
+        currency: "USD",
+        businessName: this.form_1_1.value.checkedGroup, //'test',
+        productName: this.form_1_1.value.cleaning_type, //'test1',
+        customerEmail: this.form_1_1.value.email, //'test@gmail.com',
+        customerName: this.form_1_3.value.first_name //'Jack',
+      });
+      this.getDate(); // write all information in calendar
+      this.collectData(); // write user data in admin panel table
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   ngAfterViewInit() {
@@ -638,7 +649,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   // added by Taras 04/26/2021
   collectData() {
-    console.log(this.form.value)
+    //console.log(this.form.value)
     const name = this.form_1_3.value.first_name.toLowerCase();
     const collectedData = {
       name: name,

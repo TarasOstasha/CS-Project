@@ -318,6 +318,7 @@ const stripe = require('stripe')('sk_test_ehdqOsyApE9vD2SR7ZJeAJ8M00ZpRuVV5y'); 
 //   console.log(req.body)
 // })
 
+let paymentIntensStatus = false; // check status when you do order
 const calculateOrderAmount = totalPrice => {
   return +totalPrice * 100; // need to multiply by 100, stripe count in cents
 };
@@ -342,9 +343,8 @@ router.post('/payment_intents', async (req, res) => {
         status: 'intend (stage 2)',
         paymentIntent // paymentIntent: paymentIntent
       })
-    console.log('paymentIntent', paymentIntent);
+    paymentIntensStatus = true;
     return res.json(paymentIntent);
-    //return res.json({ paymentIntent, ok: true, message: 'paymentIntent response true' });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
