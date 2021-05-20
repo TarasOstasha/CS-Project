@@ -465,7 +465,7 @@ function createPaymentIntent(content) {
 }
 
 function getPublicKey() {
-    return 'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
+    return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib'
 //   return fetch(HOST_URL + "/public-key", {
 //     method: "get",
 //     headers: {
@@ -521,7 +521,7 @@ function create(content) {
 }
 
 function createElements(content, paymentIntent, publicKey) {
-  var stripe = Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
+  var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib'); //Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
 
   // Create an instance of Elements.
   var elements = stripe.elements();

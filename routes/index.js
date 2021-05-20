@@ -299,8 +299,7 @@ calendar.freebusy.query(
 
 
 // STRIPE
-const stripe = require('stripe')('sk_test_ehdqOsyApE9vD2SR7ZJeAJ8M00ZpRuVV5y'); // test
-//const stripe = require('stripe')('sk_test_51Ii2wOEAP4YefPUsr9n4cXyrZtVDTpwtCQw2jFOPdVNEB5n35WvB8ydHkhX2zHSIZH6Odq0m9NgJabszSPVOwRid00n1krxZAK');
+const stripe = require('stripe')(process.env.STRIPE_SECRET); 
 
 // router.post('/stripe/payment', (req, res) => {
 //   console.log(req.body, 'request body stripe')
@@ -337,6 +336,7 @@ router.post('/payment_intents', async (req, res) => {
       amount: calculateOrderAmount(totalPrice), //totalPrice,
       currency
     });
+    console.log(paymentIntent, 'paymentIntent')
     await Transaction.findOneAndUpdate({
       _id: transaction._id
     }, {
@@ -352,7 +352,7 @@ router.post('/payment_intents', async (req, res) => {
 // 3 step
 router.post('/payment-intense-approve', async (req, res) => {
   try {
-    console.log('payment-intense-approve', req.body)
+    //console.log('payment-intense-approve', req.body)
     const transaction = await Transaction.findOneAndUpdate({
       "paymentIntent.id": req.body.paymentIntend_forStatus.id
     }, {

@@ -314,8 +314,8 @@ export class BookingComponent implements OnInit, OnChanges {
   placeOrder() {
     log('payBy: ', this.payBy);
     console.log(this.calculatePipe.total, this.form_1_1.value.checkedGroup, this.form_1_1.value.cleaning_type, this.form_1_1.value.email, this.form_1_3.value.first_name)
-    if (this.payBy == 'Pay by card') this.stripePayment();
-    else {
+    if (this.payBy == 'Pay by card') this.stripePayment()
+    else if(this.payBy == 'Pay by cash' || this.payBy == 'Pay by check') {
       this.getDate(); // write all information in calendar
       this.collectData(); // write user data in admin panel table
     }
@@ -337,8 +337,8 @@ export class BookingComponent implements OnInit, OnChanges {
         customerEmail: this.form_1_1.value.email, //'test@gmail.com',
         customerName: this.form_1_3.value.first_name //'Jack',
       });
-      this.getDate(); // write all information in calendar
-      this.collectData(); // write user data in admin panel table
+      //this.getDate(); // write all information in calendar
+      //this.collectData(); // write user data in admin panel table
     } catch (error) {
       console.log(error)
     }
@@ -419,6 +419,33 @@ export class BookingComponent implements OnInit, OnChanges {
 
     // recommend time for cleaning
     const recommendTime = Math.round(subtotal / 40);
+    //console.log(recommendTime)
+    window.bookingDate = {
+      date: this.form_1_1.value.date,
+      period: this.form_1_1.value.select_times,
+      cleaning_type: this.form_1_1.value.cleaning_type,
+      frequency: this.form_1_1.value.frequency,
+      sq_ft: this.form_1_1.value.sq_ft,
+      bedrooms: this.form_1_1.value.bedrooms,
+      bathrooms: this.form_1_1.value.bathrooms,
+      phone: this.form_1_1.value.phone,
+      first_name: this.form_1_3.value.first_name,
+      last_name: this.form_1_3.value.last_name,
+      city: this.form_1_3.value.city,
+      address: this.form_1_3.value.address,
+      state: this.form_1_3.value.state,
+      zip_code: this.form_1_1.value.zip_code
+    }
+    window.collectedData = {
+      name: this.form_1_3.value.first_name,
+      last_name: this.form_1_3.value.last_name,
+      address: this.form_1_3.value.address,
+      city: this.form_1_3.value.city,
+      state: this.form_1_3.value.state,
+      zip_code: this.form_1_3.value.state,
+      phone: this.form_1_1.value.phone,
+      email: this.form_1_1.value.email
+    }
     return {
       bedBath,
       weekly,

@@ -130,7 +130,7 @@ import { Page404Component } from './pages/page404/page404.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    NgxStripeModule.forRoot('pk_test_51Ii2wOEAP4YefPUsdGmiQjB2dxV57lUqM6NXWmuctJjrnXJsEbPNIfFNJ2CVrtF6ithkCcOo5jw1qbEzX8saLQjl004BiwFpWX')
+    NgxStripeModule.forRoot('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib')
     //MainModule
     //MatCarouselModule.forRoot(),
   ],
