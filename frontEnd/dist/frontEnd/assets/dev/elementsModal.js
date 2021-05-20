@@ -10,7 +10,7 @@
 // imported.src = 'https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js';
 // document.head.appendChild(imported);
 if(location.hostname == 'localhost') var url = 'http://localhost'; //dev
-else var url = '/'; //production
+else var url = '/crystal-system-app.herokuapp.com/'; //production
 
 var HOST_URL = url; //"http://localhost";
 
