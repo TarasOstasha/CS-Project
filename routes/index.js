@@ -44,7 +44,7 @@ router.post('/booking-data', (req, res) => {
         message: 'Error'
       });
     });
-  console.log(req.body);
+  //console.log(req.body);
 });
 
 // get booking data
@@ -104,7 +104,7 @@ router.get('/emails', (req, res) => {
 
 // ***************** CALENDAR SCHEDULE APPOINTMENT **********************
 router.post('/date', (req, res) => {
- 
+  console.log(req.body, 'calendar request body');
   const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code } = req.body;
   const year = new Date(date).getFullYear();
   const month = new Date(date).getMonth();
@@ -299,7 +299,8 @@ calendar.freebusy.query(
 
 
 // STRIPE
-const stripe = require('stripe')(process.env.STRIPE_SECRET); 
+//const stripe = require('stripe')(process.env.STRIPE_SECRET); // production mode
+const stripe = require('stripe')('sk_test_ehdqOsyApE9vD2SR7ZJeAJ8M00ZpRuVV5y'); // test mode
 
 // router.post('/stripe/payment', (req, res) => {
 //   console.log(req.body, 'request body stripe')
@@ -326,7 +327,7 @@ router.post('/payment_intents', async (req, res) => {
   try {
     // 1 step
     let { currency, totalPrice } = req.body;
-    console.log(currency, totalPrice, 'currency, totalPrice')
+    //console.log(currency, totalPrice, 'currency, totalPrice')
     const transaction = new Transaction(req.body); 
     await transaction.save();
     // let totalPrice = 100;
@@ -336,7 +337,7 @@ router.post('/payment_intents', async (req, res) => {
       amount: calculateOrderAmount(totalPrice), //totalPrice,
       currency
     });
-    console.log(paymentIntent, 'paymentIntent')
+    //console.log(paymentIntent, 'paymentIntent')
     await Transaction.findOneAndUpdate({
       _id: transaction._id
     }, {
@@ -372,8 +373,6 @@ router.post('/payment-intense-approve', async (req, res) => {
     console.log(error)
   }
 })
-
-
 
 
 

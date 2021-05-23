@@ -423,7 +423,7 @@ function init(content, paymentIntent, publicKey) {
               name="description"
               value="${content.productName}"
             />
-            <button class="ElementsModal--pay-button" onclick="sendBookingData()">Pay ${amount}</button>
+            <button class="ElementsModal--pay-button">Pay ${amount}</button>
           </div>
 
           <!-- Edit your terms and conditions here   -->
@@ -466,7 +466,10 @@ function createPaymentIntent(content) {
 }
 
 function getPublicKey() {
-  return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib' //'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
+  // production mode
+  //return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib' //'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
+  return 'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6' // test mode
+  
   //   return fetch(HOST_URL + "/public-key", {
   //     method: "get",
   //     headers: {
@@ -522,7 +525,10 @@ function create(content) {
 }
 
 function createElements(content, paymentIntent, publicKey) {
-  var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib');//Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
+  // production mode
+  //var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib');//Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
+  var stripe = Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'); // test mode
+
 
   // Create an instance of Elements.
   var elements = stripe.elements();
@@ -596,7 +602,11 @@ function stripePaymentHandler() {
   }).then((result) => {
     console.log(result);
     if (result.ok) {
-      
+      ///
+      //console.log(window.bookingDate, 'window.bookingDate')
+      sendBookingData();
+      ///
+      //alert('transaction done')
       window.location.href = 'http://localhost:4200/main' //alert('DO ALL(Clear trash, close window)');
     }
     //1 ->
@@ -613,13 +623,13 @@ window.elementsModal = (() => {
 
 // save all user data 
 function sendBookingData() {
-  // booking data
-  fetch(`${url}/booking-data`, {
+  //booking data
+  fetch( url + '/booking-data', {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(window.bookingDate),
+    body: JSON.stringify(window.collectedData),
   })
     .then(response => response.json())
     .then(data => {
@@ -629,12 +639,12 @@ function sendBookingData() {
       console.error('Error:', error);
     });
   // calendar booking
-  fetch(`${url}/date`, {
+  fetch( url + '/date', {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(window.collectedData),
+    body: JSON.stringify(window.bookingDate),
   })
     .then(response => response.json())
     .then(data => {

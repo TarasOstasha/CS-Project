@@ -5,6 +5,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { FormService } from '../../services/form.service';
 import { ApiService } from 'src/app/services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 const log = console.log;
 declare var window: any;
 declare var stripe: any;
@@ -190,7 +191,9 @@ export class BookingComponent implements OnInit, OnChanges {
     private cdr: ChangeDetectorRef,
     private _form: FormService,
     private _api: ApiService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
+    private _snackBar: MatSnackBar
   ) {
 
   }
@@ -314,14 +317,26 @@ export class BookingComponent implements OnInit, OnChanges {
   placeOrder() {
     log('payBy: ', this.payBy);
     console.log(this.calculatePipe.total, this.form_1_1.value.checkedGroup, this.form_1_1.value.cleaning_type, this.form_1_1.value.email, this.form_1_3.value.first_name)
-    if (this.payBy == 'Pay by card') this.stripePayment()
-    else if(this.payBy == 'Pay by cash' || this.payBy == 'Pay by check') {
+    if (this.payBy == 'Pay by card') {
+      this.stripePayment();
+    }
+    else if (this.payBy == 'Pay by cash' || this.payBy == 'Pay by check') {
       this.getDate(); // write all information in calendar
       this.collectData(); // write user data in admin panel table
+      this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+      setTimeout(() => {
+        this._router.navigate(['main']);
+      }, 4000)
     }
 
   }
 
+  // popup menu after submitted booking
+  openSnackBar(message: string, action: any) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
+  }
   paymentTransaction() {
     try {
       window.elementsModal.create({
@@ -349,6 +364,8 @@ export class BookingComponent implements OnInit, OnChanges {
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 3;
     this.cdr.detectChanges();
+    // make calendar appointment and save user data to admin panel after approved payment card
+
   }
 
   get calculatePipe() {
@@ -420,6 +437,9 @@ export class BookingComponent implements OnInit, OnChanges {
     // recommend time for cleaning
     const recommendTime = Math.round(subtotal / 40);
     //console.log(recommendTime)
+
+    // make calendar appointment and save user data to admin panel after approved payment card
+
     window.bookingDate = {
       date: this.form_1_1.value.date,
       period: this.form_1_1.value.select_times,
@@ -436,6 +456,7 @@ export class BookingComponent implements OnInit, OnChanges {
       state: this.form_1_3.value.state,
       zip_code: this.form_1_1.value.zip_code
     }
+    //console.log(window.bookingDate)
     window.collectedData = {
       name: this.form_1_3.value.first_name,
       last_name: this.form_1_3.value.last_name,
