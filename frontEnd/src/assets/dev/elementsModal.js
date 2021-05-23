@@ -604,6 +604,11 @@ function stripePaymentHandler() {
     if (result.ok) {
       ///
       //console.log(window.bookingDate, 'window.bookingDate')
+      swal.fire({
+        title: "Your payment has been submitted",
+        text: "Thank you for purchasing",
+        icon: "success",
+      });
       sendBookingData();
       ///
       //alert('transaction done')
