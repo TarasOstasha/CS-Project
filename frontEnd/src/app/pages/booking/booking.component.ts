@@ -467,6 +467,15 @@ export class BookingComponent implements OnInit, OnChanges {
       phone: this.form_1_1.value.phone,
       email: this.form_1_1.value.email
     }
+    window.emailDataStripePayment = {
+      company_name: this.form_1_3.value.first_name,
+      client_name: this.form_1_3.value.last_name,
+      cellphone: this.form_1_1.value.phone,
+      email: this.form_1_1.value.email,
+      frequency: this.form_1_1.value.frequency,
+      sq_ft: this.form_1_1.value.sq_ft,
+      time: this.form_1_1.value.date,
+    }
     return {
       bedBath,
       weekly,
