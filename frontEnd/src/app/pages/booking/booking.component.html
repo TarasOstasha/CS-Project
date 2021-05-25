@@ -152,7 +152,7 @@
                                                 <mat-label>
                                                     Select date (M/D/Y)
                                                 </mat-label>
-                                                <input [matDatepicker]="picker2" formControlName="date" matInput />
+                                                <input [matDatepickerFilter]="dateFilter" [matDatepicker]="picker2" formControlName="date" matInput />
                                                 <mat-datepicker-toggle [for]="picker2" matSuffix>
                                                 </mat-datepicker-toggle>
                                                 <mat-datepicker #picker2 color="primary">

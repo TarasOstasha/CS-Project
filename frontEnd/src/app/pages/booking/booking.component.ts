@@ -780,7 +780,15 @@ export class BookingComponent implements OnInit, OnChanges {
     log('****', value);
     if (who == 1) this.form_1_2.controls.frequency.setValue(value);
     if (who == 2) this.form_1_1.controls.frequency.setValue(value);
+  }
 
+  dateFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    const pickedDate = d || new Date();
+    const todaysDate =  new Date();
+    // Prevent Saturday and Sunday from being selected.
+    // return day !== 0 && day !== 6;
+    return pickedDate >= todaysDate
   }
 
 }
