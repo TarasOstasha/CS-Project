@@ -6,10 +6,14 @@ import { FormService } from '../../services/form.service';
 import { ApiService } from 'src/app/services/api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, Subscription } from 'rxjs';
+
 const log = console.log;
 declare var window: any;
 declare var stripe: any;
 declare var elements: any;
+declare var jQuery: any;
+declare var $: any;
 
 
 @Component({
@@ -195,7 +199,6 @@ export class BookingComponent implements OnInit, OnChanges {
     private _router: Router,
     private _snackBar: MatSnackBar
   ) {
-
   }
 
   /* 
@@ -214,6 +217,22 @@ export class BookingComponent implements OnInit, OnChanges {
   ngOnInit() {
     log('ngOnInit');
     // this.cdr.detectChanges();
+
+    // Mobile Layout (DOM manipulation)
+    // setInterval(_ => {
+    //   log('.');
+    //   let target1 = jQuery("#doorAccess");
+    //   let target2 = jQuery("#specialInstructions");
+    //   //
+    //   if (jQuery(document).width() <= 736) {
+    //     // target1.css('padding: 0');
+    //     if (target1.parent('#parent1').length) log('The element 1 has already been moved!');
+    //     else target1.detach().appendTo('#parent1');
+    //     //
+    //     if (target2.parent('#parent2').length) log('The element 2 has already been moved!');
+    //     else target2.detach().appendTo('#parent2');
+    //   };
+    // }, 500);
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -360,7 +379,7 @@ export class BookingComponent implements OnInit, OnChanges {
     }
 
   }
-  
+
   ngAfterViewInit() {
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 3;
@@ -368,9 +387,9 @@ export class BookingComponent implements OnInit, OnChanges {
     // make calendar appointment and save user data to admin panel after approved payment card
 
   }
- 
+
   get calculatePipe() {
-    
+
     let subtotal: number = 0;
     // standard
     subtotal += this.standard;
@@ -469,7 +488,7 @@ export class BookingComponent implements OnInit, OnChanges {
       phone: this.form_1_1.value.phone,
       email: this.form_1_1.value.email
     }
-    const parseDate = this.form_1_1.value.date.toString().substring(0,9);
+    const parseDate = this.form_1_1.value.date.toString().substring(0, 9);
     window.emailDataStripePayment = {
       company_name: this.form_1_3.value.last_name,
       name: this.form_1_3.value.first_name,
@@ -768,12 +787,12 @@ export class BookingComponent implements OnInit, OnChanges {
       zip_code: this.form_1_1.value.zip_code
     }
     this._api.sendMainBookingDataForm(emailData)
-    .subscribe((response: any) => {
-      if(response.ok) {
-        console.log('email sent');
-        //this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
-      }  
-    }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
+      .subscribe((response: any) => {
+        if (response.ok) {
+          console.log('email sent');
+          //this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+        }
+      }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
   }
 
   bindFrequencyFields(value, who) {
@@ -785,7 +804,7 @@ export class BookingComponent implements OnInit, OnChanges {
   dateFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
     const pickedDate = d || new Date();
-    const todaysDate =  new Date();
+    const todaysDate = new Date();
     // Prevent Saturday and Sunday from being selected.
     // return day !== 0 && day !== 6;
     return pickedDate >= todaysDate
