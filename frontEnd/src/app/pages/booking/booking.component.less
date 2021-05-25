@@ -352,6 +352,7 @@
     color: rgb(255 255 255);
     text-shadow: 2px 1px 2px rgb(0 0 0 / 10%), 2px 0px 2px rgb(0 0 0 / 18%);
     font-size: 1.2rem;
+    text-align: left;
 
     h1 {
       text-align: center;
@@ -430,5 +431,21 @@
         margin: .5rem 0 0 0 !important;
       }
     }
+
+    .summary{
+      display: inherit;
+      position: static;
+    }
+
+    .boxes-4{
+      .big-box-right-4{
+        padding-left: 0;
+        .inner-box-left{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+
   }
 }
