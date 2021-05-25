@@ -529,7 +529,7 @@ export class BookingComponent implements OnInit, OnChanges {
       email: 'hello@world.com',
       //
       bedrooms: '0 - Studio',
-      date: new Date(),
+      date: new Date('2022-12-17T03:24:00'),
       phone: '807465486',
       //
       bathrooms: '1',
