@@ -323,7 +323,8 @@ export class BookingComponent implements OnInit, OnChanges {
     else if (this.payBy == 'Pay by cash' || this.payBy == 'Pay by check') {
       this.getDate(); // write all information in calendar
       this.collectData(); // write user data in admin panel table
-      this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+      this.sendBookingEmail(); // send email
+      this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!');
       setTimeout(() => {
         this._router.navigate(['main']);
       }, 4000)
@@ -359,7 +360,7 @@ export class BookingComponent implements OnInit, OnChanges {
     }
 
   }
-
+  
   ngAfterViewInit() {
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 3;
@@ -367,8 +368,9 @@ export class BookingComponent implements OnInit, OnChanges {
     // make calendar appointment and save user data to admin panel after approved payment card
 
   }
-
+ 
   get calculatePipe() {
+    
     let subtotal: number = 0;
     // standard
     subtotal += this.standard;
@@ -467,14 +469,18 @@ export class BookingComponent implements OnInit, OnChanges {
       phone: this.form_1_1.value.phone,
       email: this.form_1_1.value.email
     }
+    const parseDate = this.form_1_1.value.date.toString().substring(0,9);
     window.emailDataStripePayment = {
-      company_name: this.form_1_3.value.first_name,
-      client_name: this.form_1_3.value.last_name,
-      cellphone: this.form_1_1.value.phone,
+      company_name: this.form_1_3.value.last_name,
+      name: this.form_1_3.value.first_name,
+      phone: this.form_1_1.value.phone,
       email: this.form_1_1.value.email,
       frequency: this.form_1_1.value.frequency,
       sq_ft: this.form_1_1.value.sq_ft,
-      time: this.form_1_1.value.date,
+      time: parseDate, //this.form_1_1.value.date, // need to parse date
+      period: this.form_1_1.value.select_times,
+      address: this.form_1_3.value.address,
+      zip_code: this.form_1_1.value.zip_code
     }
     return {
       bedBath,
@@ -745,6 +751,29 @@ export class BookingComponent implements OnInit, OnChanges {
     this._api.sendDate(bookingDate)
       .subscribe((response: any) => console.log(response))
     //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
+  }
+
+  sendBookingEmail() {
+    const parseDate = this.form_1_1.value.date.toISOString().split('T')[0];
+    const emailData = {
+      company_name: this.form_1_3.value.last_name,
+      name: this.form_1_3.value.first_name,
+      phone: this.form_1_1.value.phone,
+      email: this.form_1_1.value.email,
+      frequency: this.form_1_1.value.frequency,
+      sq_ft: this.form_1_1.value.sq_ft,
+      time: parseDate,
+      period: this.form_1_1.value.select_times,
+      address: this.form_1_3.value.address,
+      zip_code: this.form_1_1.value.zip_code
+    }
+    this._api.sendMainBookingDataForm(emailData)
+    .subscribe((response: any) => {
+      if(response.ok) {
+        console.log('email sent');
+        //this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+      }  
+    }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
   }
 
   bindFrequencyFields(value, who) {

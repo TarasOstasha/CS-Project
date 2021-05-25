@@ -57,6 +57,10 @@ export class ApiService {
     return this._http.post( url + 'sendmail', this.businessFormData );
   }
 
+  sendMainBookingDataForm(value) {
+    return this._http.post( url + 'sendmail', value );
+  }
+
   sendBookingData(data: bookingData) {
     return this._http.post( url + 'booking-data', data )
   }

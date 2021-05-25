@@ -162,8 +162,9 @@ async function sendMail(user, callback) {
             client_name: user.name,
             cellphone: user.phone,
             email: user.email,
-            sq_ft: user.approx_SF,
+            sq_ft: user.sq_ft,
             time: user.time,
+            period: user.period,
             frequency: user.frequency
         })
         // html: `
