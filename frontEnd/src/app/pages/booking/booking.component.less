@@ -410,8 +410,16 @@
   }
 }
 
-// @media screen and (max-width: 576px) {
-@media screen and (max-width: 736px) {
+
+// Desktops, large screens
+@media screen and (max-width: 1200px) {
+  .stepper {
+  }
+}
+
+// Small screens, laptops
+@media screen and (max-width: 1024px) {
+
   .stepper {
     width: 94%;
 
@@ -424,13 +432,7 @@
       }
     }
 
-    .frequency-blocks {
-      flex-direction: column;
 
-      .frequency-block {
-        margin: .5rem 0 0 0 !important;
-      }
-    }
 
     .summary{
       display: inherit;
@@ -449,3 +451,28 @@
 
   }
 }
+
+// iPads, Tablets
+@media screen and (max-width: 768px) {
+  .stepper {
+    .frequency-blocks {
+      flex-direction: column;
+
+      .frequency-block {
+        margin: .5rem 0 0 0 !important;
+      }
+    }
+  }
+}
+
+// Mobile devices
+@media screen and (max-width: 480px) {
+  .stepper {
+  }
+}
+
+
+
+
+
+
