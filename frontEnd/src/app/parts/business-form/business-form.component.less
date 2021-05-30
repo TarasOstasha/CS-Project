@@ -2,29 +2,59 @@
 @import '../../styles/fonts.less';
 
 .business-book {
-    padding: 50px 0;
-    .title {
-        text-align: center;
-        padding-bottom: @h1_padding;
-        h2 {
-            .h1();
-        }
+  padding: 50px 0;
+
+  .title {
+    text-align: center;
+    padding-bottom: @h1_padding;
+
+    h2 {
+      .h1();
     }
-    .business-form {
-        text-align: right;
-        mat-form-field {
-            width: 50%;
-        }
+  }
+
+  .business-form {
+    text-align: right;
+
+    mat-form-field {
+    //   width: 50%;
     }
-    .business-book-btn {
-        text-align: center;
-        .ffnavmenu();
-        button {
-            border: 1px solid @blueColor;
-            background: @blueColor;
+
+    form {
+      flex-direction: column;
+      display: flex;
+
+      .left-n-right {
+        flex-direction: row;
+        display: flex;
+        .left {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          padding-right: 1rem;
         }
-        // a:hover {
-        //     text-decoration: none;
-        // }
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+        }
+      }
+
     }
+  }
+
+  .business-book-btn {
+    text-align: center;
+    .ffnavmenu();
+
+    button {
+      border: 1px solid @blueColor;
+      background: @blueColor;
+    }
+
+    // a:hover {
+    //     text-decoration: none;
+    // }
+  }
 }

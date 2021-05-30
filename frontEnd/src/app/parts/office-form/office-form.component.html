@@ -3,79 +3,129 @@
         <h2>Book Now</h2>
     </div>
     <div class="business-form">
-        <form [formGroup]="officeBookForm" (ngSubmit)="sendOfficeForm()">
-            <mat-form-field appearance="fill">
-                <mat-label>Company Name</mat-label>
-                <input matInput formControlName="company_name" placeholder="Company Name">
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('company_name')?.invalid">
-                    Not Valid</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Contact Person</mat-label>
-                <input matInput formControlName="name" placeholder="Contact Person" required>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('name')?.invalid">
-                    Not Valid</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="example@gmail.com" required>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('email')?.invalid">
-                    Not Valid</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Phone Number</mat-label>
-                <input matInput formControlName="phone" placeholder="000 000 0000" maxlength="10" required>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('phone')?.invalid">
-                    Not Valid</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Full Address</mat-label>
-                <input matInput formControlName="address" placeholder="8 Jackson Ave, Los Angeles 08765" required>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('address')?.invalid">
-                    Not Valid</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Zip Code</mat-label>
-                <input matInput formControlName="zip_code" placeholder="00000" maxlength="5" (keyup)="checkZipCode($event)" required>
-                <span *ngIf="officeBookForm.get('zip_code')?.valid">{{ zipObj }}</span>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('zip_code')?.invalid">
-                    Not Valid Zip Code
-                </mat-error>
-                <div *ngIf="errorFlag" style="color:red">Not Valid (Please Call Us)</div>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Sq.Ft</mat-label>
-                <mat-select formControlName="approx_SF" required>
-                    <mat-option *ngFor="let item of quickBook.approx_SF.items" [value]="item.title">
-                        {{ item.title }}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('approx_SF')?.invalid">
-                    Please Choose Value </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Frequency</mat-label>
-                <mat-select formControlName="frequency">
-                    <mat-option *ngFor="let item of quickBook.frequency.items" [value]="item.title">
-                        {{ item.title }}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('frequency')?.invalid">
-                    Please Choose Value </mat-error>
-            </mat-form-field>
+        <form (ngSubmit)="sendOfficeForm()" [formGroup]="officeBookForm">
+            <div class="left-n-right">
+                <div class="left">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Company Name</mat-label>
+                        <input formControlName="company_name"
+                               matInput
+                               placeholder="Company Name" />
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('company_name')?.invalid">
+                            Not Valid
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="email"
+                               matInput
+                               placeholder="example@gmail.com"
+                               required />
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('email')?.invalid">
+                            Not Valid
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Full Address</mat-label>
+                        <input formControlName="address"
+                               matInput
+                               placeholder="8 Jackson Ave, Los Angeles 08765"
+                               required />
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('address')?.invalid">
+                            Not Valid
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Sq.Ft</mat-label>
+                        <mat-select formControlName="approx_SF" required>
+                            <mat-option [value]="item.title"
+                                        *ngFor="let item of quickBook.approx_SF.items">
+                                {{ item.title }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('approx_SF')?.invalid">
+                            Please Choose Value
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="right">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contact Person</mat-label>
+                        <input formControlName="name"
+                               matInput
+                               placeholder="Contact Person"
+                               required />
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('name')?.invalid">
+                            Not Valid
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Phone Number</mat-label>
+                        <input formControlName="phone"
+                               matInput
+                               maxlength="10"
+                               placeholder="000 000 0000"
+                               required />
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('phone')?.invalid">
+                            Not Valid
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Zip Code</mat-label>
+                        <input (keyup)="checkZipCode($event)"
+                               formControlName="zip_code"
+                               matInput
+                               maxlength="5"
+                               placeholder="00000"
+                               required />
+                        <span *ngIf="officeBookForm.get('zip_code')?.valid">
+                            {{ zipObj }}
+                        </span>
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('zip_code')?.invalid">
+                            Not Valid Zip Code
+                        </mat-error>
+                        <div *ngIf="errorFlag" style="color:red">
+                            Not Valid (Please Call Us)
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Frequency</mat-label>
+                        <mat-select formControlName="frequency">
+                            <mat-option [value]="item.title"
+                                        *ngFor="let item of quickBook.frequency.items">
+                                {{ item.title }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('frequency')?.invalid">
+                            Please Choose Value
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
             <mat-form-field appearance="fill" style="width:100%">
                 <mat-label>Time For Cleaning</mat-label>
                 <mat-select formControlName="time">
-                    <mat-option *ngFor="let item of quickBook.time.items" [value]="item.title">
-                        {{ item.title }}</mat-option>
+                    <mat-option [value]="item.title"
+                                *ngFor="let item of quickBook.time.items">
+                        {{ item.title }}
+                    </mat-option>
                 </mat-select>
                 <mat-error *ngIf="officeBookForm.errors?.required || officeBookForm.get('time')?.invalid">
-                    Please Choose Value </mat-error>
+                    Please Choose Value
+                </mat-error>
             </mat-form-field>
+
             <div class="business-book-btn">
-                <button type="submit" [disabled]="officeBookForm.invalid" mat-button>Book
-                    Appointment</button>
+                <button [disabled]="officeBookForm.invalid"
+                        mat-button
+                        type="submit">
+                    Book
+                    Appointment
+                </button>
             </div>
         </form>
     </div>
-
 </div>
