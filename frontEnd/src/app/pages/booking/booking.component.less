@@ -14,9 +14,13 @@
 
   //position: relative;
   .booking-img {
-    img {
-      width: 100%;
-    }
+    background-image: url('../../../assets/images/book-main.jpg');
+    min-height: 10rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    // img {
+    //   width: 100%;
+    // }
   }
 }
 
@@ -67,12 +71,18 @@
 }
 
 .stepper {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translate(-50%, 0%);
+  // position: absolute;
+  position: relative;
+  // top: 2rem;
+  // left: 50%;
+  // transform: translate(-50%, 0%);
   border: 1px solid @blueColor;
   z-index: 99;
+  margin: 0 auto;
+  // width: 80%;
+  max-width: 80rem;
+  // padding-top: 5rem;
+  // margin-bottom: 2rem; 
 
   .mat-stepper-horizontal {
     /* can reverse */
@@ -288,9 +298,9 @@
     color: gray;
   }
 
-  .wrapper-form{
-    width:70%;
-    margin:0 auto;
+  .wrapper-form {
+    width: 70%;
+    margin: 0 auto;
   }
 
 
@@ -350,7 +360,7 @@
     background: @blueColor;
     width: 18rem;
     // height: 20rem;
-    right: -5rem;
+    right: -2rem;
     top: 11rem;
     position: absolute;
     box-shadow: 8px 6px 28px rgb(0 0 0 / 23%), 9px 10px 16px rgb(0 0 0 / 13%);
@@ -418,16 +428,39 @@
 
 
 // Desktops, large screens
+@media screen and (max-width: 1350px) {
+  .stepper {
+    max-width: 80%;
+  }
+
+  .boxes-4 {
+    .summary {
+      right: -4rem;
+    }
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .stepper {
+    max-width: 60%;
+  }
+
+  .boxes-4 {
+    .summary {
+      right: -10rem;
+    }
   }
 }
 
 // Small screens, laptops
 @media screen and (max-width: 1024px) {
 
+  main {
+    // padding-bottom: 12rem;
+  }
+
   .stepper {
-    width: 94%;
+    max-width: 94%;
 
     // background: red;
     .boxes {
@@ -438,17 +471,16 @@
       }
     }
 
-
-
-    .summary{
+    .summary {
       display: inherit;
       position: static;
     }
 
-    .boxes-4{
-      .big-box-right-4{
+    .boxes-4 {
+      .big-box-right-4 {
         padding-left: 0;
-        .inner-box-left{
+
+        .inner-box-left {
           width: 100%;
           text-align: center;
         }
@@ -456,10 +488,20 @@
     }
 
   }
+
+  .boxes-4 {
+    .summary {
+      right: -9rem;
+    }
+  }
 }
 
 // iPads, Tablets
 @media screen and (max-width: 768px) {
+  main {
+    // padding-bottom: 18rem;
+  }
+
   .stepper {
     .frequency-blocks {
       flex-direction: column;
@@ -468,7 +510,8 @@
         margin: .5rem 0 0 0 !important;
       }
     }
-    .wrapper-form{
+
+    .wrapper-form {
       width: 100%;
     }
   }
@@ -476,12 +519,9 @@
 
 // Mobile devices
 @media screen and (max-width: 480px) {
-  .stepper {
+  main {
+    // padding-bottom: 22rem;
   }
+
+  .stepper {}
 }
-
-
-
-
-
-
