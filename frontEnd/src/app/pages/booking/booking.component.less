@@ -2,7 +2,6 @@
 @import '../../styles/fonts'; // imported colors
 
 
-
 // MAIN SECTION ***
 
 // BOOKING
@@ -12,23 +11,15 @@
 
 .booking-wrapper {
 
-  //position: relative;
   .booking-img {
     background-image: url('../../../assets/images/book-main.jpg');
     min-height: 10rem;
     padding-top: 3rem;
     padding-bottom: 2rem;
-    // img {
-    //   width: 100%;
-    // }
   }
 }
 
 .booking-links {
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
   z-index: 10;
 
   ul {
@@ -36,7 +27,6 @@
     align-items: center;
     cursor: pointer;
     padding: 0;
-    // box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
     width: fit-content;
     margin: auto;
 
@@ -71,18 +61,11 @@
 }
 
 .stepper {
-  // position: absolute;
   position: relative;
-  // top: 2rem;
-  // left: 50%;
-  // transform: translate(-50%, 0%);
   border: 1px solid @blueColor;
   z-index: 99;
   margin: 0 auto;
-  // width: 80%;
   max-width: 80rem;
-  // padding-top: 5rem;
-  // margin-bottom: 2rem; 
 
   .mat-stepper-horizontal {
     /* can reverse */
@@ -303,7 +286,6 @@
     margin: 0 auto;
   }
 
-
 }
 
 .boxes {
@@ -311,14 +293,10 @@
   flex-direction: row;
 
   .big-box {
-    // display: flex;
-    // flex-direction: row;
     display: inline-block;
     width: 50%;
 
     .inner-box {
-      // display: flex;
-      // flex-direction: column;
       display: inline-block;
       width: 50%;
       vertical-align: top;
@@ -329,7 +307,6 @@
 
       .mat-form-field {
         width: 100%;
-        // border: solid gray 1px;
       }
     }
   }
@@ -338,7 +315,6 @@
 .boxes-4 {
   .big-box-left {
     mat-list-item {
-      // height: 1.5rem;
     }
 
     .info-field {
@@ -359,7 +335,6 @@
   .summary {
     background: @blueColor;
     width: 18rem;
-    // height: 20rem;
     right: -2rem;
     top: 11rem;
     position: absolute;
@@ -386,7 +361,6 @@
       }
 
       .sum-row-left {
-        // margin: 0 0 0 .5rem;
         position: relative;
         left: 2rem;
 
@@ -456,7 +430,6 @@
 @media screen and (max-width: 1024px) {
 
   main {
-    // padding-bottom: 12rem;
   }
 
   .stepper {
@@ -499,7 +472,6 @@
 // iPads, Tablets
 @media screen and (max-width: 768px) {
   main {
-    // padding-bottom: 18rem;
   }
 
   .stepper {
@@ -520,7 +492,6 @@
 // Mobile devices
 @media screen and (max-width: 480px) {
   main {
-    // padding-bottom: 22rem;
   }
 
   .stepper {}
