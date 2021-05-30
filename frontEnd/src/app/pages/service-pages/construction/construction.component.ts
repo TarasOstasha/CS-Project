@@ -204,27 +204,29 @@ export class ConstructionComponent implements OnInit {
       autoplaySpeed: 5000,
       mobileFirst: true,
       adaptiveHeight: true,
-      responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          infinite: true
+      responsive: [
+        {
+          breakpoint: 920,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 320,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
         }
-
-      }, {
-
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          dots: true
-        }
-
-      }, {
-
-        breakpoint: 300,
-        settings: "unslick" // destroys slick
-
-      }]
+      ]
     });
   }
 

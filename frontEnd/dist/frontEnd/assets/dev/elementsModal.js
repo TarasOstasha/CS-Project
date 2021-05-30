@@ -604,10 +604,18 @@ function stripePaymentHandler() {
     if (result.ok) {
       ///
       //console.log(window.bookingDate, 'window.bookingDate')
-      sendBookingData();
+      swal.fire({
+        title: "Your payment has been submitted",
+        text: "Thank you for purchasing",
+        icon: "success",
+      });
+      sendBookingData(); // save user to admin panel and booking appointment in google calendar method
+      emailDataStripe(); // send email after submit payment
       ///
       //alert('transaction done')
-      window.location.href = 'http://localhost:4200/main' //alert('DO ALL(Clear trash, close window)');
+      setTimeout(() => {
+        window.location.href = 'http://localhost:4200/main';
+      },3000)
     }
     //1 ->
     //
@@ -645,6 +653,24 @@ function sendBookingData() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(window.bookingDate),
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+// create method to fetch email object to route /sendmail
+function emailDataStripe() {
+  fetch( url + '/sendmail', {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(window.emailDataStripePayment),
   })
     .then(response => response.json())
     .then(data => {
