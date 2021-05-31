@@ -299,8 +299,8 @@ calendar.freebusy.query(
 
 
 // STRIPE
-//const stripe = require('stripe')(process.env.STRIPE_SECRET); // production mode
-const stripe = require('stripe')('sk_test_ehdqOsyApE9vD2SR7ZJeAJ8M00ZpRuVV5y'); // test mode
+const stripe = require('stripe')(process.env.STRIPE_SECRET); // production mode
+//const stripe = require('stripe')('sk_test_ehdqOsyApE9vD2SR7ZJeAJ8M00ZpRuVV5y'); // test mode
 
 // router.post('/stripe/payment', (req, res) => {
 //   console.log(req.body, 'request body stripe')
