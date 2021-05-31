@@ -21,7 +21,7 @@
 <!-- Add the slick-theme.css if you want default styling -->
 <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/> -->
 <style>@charset 'UTF-8';</style><link rel="stylesheet" href="./assets/slick-carousel/slick-theme.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/slick-carousel/slick-theme.css"></noscript>
-<style>.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal;}body,html{height:100%;box-sizing:border-box;}body{margin:0;font-family:Roboto,Helvetica Neue,sans-serif;}</style><link rel="stylesheet" href="styles.60c39455a44280f74445.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.60c39455a44280f74445.css"></noscript></head>
+<style>.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal;}body,html{height:100%;box-sizing:border-box;}body{margin:0;font-family:Roboto,Helvetica Neue,sans-serif;}</style><link rel="stylesheet" href="styles.9ba45ff0371cc69da86b.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.9ba45ff0371cc69da86b.css"></noscript></head>
 
 <body class="mat-typography">
   <app-root></app-root>
@@ -45,6 +45,33 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script> -->
-<script src="runtime.7425f237727658da0a30.js" defer></script><script src="polyfills.f147d6f3cce5cf2caec2.js" defer></script><script src="main.fb68082e248018b8190c.js" defer></script>
+<script src="runtime.7425f237727658da0a30.js" defer></script><script src="polyfills.f147d6f3cce5cf2caec2.js" defer></script><script src="main.e465287c1372fdf16c68.js" defer></script>
 <script>$.noConflict();</script>
+<!-- Messenger Chat Plugin Code -->
+<div id="fb-root"></div>
+
+<!-- Your Chat Plugin code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+  var chatbox = document.getElementById('fb-customer-chat');
+  chatbox.setAttribute("104837975143357", "104837975143357");
+  chatbox.setAttribute("attribution", "biz_inbox");
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v10.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- End Your Chat Plugin code -->
 </body></html>

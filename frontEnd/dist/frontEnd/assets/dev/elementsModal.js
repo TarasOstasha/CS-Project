@@ -467,8 +467,8 @@ function createPaymentIntent(content) {
 
 function getPublicKey() {
   // production mode
-  //return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib' //'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
-  return 'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6' // test mode
+  return 'pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib' //'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'
+  //return 'pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6' // test mode
   
   //   return fetch(HOST_URL + "/public-key", {
   //     method: "get",
