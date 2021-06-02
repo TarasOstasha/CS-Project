@@ -123,9 +123,11 @@ router.post('/date', (req, res) => {
 const { google } = require('googleapis');
 const { OAuth2 } = google.auth;
 
-
-const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET)
-oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
+// tonyjoss calendar
+//const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
+//oAuth2Client.setCredentials({ refresh_token: '1//04m0f4JhSimhTCgYIARAAGAQSNwF-L9IrVgshHEekObXTsS9dr4GPRoi60EHqUNMvSqMehZh7M35BILk-halBmqXXspyZcqvMXtY' });
+const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET) // production
+oAuth2Client.setCredentials({ refresh_token: '1//04S-4nt4P61eaCgYIARAAGAQSNwF-L9IrvHADWVBImbDGAcChNlm4P7zoNDbOWB2x32f5-o2ag7mQ17qj98xWkVrlyaXpsk1gykQ' }) // production process.env.REFRESH_TOKEN 
 
 const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
@@ -284,7 +286,7 @@ calendar.freebusy.query(
     const eventsArr = res.data.calendars.primary.busy
     if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: myEvent }, (err) => {
       if (err) return console.error('calendar event creation error', err)
-      return console.log('calendar event created')
+      return console.log('calendar event created. Enjoy!')
     })
     return console.log('im busy')
   }
