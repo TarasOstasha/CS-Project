@@ -2,7 +2,7 @@
   "name": "cs-project",
   "version": "0.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "14.17.0"
   },
   "private": true,
   "scripts": {
