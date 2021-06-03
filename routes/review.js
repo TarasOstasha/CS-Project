@@ -151,7 +151,11 @@ async function sendMail(user, callback) {
         }
     });
     const myMailAddress = [user.email, 'crystalsystemcleaning@gmail.com'];
-    console.log(myMailAddress);
+    const myYear = user.time.substring(0,4);
+    const myMonth = user.time.substring(5,7);
+    const myDay = user.time.substring(user.time.length-2, user.time.length);
+    const usZoneTime = `${myMonth}-${myDay}-${myYear}`
+    console.log(usZoneTime);
     let mailOptions = {
         from: 'crystalsystemcleaning@gmail.com', // sender address
         to: myMailAddress, // list of receivers 
@@ -163,7 +167,7 @@ async function sendMail(user, callback) {
             cellphone: user.phone,
             email: user.email,
             sq_ft: user.sq_ft,
-            time: user.time,
+            time: usZoneTime, //user.time,
             period: user.period,
             frequency: user.frequency,
             cleaning_type: user.cleaning_type,
