@@ -168,6 +168,7 @@ async function sendMail(user, callback) {
             frequency: user.frequency,
             cleaning_type: user.cleaning_type,
             bedrooms: user.bedrooms,
+            extras: parseExtras(user.extras),
             total: user.price.total
         })
         // html: `
@@ -181,7 +182,12 @@ async function sendMail(user, callback) {
         //     <p>Frequency: ${user.frequency}</p>
         // `
     }
-
+    // this function get exist value from exstras object
+    function parseExtras(el) {
+        let extrasArr = Object.values(el); 
+        let resultArr = extrasArr.filter(item => { return item });
+        return resultArr.toString();
+    } 
     // send mail with defined transport object
     let info = await transporter.sendMail(mailOptions);
 
