@@ -81,5 +81,8 @@ export class ApiService {
     return this._http.post( url + 'date', bookingDate );
   }
 
+  sendTestDate(bookingDate: any) {
+    return this._http.post( url + 'test-date', bookingDate );
+  }
 
 }

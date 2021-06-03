@@ -165,7 +165,10 @@ async function sendMail(user, callback) {
             sq_ft: user.sq_ft,
             time: user.time,
             period: user.period,
-            frequency: user.frequency
+            frequency: user.frequency,
+            cleaning_type: user.cleaning_type,
+            bedrooms: user.bedrooms,
+            total: user.price.total
         })
         // html: `
         //     <h1>Company Name is ${user.company_name}</h1>

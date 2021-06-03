@@ -110,71 +110,68 @@ router.post('/date', (req, res) => {
   const month = new Date(date).getMonth();
   const day = new Date(date).getDate();
   let hour = new Date(date).getHours();
-  
+
   function getRandomArbitrary(min, max) { // create function random number 
     return Math.floor(Math.random() * (max - min) + min);
   }
   let myTimeObj = {
     year, month, day, hour,
-    minuteStart: getRandomArbitrary(10,60),
+    minuteStart: getRandomArbitrary(10, 60),
   }
 
-/////////////////////////////// google calendar API ||||||||||
-const { google } = require('googleapis');
-const { OAuth2 } = google.auth;
+  /////////////////////////////// google calendar API ||||||||||
+  const { google } = require('googleapis');
+  const { OAuth2 } = google.auth;
 
-// tonyjoss calendar
-//const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
-//oAuth2Client.setCredentials({ refresh_token: '1//04m0f4JhSimhTCgYIARAAGAQSNwF-L9IrVgshHEekObXTsS9dr4GPRoi60EHqUNMvSqMehZh7M35BILk-halBmqXXspyZcqvMXtY' });
-const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET) // production
-oAuth2Client.setCredentials({ refresh_token: '1//04S-4nt4P61eaCgYIARAAGAQSNwF-L9IrvHADWVBImbDGAcChNlm4P7zoNDbOWB2x32f5-o2ag7mQ17qj98xWkVrlyaXpsk1gykQ' }) // production process.env.REFRESH_TOKEN 
+  const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET) // production
+  oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN }) // production
 
-const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
+  const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
-// start time frame *********
-let startTimeFrame;
-if(period == 'Morning') {
-  startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 9, myTimeObj.minuteStart);
-  console.log('this is morning');
-}
-else if(period == 'Afternoon') {
-  startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 13, myTimeObj.minuteStart);
-  console.log('this is afternoon');
-}
-else if(period == 'Anytime') {
-  startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 17, myTimeObj.minuteStart);
-  console.log('this is evening');
-}
-//const morning = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart); //new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart);   // new Date(date); thats correct
-//console.log(morning, 'morning')
-const eventStartTime = startTimeFrame; //moment(new Date(2021, 4, 01))
-//eventStartTime.setDate(eventStartTime.getDay() + 2)
+  // start time frame *********
+  let startTimeFrame;
+  if (period == 'Morning') {
+    startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 9, myTimeObj.minuteStart);
+    console.log('this is morning');
+  }
+  else if (period == 'Afternoon') {
+    startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 13, myTimeObj.minuteStart);
+    console.log('this is afternoon');
+  }
+  else if (period == 'Anytime') {
+    startTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 17, myTimeObj.minuteStart);
+    console.log('this is evening');
+  }
+  //const morning = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart); //new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart);   // new Date(date); thats correct
+  //console.log(morning, 'morning')
+  const eventStartTime = startTimeFrame; //moment(new Date(2021, 4, 01))
+  //eventStartTime.setDate(eventStartTime.getDay() + 2)
 
-// finish time frame *********
-//const evening = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart);//new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteFinish);  //moment(new Date("2021, 5, 03")).hour(9).minute(1); //new Date(appropriateDate.year, appropriateDate.month, appropriateDate.day, appropriateDate.hours, appropriateDate.minutes+1); //
-let finishTimeFrame;
-if(period == 'Morning') {
-  finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 9, myTimeObj.minuteStart);
-  console.log('this is morning');
-}
-else if(period == 'Afternoon') {
-  finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 13, myTimeObj.minuteStart);
-  console.log('this is afternoon');
-}
-else if(period == 'Anytime') {
-  finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 17, myTimeObj.minuteStart);
-  console.log('this is evening');
-}
-const eventEndTime = finishTimeFrame;//evening; //moment(new Date(2021, 4, 02))
-//eventEndTime.setDate(eventEndTime.getDay() + 2)
-eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long event
+  // finish time frame *********
+  //const evening = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteStart);//new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, myTimeObj.hour, myTimeObj.minuteFinish);  //moment(new Date("2021, 5, 03")).hour(9).minute(1); //new Date(appropriateDate.year, appropriateDate.month, appropriateDate.day, appropriateDate.hours, appropriateDate.minutes+1); //
+  let finishTimeFrame;
+  if (period == 'Morning') {
+    finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 9, myTimeObj.minuteStart);
+    console.log('this is morning');
+  }
+  else if (period == 'Afternoon') {
+    finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 13, myTimeObj.minuteStart);
+    console.log('this is afternoon');
+  }
+  else if (period == 'Anytime') {
+    finishTimeFrame = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day, 17, myTimeObj.minuteStart);
+    console.log('this is evening');
+  }
+  const eventEndTime = finishTimeFrame;//evening; //moment(new Date(2021, 4, 02))
+  //eventEndTime.setDate(eventEndTime.getDay() + 2)
+  eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long event
 
-let myEvent;
-const calendarEvent = (freq, untilTime, interval, colorID) => {
+  let myEvent;
+  const calendarEvent = (freq, untilTime, interval, colorID) => {
     myEvent = {
-    summary: `You received a new booking from ${first_name}`,
-    location: `${address}, ${city}, ${state} ${zip_code}`,
-    description: ` 
+      summary: `You received a new booking from ${first_name}`,
+      location: `${address}, ${city}, ${state} ${zip_code}`,
+      description: ` 
       Option Lists 
       Select Times - ${period}
       Cleaning Type - ${cleaning_type}
@@ -184,119 +181,172 @@ const calendarEvent = (freq, untilTime, interval, colorID) => {
       Bathrooms Quantity - ${bathrooms}
       Contact Number is ${phone}
     `,
-    start: {
-      dateTime: eventStartTime,
-      timeZone: 'America/New_York'
-    },
-    end: {
-      dateTime: eventEndTime,
-      timeZone: 'America/New_York'
-    },
-    "recurrence": [
-      //"RRULE:FREQ=WEEKLY;UNTIL=20210528;INTERVAL=1"
-      `RRULE:FREQ=${freq};UNTIL=${untilTime};INTERVAL=${interval}`
-    ],
-    colorId: colorID,
+      start: {
+        dateTime: eventStartTime,
+        timeZone: 'America/New_York'
+      },
+      end: {
+        dateTime: eventEndTime,
+        timeZone: 'America/New_York'
+      },
+      "recurrence": [
+        //"RRULE:FREQ=WEEKLY;UNTIL=20210528;INTERVAL=1"
+        `RRULE:FREQ=${freq};UNTIL=${untilTime};INTERVAL=${interval}`
+      ],
+      colorId: colorID,
+    }
+    return myEvent
   }
-  return myEvent
-}
 
-// for one time schedule
-let bookedDateArray = new Array(new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day)); // transform booked date to array
-let untilDateOneTime = bookedDateArray.map((v)=>v.toISOString().slice(0,10)).join("").split('-').join(""); 
+  // for one time schedule
+  let bookedDateArray = new Array(new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day)); // transform booked date to array
+  let untilDateOneTime = bookedDateArray.map((v) => v.toISOString().slice(0, 10)).join("").split('-').join("");
 
-// other time schedule
-let myMonth;
-let threeMonthLater;
-let myDay;
-let untilDateWeeklyTime;
-let untilDateMonthlyTime; 
-let bookedMyTime = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day); // get date booked obj
-let myYear = bookedMyTime.getFullYear(); 
+  // other time schedule
+  let myMonth;
+  let threeMonthLater;
+  let myDay;
+  let untilDateWeeklyTime;
+  let untilDateMonthlyTime;
+  let bookedMyTime = new Date(myTimeObj.year, myTimeObj.month, myTimeObj.day); // get date booked obj
+  let myYear = bookedMyTime.getFullYear();
 
-// update date if the next schedule appointment will be on the next year
-if( bookedMyTime.getMonth() == 9 ) { 
-  myYear += 1;
-  myMonth = '01';
-  threeMonthLater = '01';
-  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
-  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
-  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
-}
-else if(bookedMyTime.getMonth() == 10) {
-  myYear += 1;
-  myMonth = '02';
-  threeMonthLater = '02';
-  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
-  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
-  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
-}
-else if(bookedMyTime.getMonth() == 11) {
-  myYear += 1;
-  myMonth = '03';
-  threeMonthLater = '03';
-  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
-  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
-  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
-}
-else {
-  myMonth = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
-  threeMonthLater = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
-  myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
-  
-  untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
-  untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
-  //console.log(untilDateWeeklyTime,untilDateWeeklyTime,myMonth,threeMonthLater,myDay)
-  
-}
-//console.log(untilDateWeeklyTime)
-
-
-let event; 
-switch(frequency) {
-  case 'One Time':
-  event = calendarEvent('DAILY',untilDateOneTime,1,1); // booked one time
-  console.log('One Time selected');
-  break;
-  case 'Weekly':
-  event = calendarEvent('WEEKLY',untilDateWeeklyTime,1,2); // booked 4 times
-  console.log('Weekly selected');
-  break;
-  case 'Biweekly':
-  event = calendarEvent('WEEKLY',untilDateWeeklyTime,2,3); // booked 4 times
-  console.log('Biweekly selected');
-  break;
-  case 'Monthly':
-  event = calendarEvent('MONTHLY',untilDateMonthlyTime,1,4); // booked 3 times
-  console.log('Monthly selected');
-  break;
-}
-
-calendar.freebusy.query(
-  {
-    resource: {
-      timeMin: eventStartTime,
-      timeMax: eventEndTime,
-      timeZone: 'America/New_York',
-      items: [{ id: 'primary' }]
-    },
-  },
-  (err, res) => {
-    if (err) return console.error('free busy query error', err)
-    const eventsArr = res.data.calendars.primary.busy
-    if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: myEvent }, (err) => {
-      if (err) return console.error('calendar event creation error', err)
-      return console.log('calendar event created. Enjoy!')
-    })
-    return console.log('im busy')
+  // update date if the next schedule appointment will be on the next year
+  if (bookedMyTime.getMonth() == 9) {
+    myYear += 1;
+    myMonth = '01';
+    threeMonthLater = '01';
+    myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+    untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+    untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
   }
-)
+  else if (bookedMyTime.getMonth() == 10) {
+    myYear += 1;
+    myMonth = '02';
+    threeMonthLater = '02';
+    myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+    untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+    untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+  }
+  else if (bookedMyTime.getMonth() == 11) {
+    myYear += 1;
+    myMonth = '03';
+    threeMonthLater = '03';
+    myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
+    untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+    untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+  }
+  else {
+    myMonth = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
+    threeMonthLater = ("0" + (bookedMyTime.getMonth() + 4)).slice(-2); // get month in two digit format and set duration 3 month
+    myDay = ("0" + myTimeObj.day).slice(-2); // get day in two digit format
 
-  
+    untilDateWeeklyTime = new Array(myYear, myMonth, myDay).join(""); // convert to format: YYMMDD
+    untilDateMonthlyTime = new Array(myYear, threeMonthLater, myDay).join(""); // // convert to format: YYMMDD
+    //console.log(untilDateWeeklyTime,untilDateWeeklyTime,myMonth,threeMonthLater,myDay)
+
+  }
+  //console.log(untilDateWeeklyTime)
+
+
+  let event;
+  switch (frequency) {
+    case 'One Time':
+      event = calendarEvent('DAILY', untilDateOneTime, 1, 1); // booked one time
+      console.log('One Time selected');
+      break;
+    case 'Weekly':
+      event = calendarEvent('WEEKLY', untilDateWeeklyTime, 1, 2); // booked 4 times
+      console.log('Weekly selected');
+      break;
+    case 'Biweekly':
+      event = calendarEvent('WEEKLY', untilDateWeeklyTime, 2, 3); // booked 4 times
+      console.log('Biweekly selected');
+      break;
+    case 'Monthly':
+      event = calendarEvent('MONTHLY', untilDateMonthlyTime, 1, 4); // booked 3 times
+      console.log('Monthly selected');
+      break;
+  }
+
+  calendar.freebusy.query(
+    {
+      resource: {
+        timeMin: eventStartTime,
+        timeMax: eventEndTime,
+        timeZone: 'America/New_York',
+        items: [{ id: 'primary' }]
+      },
+    },
+    (err, res) => {
+      if (err) return console.error('free busy query error', err)
+      const eventsArr = res.data.calendars.primary.busy
+      if (eventsArr.length === 0) return calendar.events.insert({ calendarId: 'primary', resource: myEvent }, (err) => {
+        if (err) return console.error('calendar event creation error', err)
+        return console.log('calendar event created. Enjoy!')
+      })
+      return console.log('Calendar Event Time Busy')
+    }
+  )
+
+
   ////////////////
   res.json({ ok: true, message: 'Calendar Event Created' })
 })
 
+// **** this route for testing calendar (inly in development NOT PRODUCTION)
+router.post('/test-date', (req, res) => {
+  const { google } = require('googleapis');
+  const { OAuth2 } = google.auth;
+  //const oAuth2Client = new OAuth2('996490370597-qg1if6r94dfgcikrdq2imabd747cufdd.apps.googleusercontent.com', 'upBzsDL5d9ID3W95l-LOaXnK')
+  //oAuth2Client.setCredentials({ refresh_token: '1//04m0f4JhSimhTCgYIARAAGAQSNwF-L9IrVgshHEekObXTsS9dr4GPRoi60EHqUNMvSqMehZh7M35BILk-halBmqXXspyZcqvMXtY' });
+  const oAuth2Client = new OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET) // production
+  oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN })
+  const calendar = google.calendar({ version: 'v3', auth: oAuth2Client });
+
+  const eventStartTime = new Date();
+  eventStartTime.setDate(eventStartTime.getDate() + 2);
+
+  const eventEndTime = new Date();
+  eventEndTime.setDate(eventEndTime.getDate() + 2);
+  eventEndTime.setMinutes(eventEndTime.getMinutes() + 45);
+
+  const event = {
+    summary: 'Meet with Yuliana to have some fun',
+    location: '10 Arlington Ave, Clifton, NJ 07011',
+    description: 'Meeting with Yuliana to talk about new project and how to add google calendar API',
+    start: {
+      dateTime: eventStartTime,
+      timeZine: 'America/New_York'
+    },
+    end: {
+      dateTime: eventEndTime,
+      timeZine: 'America/New_York'
+    },
+    colorId: 1
+  }
+
+  calendar.freebusy.query({
+    resource: {
+      timeMin: eventStartTime,
+      timeMax: eventEndTime,
+      timeZine: 'America/New_York',
+      items: [{ id: 'primary' }]
+    }
+  }, (err, res) => {
+    if (err) return console.error('Free Busy Query Error: ', err)
+    const eventsArray = res.data.calendars.primary.busy;
+    if (eventsArray.length === 0) return calendar.events.insert({
+      calendarId: 'primary',
+      resource: event
+    }, (err) => {
+      if (err) return console.error('Calendar Event Creation Error: ', err)
+      return console.log('Calendar Event Created. ');
+    })
+    return console.log('Sorry Im Busy');
+  });
+
+})
 
 
 
@@ -330,7 +380,7 @@ router.post('/payment_intents', async (req, res) => {
     // 1 step
     let { currency, totalPrice } = req.body;
     //console.log(currency, totalPrice, 'currency, totalPrice')
-    const transaction = new Transaction(req.body); 
+    const transaction = new Transaction(req.body);
     await transaction.save();
     // let totalPrice = 100;
     // let currency = 'USD'

@@ -1,43 +1,40 @@
 extends layout
 
 block content
-  .container
-    .logo
-        //- img(src='/assets/imgs/logo_1_.png' alt='logo')
-        img(src='https://crystal-system-app.herokuapp.com/assets/images/Logo_1_.png' alt='logo')
-    .title
-        h3 Thanks For Booking!
-    table.table.table-bordered
-      thead
-        tr
-          th(scope='col') #
-          th(scope='col') company_name
-          th(scope='col') client_name
-          th(scope='col') cellphone
-          th(scope='col') email
-          th(scope='col') sq_ft
-          th(scope='col') day
-          th(scope='col') time period
-          th(scope='col') frequency
-      tbody
-        tr
-          th(scope='row') 1
-          td #{ company_name }
-          td #{ client_name }
-          td #{ cellphone }
-          td #{ email }
-          td #{ sq_ft }
-          td #{ time }
-          td #{ period }
-          td #{ frequency }
-    .buttons
-      <a href="tel:+122170961709" type="button" class="btn btn-primary" style="color:#fff">Visit Web-Site</a>
-      <a type="button" class="btn btn-primary" style="color:#fff">Contact Us</a>
-    //- p #{ title }
-    //- p #{ company_name }
-    //- p #{ client_name }
-    //- p #{ cellphone }
-    //- p #{ email }
-    //- p #{ sq_ft }
-    //- p #{ time }
-    //- p #{ frequency }
+  .container(style='background:#b0efff;')
+    .container-content(style="padding:20px;width:100%;max-width:500px;margin:0 auto;")
+      .logo(style='text-align: center;')
+          //- img(src='/assets/imgs/logo_1_.png' alt='logo')
+          img(src='https://crystal-system-app.herokuapp.com/assets/images/Logo_1_.png' alt='logo')
+      .title
+          h3(style='color:#1ebf5e;text-align:center;') Your Appointment has been Confirmed!
+      .confirmed-img(style='text-align: center;')
+          img(src='https://crystal-system-app.herokuapp.com/assets/images/email-confirm.png' alt='email-confirm')
+      p Hi #{client_name}, 
+      p  Appointment confirmed with Crystal System Cleaning on #{time} at #{period}. Please find the details below:
+      table(style="margin:0 auto;")
+        thead(style="background: #18687f;color:#fff;")
+          tr
+            th(style="padding:15px;color:#fff;") Confirmed Time: #{time} at #{period}
+        tbody
+          tr
+            td Type Of Service: #{cleaning_type}
+          tr
+            td Rooms: #{bedrooms}
+          tr
+            td Extras: 
+          tr
+            td Frequency: #{ frequency }
+          tr
+            td Total: $#{total}
+      p Contact Us
+      span Mon - Sun
+      span 9am - 6pm
+      br
+      br
+      p Crystal System Cleaning Corp.
+      <a style="text-decoration:none;padding:10px;background:#18687f;color:#fff;" href="tel:3476060400" type="button">Call Us</a>
+      <a style="text-decoration:none;padding:10px;background:#18687f;color:#fff;" href="mailto: crystalsystemcleaning@gmail.com" type="button">Send Email</a>
+      <a style="text-decoration:none;padding:10px;background:#18687f;color:#fff;" href="www.crystalsystemnyc.com" type="button">Visit Our Web-Site</a>
+
+        
