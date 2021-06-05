@@ -154,7 +154,7 @@ async function sendMail(user, callback) {
     const myYear = user.time.substring(0,4);
     const myMonth = user.time.substring(5,7);
     const myDay = user.time.substring(user.time.length-2, user.time.length);
-    const usZoneTime = `${myMonth}-${myDay}-${myYear}`
+    const usZoneTime = `${myMonth}-${myDay}-${myYear}` // us time zone mm:day:yy
     console.log(usZoneTime);
     let mailOptions = {
         from: 'crystalsystemcleaning@gmail.com', // sender address
