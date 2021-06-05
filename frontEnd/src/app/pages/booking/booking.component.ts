@@ -797,6 +797,10 @@ export class BookingComponent implements OnInit, OnChanges {
     //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
   }
 
+  getExtraItem(value){
+    return this.stepper.extras.items.filter(o=> o.value == value)[0]
+  }
+
   sendBookingEmail() {
     const parseDate = this.form_1_1.value.date.toISOString().split('T')[0];
     const emailData = {
@@ -814,15 +818,16 @@ export class BookingComponent implements OnInit, OnChanges {
       property_type: this.form_1_1.value.property_type,
       bedrooms: this.form_1_1.value.bedrooms,
       extras: {
-        extras_fridge: this.form_1_2.value.extras_fridge,
-        extras_oven: this.form_1_2.value.extras_oven,
-        extras_cabinet: this.form_1_2.value.extras_cabinet,
-        extras_washer: this.form_1_2.value.extras_washer,
-        extras_window: this.form_1_2.value.extras_window,
-        extras_vacuum_sofa: this.form_1_2.value.extras_vacuum_sofa
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null ,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null ,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null ,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null ,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null ,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null 
       },
       price: this.calculatePipe
     }
+    // log('emailData:::::::', emailData);
     this._api.sendMainBookingDataForm(emailData)
       .subscribe((response: any) => {
         if (response.ok) {
