@@ -26,9 +26,10 @@
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
     "stripe": "^8.145.0",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "body-parser": "^1.19.0"
   },
   "devDependencies": {
-    "body-parser": "^1.19.0"
+    
   }
 }
