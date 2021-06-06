@@ -188,9 +188,12 @@ async function sendMail(user, callback) {
     }
     // this function get exist value from exstras object
     function parseExtras(el) {
+        let exstrasValue = [];
         let extrasArr = Object.values(el); 
         let resultArr = extrasArr.filter(item => { return item });
-        return resultArr.toString();
+        let result = resultArr.map(a => a.value);
+        //console.log(resultArr, 'extrasArr');
+        return result //resultArr.toString();
     } 
     // send mail with defined transport object
     let info = await transporter.sendMail(mailOptions);
