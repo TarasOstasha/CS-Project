@@ -1,5 +1,20 @@
 // Mobile devices
-@media only screen and (min-width: 320px) and (max-width: 480px) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-width: 320px) and (max-width: 536px) {
+    #booking {
+        .booking-links {
+            ul {
+                li {
+                    padding: 12px;
+                    a {
+                        font-size: 13px!important;
+                    }
+                }
+            }
+        }
+    }
+}
+// Mobile devices
+@media only screen and (min-width: 320px) and (max-width: 480px) {
     // main page
     .main-header-wrapper {
         //padding: 0;
@@ -46,7 +61,7 @@
                 li {
                     padding: 12px;
                     a {
-                        font-size: 14px;
+                        font-size: 18px;
                     }
                 }
             }
@@ -179,7 +194,45 @@
 
 // iPads, Tablets
 @media only screen and (min-device-width: 481px) and (max-device-width: 768px) {
-    
+    #booking {
+        .booking-links {
+            ul {
+                li {
+                    padding: 12px;
+                    a {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .top-header-list {
+        flex-wrap: wrap; 
+        flex-direction: column;
+        padding: 0!important;
+        margin-bottom: 0;
+        .logo {
+            margin: 0 auto;
+            padding: 15px!important;
+            a {
+                display: block;
+            }
+        }
+        .social-media {
+            padding: 0;
+        }
+    }
+
+    .bottom-header {
+        position: relative;
+        nav {
+            padding: 15px!important;
+        }
+        .nav-link {
+            padding: 20px!important;
+        }
+        //padding: 15px!important;
+    }
 }
 
 // Small screens, laptops
@@ -193,6 +246,14 @@
             }
         }
     }
+    .bottom-header-list {
+        li {
+            a {
+                padding: 20px!important;
+            }
+        }
+    }
+
 }
 
 // Desktops, large screens
