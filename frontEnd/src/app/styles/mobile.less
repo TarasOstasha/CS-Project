@@ -14,7 +14,7 @@
     }
 }
 // Mobile devices
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 320px) and (max-width: 480px) and (-webkit-min-device-pixel-ratio: 3) {
     // main page
     .main-header-wrapper {
         //padding: 0;
@@ -193,7 +193,7 @@
 }
 
 // iPads, Tablets
-@media only screen and (min-device-width: 481px) and (max-device-width: 768px) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
     #booking {
         .booking-links {
             ul {
@@ -236,7 +236,7 @@
 }
 
 // Small screens, laptops
-@media only screen and (min-device-width: 769px) and (max-device-width: 1024px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 
     // contact us
     .choose-us {
@@ -249,10 +249,14 @@
     .bottom-header-list {
         li {
             a {
-                padding: 20px!important;
+                padding: 18px!important;
             }
         }
     }
+    .navbar {
+        padding: 0!important;
+    }
+ 
 
 }
 
