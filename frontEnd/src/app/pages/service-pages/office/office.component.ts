@@ -200,8 +200,8 @@ export class OfficeComponent implements OnInit {
       autoplay: true,
       // slidesToShow: 1,
       // slidesToScroll: 1,
-      slidesToShow: 2,
-      slidesToScroll: 2,
+      slidesToShow: 1,
+      slidesToScroll: 1,
       autoplaySpeed: 5000,
       mobileFirst: true,
       adaptiveHeight: true,
@@ -209,8 +209,8 @@ export class OfficeComponent implements OnInit {
         {
           breakpoint: 920,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
+            slidesToShow: 1,
+            slidesToScroll: 1
           }
         },
         {

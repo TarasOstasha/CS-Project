@@ -200,7 +200,7 @@ export class ConstructionComponent implements OnInit {
       infinite: true,
       autoplay: true,
       slidesToShow: 1,
-      slidesToScroll: 2,
+      slidesToScroll: 1,
       autoplaySpeed: 5000,
       mobileFirst: true,
       adaptiveHeight: true,
@@ -208,8 +208,8 @@ export class ConstructionComponent implements OnInit {
         {
           breakpoint: 920,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
+            slidesToShow: 1,
+            slidesToScroll: 1
           }
         },
         {
