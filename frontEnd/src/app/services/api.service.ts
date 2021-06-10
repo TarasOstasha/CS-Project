@@ -50,7 +50,6 @@ export class ApiService {
     return this._http.post( url + 'sendmail', this.officeFormData );
   }
 
-
   sendBusinessDataForm(value: officeBookForm) {
     console.log(value);
     this.businessFormData = value;
