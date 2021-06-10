@@ -160,7 +160,7 @@ export class BookingComponent implements OnInit, OnChanges {
       items: [
         { title: 'Client will let us in' },
         { title: 'Doorman' },
-        { title: 'Secure Key holding with eMails' },
+        { title: 'Secure Keys holding' },
         { title: 'Other' },
       ]
     },
