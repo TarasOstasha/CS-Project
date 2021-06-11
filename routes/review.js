@@ -6,6 +6,7 @@ require("dotenv").config();
 const nodemailer = require('nodemailer');
 var jade = require('jade');
 var renderFunc = jade.compileFile('./views/email.jade');
+var renderFuncForms = jade.compileFile('./views/email-forms.jade');
 
 
 const Review = require('../models/reviewModel');
@@ -117,10 +118,64 @@ router.get('/review', (req, res) => {
 //     // })
 //   }
 
+//other forms booking
+router.post('/sendmail-forms', (req, res) => {
+    console.log(req.body, 'other forms');
+    try {
+        let user = req.body;
+        sendMailForms(user, info => {
+            res.status(200).json({
+                info,
+                msg: 'The Mail Has been Sent',
+                ok: true
+            });
+        });
+    } catch (error) {
+        return res.status(500).json({ error: error.toString() });
+    }
+});
+async function sendMailForms(user, callback) {
+    let transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465, //587,
+        secure: true, //false, // true for 465, false for other ports
+        auth: {
+            user: process.env.EMAIL, //'user@gmail.com',
+            pass: process.env.PASS //'pass...'
+        }
+    }, (err, info) => {
+        if (err) {
+            throw new Error(err)
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+    const myMailAddress = [user.email, 'crystalsystemcleaning@gmail.com'];
+    let mailOptions = {
+        from: 'crystalsystemcleaning@gmail.com', // sender address
+        to: myMailAddress, // list of receivers 
+        subject: "New Order", // subject line
+        html: renderFuncForms({
+            //title: 'Express',
+            company_name: user.company_name,
+            client_name: user.name,
+            cellphone: user.phone,
+            email: user.email,
+            sq_ft: user.approx_SF,
+            address: user.address
+        })
+    }
+    // send mail with defined transport object
+    let info = await transporter.sendMail(mailOptions);
+    callback(info)
+}
+
+
+// main booking page
 router.post('/sendmail', (req, res) => {
     try {
         let user = req.body;
-        console.log(user, 'user send mailer')
+        //console.log(user, 'user send mailer')
         sendMail(user, info => {
             res.status(200).json({
                 info,
@@ -151,16 +206,16 @@ async function sendMail(user, callback) {
         }
     });
     const myMailAddress = [user.email, 'crystalsystemcleaning@gmail.com'];
-    const myYear = user.time.substring(0,4);
-    const myMonth = user.time.substring(5,7);
-    const myDay = user.time.substring(user.time.length-2, user.time.length);
+    const myYear = user.time.substring(0, 4);
+    const myMonth = user.time.substring(5, 7);
+    const myDay = user.time.substring(user.time.length - 2, user.time.length);
     const usZoneTime = `${myMonth}-${myDay}-${myYear}` // us time zone mm:day:yy
     console.log(usZoneTime);
     let mailOptions = {
         from: 'crystalsystemcleaning@gmail.com', // sender address
         to: myMailAddress, // list of receivers 
         subject: "New Order", // subject line
-        html: renderFunc({ 
+        html: renderFunc({
             //title: 'Express',
             company_name: user.company_name,
             client_name: user.name,
@@ -189,12 +244,12 @@ async function sendMail(user, callback) {
     // this function get exist value from exstras object
     function parseExtras(el) {
         let exstrasValue = [];
-        let extrasArr = Object.values(el); 
+        let extrasArr = Object.values(el);
         let resultArr = extrasArr.filter(item => { return item });
         let result = resultArr.map(a => a.value);
         //console.log(resultArr, 'extrasArr');
         return result //resultArr.toString();
-    } 
+    }
     // send mail with defined transport object
     let info = await transporter.sendMail(mailOptions);
 
@@ -204,7 +259,7 @@ async function sendMail(user, callback) {
 
 /* GET home page. */
 router.get('/preview', function (req, res, next) {
-    res.render('email', { 
+    res.render('email', {
         company_name: 'Apple',
         client_name: 'Jack',
         cellphone: '345980967',
@@ -212,7 +267,7 @@ router.get('/preview', function (req, res, next) {
         sq_ft: '1000',
         time: 'morning',
         frequency: 'one time'
-     });
+    });
 });
 
 

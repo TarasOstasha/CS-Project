@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .container(style='background:#fff;')
+    .container-content(style="padding:20px;width:100%;max-width:500px;margin:0 auto;")
+      .logo(style='text-align: center;')
+          //- img(src='/assets/imgs/logo_1_.png' alt='logo')
+          img(src='https://crystal-system-app.herokuapp.com/assets/images/Logo_1_.png' alt='logo')
+      .title
+          h3(style='color:#1ebf5e;text-align:center;') Your Appointment has been Confirmed!
+      .confirmed-img(style='text-align: center;')
+          img(src='https://crystal-system-app.herokuapp.com/assets/images/email-confirm.png' alt='email-confirm')
+      p Hi #{client_name}, 
+      p  Appointment confirmed with Crystal System Cleaning. Please find the details below:
+      table(style="margin:0 auto;border:1px solid #0bb8e3")
+        thead(style="background:#0bb8e3;color:#fff;")
+          tr
+            th(style="padding:15px;color:#fff;") Confirmed Time: Commercial Cleaning
+        tbody
+          tr
+            td Company Name: #{company_name}
+          tr
+            td Contact Person: #{client_name}
+          tr
+            td Cellphone: #{cellphone}
+          tr
+            td Email: #{email}
+          tr
+            td Square ft: $#{sq_ft}
+          tr
+            td Address: $#{address}           
+      p Contact Us
+      span Mon - Sun
+      span 9am - 6pm
+      br
+      br
+      p Crystal System Cleaning Corp.
+      <a style="text-decoration:none;padding:10px;background:#0bb8e3;color:#fff;" href="tel:3476060400" type="button">Call Us</a>
+      <a style="text-decoration:none;padding:10px;background:#0bb8e3;color:#fff;" href="mailto: crystalsystemcleaning@gmail.com" type="button">Send Email</a>
+      <a style="text-decoration:none;padding:10px;background:#0bb8e3;color:#fff;" href="https://www.crystalsystemnyc.com/main" type="button">Visit Our Web-Site</a>
+
+        

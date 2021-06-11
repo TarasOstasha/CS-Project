@@ -53,7 +53,8 @@ export class ApiService {
   sendBusinessDataForm(value: officeBookForm) {
     console.log(value);
     this.businessFormData = value;
-    return this._http.post( url + 'sendmail', this.businessFormData );
+    return this._http.post( url + 'sendmail-forms', this.businessFormData );
+    //return this._http.post( url + 'sendmail', this.businessFormData );
   }
 
   sendMainBookingDataForm(value) {

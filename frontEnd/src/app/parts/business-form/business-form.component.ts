@@ -113,14 +113,16 @@ export class BusinessFormComponent implements OnInit {
   // popup menu after submitted form
   openSnackBar(message: string, action: any) {
     this._snackBar.open(message, action, {
-      duration: 4000,
+      duration: 10000,
+      verticalPosition: 'top',
+      panelClass: 'notif-success'
     });
   }
 
 
-    // check if zip code valid
-    errorFlag: boolean = false;
-   public zipObj: any;
+  // check if zip code valid
+  errorFlag: boolean = false;
+  public zipObj: any;
   async checkZipCode(value: any) {
     await this._form.checkZipCode1(value, this.errorFlag, this.zipObj);
     this.errorFlag = this._form.errorFlag;
