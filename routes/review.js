@@ -162,7 +162,8 @@ async function sendMailForms(user, callback) {
             cellphone: user.phone,
             email: user.email,
             sq_ft: user.approx_SF,
-            address: user.address
+            address: user.address,
+            period: user.time
         })
     }
     // send mail with defined transport object

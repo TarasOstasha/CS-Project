@@ -26,9 +26,11 @@ block content
           tr
             td Email: #{email}
           tr
-            td Square ft: $#{sq_ft}
+            td Square ft: #{sq_ft}
           tr
-            td Address: $#{address}           
+            td Address: #{address}  
+          tr 
+            td Period: #{period ? period : 'no value'}
       p Contact Us
       span Mon - Sun
       span 9am - 6pm
