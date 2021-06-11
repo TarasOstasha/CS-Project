@@ -83,7 +83,7 @@ export class BusinessFormComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _api: ApiService,
     private _form: FormService,
-    private router: Router,
+    private _router: Router,
     private _snackBar: MatSnackBar
   ) { }
 
@@ -106,6 +106,9 @@ export class BusinessFormComponent implements OnInit {
       if(response.ok) {
         this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
         this.myForm.resetForm();
+        setTimeout(() => {
+          this._router.navigate(['main']);
+        }, 4000)
       }  
     }, err => this.openSnackBar(`${err} There Is some Error. Please Try Again Later`, 'Thank you!'));
   }
