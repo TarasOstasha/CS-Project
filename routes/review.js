@@ -119,65 +119,11 @@ router.get('/review', (req, res) => {
 //   }
 
 //other forms booking
-router.post('/sendmail-forms', (req, res) => {
-    console.log(req.body, 'other forms');
-    try {
-        let user = req.body;
-        sendMailForms(user, info => {
-            res.status(200).json({
-                info,
-                msg: 'The Mail Has been Sent',
-                ok: true
-            });
-        });
-    } catch (error) {
-        return res.status(500).json({ error: error.toString() });
-    }
-});
-async function sendMailForms(user, callback) {
-    let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465, //587,
-        secure: true, //false, // true for 465, false for other ports
-        auth: {
-            user: process.env.EMAIL, //'user@gmail.com',
-            pass: process.env.PASS //'pass...'
-        }
-    }, (err, info) => {
-        if (err) {
-            throw new Error(err)
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-    const myMailAddress = [user.email, 'crystalsystemcleaning@gmail.com'];
-    let mailOptions = {
-        from: 'crystalsystemcleaning@gmail.com', // sender address
-        to: myMailAddress, // list of receivers 
-        subject: "New Order", // subject line
-        html: renderFuncForms({
-            //title: 'Express',
-            company_name: user.company_name,
-            client_name: user.name,
-            cellphone: user.phone,
-            email: user.email,
-            sq_ft: user.approx_SF,
-            address: user.address,
-            period: user.time
-        })
-    }
-    // send mail with defined transport object
-    let info = await transporter.sendMail(mailOptions);
-    callback(info)
-}
-
-
-// main booking page
-// router.post('/sendmail', (req, res) => {
+// router.post('/sendmail-forms', (req, res) => {
+//     console.log(req.body, 'other forms');
 //     try {
 //         let user = req.body;
-//         //console.log(user, 'user send mailer')
-//         sendMail(user, info => {
+//         sendMailForms(user, info => {
 //             res.status(200).json({
 //                 info,
 //                 msg: 'The Mail Has been Sent',
@@ -187,8 +133,62 @@ async function sendMailForms(user, callback) {
 //     } catch (error) {
 //         return res.status(500).json({ error: error.toString() });
 //     }
-
 // });
+// async function sendMailForms(user, callback) {
+//     let transporter = nodemailer.createTransport({
+//         host: "smtp.gmail.com",
+//         port: 465, //587,
+//         secure: true, //false, // true for 465, false for other ports
+//         auth: {
+//             user: process.env.EMAIL, //'user@gmail.com',
+//             pass: process.env.PASS //'pass...'
+//         }
+//     }, (err, info) => {
+//         if (err) {
+//             throw new Error(err)
+//         } else {
+//             console.log('Email sent: ' + info.response);
+//         }
+//     });
+//     const myMailAddress = [user.email, 'crystalsystemcleaning@gmail.com'];
+//     let mailOptions = {
+//         from: 'crystalsystemcleaning@gmail.com', // sender address
+//         to: myMailAddress, // list of receivers 
+//         subject: "New Order", // subject line
+//         html: renderFuncForms({
+//             //title: 'Express',
+//             company_name: user.company_name,
+//             client_name: user.name,
+//             cellphone: user.phone,
+//             email: user.email,
+//             sq_ft: user.approx_SF,
+//             address: user.address,
+//             period: user.time
+//         })
+//     }
+//     // send mail with defined transport object
+//     let info = await transporter.sendMail(mailOptions);
+//     callback(info)
+// }
+
+
+// main booking page
+router.post('/sendmail', (req, res) => {
+    try {
+        let user = req.body;
+        //console.log(user, 'user send mailer')
+        sendMail(user, info => {
+            res.status(200).json({
+                info,
+                msg: 'The Mail Has been Sent',
+                ok: true
+            });
+        });
+    } catch (error) {
+        return res.status(500).json({ error: error.toString() });
+    }
+
+});
 
 async function sendMail(user, callback) {
     let transporter = nodemailer.createTransport({
