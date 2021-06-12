@@ -211,6 +211,7 @@ async function sendMail(user, callback) {
     const myMonth = user.time.substring(5, 7);
     const myDay = user.time.substring(user.time.length - 2, user.time.length);
     const usZoneTime = `${myMonth}-${myDay}-${myYear}` // us time zone mm:day:yy
+    const total = parseFloat(user.price.total).toFixed(2); // round price
     console.log(usZoneTime);
     let mailOptions = {
         from: 'crystalsystemcleaning@gmail.com', // sender address
@@ -229,7 +230,7 @@ async function sendMail(user, callback) {
             cleaning_type: user.cleaning_type,
             bedrooms: user.bedrooms,
             extras: parseExtras(user.extras),
-            total: user.price.total
+            total: total
         })
         // html: `
         //     <h1>Company Name is ${user.company_name}</h1>
