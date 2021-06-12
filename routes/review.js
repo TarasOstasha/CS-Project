@@ -167,7 +167,7 @@ async function sendMailForms(user, callback) {
         })
     }
     // send mail with defined transport object
-    let info = await transporter.sendMail(mailOptions);
+    let info = await transporter.sendMailForms(mailOptions);
     callback(info)
 }
 
