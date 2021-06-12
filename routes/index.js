@@ -203,6 +203,8 @@ router.post('/date', (req, res) => {
       specialInstructions - ${specialInstructions},
       Payment Method - ${payBy}
       Price - ${price}
+      *** Info: When you get 'Cabinets' you need to multiply quantity by 10 (because range is 1-10)
+      *** Info: When you get 'Windows' you need to multiply quantity by 5 (because range is 1-5)
     `,
       start: {
         dateTime: eventStartTime,
