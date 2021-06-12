@@ -354,7 +354,9 @@ export class BookingComponent implements OnInit, OnChanges {
   // popup menu after submitted booking
   openSnackBar(message: string, action: any) {
     this._snackBar.open(message, action, {
-      duration: 4000,
+      duration: 10000,
+      verticalPosition: 'top',
+      panelClass: 'notif-success'
     });
   }
   paymentTransaction() {
