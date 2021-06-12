@@ -105,7 +105,8 @@ router.get('/emails', (req, res) => {
 // ***************** CALENDAR SCHEDULE APPOINTMENT **********************
 router.post('/date', (req, res) => {
   console.log(req.body, 'calendar request body');
-  const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code } = req.body;
+  //const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code } = req.body;
+  const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, suite, state, zip_code, price, email, extras, doorAccess, specialInstructions, howDidYouHear, payBy } = req.body;
   const year = new Date(date).getFullYear();
   const month = new Date(date).getMonth();
   const day = new Date(date).getDate();
@@ -166,6 +167,18 @@ router.post('/date', (req, res) => {
   //eventEndTime.setDate(eventEndTime.getDay() + 2)
   eventEndTime.setMinutes(eventEndTime.getMinutes() + 1) // set to 1 min long event
 
+  function parseExtras(el) {
+    let exstrasValue = [];
+    let extrasArr = Object.values(el);
+    let resultArr = extrasArr.filter(item => { return item });
+    //let result = resultArr.map(a => a.value);
+    let result = resultArr.map( (a) => {
+      return a.text + ' - ' + a.amount
+    });
+    console.log(result, 'extrasArr');
+    return result //resultArr.toString();
+  }
+  let parsedExtras = parseExtras(extras);
   let myEvent;
   const calendarEvent = (freq, untilTime, interval, colorID) => {
     myEvent = {
@@ -173,13 +186,23 @@ router.post('/date', (req, res) => {
       location: `${address}, ${city}, ${state} ${zip_code}`,
       description: ` 
       Option Lists 
+      First name - ${first_name}
+      Last name - ${last_name}
       Select Times - ${period}
       Cleaning Type - ${cleaning_type}
       Frequency - ${frequency}
       Square Ft - ${sq_ft}
       Bedrooms Quantity - ${bedrooms}
       Bathrooms Quantity - ${bathrooms}
+      Extras: ${parsedExtras}
       Contact Number is ${phone}
+      Email - ${email}
+      Full Address - ${suite}, ${address}, ${city}, ${state} ${zip_code},
+      How Did You Hear About Us - ${howDidYouHear},
+      doorAccess - ${doorAccess},
+      specialInstructions - ${specialInstructions},
+      Payment Method - ${payBy}
+      Price - ${price}
     `,
       start: {
         dateTime: eventStartTime,

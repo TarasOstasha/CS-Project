@@ -19,11 +19,11 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'Express' });
 });
 
-console.log(Date.now(), 'reviews')
+//console.log(Date.now(), 'reviews')
 
 router.post('/review', (req, res) => {
     const reviewData = req.body;
-    console.log(reviewData, 'reviewData');
+    //console.log(reviewData, 'reviewData');
     const review = new Review({
         grade: reviewData.grade,
         name: reviewData.name,
@@ -120,7 +120,7 @@ router.get('/review', (req, res) => {
 
 //other forms booking
 router.post('/sendmail-forms', (req, res) => {
-    console.log(req.body, 'other forms');
+    //console.log(req.body, 'other forms');
     try {
         let user = req.body;
         sendMailForms(user, info => {
@@ -212,7 +212,7 @@ async function sendMail(user, callback) {
     const myDay = user.time.substring(user.time.length - 2, user.time.length);
     const usZoneTime = `${myMonth}-${myDay}-${myYear}` // us time zone mm:day:yy
     const total = parseFloat(user.price.total).toFixed(2); // round price
-    console.log(usZoneTime);
+    //console.log(usZoneTime);
     let mailOptions = {
         from: 'crystalsystemcleaning@gmail.com', // sender address
         to: myMailAddress, // list of receivers 

@@ -346,7 +346,7 @@ export class BookingComponent implements OnInit, OnChanges {
       this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!');
       setTimeout(() => {
         this._router.navigate(['main']);
-      }, 4000)
+      }, 8000)
     }
 
   }
@@ -753,21 +753,35 @@ export class BookingComponent implements OnInit, OnChanges {
   getDate() {
     //console.log(this.calculatePipe)
     const bookingDate = {
-      date: this.form_1_1.value.date,
-      period: this.form_1_1.value.select_times,
-      cleaning_type: this.form_1_1.value.cleaning_type,
-      frequency: this.form_1_1.value.frequency,
-      sq_ft: this.form_1_1.value.sq_ft,
-      bedrooms: this.form_1_1.value.bedrooms,
-      bathrooms: this.form_1_1.value.bathrooms,
+      date: this.form_1_1.value.date, // date
+      period: this.form_1_1.value.select_times, // day time
+      cleaning_type: this.form_1_1.value.cleaning_type, // cleaning type
+      frequency: this.form_1_1.value.frequency, // frequency
+      sq_ft: this.form_1_1.value.sq_ft, // sq.ft
+      bedrooms: this.form_1_1.value.bedrooms, // bedrooms
+      bathrooms: this.form_1_1.value.bathrooms, // bathrooms
       phone: this.form_1_1.value.phone,
-      first_name: this.form_1_3.value.first_name,
-      last_name: this.form_1_3.value.last_name,
-      city: this.form_1_3.value.city,
-      address: this.form_1_3.value.address,
-      state: this.form_1_3.value.state,
-      zip_code: this.form_1_1.value.zip_code,
-      //price: this.calculatePipe
+      first_name: this.form_1_3.value.first_name, // first name
+      last_name: this.form_1_3.value.last_name, // last name
+      city: this.form_1_3.value.city, // city
+      address: this.form_1_3.value.address, // address
+      suite: this.form_1_3.value.aptSuite, // house number
+      state: this.form_1_3.value.state, // state
+      zip_code: this.form_1_1.value.zip_code, // zip code
+      price: this.calculatePipe.total, // price
+      email: this.form_1_1.value.email, // email
+      extras: { // extras
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null ,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null ,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null ,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null ,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null ,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null 
+      },
+      doorAccess:  this.form_1_3.value.doorAccess, // door access info*
+      specialInstructions: this.form_1_3.value.specialInstructions, // special instructions
+      howDidYouHear: this.form_1_3.value.howDidYouHear,  // how did you hear about us
+      payBy: this.stripePaymentForm.value.payBy // paying method
     }
     this._api.sendDate(bookingDate)
       .subscribe((response: any) => console.log(response))
