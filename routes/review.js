@@ -173,22 +173,22 @@ async function sendMailForms(user, callback) {
 
 
 // main booking page
-router.post('/sendmail', (req, res) => {
-    try {
-        let user = req.body;
-        //console.log(user, 'user send mailer')
-        sendMail(user, info => {
-            res.status(200).json({
-                info,
-                msg: 'The Mail Has been Sent',
-                ok: true
-            });
-        });
-    } catch (error) {
-        return res.status(500).json({ error: error.toString() });
-    }
+// router.post('/sendmail', (req, res) => {
+//     try {
+//         let user = req.body;
+//         //console.log(user, 'user send mailer')
+//         sendMail(user, info => {
+//             res.status(200).json({
+//                 info,
+//                 msg: 'The Mail Has been Sent',
+//                 ok: true
+//             });
+//         });
+//     } catch (error) {
+//         return res.status(500).json({ error: error.toString() });
+//     }
 
-});
+// });
 
 async function sendMail(user, callback) {
     let transporter = nodemailer.createTransport({
