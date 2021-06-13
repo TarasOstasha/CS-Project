@@ -106,7 +106,7 @@ router.get('/emails', (req, res) => {
 router.post('/date', (req, res) => {
   console.log(req.body, 'calendar request body');
   //const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, state, zip_code } = req.body;
-  const { date, period, cleaning_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, suite, state, zip_code, price, email, extras, doorAccess, specialInstructions, howDidYouHear, payBy } = req.body;
+  const { date, period, cleaning_type, property_type, frequency, sq_ft, bedrooms, bathrooms, phone, first_name, last_name, city, address, suite, state, zip_code, price, email, extras, doorAccess, specialInstructions, howDidYouHear, payBy } = req.body;
   const year = new Date(date).getFullYear();
   const month = new Date(date).getMonth();
   const day = new Date(date).getDate();
@@ -190,6 +190,7 @@ router.post('/date', (req, res) => {
       Last name - ${last_name}
       Select Times - ${period}
       Cleaning Type - ${cleaning_type}
+      Property Type - ${property_type}
       Frequency - ${frequency}
       Square Ft - ${sq_ft}
       Bedrooms Quantity - ${bedrooms}

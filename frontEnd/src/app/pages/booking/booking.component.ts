@@ -795,6 +795,7 @@ export class BookingComponent implements OnInit, OnChanges {
       date: this.form_1_1.value.date,
       period: this.form_1_1.value.select_times,
       cleaning_type: this.form_1_1.value.cleaning_type,
+      property_type: this.form_1_1.value.property_type,
       frequency: this.form_1_1.value.frequency,
       sq_ft: this.form_1_1.value.sq_ft,
       bedrooms: this.form_1_1.value.bedrooms,
