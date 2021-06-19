@@ -109,6 +109,9 @@ export class OfficeFormComponent implements OnInit {
 
   sendOfficeForm() {
     console.log(this.officeBookForm.controls.name);
+    const cleaningType: any = 'Office Cleaning';
+    this.officeBookForm.value.cleaningType = cleaningType;
+    //this._api.sendOfficeDataForm(this.officeBookForm.value)
     this._api.sendOfficeDataForm(this.officeBookForm.value)
     .subscribe((response: any) => {
       if(response.ok) {

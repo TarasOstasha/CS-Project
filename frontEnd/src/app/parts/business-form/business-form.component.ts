@@ -101,6 +101,8 @@ export class BusinessFormComponent implements OnInit {
   }
 
   sendBusinessForm() {
+    const cleaningType: any = 'Commercial Cleaning';
+    this.businessBookForm.value.cleaningType = cleaningType;
     this._api.sendBusinessDataForm(this.businessBookForm.value)
       .subscribe((response: any) => {
       if(response.ok) {

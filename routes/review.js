@@ -120,7 +120,7 @@ router.get('/review', (req, res) => {
 
 //other forms booking
 router.post('/sendmail-forms', (req, res) => {
-    //console.log(req.body, 'other forms');
+    console.log(req.body, 'other forms');
     try {
         let user = req.body;
         sendMailForms(user, info => {
@@ -163,7 +163,8 @@ async function sendMailForms(user, callback) {
             email: user.email,
             sq_ft: user.approx_SF,
             address: user.address,
-            period: user.time
+            period: user.time,
+            cleaningType: user.cleaningType
         })
     }
     // send mail with defined transport object
