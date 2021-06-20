@@ -40,6 +40,7 @@ export class BookingComponent implements OnInit, OnChanges {
   form_1_3!: FormGroup;
   form_1_4!: FormGroup;
   stripePaymentForm!: FormGroup;
+  creditCardCheck!: FormGroup;
 
   isEditable = false;
   // checkedGroup: string = 'residential';
@@ -212,10 +213,12 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     log('ngOnChanges');
+   
   }
 
   ngOnInit() {
     log('ngOnInit');
+    
     // this.cdr.detectChanges();
 
     // Mobile Layout (DOM manipulation)
@@ -233,6 +236,14 @@ export class BookingComponent implements OnInit, OnChanges {
     //     else target2.detach().appendTo('#parent2');
     //   };
     // }, 500);
+
+    // creditCard
+    this.creditCardCheck = this._formBuilder.group({
+      number: ['', Validators.required], 
+      expiry: ['', Validators.required],
+      cvv: ['', Validators.required],
+      name: ['', Validators.required]
+    });
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -870,7 +881,26 @@ export class BookingComponent implements OnInit, OnChanges {
     return pickedDate >= todaysDate
   }
 
-}
+  // taras june
+  // card validator
+  cardChecker: boolean = false;
+  callType(value) {
+    if ( value == 'Pay by cash' || value == 'Pay by check' ) this.cardChecker = true
+    else this.cardChecker = false;
+    console.log(value)
+  }
+
+  validateCard() {
+    console.log(this.creditCardCheck.value.expiry);
+  }
+
+  modifyDigits(value) {
+    console.log(value)
+  }
+
+
+
+ }
 
 
 // { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1, price: 30, mode: 'piece' },
