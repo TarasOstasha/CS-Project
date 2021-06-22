@@ -8,13 +8,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subscription } from 'rxjs';
 
+
 const log = console.log;
 declare var window: any;
 declare var stripe: any;
 declare var elements: any;
 declare var jQuery: any;
 declare var $: any;
-
+declare var swal: any;
 
 @Component({
   selector: 'app-booking',
@@ -239,11 +240,13 @@ export class BookingComponent implements OnInit, OnChanges {
 
     // creditCard
     this.creditCardCheck = this._formBuilder.group({
-      number: ['', Validators.required], 
-      expiry: ['', Validators.required],
-      cvv: ['', Validators.required],
+      number: ['', [Validators.required, Validators.pattern('^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$')]], 
+      expiry: ['', [Validators.required]],
+      cvv: ['', [Validators.required, Validators.pattern('/^[0-9]{3,4}$/')]],
       name: ['', Validators.required]
     });
+
+    
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -354,6 +357,7 @@ export class BookingComponent implements OnInit, OnChanges {
       this.getDate(); // write all information in calendar
       this.collectData(); // write user data in admin panel table
       this.sendBookingEmail(); // send email
+      this.myValidate(); // check and save credit card
       this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!');
       setTimeout(() => {
         this._router.navigate(['main']);
@@ -370,6 +374,14 @@ export class BookingComponent implements OnInit, OnChanges {
       panelClass: 'notif-success'
     });
   }
+    // popup menu after submitted booking if err
+    openSnackBarError(message: string, action: any) {
+      this._snackBar.open(message, action, {
+        duration: 10000,
+        verticalPosition: 'top',
+        panelClass: 'notif-error'
+      });
+    }
   paymentTransaction() {
     try {
       window.elementsModal.create({
@@ -887,7 +899,7 @@ export class BookingComponent implements OnInit, OnChanges {
   callType(value) {
     if ( value == 'Pay by cash' || value == 'Pay by check' ) this.cardChecker = true
     else this.cardChecker = false;
-    console.log(value)
+    console.log(this.creditCardCheck.controls)
   }
 
   validateCard() {
@@ -898,6 +910,35 @@ export class BookingComponent implements OnInit, OnChanges {
     console.log(value)
   }
 
+  myValidate() {
+    console.log(this.creditCardCheck.value)
+    if(this.creditCardCheck.value.number == '' && this.creditCardCheck.value.expiry  == '' && this.creditCardCheck.value.cvv == '' && this.creditCardCheck.value.name == '') {
+      swal.fire({
+        title: "Error",
+        text: "Please Fill Out The Form",
+        icon: "error",
+        type: 'warning'
+      });
+      return
+    } 
+    const card = {
+      number: this.creditCardCheck.value.number,
+      //expiration: this.creditCardCheck.value.expiry,
+      expiryMonth: this.creditCardCheck.value.expiry.substring(0,2),
+      expiryYear: this.creditCardCheck.value.expiry.substring(3,this.creditCardCheck.value.expiry.length),
+      cvv: this.creditCardCheck.value.cvv,
+      name: this.creditCardCheck.value.name
+    }
+    this._api.sendCardValidation(card)
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response.ok) {
+          //console.log('email sent');
+          this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
+        } 
+      }, err => this.openSnackBarError(`${err} Internal Server Error`, 'Not Valid Card!'));
+    
+  }
 
 
  }

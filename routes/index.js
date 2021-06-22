@@ -9,6 +9,7 @@ const Booking = require('../models/bookingModel');
 const Transaction = require('../models/transactionModel');
 //const calendar = require('../public/calendar');
 //calendar();
+var valid = require("card-validator"); // card validator
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -16,6 +17,32 @@ router.get('/', function (req, res, next) {
 });
 
 
+// card info // https://www.npmjs.com/package/card-validator
+router.post('/credit-card', (req, res) => {
+  try {
+    //console.log(req.body.number);
+    var numberValidation = valid.number(req.body.number);
+    console.log(numberValidation.isValid)
+    if (numberValidation.isValid) {
+
+      res.status(200).json({
+        ok: true,
+        numberValidation,
+        msg: 'Card Is Valid'
+      });
+    } else if (!numberValidation.isValid) {
+      res.status(500).json({
+        ok: false,
+        numberValidation,
+        msg: 'Card Is Not Valid'
+      });
+    }
+    //console.log(numberValidation, 'numberValidation')
+  } catch (error) {
+    console.log(error)
+  }
+
+});
 
 
 // send booking data
@@ -172,7 +199,7 @@ router.post('/date', (req, res) => {
     let extrasArr = Object.values(el);
     let resultArr = extrasArr.filter(item => { return item });
     //let result = resultArr.map(a => a.value);
-    let result = resultArr.map( (a) => {
+    let result = resultArr.map((a) => {
       return a.text + ' - ' + a.amount
     });
     console.log(result, 'extrasArr');

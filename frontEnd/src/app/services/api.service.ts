@@ -85,5 +85,9 @@ export class ApiService {
   sendTestDate(bookingDate: any) {
     return this._http.post( url + 'test-date', bookingDate );
   }
-
+  
+  // send card validation
+  sendCardValidation(cardData) {
+    return this._http.post( url + 'credit-card', cardData);
+  }
 }
