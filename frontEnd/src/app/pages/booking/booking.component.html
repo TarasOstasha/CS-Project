@@ -679,75 +679,69 @@
                                                                     </div>
                                                                     <br />
                                                                     <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <mat-form-field appearance="fill">
-                                                                                <mat-label>Credit Card Number</mat-label>
-                                                                                <input formControlName="number"
-                                                                                    matInput
-                                                                                    placeholder="1111 1111 1111 1111" 
-                                                                                    type="tel"
-                                                                                    required />
+                                                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                            <mat-form-field class="credit" appearance="fill">
+                                                                                <mat-label>Credit Card Number
+                                                                                </mat-label>
+                                                                                <input formControlName="number" matInput
+                                                                                    placeholder="1111 1111 1111 1111"
+                                                                                    type="tel" maxlength="16" />
                                                                                 <mat-error
                                                                                     *ngIf="creditCardCheck.errors?.required || creditCardCheck.get('number')?.invalid">
                                                                                     Not Valid
                                                                                 </mat-error>
                                                                             </mat-form-field>
-                                                                            <!-- <div class="form-group">
-                                                                                <label>Credit Card Number </label>
-                                                                                <input formControlName="number"
-                                                                                    type="tel" name="number"
-                                                                                    class="form-control" required />
-                                                                                <mat-error
-                                                                                    *ngIf="creditCardCheck.errors?.required || creditCardCheck.get('number')?.invalid">
-                                                                                    Required Value
-                                                                                </mat-error>
-                                                                                <span
-                                                                                    *ngIf="creditCardCheck.errors?.required || creditCardCheck.get('number')?.invalid">error</span>
-                                                                            </div> -->
                                                                         </div>
-                                                                        <div class="col-md-8">
-                                                                            <div class="form-group">
-                                                                                <label>Expiration</label>
-
-                                                                                <input formControlName="expiry"
-                                                                                    type="tel" placeholder="MM/YY"
-                                                                                    name="expiry" class="form-control"
+                                                                        <div class="col-xs-12 col-sm-12 col-md-8">
+                                                                            <mat-form-field class="credit" appearance="fill">
+                                                                                <mat-label>Expiration
+                                                                                </mat-label>
+                                                                                <input formControlName="expiry" matInput
+                                                                                    placeholder="03/42" type="tel" 
                                                                                     maxlength="5"
-                                                                                    onkeydown="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')"
-                                                                                    required />
+                                                                                    onkeydown="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')" />
                                                                                 <mat-error
                                                                                     *ngIf="creditCardCheck.errors?.required || creditCardCheck.get('expiry')?.invalid">
-                                                                                    Required Value
+                                                                                    Not Valid
                                                                                 </mat-error>
-                                                                            </div>
+                                                                            </mat-form-field>
                                                                         </div>
-                                                                        <div class="col-md-4">
-                                                                            <div class="form-group">
-                                                                                <label>CVV </label>
-                                                                                <input formControlName="cvv" type="tel"
-                                                                                    name="cvv" class="form-control"
-                                                                                    minlength="3" maxlength="4"
-                                                                                    required />
+                                                                        <div class="col-xs-12 col-sm-12 col-md-4">
+                                                                            <mat-form-field class="credit" appearance="fill">
+                                                                                <mat-label>CVV
+                                                                                </mat-label>
+                                                                                <input formControlName="cvv" matInput
+                                                                                    placeholder="123" type="tel" minlength="3" maxlength="4" />
                                                                                 <mat-error
                                                                                     *ngIf="creditCardCheck.errors?.required || creditCardCheck.get('cvv')?.invalid">
-                                                                                    Required Value
+                                                                                    Not Valid
                                                                                 </mat-error>
-                                                                            </div>
+                                                                            </mat-form-field>
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="form-group">
+                                                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                                                            <mat-form-field class="credit" appearance="fill">
+                                                                                <mat-label>Name
+                                                                                </mat-label>
+                                                                                <input formControlName="name" matInput
+                                                                                    placeholder="John Doe" type="tel" />
+                                                                                <mat-error
+                                                                                    *ngIf="creditCardCheck.errors?.required || creditCardCheck.get('name')?.invalid">
+                                                                                    Not Valid
+                                                                                </mat-error>
+                                                                            </mat-form-field>
+                                                                            <!-- <div class="form-group">
                                                                                 <label>Name</label>
                                                                                 <input formControlName="name"
                                                                                     type="text" name="name"
                                                                                     class="form-control" required />
-                                                                            </div>
+                                                                            </div> -->
                                                                         </div>
 
                                                                     </div>
                                                                 </div>
-                                                                <button>test validation</button>
+                                                                <!-- <button>test validation</button> -->
                                                                 <span>
                                                                     *** Payment occur on the cleaning day. We will
                                                                     charge payment from your card after the cleaning
@@ -860,7 +854,6 @@
                                     <!-- <button (click)="collectData()" mat-button matStepperNext>
                                 Next
                             </button>-->
-<<<<<<< HEAD
                                     <!-- <button mat-button (click)="getDate()">test App Date</button> -->
                                     <!-- <button mat-button (click)="getTestDate()">test Date</button> -->
                                     <!-- <button (click)="fill(stepperDOM)" mat-button> Fill </button> -->
@@ -868,36 +861,6 @@
                             </mat-step>
 
                             <!-- ********************************************** Icon overrides. ********************************************** -->
-=======
-                            <!-- <button mat-button (click)="getDate()">test App Date</button> -->
-                            <!-- <button mat-button (click)="getTestDate()">test Date</button> -->
-                            <!-- <button (click)="fill(stepperDOM)" mat-button> Fill </button> -->
-                        </div>
-                    </mat-step>
-
-                    <!-- ********************************************** Icon overrides. ********************************************** -->
-
-                    <!-- <ng-template matStepperIcon="phone">
-                        <mat-icon>call_end</mat-icon>
-                    </ng-template>
-
-                    <ng-template matStepperIcon="chat">
-                        <mat-icon>forum</mat-icon>
-                    </ng-template>
-
-                    <ng-template matStepperIcon="phone">
-                        <mat-icon>call_end</mat-icon>
-                    </ng-template>
-
-                    <ng-template matStepperIcon="chat">
-                        <mat-icon>forum</mat-icon>
-                    </ng-template> -->
-
-                    
-                    <!-- </form> -->
-                </mat-horizontal-stepper>
-            </div>
->>>>>>> 994ae57a077ae3d45047f90bb4a4094dddc45f37
 
                             <ng-template matStepperIcon="phone">
                                 <mat-icon>call_end</mat-icon>

@@ -90,4 +90,8 @@ export class ApiService {
   sendCardValidation(cardData) {
     return this._http.post( url + 'credit-card', cardData);
   }
+
+  getCardInfo() {
+    return this._http.get( url + 'credit-card' ).toPromise();
+  }
 }

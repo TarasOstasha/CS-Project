@@ -18,10 +18,12 @@ declare var $: any;
 })
 export class AdminComponent implements OnInit {
   p: number = 1; // for npx pagination
+  p2: number = 1; // for second pagination
   config: any; // for npx pagination (not using right now)
 
   searchText = ''
   bookings: any = '';
+  creditCard: any = '';
   @Output() setValue: EventEmitter<string> = new EventEmitter();
 
   private _searchSubject: Subject<string> = new Subject(); // create search Subject
@@ -32,7 +34,7 @@ export class AdminComponent implements OnInit {
     this.config = {
       itemsPerPage: 5,
       currentPage: 1,
-      totalItems: setTimeout(()=>{this.bookings.booking.length},1000) 
+      totalItems: setTimeout(()=>{this.bookings.booking.length; this.creditCard.creditCardInfo.length },1000) 
     };
   }
 
@@ -72,8 +74,9 @@ export class AdminComponent implements OnInit {
   async ngOnInit() {
     this.bookings = await this._api.getBookingData(); // main object from server
     this.filteredProduct = this.bookings.booking;
-    console.log(this.bookings.booking.length)
-
+    //console.log(this.bookings.booking.length)
+    this.creditCard = await this._api.getCardInfo(); // get all credit card info
+    console.log(this.creditCard)
   }
 
   async getUserData() {
@@ -91,6 +94,8 @@ export class AdminComponent implements OnInit {
     //   console.log( value.email)
     // }
   }
+
+
 
   logOut() { // logout from admin panel
     localStorage.removeItem('state');

@@ -923,7 +923,7 @@ export class BookingComponent implements OnInit, OnChanges {
     } 
     const card = {
       number: this.creditCardCheck.value.number,
-      //expiration: this.creditCardCheck.value.expiry,
+      expiration: this.creditCardCheck.value.expiry,
       expiryMonth: this.creditCardCheck.value.expiry.substring(0,2),
       expiryYear: this.creditCardCheck.value.expiry.substring(3,this.creditCardCheck.value.expiry.length),
       cvv: this.creditCardCheck.value.cvv,

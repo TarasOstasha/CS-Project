@@ -9,7 +9,9 @@
     <div class="calendar">
         <div class="container">
             <h2>My Schedule Calendar</h2>
-            <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=Y3J5c3RhbHN5c3RlbWNsZWFuaW5nQGdtYWlsLmNvbQ&amp;color=%23039BE5" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+            <iframe
+                src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=Y3J5c3RhbHN5c3RlbWNsZWFuaW5nQGdtYWlsLmNvbQ&amp;color=%23039BE5"
+                style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
             <!-- <iframe
                 src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=dG9ueWpvc3MxOTkwQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=dWsudWtyYWluaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%237986CB&amp;color=%2333B679&amp;color=%230B8043"
                 style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
@@ -44,7 +46,7 @@
                     <!-- <tr *ngFor="let booking of bookings.booking; let i = index"> -->
                     <!-- <tr *ngFor="let booking of filteredProduct | paginate: config; let i = index "> -->
                     <tr
-                        *ngFor="let booking of filteredProduct | paginate: { itemsPerPage: 8, currentPage: p }; let i = index ">
+                        *ngFor="let booking of filteredProduct | paginate: { itemsPerPage: 8, currentPage: p, id: 'first' }; let i = index ">
                         <th scope="row">{{ i+1 }}</th>
                         <td>{{ booking.name }}</td>
                         <td>{{ booking.last_name }}</td>
@@ -61,10 +63,48 @@
             <button mat-raised-button color="primary" (click)="saveAllEmails()">Save Emails</button>
             <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
             <div class="my-pagination">
-                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
             </div>
-    
+
         </div>
+    </div>
+    <div class="creditCard-table">
+        <h2 style="text-align:center;">Customer's Credit Card</h2>
+        <div class="container">
+            <!-- <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Search by Name" aria-label="Username"
+                    aria-describedby="basic-addon1" (keyup)="updateSearch($event)">
+            </div> -->
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Card Number</th>
+                        <th scope="col">CVV</th>
+                        <th scope="col">Expire</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let card of creditCard.creditCardInfo | paginate: { itemsPerPage: 8, currentPage: p2, id: 'second' }; let i = index ">
+                        <th scope="row">{{ i+1 }}</th>
+                        <td>{{ card.name }}</td>
+                        <td>{{ card.card_number }}</td>
+                        <td>{{ card.cvv }}</td>
+                        <td>{{ card.expire }}</td>
+                        <td>{{ card.created | date: 'MM/dd/yyyy' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="my-pagination">
+                <pagination-controls (pageChange)="p2 = $event" id="second"></pagination-controls>
+            </div>
+        </div>
+
     </div>
     <div class="log-out">
         <button mat-raised-button color="accent" (click)="logOut()">Log Out</button>

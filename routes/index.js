@@ -7,6 +7,7 @@ var moment = require('moment');
 require("dotenv").config();
 const Booking = require('../models/bookingModel');
 const Transaction = require('../models/transactionModel');
+const CreditCardInfo = require('../models/creditCardModel');
 //const calendar = require('../public/calendar');
 //calendar();
 var valid = require("card-validator"); // card validator
@@ -24,13 +25,29 @@ router.post('/credit-card', (req, res) => {
     var numberValidation = valid.number(req.body.number);
     console.log(numberValidation.isValid)
     if (numberValidation.isValid) {
+      const creditCard = new CreditCardInfo({
+        name: req.body.name,
+        card_number: req.body.number,
+        expire: req.body.expiration,
+        cvv: req.body.cvv,
+      })
+      creditCard.save()
+        .then(result => {
+          res.status(201).json({
+            message: 'Card Is Valid and Saved To The Admin Panel',
+            result: result,
+            numberValidation,
+            ok: true
+          });
+        })
+        .catch(err => {
+          res.status(500).json({
+            message: 'Error'
+          });
+        });
 
-      res.status(200).json({
-        ok: true,
-        numberValidation,
-        msg: 'Card Is Valid'
-      });
-    } else if (!numberValidation.isValid) {
+    } 
+    if (!numberValidation.isValid) { // if card not valid 
       res.status(500).json({
         ok: false,
         numberValidation,
@@ -43,7 +60,27 @@ router.post('/credit-card', (req, res) => {
   }
 
 });
-
+// get credit card info
+router.get('/credit-card', (req, res) => {
+  CreditCardInfo.find()
+    .then(creditCard => {
+      if(!creditCard) {
+        return res.status(401).json({
+          message: 'Not Found'
+        });
+      }
+      res.status(200).json({
+        message: 'You successfully fetched credit card information',
+        creditCardInfo: creditCard
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: 'Error',
+        error: err
+      });
+    });
+});
 
 // send booking data
 router.post('/booking-data', (req, res) => {
