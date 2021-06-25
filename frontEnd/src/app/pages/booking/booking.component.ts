@@ -45,6 +45,7 @@ export class BookingComponent implements OnInit, OnChanges {
 
   isEditable = false;
   // checkedGroup: string = 'residential';
+  validationFlag: boolean = false;
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -214,12 +215,12 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     log('ngOnChanges');
-   
+
   }
 
   ngOnInit() {
     log('ngOnInit');
-    
+
     // this.cdr.detectChanges();
 
     // Mobile Layout (DOM manipulation)
@@ -240,13 +241,13 @@ export class BookingComponent implements OnInit, OnChanges {
 
     // creditCard
     this.creditCardCheck = this._formBuilder.group({
-      number: ['', [Validators.required, Validators.pattern('^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$')]], 
+      number: ['', [Validators.required, Validators.pattern('^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$')]],
       expiry: ['', [Validators.required]],
-      cvv: ['', [Validators.required, Validators.pattern('/^[0-9]{3,4}$/')]],
+      cvv: ['', [Validators.required]],
       name: ['', Validators.required]
     });
 
-    
+
 
     this.form_1_1 = this._formBuilder.group({
       checkedGroup: ['residential'],
@@ -353,16 +354,24 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.payBy == 'Pay by card') {
       this.stripePayment();
     }
-    else if (this.payBy == 'Pay by cash' || this.payBy == 'Pay by check') {
+    else if (this.validationFlag && (this.payBy == 'Pay by cash' || this.payBy == 'Pay by check')) {
       this.getDate(); // write all information in calendar
       this.collectData(); // write user data in admin panel table
       this.sendBookingEmail(); // send email
-      this.myValidate(); // check and save credit card
       this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!');
       setTimeout(() => {
         this._router.navigate(['main']);
       }, 8000)
+    } else {
+      swal.fire({
+        title: "Error",
+        text: "Please Fill Out Credit Card Info",
+        icon: "error",
+        type: 'warning'
+      });
+      return
     }
+
 
   }
 
@@ -374,14 +383,14 @@ export class BookingComponent implements OnInit, OnChanges {
       panelClass: 'notif-success'
     });
   }
-    // popup menu after submitted booking if err
-    openSnackBarError(message: string, action: any) {
-      this._snackBar.open(message, action, {
-        duration: 10000,
-        verticalPosition: 'top',
-        panelClass: 'notif-error'
-      });
-    }
+  // popup menu after submitted booking if err
+  openSnackBarError(message: string, action: any) {
+    this._snackBar.open(message, action, {
+      duration: 10000,
+      verticalPosition: 'top',
+      panelClass: 'notif-error'
+    });
+  }
   paymentTransaction() {
     try {
       window.elementsModal.create({
@@ -764,9 +773,32 @@ export class BookingComponent implements OnInit, OnChanges {
       address: this.form_1_3.value.address,
       city: this.form_1_3.value.city,
       state: this.form_1_3.value.state,
-      zip_code: this.form_1_3.value.state,
+      zip_code: this.form_1_3.value.zip_code,
       phone: this.form_1_1.value.phone,
-      email: this.form_1_1.value.email
+      email: this.form_1_1.value.email,
+      //date: this.form_1_1.value.date, // date
+      period: this.form_1_1.value.select_times, // day time
+      cleaning_type: this.form_1_1.value.cleaning_type, // cleaning type
+      property_type: this.form_1_1.value.property_type, // property type
+      frequency: this.form_1_1.value.frequency, // frequency
+      sq_ft: this.form_1_1.value.sq_ft, // sq.ft
+      bedrooms: this.form_1_1.value.bedrooms, // bedrooms
+      bathrooms: this.form_1_1.value.bathrooms, // bathrooms
+      //first_name: this.form_1_3.value.first_name, // first name
+      suite: this.form_1_3.value.aptSuite, // house number
+      price: this.calculatePipe.total, // price
+      extras: { // extras
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
+      },
+      doorAccess: this.form_1_3.value.doorAccess, // door access info*
+      specialInstructions: this.form_1_3.value.specialInstructions, // special instructions
+      howDidYouHear: this.form_1_3.value.howDidYouHear,  // how did you hear about us
+      payBy: this.stripePaymentForm.value.payBy // paying method
     }
     this._api.sendBookingData(collectedData)
       .subscribe(response => console.log(response))
@@ -795,14 +827,14 @@ export class BookingComponent implements OnInit, OnChanges {
       price: this.calculatePipe.total, // price
       email: this.form_1_1.value.email, // email
       extras: { // extras
-        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null ,
-        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null ,
-        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null ,
-        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null ,
-        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null ,
-        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null 
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
       },
-      doorAccess:  this.form_1_3.value.doorAccess, // door access info*
+      doorAccess: this.form_1_3.value.doorAccess, // door access info*
       specialInstructions: this.form_1_3.value.specialInstructions, // special instructions
       howDidYouHear: this.form_1_3.value.howDidYouHear,  // how did you hear about us
       payBy: this.stripePaymentForm.value.payBy // paying method
@@ -838,8 +870,8 @@ export class BookingComponent implements OnInit, OnChanges {
     //console.log(this.form_1_1.value.date, this.form_1_1.value.select_times)
   }
 
-  getExtraItem(value){
-    return this.stepper.extras.items.filter(o=> o.value == value)[0]
+  getExtraItem(value) {
+    return this.stepper.extras.items.filter(o => o.value == value)[0]
   }
 
   sendBookingEmail() {
@@ -859,12 +891,12 @@ export class BookingComponent implements OnInit, OnChanges {
       property_type: this.form_1_1.value.property_type,
       bedrooms: this.form_1_1.value.bedrooms,
       extras: {
-        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null ,
-        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null ,
-        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null ,
-        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null ,
-        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null ,
-        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null 
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
       },
       price: this.calculatePipe
     }
@@ -897,7 +929,7 @@ export class BookingComponent implements OnInit, OnChanges {
   // card validator
   cardChecker: boolean = false;
   callType(value) {
-    if ( value == 'Pay by cash' || value == 'Pay by check' ) this.cardChecker = true
+    if (value == 'Pay by cash' || value == 'Pay by check') this.cardChecker = true
     else this.cardChecker = false;
     console.log(this.creditCardCheck.controls)
   }
@@ -910,22 +942,23 @@ export class BookingComponent implements OnInit, OnChanges {
     console.log(value)
   }
 
+  
   myValidate() {
     console.log(this.creditCardCheck.value)
-    if(this.creditCardCheck.value.number == '' && this.creditCardCheck.value.expiry  == '' && this.creditCardCheck.value.cvv == '' && this.creditCardCheck.value.name == '') {
+    if (this.creditCardCheck.value.number == '' && this.creditCardCheck.value.expiry == '' && this.creditCardCheck.value.cvv == '' && this.creditCardCheck.value.name == '') {
       swal.fire({
         title: "Error",
         text: "Please Fill Out The Form",
         icon: "error",
         type: 'warning'
       });
-      return
-    } 
+      return;
+    }
     const card = {
       number: this.creditCardCheck.value.number,
       expiration: this.creditCardCheck.value.expiry,
-      expiryMonth: this.creditCardCheck.value.expiry.substring(0,2),
-      expiryYear: this.creditCardCheck.value.expiry.substring(3,this.creditCardCheck.value.expiry.length),
+      expiryMonth: this.creditCardCheck.value.expiry.substring(0, 2),
+      expiryYear: this.creditCardCheck.value.expiry.substring(3, this.creditCardCheck.value.expiry.length),
       cvv: this.creditCardCheck.value.cvv,
       name: this.creditCardCheck.value.name
     }
@@ -934,14 +967,16 @@ export class BookingComponent implements OnInit, OnChanges {
         console.log(response);
         if (response.ok) {
           //console.log('email sent');
-          this.openSnackBar('You Have Booked an Appointment. Please Check Your Email', 'Thank you!'); 
-        } 
+          this.validationFlag = true;
+          this.openSnackBar('Success! Please Continue And Press Place Order', 'Thank you!');
+        }
       }, err => this.openSnackBarError(`${err} Internal Server Error`, 'Not Valid Card!'));
-    
+    //return true
   }
 
+  
 
- }
+}
 
 
 // { value: 'fridge', color: '#eaf3fb', text: 'Inside the Fridge', amount: 1, price: 30, mode: 'piece' },

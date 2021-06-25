@@ -27,7 +27,7 @@
                 <input type="text" class="form-control" placeholder="Search by First Name" aria-label="Username"
                     aria-describedby="basic-addon1" (keyup)="updateSearch($event)">
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover table-responsive">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -39,6 +39,21 @@
                         <th scope="col">ZIP</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
+                        <!-- <th scope="col">Date</th> -->
+                        <th scope="col">Selected Time</th>
+                        <th scope="col">Cleaning Type</th>
+                        <th scope="col">Property Type</th>
+                        <th scope="col">Frequency</th>
+                        <th scope="col">Square Ft</th>
+                        <th scope="col">Bedroom Quantity</th>
+                        <th scope="col">Bathroom Quantity</th>
+                        <th scope="col">Suite</th>
+                        <!-- <th scope="col">Extras</th> -->
+                        <th scope="col">Price</th>
+                        <th scope="col">howDidYouHear</th>
+                        <th scope="col">doorAccess</th>
+                        <th scope="col">specialInstructions</th>
+                        <th scope="col">Payment Method</th>
                         <th scope="col">Added</th>
                     </tr>
                 </thead>
@@ -56,6 +71,21 @@
                         <td>{{ booking.zip_code }}</td>
                         <td>{{ booking.email }}</td>
                         <td>{{ booking.phone }}</td>
+                        <td>{{ booking.period }}</td>
+                        <!-- <td>{{ booking.date }}</td> -->
+                        <td>{{ booking.cleaning_type }}</td>
+                        <td>{{ booking.property_type }}</td>
+                        <td>{{ booking.frequency }}</td>
+                        <td>{{ booking.sq_ft }}</td>
+                        <td>{{ booking.bedrooms }}</td>
+                        <td>{{ booking.bathrooms }}</td>
+                        <td>{{ booking.suite }}</td>
+                        <!-- <td>{{ booking.extras }}</td> -->
+                        <td>{{ booking.price | currency:'USD' }}</td>
+                        <td>{{ booking.howDidYouHear }}</td>
+                        <td>{{ booking.doorAccess}}</td>
+                        <td>{{ booking.specialInstructions }}</td>
+                        <td>{{ booking.payBy }}</td>
                         <td>{{ booking.created | date: 'MM/dd/yyyy' }}</td>
                     </tr>
                 </tbody>

@@ -86,6 +86,14 @@ router.get('/credit-card', (req, res) => {
 router.post('/booking-data', (req, res) => {
   const bookingData = req.body;
   const booking = new Booking({
+    // name: bookingData.name,
+    // last_name: bookingData.last_name,
+    // address: bookingData.address,
+    // city: bookingData.city,
+    // state: bookingData.state,
+    // zip_code: bookingData.zip_code,
+    // phone: bookingData.phone,
+    // email: bookingData.email
     name: bookingData.name,
     last_name: bookingData.last_name,
     address: bookingData.address,
@@ -93,7 +101,30 @@ router.post('/booking-data', (req, res) => {
     state: bookingData.state,
     zip_code: bookingData.zip_code,
     phone: bookingData.phone,
-    email: bookingData.email
+    email: bookingData.email,
+    date: bookingData.date, // date
+    period: bookingData.period, // day time
+    cleaning_type: bookingData.cleaning_type, // cleaning type
+    property_type: bookingData.property_type, // property type
+    frequency: bookingData.frequency, // frequency
+    sq_ft: bookingData.sq_ft, // sq.ft
+    bedrooms: bookingData.bedrooms, // bedrooms
+    bathrooms: bookingData.bathrooms, // bathrooms
+    first_name: bookingData.first_name, // first name
+    suite: bookingData.suite, // house number
+    price: bookingData.price, // price
+    extras: { // extras
+      extras_fridge: bookingData.extras_fridge ,
+      extras_oven: bookingData.extras_oven ,
+      extras_cabinet: bookingData.extras_cabinet ,
+      extras_washer: bookingData.extras_washer ,
+      extras_window: bookingData.extras_window ,
+      extras_vacuum_sofa: bookingData.extras_vacuum_sofa
+    },
+    doorAccess: bookingData.doorAccess, // door access info*
+    specialInstructions: bookingData.specialInstructions, // special instructions
+    howDidYouHear: bookingData.howDidYouHear,  // how did you hear about us
+    payBy: bookingData.payBy // paying method
   })
   booking.save()
     .then(result => {
@@ -384,7 +415,7 @@ router.post('/date', (req, res) => {
   res.json({ ok: true, message: 'Calendar Event Created' })
 })
 
-// **** this route for testing calendar (inly in development NOT PRODUCTION)
+// **** this route for testing calendar (only in development NOT PRODUCTION)
 router.post('/test-date', (req, res) => {
   const { google } = require('googleapis');
   const { OAuth2 } = google.auth;

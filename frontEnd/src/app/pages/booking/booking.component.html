@@ -741,7 +741,9 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <!-- <button>test validation</button> -->
+                                                                <button (click)="myValidate()" mat-raised-button>Attache the Card</button>
+                                                                <!-- <button (click)="myValidate()">test validation</button> -->
+                                                                <br>
                                                                 <span>
                                                                     *** Payment occur on the cleaning day. We will
                                                                     charge payment from your card after the cleaning
@@ -754,7 +756,7 @@
                                                     </form>
                                                     <!-- end card checker -->
                                                     <div class="well">
-                                                        <button (click)="placeOrder()" [disabled]="!terms"
+                                                        <button (click)="placeOrder()" [disabled]="!this.terms || !this.validationFlag"
                                                             class="btn btn-success btn-lg btn-block" type="button">
                                                             Place Order
                                                         </button>
