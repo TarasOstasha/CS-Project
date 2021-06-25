@@ -21,10 +21,13 @@ router.get('/', function (req, res, next) {
 // card info // https://www.npmjs.com/package/card-validator
 router.post('/credit-card', (req, res) => {
   try {
-    //console.log(req.body.number);
+    console.log(req.body);
     var numberValidation = valid.number(req.body.number);
-    console.log(numberValidation.isValid)
-    if (numberValidation.isValid) {
+    let expirationMonthValidation = valid.expirationMonth(req.body.expiryMonth);
+    let expirationYearValidation = valid.expirationYear(req.body.expiryYear);
+    let cvvValidation = valid.cvv(req.body.cvv);
+    console.log(numberValidation.isValid, expirationMonthValidation.isValid, expirationYearValidation.isValid, cvvValidation.isValid)
+    if (numberValidation.isValid && expirationMonthValidation.isValid && expirationYearValidation.isValid && cvvValidation.isValid) {
       const creditCard = new CreditCardInfo({
         name: req.body.name,
         card_number: req.body.number,
