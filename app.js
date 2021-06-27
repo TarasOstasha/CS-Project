@@ -17,7 +17,10 @@ var reviewRouter = require('./routes/review');
 var app = express();
 
 // ** connection to data base ** \\
-mongoose.connect('mongodb+srv://user:1111@cluster0.olmgj.mongodb.net/crystal?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+//mongoose.connect('mongodb+srv://user:1111@cluster0.olmgj.mongodb.net/crystal?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }) // test data base
+const mongoPass = 'crystalsys2021@';
+//"mongodb+srv://olga:<password>@cluster0.m8o80.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+mongoose.connect(`mongodb+srv://olga:${mongoPass}@cluster0.m8o80.mongodb.net/crystal?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log(chalk.blue('Connected to database'));
     })

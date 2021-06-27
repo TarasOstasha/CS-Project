@@ -219,14 +219,14 @@
                                         You will be able to review your order before booking is complete
                                     </p>
 
-                                    <div class="buttons-panel">
+                                    <div class="buttons-panel" *ngIf=" checkedGroup == 'residential' ">
                                         <!-- <button mat-button (click)="goBack(stepperDOM)" type="button">Back</button> -->
                                         <!-- <button (click)="next1(stepperDOM)" mat-button> Next  </button>-->
                                         <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                                         <button mat-button matStepperNext>Next</button>
-                                        <button (click)="fill_1(stepperDOM)" mat-button>
+                                        <!-- <button (click)="fill_1(stepperDOM)" mat-button>
                                             Fill
-                                        </button>
+                                        </button> -->
                                     </div>
                                 </form>
                             </mat-step>
@@ -502,9 +502,9 @@
                                     <!-- <button mat-button (click)="stepperDOM.reset()">Reset</button> -->
                                     <button mat-button matStepperPrevious>Back</button>
                                     <button mat-button matStepperNext>Next</button>
-                                    <button (click)="fill_3(stepperDOM)" mat-button>
+                                    <!-- <button (click)="fill_3(stepperDOM)" mat-button>
                                         Fill
-                                    </button>
+                                    </button> -->
                                 </div>
                             </mat-step>
 
@@ -756,7 +756,7 @@
                                                     </form>
                                                     <!-- end card checker -->
                                                     <div class="well">
-                                                        <button (click)="placeOrder()" [disabled]="!this.terms || !this.validationFlag"
+                                                        <button (click)="placeOrder()" [disabled]="!this.terms || !this.validationFlag && cardChecker"
                                                             class="btn btn-success btn-lg btn-block" type="button">
                                                             Place Order
                                                         </button>

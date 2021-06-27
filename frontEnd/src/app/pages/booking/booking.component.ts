@@ -46,6 +46,7 @@ export class BookingComponent implements OnInit, OnChanges {
   isEditable = false;
   // checkedGroup: string = 'residential';
   validationFlag: boolean = false;
+  cardChecker: boolean = false;
 
   createItems(amount: number) {
     const arr = Array.from({ length: amount }, (v, k) => k + 1);
@@ -925,26 +926,26 @@ export class BookingComponent implements OnInit, OnChanges {
     return pickedDate >= todaysDate
   }
 
-  // taras june
-  // card validator
-  cardChecker: boolean = false;
+  // taras june 2021
+  // card validator (if credit card)
   callType(value) {
+    console.log(value);
     if (value == 'Pay by cash' || value == 'Pay by check') this.cardChecker = true
     else this.cardChecker = false;
-    console.log(this.creditCardCheck.controls)
+    //console.log(this.creditCardCheck.controls)
   }
 
-  validateCard() {
-    console.log(this.creditCardCheck.value.expiry);
-  }
+  // validateCard() {
+  //   console.log(this.creditCardCheck.value.expiry);
+  // }
 
-  modifyDigits(value) {
-    console.log(value)
-  }
+  // modifyDigits(value) {
+  //   console.log(value)
+  // }
 
   
   myValidate() {
-    console.log(this.creditCardCheck.value)
+    //console.log(this.creditCardCheck.value)
     if (this.creditCardCheck.value.number == '' && this.creditCardCheck.value.expiry == '' && this.creditCardCheck.value.cvv == '' && this.creditCardCheck.value.name == '') {
       swal.fire({
         title: "Error",
