@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators, FormControl, NgForm } from '@angula
 
 import { FormService } from 'src/app/services/form.service';
 import { ApiService } from '../../../services/api.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 import { pipe, Subject, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
-
+import { ViewportScroller } from '@angular/common'; // for scroll to top
 
 declare var $: any;
 declare var jQuery: any;
@@ -19,9 +19,9 @@ declare var jQuery: any;
   styleUrls: ['./renovation.component.less']
 })
 export class RenovationComponent implements OnInit {
-  bookingType: string = 'commercial'; 
+  bookingType: string = 'commercial';
   public myReviewsArr: any = [];
- 
+
 
   servicesCheckbox: any = {
     bathroom: {
@@ -41,7 +41,7 @@ export class RenovationComponent implements OnInit {
         { title: 'Restock toilet paper' },
         { title: 'Help reorder/buy supplies' },
       ]
- 
+
     },
     kitchen: {
       items: [
@@ -109,7 +109,7 @@ export class RenovationComponent implements OnInit {
     { title: 'Oven inside/outside', price: 30 },
     { title: 'Cabinets inside/outside', price: 30 },
     { title: 'Garbage can inside/outside', price: 30 },
-    { title: 'Windows inside', price: 30/5 },
+    { title: 'Windows inside', price: 30 / 5 },
     { title: 'Baseboards', price: 30 },
     { title: 'Vacuum Sofa', price: 30 },
     { title: 'Laundry', price: 30 },
@@ -155,15 +155,27 @@ export class RenovationComponent implements OnInit {
     email: '',
     phone: '',
   };
-  
+
   constructor(
     private _formBuilder: FormBuilder,
     private _api: ApiService,
     private _form: FormService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private viewPortScroller: ViewportScroller // for scroll to top
+  ) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.viewPortScroller.scrollToPosition([0, 0]));
+  }
 
   ngOnInit(): void {
+    $(document).ready(function () {
+      if (window.matchMedia("(max-width: 767px)").matches) { // method to scroll up on iPhone when opening a page
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 300)
+      }
+    });
     setTimeout(() => {
       this.initReviewsCarousel();
     }, 500)

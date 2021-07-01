@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+declare var $: any;
 @Component({
   selector: 'app-green',
   templateUrl: './green.component.html',
@@ -88,6 +88,13 @@ export class GreenComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    $(document).ready(function () {
+      if (window.matchMedia("(max-width: 767px)").matches) { // method to scroll up on iPhone when opening a page
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 300)
+      }
+    });
   }
 
 

@@ -20,7 +20,16 @@ export class ServicesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    window.scrollTo(0, 0); 
+    //window.scrollTo(0, 0); 
+  }
+
+  ngAfterViewInit() {
+    // Hack: Scrolls to top of Page after page view initialized
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
   }
 
 }
