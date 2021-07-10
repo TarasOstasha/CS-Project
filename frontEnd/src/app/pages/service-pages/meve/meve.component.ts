@@ -86,7 +86,7 @@ export class MeveComponent implements OnInit {
     { title: 'Windows inside', price: '$60' },
     // { title: 'Baseboards', price: '$30' },
     { title: 'Vacuum sofa', price: '$50' },
-    { title: 'Laundry', price: '$30' },
+    // { title: 'Laundry', price: '$30' },
     // { title: 'Move in/out package', price: '$140' },
     // { title: 'Organic cleaning', price: '$30' },
   ]
