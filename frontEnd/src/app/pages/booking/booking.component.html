@@ -298,8 +298,11 @@
                                 <h2 class="step-subtitle-div">Frequency</h2>
                                 <mat-divider></mat-divider>
 
+                                <!-- if -->
+
                                 <form [formGroup]="form_1_2">
                                     <mat-radio-group [ngModel]="frequency_2"
+                                                     *ngIf="(cleaning_type !== 'Move cleaning') && (cleaning_type !== 'Post construction cleaning') && (cleaning_type !== 'Post renovation cleaning')"
                                                      formControlName="frequency">
                                         <div class="frequency-blocks">
                                             <div (click)="event_hook.click(); bindFrequencyFields(frequency_2, 2)"
@@ -327,9 +330,19 @@
                                         </div>
                                     </mat-radio-group>
 
+                                    <!-- if -->
+                                    <div *ngIf="(cleaning_type == 'Move cleaning') || (cleaning_type == 'Post construction cleaning') || (cleaning_type == 'Post renovation cleaning')"
+                                         class="only-one">
+                                        <div class="top">One time</div>
+
+                                        <div class="bottom">
+                                            Price {{calculatePipe.biweekly | currency}}
+                                        </div>
+                                    </div>
+
                                     <!-- weekly,
-                            biweekly,
-                            monthly,
+                                        biweekly,
+                                        monthly,
                                     oneTime,-->
 
                                     <br />
@@ -337,80 +350,86 @@
                                     <mat-divider></mat-divider>
 
                                     <section class="extras-blocks">
-                                        <div (click)="event_hook2.click()"
-                                             *ngFor="let item of stepper.extras.items"
+                                        <div *ngFor="let item of stepper.extras.items"
                                              class="extras-block">
-                                            <mat-checkbox (click)="stopPropagation( $event)"
-                                                          #checkbox
-                                                          class="extras-checkbox"
-                                                          formControlName="{{'extras_' + item.value}}">
-                                                <div #event_hook2></div>
-                                            </mat-checkbox>
+                                            <!-- if -->
+                                            <div (click)="event_hook2.click()"
+                                                 *ngIf="(cleaning_type !== 'Move cleaning') && (cleaning_type !== 'Post construction cleaning') && (cleaning_type !== 'Post renovation cleaning') || (item.value == 'window') || (item.value == 'vacuum_sofa')"
+                                                 style="position: relative">
+                                                <mat-checkbox (click)="stopPropagation( $event)"
+                                                              #checkbox
+                                                              class="extras-checkbox"
+                                                              formControlName="{{'extras_' + item.value}}">
+                                                    <div #event_hook2></div>
+                                                </mat-checkbox>
 
-                                            <!-- (click)="checkbox.checked = (checkbox.checked) ? false : true;" -->
-                                            <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
-                                                 [matRippleDisabled]="false"
-                                                 class="ripple-container"
-                                                 matRipple
-                                                 style="background: {{item.color}}">
-                                                <img [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'"
-                                                     alt
-                                                     style="height: 4rem" />
-                                            </div>
-                                            <p class="description">
-                                                {{item.text}}
-                                            </p>
+                                                <!-- (click)="checkbox.checked = (checkbox.checked) ? false : true;" -->
+                                                <div [matRippleColor]="'rgb(0 0 0 / 10%)'"
+                                                     [matRippleDisabled]="false"
+                                                     class="ripple-container"
+                                                     matRipple
+                                                     style="background: {{item.color}}">
+                                                    <img [src]="'../../../../assets/images/stepper/'+ item.value +'.svg'"
+                                                         alt
+                                                         style="height: 4rem" />
+                                                </div>
+                                                <p class="description">
+                                                    {{item.text}}
+                                                </p>
 
-                                            <p *ngIf="item.recommended"
-                                               class="recommended">
-                                                <span class="text">
-                                                    Recommended
-                                                </span>
-                                            </p>
+                                                <p *ngIf="item.recommended"
+                                                   class="recommended">
+                                                    <span class="text">
+                                                        Recommended
+                                                    </span>
+                                                </p>
 
-                                            <div *ngIf="valueOf('extras_' + item.value)"
-                                                 class="number">
-                                                <!-- if ranges -->
-                                                <div *ngIf="item.mode=='ranges'">
-                                                    {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} -
-                                                    {{(item.amount-1)*10+10}}
+                                                <div *ngIf="valueOf('extras_' + item.value)"
+                                                     class="number">
+                                                    <!-- if ranges -->
+                                                    <div *ngIf="item.mode=='ranges'">
+                                                        {{ (item.amount-1 == 0) ? 1: (item.amount-1)*10 }} -
+                                                        {{(item.amount-1)*10+10}}
+                                                    </div>
+
+                                                    <!-- if ranges -->
+                                                    <div *ngIf="item.mode=='ranges-5'">
+                                                        {{ (item.amount-1 == 0) ? 1: (item.amount-1)*5 }} -
+                                                        {{(item.amount-1)*5+5}}
+                                                    </div>
+
+                                                    <!-- if piece -->
+                                                    <div *ngIf="item.mode=='piece'">
+                                                        {{ item.amount}}
+                                                    </div>
                                                 </div>
 
-                                                <!-- if ranges -->
-                                                <div *ngIf="item.mode=='ranges-5'">
-                                                    {{ (item.amount-1 == 0) ? 1: (item.amount-1)*5 }} -
-                                                    {{(item.amount-1)*5+5}}
+                                                <div (click)="stopPropagation( $event)"
+                                                     *ngIf="valueOf('extras_' + item.value)"
+                                                     class="counter">
+                                                    <div class="btns">
+                                                        <button (click)="amount(item, '+')"
+                                                                aria-label="Example icon-button with a heart icon"
+                                                                mat-icon-button>
+                                                            <mat-icon>
+                                                                add
+                                                            </mat-icon>
+                                                        </button>
+                                                        <button (click)="amount(item, '-')"
+                                                                aria-label="Example icon-button with a heart icon"
+                                                                mat-icon-button>
+                                                            <mat-icon>
+                                                                remove
+                                                            </mat-icon>
+                                                        </button>
+                                                        <!-- <button mat-raised-button>+</button> -->
+                                                        <!-- <button mat-raised-button>-</button> -->
+                                                    </div>
                                                 </div>
 
-                                                <!-- if piece -->
-                                                <div *ngIf="item.mode=='piece'">
-                                                    {{ item.amount}}
+                                                <div class="price">
+                                                    $ {{item.price * (item.amount)}}
                                                 </div>
-                                            </div>
-
-                                            <div (click)="stopPropagation( $event)"
-                                                 *ngIf="valueOf('extras_' + item.value)"
-                                                 class="counter">
-                                                <div class="btns">
-                                                    <button (click)="amount(item, '+')"
-                                                            aria-label="Example icon-button with a heart icon"
-                                                            mat-icon-button>
-                                                        <mat-icon>add</mat-icon>
-                                                    </button>
-                                                    <button (click)="amount(item, '-')"
-                                                            aria-label="Example icon-button with a heart icon"
-                                                            mat-icon-button>
-                                                        <mat-icon>
-                                                            remove
-                                                        </mat-icon>
-                                                    </button>
-                                                    <!-- <button mat-raised-button>+</button> -->
-                                                    <!-- <button mat-raised-button>-</button> -->
-                                                </div>
-                                            </div>
-
-                                            <div class="price">
-                                                $ {{item.price * (item.amount)}}
                                             </div>
                                         </div>
                                     </section>
