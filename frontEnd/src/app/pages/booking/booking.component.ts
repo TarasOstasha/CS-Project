@@ -209,7 +209,6 @@ export class BookingComponent implements OnInit, OnChanges {
     ngOnInit() is called after ngOnChanges(). 
     ngOnChanges() is called every time inputs are updated by change detection.
     ngAfterViewInit() is called after the view is initially rendered. This is why @ViewChild() depends on it. You can't access view members before they are rendered.
-
     ngOnInit() is called right after the directive's data-bound properties have been checked for the first time, and before any of its children have been checked. It is invoked only once when the directive is instantiated.
     ngAfterViewInit() is called after a component's view, and its children's views, are created. Its a lifecycle hook that is called after a component's view has been fully initialized.
   */
@@ -415,14 +414,13 @@ export class BookingComponent implements OnInit, OnChanges {
 
   }
 
-
   ngAfterViewInit() {
-        // Hack: Scrolls to top of Page after page view initialized
-        let top = document.getElementById('top');
-        if (top !== null) {
-          top.scrollIntoView();
-          top = null;
-        }
+    // Hack: Scrolls to top of Page after page view initialized
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
     log('ngAfterViewInit');
     // this.stepperDOM.selectedIndex = 3;
     this.cdr.detectChanges();
