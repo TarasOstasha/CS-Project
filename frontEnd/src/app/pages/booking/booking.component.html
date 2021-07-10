@@ -300,10 +300,11 @@
 
                                 <!-- if -->
 
-                                <form [formGroup]="form_1_2">
+                                <form [formGroup]="form_1_2" class="step-form-2">
                                     <mat-radio-group [ngModel]="frequency_2"
                                                      *ngIf="(cleaning_type !== 'Move cleaning') && (cleaning_type !== 'Post construction cleaning') && (cleaning_type !== 'Post renovation cleaning')"
                                                      formControlName="frequency">
+
                                         <div class="frequency-blocks">
                                             <div (click)="event_hook.click(); bindFrequencyFields(frequency_2, 2)"
                                                  *ngFor="let item of stepper.frequency.items"
@@ -345,7 +346,6 @@
                                         monthly,
                                     oneTime,-->
 
-                                    <br />
                                     <h2 class="step-subtitle-div">Extras</h2>
                                     <mat-divider></mat-divider>
 
@@ -643,9 +643,9 @@
                                     <button mat-button matStepperNext>
                                         Next
                                     </button>
-                                    <!-- <button (click)="fill_3(stepperDOM)" mat-button>
+                                    <button (click)="fill_3(stepperDOM)" mat-button>
                                         Fill
-                                    </button>-->
+                                    </button>
                                 </div>
                             </mat-step>
 

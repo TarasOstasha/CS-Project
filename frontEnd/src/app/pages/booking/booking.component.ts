@@ -430,6 +430,8 @@ export class BookingComponent implements OnInit, OnChanges {
     subtotal += this.standard;
     // log('standard: ', subtotal);
 
+    const isOneTime = (this.cleaning_type == 'Move cleaning') || (this.cleaning_type == 'Post construction cleaning') || (this.cleaning_type == 'Post renovation cleaning') // "one time" mode
+
     // type
     if (this.cleaning_type == 'Deep cleaning') subtotal += 40;
     if (this.cleaning_type == 'Organic cleaning') subtotal += 10;
@@ -460,11 +462,15 @@ export class BookingComponent implements OnInit, OnChanges {
     const oneTime = subtotal + 15;
 
     // frequency
-    if (this.frequency == 'Weekly') subtotal -= 10;
-    if (this.frequency == 'Biweekly') subtotal += 0;
-    if (this.frequency == 'Monthly') subtotal += 10;
-    if (this.frequency == 'One Time') subtotal += 15;
-    // log('freqency: ', subtotal);
+    if (!isOneTime) {
+      if (this.frequency == 'Weekly') subtotal -= 10;
+      if (this.frequency == 'Biweekly') subtotal += 0;
+      if (this.frequency == 'Monthly') subtotal += 10;
+      if (this.frequency == 'One Time') subtotal += 15;
+      // log('freqency: ', subtotal);
+    } else if (isOneTime) {
+      subtotal += 0;
+    };
 
     // log('>>>>>>>>>>>>>>>>>>', this.sq_ft, this.sq_ft * this.stepper.sq_ft.price );
     // if (this.sq_ft == '1000 - 1200') subtotal += 20;
@@ -474,10 +480,10 @@ export class BookingComponent implements OnInit, OnChanges {
     // if (this.sq_ft == '2500 - 3000') subtotal += 30;
     // if (this.sq_ft == '3000 - 3500') subtotal += 30;
     //extras
-    if (this.extras_fridge) subtotal += this.getExtrasTotalByKey('fridge');
-    if (this.extras_oven) subtotal += this.getExtrasTotalByKey('oven');
-    if (this.extras_cabinet) subtotal += this.getExtrasTotalByKey('cabinet');
-    if (this.extras_washer) subtotal += this.getExtrasTotalByKey('washer');
+    if (this.extras_fridge && !isOneTime) subtotal += this.getExtrasTotalByKey('fridge');
+    if (this.extras_oven && !isOneTime) subtotal += this.getExtrasTotalByKey('oven');
+    if (this.extras_cabinet && !isOneTime) subtotal += this.getExtrasTotalByKey('cabinet');
+    if (this.extras_washer && !isOneTime) subtotal += this.getExtrasTotalByKey('washer');
     if (this.extras_window) subtotal += this.getExtrasTotalByKey('window');
     if (this.extras_vacuum_sofa) subtotal += this.getExtrasTotalByKey('vacuum_sofa');
     // log('extras: ', subtotal);
@@ -943,7 +949,7 @@ export class BookingComponent implements OnInit, OnChanges {
   //   console.log(value)
   // }
 
-  
+
   myValidate() {
     //console.log(this.creditCardCheck.value)
     if (this.creditCardCheck.value.number == '' && this.creditCardCheck.value.expiry == '' && this.creditCardCheck.value.cvv == '' && this.creditCardCheck.value.name == '') {
@@ -975,7 +981,7 @@ export class BookingComponent implements OnInit, OnChanges {
     //return true
   }
 
-  
+
 
 }
 
