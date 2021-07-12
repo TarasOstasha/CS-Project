@@ -441,8 +441,8 @@ export class BookingComponent implements OnInit, OnChanges {
     if (this.cleaning_type == 'Deep cleaning') subtotal += 40;
     if (this.cleaning_type == 'Organic cleaning') subtotal += 10;
     if (this.cleaning_type == 'Move cleaning') subtotal += 40;
-    if (this.cleaning_type == 'Post construction cleaning') subtotal += 160;
-    if (this.cleaning_type == 'Post renovation cleaning') subtotal += 160;
+    if (this.cleaning_type == 'Post construction cleaning') subtotal += 40;
+    if (this.cleaning_type == 'Post renovation cleaning') subtotal += 40;
     // log('type: ', subtotal);
 
     // bed bath
