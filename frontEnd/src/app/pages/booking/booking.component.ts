@@ -220,7 +220,13 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     log('ngOnInit');
-
+    $(document).ready(function () {
+      if (window.matchMedia("(max-width: 767px)").matches) { // method to scroll up on iPhone when opening a page
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 300)
+      }
+    });
     // this.cdr.detectChanges();
 
     // Mobile Layout (DOM manipulation)
