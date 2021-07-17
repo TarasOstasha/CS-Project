@@ -646,9 +646,9 @@
                                     <button mat-button matStepperNext>
                                         Next
                                     </button>
-                                    <!-- <button (click)="fill_3(stepperDOM)" mat-button>
+                                    <button (click)="fill_3(stepperDOM)" mat-button>
                                         Fill
-                                    </button>-->
+                                    </button>
                                 </div>
                             </mat-step>
 
@@ -958,9 +958,9 @@
                                                         {{preventEmpty(bedrooms)}} Bed / {{preventEmpty(bathrooms)}}
                                                         Bath
                                                     </span>
-                                                    <span class="sum-row-right">
+                                                    <!-- <span class="sum-row-right">
                                                         {{calculatePipe.bedBath | currency}}
-                                                    </span>
+                                                    </span> -->
                                                 </div>
                                                 <div class="sum-row">
                                                     <i class="fas fa-calendar-alt">
@@ -1000,7 +1000,7 @@
                                                 <mat-divider></mat-divider>
                                                 <div class="sum-row">
                                                     <span class="sum-row-left">
-                                                        {{frequency}} Total:
+                                                        {{frequency}} Total: &nbsp;
                                                     </span>
                                                     <span class="sum-row-right">
                                                         {{calculatePipe.total | currency}}
