@@ -934,6 +934,12 @@ export class BookingComponent implements OnInit, OnChanges {
     if (who == 2) this.form_1_1.controls.frequency.setValue(value);
   }
 
+  switchByCleaningType() {
+    if ((this.cleaning_type == 'Move cleaning')
+      || (this.cleaning_type == 'Post construction cleaning')
+      || (this.cleaning_type == 'Post renovation cleaning')) this.form_1_1.controls.frequency.setValue('One Time');
+  }
+
   dateFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
     const pickedDate = d || new Date();

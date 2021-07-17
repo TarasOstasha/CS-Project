@@ -65,7 +65,8 @@
                                                             Cleaning type
                                                         </mat-label>
                                                         <mat-select [ngModel]="cleaning_type"
-                                                                    formControlName="cleaning_type">
+                                                                    formControlName="cleaning_type"
+                                                                    (ngModelChange)="switchByCleaningType()">
                                                             <mat-option [value]="item.title"
                                                                         *ngFor="let item of stepper.cleaning_type.items">
                                                                 {{item.title}}
@@ -90,12 +91,13 @@
                                                 </div>
                                                 <div class="input">
                                                     <!-- if -->
-                                                    <mat-form-field *ngIf="(cleaning_type !== 'Move cleaning') && (cleaning_type !== 'Post construction cleaning') && (cleaning_type !== 'Post renovation cleaning')"
-                                                                    appearance="fill">
+                                                    <!-- *ngIf="(cleaning_type !== 'Move cleaning') && (cleaning_type !== 'Post construction cleaning') && (cleaning_type !== 'Post renovation cleaning')" -->
+                                                    <mat-form-field appearance="fill">
                                                         <mat-label>
                                                             Frequency
                                                         </mat-label>
                                                         <mat-select (ngModelChange)="bindFrequencyFields(frequency, 1)"
+                                                                    [disabled]="(cleaning_type == 'Move cleaning') || (cleaning_type == 'Post construction cleaning') || (cleaning_type == 'Post renovation cleaning')"
                                                                     [ngModel]="frequency"
                                                                     formControlName="frequency">
                                                             <mat-option [value]="item.title"
@@ -106,10 +108,10 @@
                                                         <!-- <mat-hint align="end">Here's the dropdown arrow ^</mat-hint> -->
                                                     </mat-form-field>
                                                     <!-- if -->
-                                                    <div *ngIf="(cleaning_type == 'Move cleaning') || (cleaning_type == 'Post construction cleaning') || (cleaning_type == 'Post renovation cleaning')"
-                                                         class="only-one">
+                                                    <!-- *ngIf="(cleaning_type == 'Move cleaning') || (cleaning_type == 'Post construction cleaning') || (cleaning_type == 'Post renovation cleaning')" -->
+                                                    <!-- <div class="only-one">
                                                         One time
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="inner-box inner-box-right">
@@ -274,10 +276,10 @@
                                         <button mat-button matStepperNext>
                                             Next
                                         </button>
-                                        <!-- <button (click)="fill_1(stepperDOM)"
+                                        <button (click)="fill_1(stepperDOM)"
                                                 mat-button>
                                             Fill
-                                        </button> -->
+                                        </button>
                                     </div>
                                 </form>
                             </mat-step>
@@ -301,11 +303,11 @@
 
                                 <!-- if -->
 
-                                <form [formGroup]="form_1_2" class="step-form-2">
+                                <form [formGroup]="form_1_2"
+                                      class="step-form-2">
                                     <mat-radio-group [ngModel]="frequency_2"
                                                      *ngIf="(cleaning_type !== 'Move cleaning') && (cleaning_type !== 'Post construction cleaning') && (cleaning_type !== 'Post renovation cleaning')"
                                                      formControlName="frequency">
-
                                         <div class="frequency-blocks">
                                             <div (click)="event_hook.click(); bindFrequencyFields(frequency_2, 2)"
                                                  *ngFor="let item of stepper.frequency.items"
@@ -646,7 +648,7 @@
                                     </button>
                                     <!-- <button (click)="fill_3(stepperDOM)" mat-button>
                                         Fill
-                                    </button> -->
+                                    </button>-->
                                 </div>
                             </mat-step>
 
