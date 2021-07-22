@@ -518,7 +518,7 @@ router.post('/payment_intents', async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({ //token
       amount: calculateOrderAmount(totalPrice), //totalPrice,
       currency
-    });
+    }, { stripeAccount: 'acct_1Ii2wOEAP4YefPUs' }); // added on july 22
     //console.log(paymentIntent, 'paymentIntent')
     await Transaction.findOneAndUpdate({
       _id: transaction._id
