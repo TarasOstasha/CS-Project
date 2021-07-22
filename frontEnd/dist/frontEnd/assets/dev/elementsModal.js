@@ -526,8 +526,8 @@ function create(content) {
 
 function createElements(content, paymentIntent, publicKey) {
   // production mode
-  //var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib');//Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
-  var stripe = Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'); // test mode
+  var stripe = Stripe('pk_live_51Ii2wOEAP4YefPUsdX8hUJjCDO2C6iife3CjAFC5Wwg7FLrtuphWzzbZjTvnilWnBzk9BKzq2WynylQyCijFjx5Z007peVT7ib');//Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6');
+  //var stripe = Stripe('pk_test_PceEeS4ETBzPsWQwIdRHp5Hc00KqxrSBp6'); // test mode
 
 
   // Create an instance of Elements.

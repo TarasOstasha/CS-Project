@@ -518,13 +518,13 @@ router.post('/payment_intents', async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({ //token
       amount: calculateOrderAmount(totalPrice), //totalPrice,
       currency
-    }, { stripeAccount: 'acct_1Ii2wOEAP4YefPUs' }); // added on july 22
+    }, { stripeAccount: 'acct_1Ii2wOEAP4YefPUs' }); // added on july 22 https://dashboard.stripe.com/b/acct_1Ii2wOEAP4YefPUs
     //console.log(paymentIntent, 'paymentIntent')
     await Transaction.findOneAndUpdate({
       _id: transaction._id
     }, {
         status: 'intend (stage 2)',
-        paymentIntent // paymentIntent: paymentIntent
+        paymentIntent: paymentIntent
       })
     paymentIntensStatus = true;
     return res.json(paymentIntent);
