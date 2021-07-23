@@ -614,7 +614,7 @@ function stripePaymentHandler() {
       ///
       //alert('transaction done')
       setTimeout(() => {
-        window.location.href = 'http://localhost:4200/main';
+        window.location.href = 'https://www.crystalsystemnyc.com/main';
       },3000)
     }
     //1 ->

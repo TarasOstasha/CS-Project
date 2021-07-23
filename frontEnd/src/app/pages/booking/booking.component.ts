@@ -514,44 +514,128 @@ export class BookingComponent implements OnInit, OnChanges {
     // make calendar appointment and save user data to admin panel after approved payment card
 
     window.bookingDate = {
-      date: this.form_1_1.value.date,
-      period: this.form_1_1.value.select_times,
-      cleaning_type: this.form_1_1.value.cleaning_type,
-      frequency: this.form_1_1.value.frequency,
-      sq_ft: this.form_1_1.value.sq_ft,
-      bedrooms: this.form_1_1.value.bedrooms,
-      bathrooms: this.form_1_1.value.bathrooms,
+      // date: this.form_1_1.value.date,
+      // period: this.form_1_1.value.select_times,
+      // cleaning_type: this.form_1_1.value.cleaning_type,
+      // frequency: this.form_1_1.value.frequency,
+      // sq_ft: this.form_1_1.value.sq_ft,
+      // bedrooms: this.form_1_1.value.bedrooms,
+      // bathrooms: this.form_1_1.value.bathrooms,
+      // phone: this.form_1_1.value.phone,
+      // first_name: this.form_1_3.value.first_name,
+      // last_name: this.form_1_3.value.last_name,
+      // city: this.form_1_3.value.city,
+      // address: this.form_1_3.value.address,
+      // state: this.form_1_3.value.state,
+      // zip_code: this.form_1_1.value.zip_code,
+      date: this.form_1_1.value.date, // date
+      period: this.form_1_1.value.select_times, // day time
+      cleaning_type: this.form_1_1.value.cleaning_type, // cleaning type
+      property_type: this.form_1_1.value.property_type, // property type
+      frequency: this.form_1_1.value.frequency, // frequency
+      sq_ft: this.form_1_1.value.sq_ft, // sq.ft
+      bedrooms: this.form_1_1.value.bedrooms, // bedrooms
+      bathrooms: this.form_1_1.value.bathrooms, // bathrooms
       phone: this.form_1_1.value.phone,
-      first_name: this.form_1_3.value.first_name,
-      last_name: this.form_1_3.value.last_name,
-      city: this.form_1_3.value.city,
-      address: this.form_1_3.value.address,
-      state: this.form_1_3.value.state,
-      zip_code: this.form_1_1.value.zip_code
+      first_name: this.form_1_3.value.first_name, // first name
+      last_name: this.form_1_3.value.last_name, // last name
+      city: this.form_1_3.value.city, // city
+      address: this.form_1_3.value.address, // address
+      suite: this.form_1_3.value.aptSuite, // house number
+      state: this.form_1_3.value.state, // state
+      zip_code: this.form_1_1.value.zip_code, // zip code
+      price: this.calculatePipe.total, // price
+      email: this.form_1_1.value.email, // email
+      extras: { // extras
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
+      },
+      doorAccess: this.form_1_3.value.doorAccess, // door access info*
+      specialInstructions: this.form_1_3.value.specialInstructions, // special instructions
+      howDidYouHear: this.form_1_3.value.howDidYouHear,  // how did you hear about us
+      payBy: this.stripePaymentForm.value.payBy // paying method
     }
     //console.log(window.bookingDate)
+    const name = this.form_1_3.value.first_name.toLowerCase();
     window.collectedData = {
-      name: this.form_1_3.value.first_name,
+      // name: this.form_1_3.value.first_name,
+      // last_name: this.form_1_3.value.last_name,
+      // address: this.form_1_3.value.address,
+      // city: this.form_1_3.value.city,
+      // state: this.form_1_3.value.state,
+      // zip_code: this.form_1_3.value.state,
+      // phone: this.form_1_1.value.phone,
+      // email: this.form_1_1.value.email
+      name: name,
       last_name: this.form_1_3.value.last_name,
       address: this.form_1_3.value.address,
       city: this.form_1_3.value.city,
       state: this.form_1_3.value.state,
-      zip_code: this.form_1_3.value.state,
+      zip_code: this.form_1_3.value.zip_code,
       phone: this.form_1_1.value.phone,
-      email: this.form_1_1.value.email
+      email: this.form_1_1.value.email,
+      //date: this.form_1_1.value.date, // date
+      period: this.form_1_1.value.select_times, // day time
+      cleaning_type: this.form_1_1.value.cleaning_type, // cleaning type
+      property_type: this.form_1_1.value.property_type, // property type
+      frequency: this.form_1_1.value.frequency, // frequency
+      sq_ft: this.form_1_1.value.sq_ft, // sq.ft
+      bedrooms: this.form_1_1.value.bedrooms, // bedrooms
+      bathrooms: this.form_1_1.value.bathrooms, // bathrooms
+      //first_name: this.form_1_3.value.first_name, // first name
+      suite: this.form_1_3.value.aptSuite, // house number
+      price: this.calculatePipe.total, // price
+      extras: { // extras
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
+      },
+      doorAccess: this.form_1_3.value.doorAccess, // door access info*
+      specialInstructions: this.form_1_3.value.specialInstructions, // special instructions
+      howDidYouHear: this.form_1_3.value.howDidYouHear,  // how did you hear about us
+      payBy: this.stripePaymentForm.value.payBy // paying method
     }
     const parseDate = this.form_1_1.value.date.toString().substring(0, 9);
     window.emailDataStripePayment = {
+      // company_name: this.form_1_3.value.last_name,
+      // name: this.form_1_3.value.first_name,
+      // phone: this.form_1_1.value.phone,
+      // email: this.form_1_1.value.email,
+      // frequency: this.form_1_1.value.frequency,
+      // sq_ft: this.form_1_1.value.sq_ft,
+      // time: parseDate, //this.form_1_1.value.date, // need to parse date
+      // period: this.form_1_1.value.select_times,
+      // address: this.form_1_3.value.address,
+      // zip_code: this.form_1_1.value.zip_code
       company_name: this.form_1_3.value.last_name,
       name: this.form_1_3.value.first_name,
       phone: this.form_1_1.value.phone,
       email: this.form_1_1.value.email,
       frequency: this.form_1_1.value.frequency,
       sq_ft: this.form_1_1.value.sq_ft,
-      time: parseDate, //this.form_1_1.value.date, // need to parse date
+      time: parseDate,
       period: this.form_1_1.value.select_times,
       address: this.form_1_3.value.address,
-      zip_code: this.form_1_1.value.zip_code
+      zip_code: this.form_1_1.value.zip_code,
+      cleaning_type: this.form_1_1.value.cleaning_type,
+      property_type: this.form_1_1.value.property_type,
+      bedrooms: this.form_1_1.value.bedrooms,
+      extras: {
+        extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
+        extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
+        extras_cabinet: (this.form_1_2.value.extras_cabinet) ? this.getExtraItem('cabinet') : null,
+        extras_washer: (this.form_1_2.value.extras_washer) ? this.getExtraItem('washer') : null,
+        extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
+        extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
+      },
+      price: this.calculatePipe
     }
     return {
       bedBath,
