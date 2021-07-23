@@ -192,6 +192,7 @@ router.post('/sendmail', (req, res) => {
 });
 
 async function sendMail(user, callback) {
+    console.log(user, '***USER***')
     let transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465, //587,

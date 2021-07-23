@@ -512,7 +512,6 @@ export class BookingComponent implements OnInit, OnChanges {
     //console.log(recommendTime)
 
     // make calendar appointment and save user data to admin panel after approved payment card
-
     window.bookingDate = {
       // date: this.form_1_1.value.date,
       // period: this.form_1_1.value.select_times,
@@ -544,7 +543,7 @@ export class BookingComponent implements OnInit, OnChanges {
       suite: this.form_1_3.value.aptSuite, // house number
       state: this.form_1_3.value.state, // state
       zip_code: this.form_1_1.value.zip_code, // zip code
-      price: this.calculatePipe.total, // price
+      price: total, // price
       email: this.form_1_1.value.email, // email
       extras: { // extras
         extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
@@ -560,7 +559,7 @@ export class BookingComponent implements OnInit, OnChanges {
       payBy: this.stripePaymentForm.value.payBy // paying method
     }
     //console.log(window.bookingDate)
-    const name = this.form_1_3.value.first_name.toLowerCase();
+    let name = this.form_1_3.value.first_name.toLowerCase();
     window.collectedData = {
       // name: this.form_1_3.value.first_name,
       // last_name: this.form_1_3.value.last_name,
@@ -588,7 +587,7 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: this.form_1_1.value.bathrooms, // bathrooms
       //first_name: this.form_1_3.value.first_name, // first name
       suite: this.form_1_3.value.aptSuite, // house number
-      price: this.calculatePipe.total, // price
+      price: total, // price
       extras: { // extras
         extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
         extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
@@ -602,7 +601,7 @@ export class BookingComponent implements OnInit, OnChanges {
       howDidYouHear: this.form_1_3.value.howDidYouHear,  // how did you hear about us
       payBy: this.stripePaymentForm.value.payBy // paying method
     }
-    const parseDate = this.form_1_1.value.date.toString().substring(0, 9);
+    let parseDate = this.form_1_1.value.date.toString().substring(0, 9);
     window.emailDataStripePayment = {
       // company_name: this.form_1_3.value.last_name,
       // name: this.form_1_3.value.first_name,
@@ -635,7 +634,7 @@ export class BookingComponent implements OnInit, OnChanges {
         extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
         extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
       },
-      price: this.calculatePipe
+      price: total
     }
     return {
       bedBath,
