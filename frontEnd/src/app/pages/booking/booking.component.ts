@@ -543,7 +543,7 @@ export class BookingComponent implements OnInit, OnChanges {
       suite: this.form_1_3.value.aptSuite, // house number
       state: this.form_1_3.value.state, // state
       zip_code: this.form_1_1.value.zip_code, // zip code
-      price: total, // price
+      price: { total: total }, // price
       email: this.form_1_1.value.email, // email
       extras: { // extras
         extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
@@ -587,7 +587,7 @@ export class BookingComponent implements OnInit, OnChanges {
       bathrooms: this.form_1_1.value.bathrooms, // bathrooms
       //first_name: this.form_1_3.value.first_name, // first name
       suite: this.form_1_3.value.aptSuite, // house number
-      price: total, // price
+      price: { total: total }, // price
       extras: { // extras
         extras_fridge: (this.form_1_2.value.extras_fridge) ? this.getExtraItem('fridge') : null,
         extras_oven: (this.form_1_2.value.extras_oven) ? this.getExtraItem('oven') : null,
@@ -634,7 +634,7 @@ export class BookingComponent implements OnInit, OnChanges {
         extras_window: (this.form_1_2.value.extras_window) ? this.getExtraItem('window') : null,
         extras_vacuum_sofa: (this.form_1_2.value.extras_vacuum_sofa) ? this.getExtraItem('vacuum_sofa') : null
       },
-      price: total
+      price: { total: total }
     }
     return {
       bedBath,
